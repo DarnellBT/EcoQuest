@@ -10,7 +10,13 @@
   </head>
   <body>
     <main>
-        <h1></h1>  
+        <h1>Registration</h1>
+        
+        <form method="POST" action="">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Submit</button>
+        </form>
     </main>
     <script src="index.js"></script>
   </body>

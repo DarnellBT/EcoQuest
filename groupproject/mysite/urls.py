@@ -25,9 +25,8 @@ from api import views as api_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register_view.register, name='register'),
-    path('login/', login_view.login, name='login'),
+    path('login/', login_view.loginPage, name='login'),
     path('home/', main_view.home, name='home'),
-    path('login/', login_view.login, name='login'),
     path('admin_api/', api_view.api, name='api'),
     path('', register_view.register, name='register'),
 ]
