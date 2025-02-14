@@ -20,6 +20,7 @@ from registration import views as register_view
 from login import views as login_view
 from main import views as main_view
 from api import views as api_view
+from map import views as map_view
 
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     path('home/', main_view.home, name='home'),
     path('admin_api/', api_view.api, name='api'),
     path('', register_view.register, name='register'),
+    path('map/', map_view.MapView.as_view(), name='map')
 ]
