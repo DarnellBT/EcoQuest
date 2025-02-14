@@ -30,5 +30,5 @@ urlpatterns = [
     path('home/', main_view.home, name='home'),
     path('admin_api/', api_view.api, name='api'),
     path('', register_view.register, name='register'),
-    path('map/', map_view.MapView.as_view(), name='map')
+    path('map/', map_view.MapView.as_view(), name='map'),
 ]
