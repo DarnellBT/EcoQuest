@@ -3,9 +3,12 @@ import folium
 from django.db import models
 import folium.plugins
 import folium.plugins.locate_control
-from .models import Location
 from folium.plugins import LocateControl
-import geopy
+from django.http import HttpResponse
+from ipware import get_client_ip
+from django.shortcuts import redirect
+from .models import Location
+
 
 
 class MapView(TemplateView):
@@ -25,7 +28,7 @@ class MapView(TemplateView):
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(mapFig)
-    
+      
         # Create marker with popup and hover text
         all_locations = Location.objects.all()
         all_list = list(all_locations)
@@ -36,12 +39,14 @@ class MapView(TemplateView):
                 tooltip=f'Test{data.locationId}'
             ).add_to(mapFig)
 
-       
+      
         # render map to html format
         map_html = mapFig._repr_html_()
 
         # pass html content to map.html
         context['map'] = map_html
+        
         #send it to map
         return context
+
 
