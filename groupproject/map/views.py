@@ -26,20 +26,23 @@ class MapView(TemplateView):
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(mapFig)
-     
-       
-        file = "./map/static/Hello.png"
-        encoded = base64.b64encode(open(file, 'rb').read())
-        svg = ("""<object data="data:image/png;base64,{}" width="{}" height="{} type="image/svg+xml">
-    </object>""").format
-        width, height, fat_wh = 170, 170, 1.4
-        iframe = folium.IFrame(svg(encoded.decode('UTF-8'), width, height), width=width*fat_wh, height=height*fat_wh)
-        popup = folium.Popup(iframe, max_width=400)
         
+       # Modify so that each marker has its own image from database 
+
         # Create marker with popup and hover text
         all_locations = Location.objects.all()
         all_list = list(all_locations)
         for data in all_list:
+            file = "./map/"+data.qr_code.url[1:]
+            while file.count('/map/map') > 0:
+                file = file.replace('/map/map/', '/map/')
+            print(file)
+            encoded = base64.b64encode(open(file, 'rb').read())
+            svg = ("""<object data="data:image/png;base64,{}" width="{}" height="{} type="image/svg+xml">
+            </object>""").format
+            width, height, fat_wh = 170, 170, 1.4
+            iframe = folium.IFrame(svg(encoded.decode('UTF-8'), width, height), width=width*fat_wh, height=height*fat_wh)
+            popup = folium.Popup(iframe, max_width=400)
             folium.Marker(
                 location=[data.latitude, data.longitude],
                 popup=popup,                      #f'{data.name}',
