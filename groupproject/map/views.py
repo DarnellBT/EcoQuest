@@ -1,12 +1,6 @@
-from django.views.generic import TemplateView
 import folium
-from django.db import models
 import folium.plugins
-import folium.plugins.locate_control
-from folium.plugins import LocateControl
-from django.http import HttpResponse
-from ipware import get_client_ip
-from django.shortcuts import redirect
+from django.views.generic import TemplateView
 from .models import Location
 
 
