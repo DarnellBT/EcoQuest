@@ -10,17 +10,9 @@
   </head>
   <body>
     <main>
-        <form method="post" action="./submit/">
-          {% csrf_token %}  
-          <input type="text" name ="randomString" value="">
-          <input type="submit" value="Submit">
-        </form>
-
-        <h1>Welcome to My Website</h1>  
-        <div id="map-container" style="overflow: hidden; align-content: center;">
-            {{ map|safe }}
-        </div>
-            
+        <h1>Submit</h1>  
+        {{valid_or_invalid}}
+              
         
         
     </main>

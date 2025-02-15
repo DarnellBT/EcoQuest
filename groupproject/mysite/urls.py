@@ -21,7 +21,7 @@ from login import views as login_view
 from main import views as main_view
 from api import views as api_view
 from map import views as map_view
-
+from challenge import views as challenge_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +31,6 @@ urlpatterns = [
     path('admin_api/', api_view.api, name='api'),
     path('', register_view.register, name='register'),
     path('map/', map_view.MapView.as_view(), name='map'),
+    path('map/submit/', map_view.submitProcess, name='submitView'),
+    path('challenge/', challenge_view.challenge, name='challenge')
 ]
