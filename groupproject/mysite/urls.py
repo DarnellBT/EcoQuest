@@ -23,6 +23,7 @@ from api import views as api_view
 from map import views as map_view
 from challenge import views as challenge_view
 from quiz import views as quiz_view
+from challenge import views as challenge_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +35,7 @@ urlpatterns = [
     path('map/', map_view.MapView.as_view(), name='map'),
     path('map/submit/', map_view.submitProcess, name='submitView'),
     path('challenge/', challenge_view.challenge, name='challenge'),
-    path('quiz/', quiz_view.quiz, name='quiz')
+    path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
+    path('challenge/<int:id>/', challenge_view.challenge, name='challenge')
+
 ]

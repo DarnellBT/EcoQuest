@@ -6,7 +6,8 @@ class Quiz(models.Model):
 
 class Question(models.Model):
     questionId = models.BigAutoField(primary_key=True)
-    quizId = models.OneToOneField(Quiz, on_delete=models.DO_NOTHING, default=1)
+    quizId = models.IntegerField(default=0)
+    question = models.CharField(max_length=300, default='NULL')
     choice1 = models.CharField(max_length=200)
     choice2 = models.CharField(max_length=200)
     choice3 = models.CharField(max_length=200)

@@ -10,10 +10,29 @@
   </head>
   <body>
     <main>
-        <h1>Quiz</h1>
+      <h1>Quiz</h1>
+    
+      <form method="post">
+        {% csrf_token %}
+        {% for question_iter in questions %}
+          <b>{{ question_iter.question }}</b><br>
+          <input type="radio" id="choice1_{{ forloop.counter }}" name="question_{{ forloop.counter }}" value="{{ question_iter.choice1 }}">
+          <label for="choice1_{{ forloop.counter }}">{{ question_iter.choice1 }}</label><br>
+          
+          <input type="radio" id="choice2_{{ forloop.counter }}" name="question_{{ forloop.counter }}" value="{{ question_iter.choice2 }}">
+          <label for="choice2_{{ forloop.counter }}">{{ question_iter.choice2 }}</label><br>
+    
+          <input type="radio" id="choice3_{{ forloop.counter }}" name="question_{{ forloop.counter }}" value="{{ question_iter.choice3 }}">
+          <label for="choice3_{{ forloop.counter }}">{{ question_iter.choice3 }}</label><br>
+    
+          <input type="radio" id="choice4_{{ forloop.counter }}" name="question_{{ forloop.counter }}" value="{{ question_iter.choice4 }}">
+          <label for="choice4_{{ forloop.counter }}">{{ question_iter.choice4 }}</label><br>
+        {% endfor %}
         
-     
+        <input type="submit" value="Submit">
+      </form>
     </main>
+    
     <script src="index.js"></script>
   </body>
 </html>
