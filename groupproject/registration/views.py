@@ -23,6 +23,6 @@ def register(request):
         x = form.fields['username']
         x.help_text = "Please enter only Letters, Digits, and @ /./+/-/_"
         y = form.fields['password2']
-        y.help_text = "Please enter the same password as before"
+        y.help_text = "Please enter the same password as before."
     return render(request, 'registration.html', {'form':form})
 
