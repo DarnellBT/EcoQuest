@@ -71,8 +71,6 @@ def submitProcess(request):
             qr_message = locate.qr_code_message
             if randomString == qr_message:
                 validated_string = "QR Code Valid"
-                
-                
             else:
                 validated_string = "QR Code Invalid"
                 
