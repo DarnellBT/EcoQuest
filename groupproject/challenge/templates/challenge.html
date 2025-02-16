@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Challenge</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <main>
         <h1>Challege {{ id }}</h1>  
+        <p>Your current points: {{ user_points }}</p>
+        <p>{{ challenge }}</p>
+        <p>{{ challenge_descr }}</p>
+       
+    
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ forms.as_p }}<br>
+          <input type="submit" value="Submit">
+        </form>
+        <p>{{ upload_status }}</p>
+        <p>{{ image }}</p>
         
     </main>
     <script src="index.js"></script>
