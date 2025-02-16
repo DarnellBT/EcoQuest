@@ -73,12 +73,14 @@ def submitProcess(request):
             qr_message = locate.qr_code_message
             if randomString == qr_message:
                 validated_string = "QR Code Valid"
-                quizId = locate.quizId
-                if quizId != 0:
-                    return redirect(f'../../quiz/{quizId}/')
+                challenge_id = locate.challengeId
+                if challenge_id != 0:
+                    return redirect(f'../../challenge/{challenge_id}/')
+              
                 else:
-                    random_challenge_id = challenge_model.Challenge.objects.order_by('?').first()
-                    return redirect(f'../../challenge/{random_challenge_id}/')
+                    random_quiz = quiz_model.Quiz.objects.order_by('?').first()
+                    quiz_id = random_quiz.quizId
+                    return redirect(f'../../quiz/{quiz_id}/')
             else:
                 validated_string = "QR Code Invalid"
                 
