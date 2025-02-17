@@ -7,15 +7,30 @@
     <title>Login</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <style>
+      h1 {text-align: center;
+        font-size: 3vw;}
+      form {text-align: center;
+        font-size: 2vw;}
+      .box1 {
+        margin: auto;
+        width: 50%;
+        border: 3px solid black;
+        background-color: #00c896;
+        padding: 15px;
+      }
+    </style>
   </head>
   <body>
     <main>
         <h1>Login</h1>  
+      <div class="box1">
         <form method="POST" action="">
           {% csrf_token %}
           {{form.as_p}}
           <button type="submit">Submit</button>
         </form>
+      </div>
     </main>
     <script src="index.js"></script>
   </body>

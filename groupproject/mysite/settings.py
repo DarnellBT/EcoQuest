@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'login',
     'api',
     'map',
+    'challenge',
+    'quiz',
 ]
 
 MIDDLEWARE = [
