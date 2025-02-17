@@ -4,7 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('userId', 'username', 'first_name', 'last_name', 'email','password', 'points', 'is_user', 'is_developer', 'is_admin')
+    list_display = ('userId', 'username', 'first_name', 'last_name', 'email','password', 'points', 'is_user', 'is_game_keeper', 'is_admin')
     
     def username(self, obj):
         return obj.user.username

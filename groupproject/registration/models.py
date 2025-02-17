@@ -6,6 +6,6 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
     is_user = models.BooleanField(default=1)
-    is_developer = models.BooleanField(default=0)
+    is_game_keeper = models.BooleanField(default=0)
     is_admin = models.BooleanField(default=0)  
     

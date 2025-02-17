@@ -7,7 +7,9 @@ from django.views.generic import TemplateView
 from django.shortcuts import redirect, render
 from .models import Location
 from .forms import StringForm
-
+from quiz import models as quiz_model
+from django.contrib import messages
+from challenge import models as challenge_model
 
 class MapView(TemplateView):
     template_name = 'map.html'
@@ -71,8 +73,14 @@ def submitProcess(request):
             qr_message = locate.qr_code_message
             if randomString == qr_message:
                 validated_string = "QR Code Valid"
-                
-                
+                challenge_id = locate.challengeId
+                if challenge_id != 0:
+                    return redirect(f'../../challenge/{challenge_id}/')
+              
+                else:
+                    random_quiz = quiz_model.Quiz.objects.order_by('?').first()
+                    quiz_id = random_quiz.quizId
+                    return redirect(f'../../quiz/{quiz_id}/')
             else:
                 validated_string = "QR Code Invalid"
                 

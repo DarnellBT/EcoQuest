@@ -9,3 +9,4 @@ class Location(models.Model):
     qr_code = models.ImageField(default='NULL', upload_to='./map/static')
     qr_code_message = models.CharField(default='NULL', max_length=50)
     task = models.CharField(default='NULL', max_length=20, null=False)
+    challengeId = models.IntegerField(default=0)
