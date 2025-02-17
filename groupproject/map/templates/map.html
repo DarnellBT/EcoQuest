@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="../styling/leafmap.css">
+
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
@@ -13,18 +17,68 @@
         <h1>Welcome to The Map Page</h1> <br>
         <form method="post" action="./submit/">
           {% csrf_token %}  
-          <input type="text" name ="randomString" value="">
+          <input type="text" name="randomString" value="">
           <input type="submit" value="Submit">
         </form>
 
-       
-        <div id="map-container" style="overflow: hidden; align-content: center;">
-            {{ map|safe }}
+        <div id="map-container" style="width: 100%; height: 500px; align-content: center;">
+            <div id="map" style="width: 100%; height: 100%;"></div>
         </div>
-            
-        
-        
     </main>
-    
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        let map = L.map('map').setView([0, 0], 13); // Default center (updated later)
+
+        // Add OpenStreetMap Tile Layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        let marker = L.marker([0, 0]).addTo(map); // Initial marker
+        let watchID;
+
+        function startTracking() {
+            if (navigator.geolocation) {
+                watchID = navigator.geolocation.watchPosition(updateLocation, showError, {
+                    enableHighAccuracy: true,
+                    maximumAge: 0,
+                    timeout: 5000
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function updateLocation(position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+
+            // Update map view and marker position
+            map.setView([lat, lon], 13);
+            marker.setLatLng([lat, lon]).bindPopup("You are here").openPopup();
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+        }
+
+        // Start tracking when the page loads
+        window.onload = startTracking;
+    </script>
   </body>
 </html>
