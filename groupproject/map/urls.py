@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import MapView, submit_location
+import views
 
 urlpatterns = [
-    path('', MapView.as_view(), name='map'),
-    path('submit-location/', submit_location, name='submit_location'),
+    path('', views.MapView.as_view(), name='map'),
+    path('map/submit-location/', views.submit_location, name='submit_location'),
 ]

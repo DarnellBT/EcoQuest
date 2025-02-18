@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 class RegistrationForm(UserCreationForm):
 
     email = forms.EmailField()
-
+    username = forms.CharField()
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
@@ -16,6 +16,12 @@ class RegistrationForm(UserCreationForm):
             'password': forms.PasswordInput()
         }
     
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise ValidationError(f"The email {username} is already taken")
+        return username
+
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email).exists():

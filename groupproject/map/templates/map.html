@@ -16,6 +16,8 @@
 <body>
     <main>
         <h1>Welcome to The Map Page</h1> <br>
+        <p>Latitude: <span id='lat'>{{ lat }}</span></p>
+        <p>Longitude: <span id="long">{{ long }}</span></p>
         <form method="post" action="./submit/">
             {% csrf_token %}  
             <input type="text" name="randomString" value="">
@@ -48,13 +50,14 @@
         function updateLocation(position) {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
-
+            document.getElementById('lat').textContent = lat.toFixed(6);
+            document.getElementById('long').textContent = lon.toFixed(6);
             // Send location to the backend
             sendLocationToServer(lat, lon);
         }
 
         function sendLocationToServer(lat, lon) {
-            fetch('/submit-location/', {
+            fetch('/map/submit-location/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +102,7 @@
         // Start tracking when the page loads
         window.onload = startTracking;
     </script>
-     <p>Latitude: {{ lat }}</p>
-     <p>Longitude: {{ long }}</p>
+    <br>
+    
 </body>
 </html>
