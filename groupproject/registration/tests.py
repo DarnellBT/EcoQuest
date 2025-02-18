@@ -3,19 +3,19 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import UserProfile
 from .forms import RegistrationForm
-from .views import register
 
 class RegistrationModelTest(TestCase):
     def test_create_user_profile(self):
         """Test creating a UserProfile instance"""
+        # Creates a user instance.
         user = User.objects.create(
             username='Dragonite',
             first_name='John',
             last_name='Doe',
             email='JohnDoe@email.com',
         )
-
         user.set_password('secret_pass')
+        # Creates a UserProfile instance
         user_profile = UserProfile.objects.create(user=user,)
 
         self.assertEqual(user_profile.userId, 1)
@@ -24,6 +24,7 @@ class RegistrationModelTest(TestCase):
         self.assertEqual(user_profile.is_user, 1)
         self.assertEqual(user_profile.is_game_keeper, 0)
         self.assertEqual(user_profile.is_admin, 0)
+        self.assertTrue(user_profile.user.check_password('secret_pass'))
 
 class RegistrationViewTest(TestCase):
     def test_registration_page_loads(self):
@@ -40,9 +41,11 @@ class RegistrationFormTest(TestCase):
 
     def test_invalid_form(self):
         """Test if an invalid form is rejected"""
+        # Checks that if all fields are empty, the form should not be valid
         form_data = {'username': '', 'first_name': '', 'last_name': '', 'email': '', 'password1': '', 'password2': ''}
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
+        # Checks that if passwords do not match, the form should not be valid.
         form_data = {'username': 'Dragonite', 'first_name': 'John', 'last_name': 'Doe', 'email': 'JohnDoe@email.com', 'password1': 'secret01', 'password2': 'secret02'}
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
