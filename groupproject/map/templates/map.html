@@ -38,6 +38,7 @@
 
         let marker = L.marker([0, 0]).addTo(map); // Initial marker
         let watchID;
+        
 
         function startTracking() {
             if (navigator.geolocation) {
@@ -104,9 +105,12 @@
                     break;
             }
         }
+       
 
         // Start tracking when the page loads
         window.onload = startTracking;
     </script>
+     <p>Latitude: {{ lat }}</p>
+     <p>Longitude: {{ long }}</p>
 </body>
 </html>
