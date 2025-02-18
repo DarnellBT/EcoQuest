@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="../styling/leafmap.css">
 
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
+</head>
+<body>
     <main>
         <h1>Welcome to The Map Page</h1> <br>
         <form method="post" action="./submit/">
-          {% csrf_token %}  
-          <input type="text" name="randomString" value="">
-          <input type="submit" value="Submit">
+            {% csrf_token %}  
+            <input type="text" name="randomString" value="">
+            <input type="submit" value="Submit">
         </form>
 
         <div id="map-container" style="width: 100%; height: 500px; align-content: center;">
@@ -29,7 +29,7 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        let map = L.map('map').setView([0, 0], 13); // Default center (updated later)
+        let map = L.map('map').setView([0, 0], 13); // Default center
 
         // Add OpenStreetMap Tile Layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,6 +38,7 @@
 
         let marker = L.marker([0, 0]).addTo(map); // Initial marker
         let watchID;
+        
 
         function startTracking() {
             if (navigator.geolocation) {
@@ -58,6 +59,34 @@
             // Update map view and marker position
             map.setView([lat, lon], 13);
             marker.setLatLng([lat, lon]).bindPopup("You are here").openPopup();
+
+            // Send location to the backend
+            sendLocationToServer(lat, lon);
+        }
+
+        function sendLocationToServer(lat, lon) {
+            fetch('/submit-location/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken() // Get CSRF token from cookies
+                },
+                body: JSON.stringify({ latitude: lat, longitude: lon })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Location sent:', data))
+            .catch(error => console.error('Error sending location:', error));
+        }
+
+        function getCSRFToken() {
+            let cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.startsWith('csrftoken=')) {
+                    return cookie.split('=')[1];
+                }
+            }
+            return '';
         }
 
         function showError(error) {
@@ -76,9 +105,12 @@
                     break;
             }
         }
+       
 
         // Start tracking when the page loads
         window.onload = startTracking;
     </script>
-  </body>
+     <p>Latitude: {{ lat }}</p>
+     <p>Longitude: {{ long }}</p>
+</body>
 </html>
