@@ -19,6 +19,14 @@
         padding: 15px;
       }
       p {font-size: 2vw;}
+      .link-login {
+        text-decoration: none;
+        size: 10pt;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
     </style>
   </head>
   <body>
@@ -42,6 +50,10 @@
           </p>
           {% endfor %}
           <button type="submit">Submit</button>
+          <div class="link-login">
+            <a href="{% url 'login' %}">Already registered?</a>
+          </div>
+        
         </form>
     </main>
     <script src="index.js"></script>

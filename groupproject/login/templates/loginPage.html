@@ -19,6 +19,14 @@
         background-color: #00c896;
         padding: 15px;
       }
+      a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+      }
+      .register-link {
+        size: 8pt;
+      }
     </style>
   </head>
   <body>
@@ -29,7 +37,12 @@
           {% csrf_token %}
           {{form.as_p}}
           <button type="submit">Submit</button>
+          <div class="register-link"><a href="{% url 'register' %}">Not got an account?</a></div>
+          
         </form>
+         
+            
+          
       </div>
     </main>
     <script src="index.js"></script>
