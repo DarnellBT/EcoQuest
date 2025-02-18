@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'registration',
     'main',
     'login',
-    'api',
+    'dashboard',
     'map',
     'challenge',
     'quiz',
