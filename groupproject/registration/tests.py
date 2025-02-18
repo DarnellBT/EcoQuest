@@ -88,3 +88,14 @@ class RegistrationFormTest(TestCase):
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
+        # Checks that if passwords are less than 8 characters, the form should not be valid.
+        form_data = {
+            'username': 'Dragonite',
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 'JohnDoe@email.com',
+            'password1': 'short!!',
+            'password2': 'short!!'
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertFalse(form.is_valid())
