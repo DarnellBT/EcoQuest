@@ -42,9 +42,9 @@ class MapView(TemplateView):
             encoded = base64.b64encode(open(file, 'rb').read())
             svg = ("""<object data="data:image/png;base64,{}" width="{}" height="{}" type="image/svg+xml">
             </object>""").format
-            width, height, fat_wh = 170, 170, 1.4
+            width, height, fat_wh = 200, 200, 1.4
             iframe = folium.IFrame(svg(encoded.decode('UTF-8'), width, height), width=width*fat_wh, height=height*fat_wh)
-            popup = folium.Popup(iframe, max_width=400)
+            popup = folium.Popup(iframe, max_width=272)
             folium.Marker(
                 location=[data.latitude, data.longitude],
                 popup=popup,

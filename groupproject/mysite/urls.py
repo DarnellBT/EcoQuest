@@ -39,6 +39,7 @@ urlpatterns = [
     path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
     path('dashboard/edit/', dashboard_view.edit, name='edit'),
     path('dashboard/challenges/', dashboard_view.challenges, name='challenges'),
-    path('dashboard/statistics/', dashboard_view.statistics, name='statistics')
+    path('dashboard/statistics/', dashboard_view.statistics, name='statistics'),
+    path('map/submit-location/', map_view.submit_location, name="submit-location")
    
 ]
