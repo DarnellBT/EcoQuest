@@ -8,7 +8,8 @@
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-    <link rel="stylesheet" href="../styling/leafmap.css">
+    <!-- Remove or correct the path to leafmap.css -->
+    <!-- <link rel="stylesheet" href="../styling/leafmap.css"> -->
 
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
@@ -22,21 +23,13 @@
         </form>
 
         <div id="map-container" style="width: 100%; height: 500px; align-content: center;">
-            <div id="map" style="width: 100%; height: 100%;"></div>
+            {{ map|safe }}
         </div>
     </main>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        let map = L.map('map').setView([0, 0], 13); // Default center
-
-        // Add OpenStreetMap Tile Layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        let marker = L.marker([0, 0]).addTo(map); // Initial marker
         let watchID;
 
         function startTracking() {
@@ -54,10 +47,6 @@
         function updateLocation(position) {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
-
-            // Update map view and marker position
-            map.setView([lat, lon], 13);
-            marker.setLatLng([lat, lon]).bindPopup("You are here").openPopup();
 
             // Send location to the backend
             sendLocationToServer(lat, lon);
