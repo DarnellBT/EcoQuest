@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 import random
 from .models import Challenge
 from .models import ChallengeCompleted
@@ -13,6 +13,7 @@ def challenge(request, id):
     for challenge in all_challenge:
         challenge_task = challenge.challenge
         challenge_description = challenge.description
+        challenge_points = challenge.points
 
     upload_status = 'Upload Successful'
     current_user = request.user
@@ -21,6 +22,8 @@ def challenge(request, id):
     user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
     user_points = user_profile.points
     context = {
+        'user_id': current_user.id,
+        'challenge_points': challenge_points,
         'user_points': user_points,
         'forms':form,
         'challenge_descr': challenge_description,
@@ -41,8 +44,17 @@ def challenge(request, id):
             current_user_id = current_user.id
     
             user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-            user_points = user_profile.points
+            
+            user_points = user_profile.points + challenge_points
+            user_profile.points = user_points
+            user_profile.save()
+
+            ChallengeCompleted.objects.create(userId=user_profile, challengeId=challenge, completed=True)
+            
+            
+
             context = {
+                'user_id': current_user.id,
                 'user_points': user_points,
                 'image': img,
                 'upload_status': upload_status,
@@ -51,8 +63,8 @@ def challenge(request, id):
                 'id': id,
                 }
             
-            
-            return render(request, 'challenge.html', context)
+            #render(request, 'challenge.html', context)
+            return redirect('../../map/')
 
 
     return render(request, 'challenge.html', context)

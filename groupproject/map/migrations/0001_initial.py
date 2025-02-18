@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('qr_code_message', models.CharField(default='NULL', max_length=50)),
                 ('task', models.CharField(default='NULL', max_length=20)),
                 ('quizId', models.IntegerField(default=0)),
+
             ],
         ),
     ]

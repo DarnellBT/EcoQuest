@@ -1,5 +1,7 @@
 import base64
+import json
 import random
+from django.http import JsonResponse
 import folium
 import folium.elements
 import folium.plugins
@@ -64,12 +66,14 @@ class MapView(TemplateView):
         # Pass HTML content to map.html
         context['map'] = map_html
         
+
+        #send it to map
         return context
 
 
 
 def submitProcess(request):
-    if request.method == 'POST':
+    if request.method == 'POST':        
         randomString = request.POST.get('randomString')
         all_locate = Location.objects.all()
         list_locate = list(all_locate)

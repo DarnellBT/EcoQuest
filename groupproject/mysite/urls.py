@@ -36,6 +36,6 @@ urlpatterns = [
     path('map/submit/', map_view.submitProcess, name='submitView'),
     path('challenge/', challenge_view.challenge, name='challenge'),
     path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
-    path('challenge/<int:id>/', challenge_view.challenge, name='challenge')
-
+    path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
+   
 ]
