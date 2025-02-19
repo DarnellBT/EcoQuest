@@ -4,18 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Dashboard</title>  
     {% load static %}
-    <link rel="stylesheet" href="{% static '../static/styling.css' %}" type="text/css">
+    <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <ul>
       <li><a href="{% url 'dashboard' %}" class="active">Profile</a></li>
-      <li><a href="{% url 'edit' %}">Edit Details</a></li>
+      <li><a href="{% url 'change-uname' %}">Change Username</a></li>
+      <li><a href="{% url 'change-name' %}">Change Name</a></li>
+      <li><a href="{% url 'change-password' %}">Change Password</a></li>
       <li><a href="{% url 'challenges' %}">Challenges</a></li>
-      <li><a href="{% url 'statistics' %}">Statistics</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+
     </ul>
-    <script src="index.js"></script>
+    
+    <p>Username: {{ username }}</p>
+    <p>First Name: {{ firstName }}</p>
+    <p>Last Name: {{ lastName }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Points: {{ points }}</p>
+    <p>Role: {{ role }}</p>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Delete Account">
+    </form>
+
+    
+
   </body>
 </html>
