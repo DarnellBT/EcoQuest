@@ -29,3 +29,7 @@ jobs:
       run: |
         python groupproject/manage.py migrate registration
         python groupproject/manage.py test registration
+    - name: Run Login Tests
+      run: |
+        python groupproject/manage.py migrate login
+        python groupproject/manage.py test login
