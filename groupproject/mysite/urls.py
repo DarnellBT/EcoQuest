@@ -37,9 +37,10 @@ urlpatterns = [
     path('challenge/', challenge_view.challenge, name='challenge'),
     path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
     path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
-    path('dashboard/edit/', dashboard_view.edit, name='edit'),
     path('dashboard/challenges/', dashboard_view.challenges, name='challenges'),
-    path('dashboard/statistics/', dashboard_view.statistics, name='statistics'),
-    path('map/submit-location/', map_view.submit_location, name="submit-location")
-   
+    path('dashboard/change-username/', dashboard_view.change_uname, name='change-uname'),
+    path('dashboard/change-name/', dashboard_view.change_name, name='change-name'),
+    path('dashboard/change-password/', dashboard_view.change_password, name='change-password'),
+    path('map/submit-location/', map_view.submit_location, name="submit-location"),
+    path('logout/', dashboard_view.logout_dashboard, name="logout")
 ]

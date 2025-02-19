@@ -7,24 +7,27 @@
     <title>Dashboard Challenges</title>
  
     {% load static %}
-     <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
+    <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
+    <h1>Change Name</h1>
     <ul>
       <li><a href="{% url 'dashboard' %}">Profile</a></li>
       <li><a href="{% url 'change-uname' %}">Change Username</a></li>
-      <li><a href="{% url 'change-name' %}">Change Name</a></li>
+      <li><a href="{% url 'change-name' %}" class="active">Change Name</a></li>
       <li><a href="{% url 'change-password' %}">Change Password</a></li>
-      <li><a href="{% url 'challenges' %}" class="active">Challenges</a></li>
+      <li><a href="{% url 'challenges' %}">Challenges</a></li>
       <li><a href="{% url 'logout' %}">Logout</a></li>
+ 
     </ul>
 
-    {% for challenge in challenges %}
-    <h3>{{ challenge.name }}</h3>
-    <p>{{ challenge.description }}</p>
-    {% endfor %}
+    <form method="POST" class="form-style">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <input type="submit" value="Submit">
+    </form>
+
   </body>
 </html>
-
 
