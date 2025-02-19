@@ -32,6 +32,16 @@ def dashboard(request):
         'points':points,
         'role':role,
     }
+
+    if request.method == "POST":
+        current_userprofile = UserProfile.objects.get(userId=request.user.id)
+        current_user = User.objects.get(username=username)
+        current_user.delete()
+        current_userprofile.delete()
+        
+
+        return redirect("../../register")
+
     return render(request, 'dashboard.html', context)
 
 def challenges(request):

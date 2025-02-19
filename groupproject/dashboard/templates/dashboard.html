@@ -27,6 +27,11 @@
     <p>Points: {{ points }}</p>
     <p>Role: {{ role }}</p>
 
+    <form method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Delete Account">
+    </form>
+
     
 
   </body>
