@@ -8,4 +8,4 @@ class UserProfile(models.Model):
     is_user = models.BooleanField(default=1)
     is_game_keeper = models.BooleanField(default=0)
     is_admin = models.BooleanField(default=0)  
-    
+   

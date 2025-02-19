@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <style>
-      h1 {text-align: center;
-        font-size: 3vw;}
+      body {
+        overflow: hidden;
+      }
+      h2 {text-align: center;
+        font-size: 2vw;}
       form {text-align: center;}
       .box1 {
         margin: auto;
@@ -18,7 +21,7 @@
         background-color: #00c896;
         padding: 15px;
       }
-      p {font-size: 2vw;}
+      p {font-size: 1vw;}
       .link-login {
         text-decoration: none;
         size: 10pt;
@@ -31,7 +34,7 @@
   </head>
   <body>
     <main>
-        <h1>Registration</h1>
+        <h2>Registration</h2>
       <div class="box1">
         <form method="POST">
           {% csrf_token %}

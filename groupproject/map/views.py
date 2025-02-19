@@ -14,6 +14,8 @@ from django.contrib import messages
 from challenge import models as challenge_model
 from django.http import JsonResponse
 import json
+from challenge.models import Challenge, ChallengeCompleted
+from registration.models import UserProfile
 
 class MapView(TemplateView):
     template_name = 'map.html'
@@ -26,8 +28,8 @@ class MapView(TemplateView):
             location=[50.73632605587163, -3.5348055751142917],
             zoom_start=7,
             tiles='OpenStreetMap',
-            width=800,
-            height=800,
+            width=700,
+            height=700,
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(mapFig)
@@ -43,10 +45,7 @@ class MapView(TemplateView):
             svg = ("""<object data="data:image/png;base64,{}" width="{}" height="{}" type="image/svg+xml">
             </object>""").format
             width, height, fat_wh = 230, 230, 1.4
-            html = """<p>To get the challenge or quiz, please follow these steps
-                        Scan the QR code to obtain the random string 
-                        Enter the string into the form above the map</p>"""
-            iframe = folium.IFrame(svg(encoded.decode('UTF-8'), width, height)+html, width=width*fat_wh, height=height*fat_wh)
+            iframe = folium.IFrame(svg(encoded.decode('UTF-8'), width, height), width=width*fat_wh, height=height*fat_wh)
             popup = folium.Popup(iframe, max_width=300)
             folium.Marker(
                 location=[data.latitude, data.longitude],
@@ -80,15 +79,24 @@ def submitProcess(request):
         randomString = request.POST.get('randomString')
         all_locate = Location.objects.all()
         list_locate = list(all_locate)
+        all_challenges = Challenge.objects.all()
+        challenges_list = list(all_challenges)
+        current_user_id = request.user.id
+        current_user_object = UserProfile.objects.get(userId=current_user_id)
+        all_completed = ChallengeCompleted.objects.filter(userId=current_user_object).values_list("challengeId", flat=True)
+        incomplete_challenges = [challenge for challenge in challenges_list if challenge.challengeId not in all_completed]
+        challenge_ids = []
+        for incomplete in incomplete_challenges:
+            challenge_ids.append(incomplete.challengeId)
+
         validated_string = ""
         for locate in list_locate:
             qr_message = locate.qr_code_message
             if randomString == qr_message:
                 validated_string = "QR Code Valid"
                 challenge_id = locate.challengeId
-                if challenge_id != 0:
+                if challenge_id != 0 and (challenge_id in challenge_ids):
                     return redirect(f'../../challenge/{challenge_id}/')
-              
                 else:
                     random_quiz = quiz_model.Quiz.objects.order_by('?').first()
                     quiz_id = random_quiz.quizId

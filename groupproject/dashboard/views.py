@@ -5,6 +5,7 @@ from .forms import *
 from registration.models import UserProfile
 from challenge.models import Challenge, ChallengeCompleted
 from django.contrib.auth import logout
+from django.contrib.auth import update_session_auth_hash
 
 def dashboard(request):
     current_user_id = request.user.id
@@ -100,10 +101,14 @@ def change_password(request):
         current_user_list = list(current_user_object)
         for current_user in current_user_list:
             current_user_object = current_user.user
+            old_password = current_user.user.password
 
         
         current_user_object.set_password(password)
         current_user_object.save()
+        print("Old: ", old_password)
+        update_session_auth_hash(request, current_user_object)
+        return redirect('change-password')
     return render(request, 'dashboard_password.html', {'form':form})
 
 def logout_dashboard(request):
