@@ -8,35 +8,37 @@
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-    <link rel="stylesheet" href="../styling/leafmap.css">
+    <!-- Remove or correct the path to leafmap.css -->
+    <!-- <link rel="stylesheet" href="../styling/leafmap.css"> -->
 
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
     <main>
-        <h1>Welcome to The Map Page</h1> <br>
+        <h1>Map Page</h1> <br>
+        <p>Latitude: <span id='lat'>{{ lat }}</span></p>
+        <p>Longitude: <span id="long">{{ long }}</span></p>
         <form method="post" action="./submit/">
             {% csrf_token %}  
             <input type="text" name="randomString" value="">
             <input type="submit" value="Submit">
         </form>
 
+        <p>To get the challenge or quiz, please follow these steps</p>
+        <ul>
+            <li>Click the location marker</li>
+            <li>Scan the QR Code to obtain the text within</li>
+            <li>Enter the string from the QR Code into the input box and click submit</li>
+        </ul>
+
         <div id="map-container" style="width: 100%; height: 500px; align-content: center;">
-            <div id="map" style="width: 100%; height: 100%;"></div>
+            {{ map|safe }}
         </div>
     </main>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        let map = L.map('map').setView([0, 0], 13); // Default center
-
-        // Add OpenStreetMap Tile Layer
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        let marker = L.marker([0, 0]).addTo(map); // Initial marker
         let watchID;
         
 
@@ -55,17 +57,14 @@
         function updateLocation(position) {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
-
-            // Update map view and marker position
-            map.setView([lat, lon], 13);
-            marker.setLatLng([lat, lon]).bindPopup("You are here").openPopup();
-
+            document.getElementById('lat').textContent = lat.toFixed(6);
+            document.getElementById('long').textContent = lon.toFixed(6);
             // Send location to the backend
             sendLocationToServer(lat, lon);
         }
 
         function sendLocationToServer(lat, lon) {
-            fetch('/submit-location/', {
+            fetch('/map/submit-location/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +109,7 @@
         // Start tracking when the page loads
         window.onload = startTracking;
     </script>
-     <p>Latitude: {{ lat }}</p>
-     <p>Longitude: {{ long }}</p>
+    <br>
+    
 </body>
 </html>

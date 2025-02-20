@@ -9,15 +9,23 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <style>
       h1 {text-align: center;
-        font-size: 3vw;}
-      form {text-align: center;
         font-size: 2vw;}
+      form {text-align: center;
+        font-size: 1.5vw;}
       .box1 {
         margin: auto;
         width: 50%;
         border: 3px solid black;
         background-color: #00c896;
         padding: 15px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+      }
+      .register-link {
+        size: 8pt;
       }
     </style>
   </head>
@@ -29,7 +37,12 @@
           {% csrf_token %}
           {{form.as_p}}
           <button type="submit">Submit</button>
+          <div class="register-link"><a href="{% url 'register' %}">Not got an account?</a></div>
+          
         </form>
+         
+            
+          
       </div>
     </main>
     <script src="index.js"></script>

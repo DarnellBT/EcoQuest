@@ -19,7 +19,7 @@ from django.urls import path, include
 from registration import views as register_view
 from login import views as login_view
 from main import views as main_view
-from api import views as api_view
+from dashboard import views as dashboard_view
 from map import views as map_view
 from challenge import views as challenge_view
 from quiz import views as quiz_view
@@ -30,12 +30,17 @@ urlpatterns = [
     path('register/', register_view.register, name='register'),
     path('login/', login_view.loginPage, name='login'),
     path('home/', main_view.home, name='home'),
-    path('admin_api/', api_view.api, name='api'),
+    path('dashboard/', dashboard_view.dashboard, name='dashboard'),
     path('', register_view.register, name='register'),
     path('map/', map_view.MapView.as_view(), name='map'),
     path('map/submit/', map_view.submitProcess, name='submitView'),
     path('challenge/', challenge_view.challenge, name='challenge'),
     path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
     path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
-   
+    path('dashboard/challenges/', dashboard_view.challenges, name='challenges'),
+    path('dashboard/change-username/', dashboard_view.change_uname, name='change-uname'),
+    path('dashboard/change-name/', dashboard_view.change_name, name='change-name'),
+    path('dashboard/change-password/', dashboard_view.change_password, name='change-password'),
+    path('map/submit-location/', map_view.submit_location, name="submit-location"),
+    path('logout/', dashboard_view.logout_dashboard, name="logout")
 ]
