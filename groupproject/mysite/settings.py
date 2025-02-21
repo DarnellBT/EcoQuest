@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'quiz',
     'leaderboard',
     'qrcodescan',
+    'sustain',
 ]
 
 MIDDLEWARE = [
