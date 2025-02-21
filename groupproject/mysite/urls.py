@@ -25,8 +25,7 @@ from challenge import views as challenge_view
 from quiz import views as quiz_view
 from challenge import views as challenge_view
 from leaderboard import views as leaderboard_view
-from qrcodescan import views as qr_view
-from sustain import views as sus_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,8 +45,6 @@ urlpatterns = [
     path('dashboard/change-password/', dashboard_view.change_password, name='change-password'),
     path('map/submit-location/', map_view.submit_location, name="submit-location"),
     path('logout/', dashboard_view.logout_dashboard, name="logout"),
-    path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
-    path('qr-scanner/', qr_view.scanner, name='scanner'),
-    path('sustainability/', sus_view.sustain, name='sustainability')
+    path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard')
 ]
 
