@@ -31,7 +31,7 @@ class MapView(TemplateView):
             width=700,
             height=700,
         )
-
+        
         folium.plugins.LocateControl(auto_start=True).add_to(mapFig)
         
         # Create markers with popup and hover text
@@ -88,6 +88,9 @@ def submitProcess(request):
         challenge_ids = []
         for incomplete in incomplete_challenges:
             challenge_ids.append(incomplete.challengeId)
+
+
+      
 
         validated_string = ""
         for locate in list_locate:
