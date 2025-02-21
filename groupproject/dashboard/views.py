@@ -9,7 +9,7 @@ from django.contrib.auth import update_session_auth_hash
 
 def dashboard(request):
     current_user_id = request.user.id
-    print("id: ", current_user_id)
+   
     current_user_object = UserProfile.objects.get(userId=current_user_id)
    
     username = current_user_object.user.username
@@ -54,7 +54,7 @@ def challenges(request):
     
     all_completed = ChallengeCompleted.objects.filter(userId=current_user_object).values_list("challengeId", flat=True)
     incomplete_challenges = [challenge for challenge in challenges_list if challenge.challengeId not in all_completed]
-   
+    
     return render(request, 'dashboard_challenges.html', {'challenges':incomplete_challenges})
 
 
@@ -106,7 +106,6 @@ def change_password(request):
         
         current_user_object.set_password(password)
         current_user_object.save()
-        print("Old: ", old_password)
         update_session_auth_hash(request, current_user_object)
         return redirect('change-password')
     return render(request, 'dashboard_password.html', {'form':form})
