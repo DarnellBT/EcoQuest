@@ -1,0 +1,24 @@
+.table-outer {
+    width: 100%;
+    
+}
+
+.table-cell {
+    
+    border-radius: 25px;
+    background-color: rgba(10, 134, 10, 0.801);
+    padding: 9px;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+tr {
+    border-spacing: 30px;
+    border-collapse: separate;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
