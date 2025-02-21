@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .forms import RegistrationForm
-
+from .models import UserProfile
 
 def register(request):
     form = RegistrationForm()
@@ -14,6 +14,7 @@ def register(request):
         print('field text:', form.fields[d].help_text)
         print("")'''
     
+
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
