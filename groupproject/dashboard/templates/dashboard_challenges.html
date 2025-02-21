@@ -7,18 +7,26 @@
     <title>Dashboard Challenges</title>
  
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboardStyle.css' %}">
      <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <ul>
-      <li><a href="{% url 'dashboard' %}">Profile</a></li>
-      <li><a href="{% url 'change-uname' %}">Change Username</a></li>
-      <li><a href="{% url 'change-name' %}">Change Name</a></li>
-      <li><a href="{% url 'change-password' %}">Change Password</a></li>
-      <li><a href="{% url 'challenges' %}" class="active">Challenges</a></li>
-      <li><a href="{% url 'logout' %}">Logout</a></li>
-    </ul>
+    <table class="table-outer">
+      <thead class="table-head">
+        <tr>
+          <th class="table-cell"><a href="{% url 'dashboard' %}">Profile</a></th>
+          <th class="table-cell"><a href="{% url 'change-uname' %}">Change Username</a></th>
+          <th class="table-cell"><a href="{% url 'change-name' %}">Change Name</a></th>
+          <th class="table-cell"><a href="{% url 'change-password' %}">Change Password</a></th>
+          <th class="table-cell"><a href="{% url 'challenges' %}">Challenges</a></th>
+          <th class="table-cell"><a href="{% url 'logout' %}">Logout</a></td>
+        </tr>
+      </thead>
+    </table>
+
+     
+    
 
     {% for challenge in challenges %}
     <h3>{{ challenge.name }}</h3>

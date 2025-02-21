@@ -24,7 +24,9 @@ def loginPage(request):
                 print('Authentication failed')
         else:
             print("Form validation failed")
-    return render(request, 'loginPage.html', {'form': form})
+
+        
+    return render(request, 'loginPage.html', {'form':form})
 
 
         
