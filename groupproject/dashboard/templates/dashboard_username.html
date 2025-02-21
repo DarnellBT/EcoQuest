@@ -27,7 +27,11 @@
     <div class="form-style">
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+           
+         
+          <p>{{ form.label_tag }}</p><br>
+          <p>{{ form.username }}</p>
+            
             <input type="submit" value="Submit" class="deleteButton">
         </form>
     </div>

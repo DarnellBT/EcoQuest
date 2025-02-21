@@ -6,7 +6,7 @@
 .table-cell {
     
     border-radius: 25px;
-    background-color: hsla(120, 86%, 28%, 0.801);
+    background-color: #00a87e;
     padding: 10px;
     height: 30px;
     width: 100px;
@@ -37,11 +37,11 @@ table {
 }
 
 .table-cell:active {
-    background-color: rgb(115, 201, 34);
+    background-color: hsla(120, 86%, 28%, 0.801);
 }
 
 .box {
-    background-color: hsla(120, 86%, 28%, 0.801);
+    background-color: #00a87e;
     width: 25%;
     height: 30%;
     padding: 10px;
@@ -62,7 +62,7 @@ p {
     text-align: center;
     margin: auto;
     font-size: 20px;
-    background-color: hsla(120, 86%, 28%, 0.801);
+    background-color: #00a87e;
     padding: 7px;
     border-radius: 25px;
     border-style: none;

@@ -6,7 +6,7 @@ body {
     height: 100vh;
     box-sizing: border-box;
     text-align: center;
-    background: rgba(20, 223, 196, 0.87);
+    background: #00a87e;
 }
 .container {
     width: 100%;
@@ -23,7 +23,7 @@ body {
     padding: 50px 30px;
     border: 1.5px solid #b2b2b2;
     border-radius: 0.25em;
-    box-shadow: 0 20px 25px rgba(57, 29, 184, 0.808);
+    
 }
 
 #my-qr-reader {
@@ -68,4 +68,13 @@ video {
     width: 100% !important;
     border: 1px solid #b2b2b2 !important;
     border-radius: 0.25em;
+}
+
+.form-style {
+    margin: auto;
+}
+
+.form-fields {
+    border: 2px solid red;
+    border-radius: 4px;
 }
