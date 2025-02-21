@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+      <h2>Leaderboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for rank, user, point in combined_list %}
+          <tr>
+            <td>{{ rank }}</td>
+            <td>{{ user }}</td>
+            <td>{{ point }}</td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

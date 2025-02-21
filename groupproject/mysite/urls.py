@@ -24,6 +24,8 @@ from map import views as map_view
 from challenge import views as challenge_view
 from quiz import views as quiz_view
 from challenge import views as challenge_view
+from leaderboard import views as leaderboard_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,5 +44,7 @@ urlpatterns = [
     path('dashboard/change-name/', dashboard_view.change_name, name='change-name'),
     path('dashboard/change-password/', dashboard_view.change_password, name='change-password'),
     path('map/submit-location/', map_view.submit_location, name="submit-location"),
-    path('logout/', dashboard_view.logout_dashboard, name="logout")
+    path('logout/', dashboard_view.logout_dashboard, name="logout"),
+    path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard')
 ]
+
