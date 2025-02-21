@@ -31,16 +31,15 @@ class MapView(TemplateView):
             width=700,
             height=700,
         )
-
+        
         folium.plugins.LocateControl(auto_start=True).add_to(mapFig)
         
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
         for data in all_locations:
             print(f"Adding marker for location: {data.name}, Latitude: {data.latitude}, Longitude: {data.longitude}")
-            file = "./map/" + data.qr_code.url[1:]
-            while file.count('/map/map') > 0:
-                file = file.replace('/map/map/', '/map/')
+            file = f"./{data.qr_code.url[1:]}"
+            
             encoded = base64.b64encode(open(file, 'rb').read())
             svg = ("""<object data="data:image/png;base64,{}" width="{}" height="{}" type="image/svg+xml">
             </object>""").format
@@ -88,6 +87,9 @@ def submitProcess(request):
         challenge_ids = []
         for incomplete in incomplete_challenges:
             challenge_ids.append(incomplete.challengeId)
+
+
+      
 
         validated_string = ""
         for locate in list_locate:
