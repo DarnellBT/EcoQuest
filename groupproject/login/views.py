@@ -14,6 +14,7 @@ def login_page(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+            print(username, password)
             # check whether there username and password are valid
             user = authenticate(request, username=username, password=password)
             if user is not None:
