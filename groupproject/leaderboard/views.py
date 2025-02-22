@@ -18,11 +18,12 @@ def leaderboard_page(request):
             points_list.append(points)
             points_list = sorted(points_list, reverse=True)
         rank_list = []
-        # ranks users according to their points
-        for point in points_list:
-            rank_user = UserProfile.objects.get(points=point)
-            rank_user = rank_user.user.username
-            rank_list.append(rank_user)
+        # ranks users according to their points in descending order (puts user.username in ranked)
+        ranked = UserProfile.objects.all().order_by('-points', 'user__username')
+        # gets the usernames associated with the points  
+        for rank_user in ranked:
+            rank_list.append(rank_user.user.username)
+              
         rank = []
         # changes 0 index to 1 index
         len_username = len(rank_list) + 1
