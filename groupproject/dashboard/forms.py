@@ -6,7 +6,7 @@ class UsernameForm(forms.Form):
     username = forms.CharField(
         max_length=100, 
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form-fields'}),)
+        widget=forms.TextInput(attrs={'class': 'form-fields', 'placeholder': 'Username'}))
     
     class Meta:
         fields = ['username']
@@ -19,8 +19,8 @@ class UsernameForm(forms.Form):
 
 
 class NameForm(forms.Form):
-    firstName = forms.CharField(max_length=50, required=True)
-    lastName = forms.CharField(max_length=50, required=True)
+    firstName = forms.CharField(max_length=50, required=True,  widget=forms.TextInput(attrs={'class': 'form-fields', 'placeholder': 'First Name'}))
+    lastName = forms.CharField(max_length=50, required=True,  widget=forms.TextInput(attrs={'class': 'form-fields', 'placeholder': 'Last Name'}))
 
 class PasswordForm(forms.Form):
-    password = forms.CharField(max_length=50, required=True)
+    password = forms.CharField(max_length=50, required=True,  widget=forms.TextInput(attrs={'class': 'form-fields', 'placeholder': 'Password'}))

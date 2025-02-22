@@ -5,33 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Challenge</title>
-    <link rel="stylesheet" href="./style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/challengeQuiz.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <main>
+      <table>
+        <thead class="table-headr">
+          <tr>
+            <th class="nav-left"><a href="{% url 'home' %}">Home</a></th>
+            <th class="nav-left"><a href="{% url 'map' %}">Map</a></th>
+           
+            <th class="nav-right"><a href="{% url 'logout' %}">Logout</a></th>
+          </tr>
+        </thead>
+      </table>
       
       <div class="page-header">
-
+        <p class="challenge">{{ challenge }}</p>
+        <p class="challenge-descr">{{ challenge_descr }}</p>
+        <p class="challenge-points">Challenge is worth {{ challenge_points }} points</p>
+        <p class="challenge-points">Your current points: {{ user_points }}</p>
       </div>
       <div class="box">
-        
-      </div>
-
-      </div>
-        <h1>Challenge {{ id }}</h1><br> 
-        <p>User ID: {{ user_id }}</p>
-        <p>Challenge is worth {{ challenge_points }} points</p>
-        <p>Your current points: {{ user_points }}</p>
-        <p>{{ challenge }}</p>
-        <p>{{ challenge_descr }}</p>
-       
-    
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ forms.as_p }}<br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" class="submit">
         </form>
+      </div>
+
+     
+     
+       
+       
+       
+       
+       
+    
+        
         <p>{{ upload_status }}</p>
         <p>{{ image }}</p>
         
