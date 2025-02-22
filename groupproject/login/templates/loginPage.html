@@ -27,15 +27,25 @@
       .register-link {
         size: 8pt;
       }
+      .messages {
+        list-style-type: none;
+      }
+
+      .message {
+        color: red;
+        font-weight: bold;
+        text-align: center;
+     
+      }
     </style>
   </head>
   <body>
     <main>
         <h1>Login</h1>
         {% if messages %}
-        <ul>
+        <ul class="messages">
           {% for message in messages %}
-            <li>{{ message }}</li>
+            <li class="message">{{ message }}</li>
           {% endfor %}
         </ul>  
         {% endif %}

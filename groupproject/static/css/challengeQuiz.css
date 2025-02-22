@@ -1,0 +1,139 @@
+
+
+
+
+.page-header {
+    border-radius: 40px;
+
+    width: 70%;
+    height: 15%;
+    background-color: #00c87e;
+    margin: auto;
+    margin-top: 4%;
+    
+
+}
+
+.challenge {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin:0;
+
+}
+
+.challenge-descr {
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.challenge-points {
+    text-align: center;
+    margin: 0;
+    color: white;
+}
+
+.image-field {
+    color: white;
+}
+
+.box {
+    border-radius: 25px;
+
+    width: 40%;
+    height: 40%;
+    background-color: #00c87e;
+    margin: auto;
+    
+    margin-top: 100px;
+}
+
+form {
+    margin: auto;
+    text-align: left;
+    margin-top: 3%;
+    padding: 4%;
+    margin-left: 30%;
+}
+
+.submit {
+    background-color: #007d69;
+    margin-top: 10%;
+    border-radius: 25px;
+    outline: none;
+    margin-bottom: 5%;
+    color: white;
+    padding: 2%;
+    font-weight: bold;
+    
+}
+
+.nav-left {
+    color: white;
+    padding: 1%;
+    background-color: #00c87e;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    margin-right: auto;
+    border-radius: 40px;
+    width: 10%;
+
+    
+    
+}
+
+.nav-right {
+    color: white;
+    padding: 1%;
+    background-color: red;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    margin-right: right;
+    border-radius: 40px;
+    width: 10%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+table {
+    width: 100%;  
+   
+}
+
+
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.quiz-question {
+    color: white;
+    margin: auto;
+}
+
+.quiz-answer {
+    margin-left: auto;
+    margin-top: 1%;
+    background-color: beige;
+}
+
+form label {
+    display: inline-block;
+    margin-left: 5px; 
+    vertical-align: middle; 
+}
+
+input[type="radio"] {
+    vertical-align: middle; 
+    margin-right: 10px; 
+}

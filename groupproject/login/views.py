@@ -1,10 +1,10 @@
-from django.template import loader
+"""Module contains login logic"""
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
 
-def loginPage(request):
+def login_page(request):
+    """Defines login form and authentication"""
     #load default login form
     form = LoginForm()
     # check if user has submitted the form
@@ -24,8 +24,6 @@ def loginPage(request):
                 print('Authentication failed')
         else:
             print("Form validation failed")
-
-        
     return render(request, 'loginPage.html', {'form':form})
 
 
