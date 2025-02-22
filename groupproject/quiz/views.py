@@ -1,8 +1,12 @@
 from django.shortcuts import render,redirect
 from .models import Question
 from registration import models as register_models
+from django.contrib import messages
 
 def quiz(request, id):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     # retrieves all columns neccessary to fill the form
     all_questions = Question.objects.filter(quizId=id).values('question', 'choice1', 'choice2', 'choice3', 'choice4')
     # convert the dict into a iterable format

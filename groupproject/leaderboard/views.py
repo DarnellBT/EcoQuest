@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from registration.models import UserProfile
+from django.contrib import messages
 
 def leaderboard_page(request):
     if request.method == "GET":
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../login')
         username = request.user.username
       
         id = request.user.id

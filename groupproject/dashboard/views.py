@@ -6,8 +6,12 @@ from registration.models import UserProfile
 from challenge.models import Challenge, ChallengeCompleted
 from django.contrib.auth import logout
 from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 
 def dashboard(request):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../login')
     current_user_id = request.user.id
    
     current_user_object = UserProfile.objects.get(userId=current_user_id)
@@ -46,6 +50,9 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 def challenges(request):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     all_challenges = Challenge.objects.all()
     challenges_list = list(all_challenges)
     current_user_id = request.user.id
@@ -59,6 +66,9 @@ def challenges(request):
 
 
 def change_uname(request):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     form = UsernameForm()
     if request.method == "POST":
         username = request.POST.get('username')
@@ -75,6 +85,9 @@ def change_uname(request):
     return render(request, 'dashboard_username.html', {'form':form})
 
 def change_name(request):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     form = NameForm()
     if request.method == "POST":
         firstName = request.POST.get('firstName')
@@ -92,6 +105,9 @@ def change_name(request):
     return render(request, 'dashboard_name.html', {'form':form})
 
 def change_password(request):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     form = PasswordForm()
     if request.method == "POST":
         password = request.POST.get('password')
@@ -101,7 +117,7 @@ def change_password(request):
         current_user_list = list(current_user_object)
         for current_user in current_user_list:
             current_user_object = current_user.user
-            old_password = current_user.user.password
+            
 
         
         current_user_object.set_password(password)

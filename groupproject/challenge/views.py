@@ -5,8 +5,12 @@ from .models import ChallengeCompleted
 from .forms import ImageUpload
 from django.core.files.storage import default_storage
 from registration import models as register_models
+from django.contrib import messages
 
 def challenge(request, id):
+    if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
     all_challenge = Challenge.objects.filter(challengeId=id)
     
     form = ImageUpload()

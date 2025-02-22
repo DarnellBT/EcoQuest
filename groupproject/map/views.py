@@ -18,6 +18,7 @@ from challenge.models import Challenge, ChallengeCompleted
 from registration.models import UserProfile
 
 class MapView(TemplateView):
+    
     template_name = 'map.html'
 
     def get_context_data(self, **kwargs):
