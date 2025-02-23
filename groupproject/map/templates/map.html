@@ -15,27 +15,31 @@
 </head>
 <body>
     <main>
-        <h1>Map Page</h1> <br>
-        <p>Latitude: <span id='lat'>{{ lat }}</span></p>
-        <p>Longitude: <span id="long">{{ long }}</span></p>
-        <form method="post" action="./submit/">
-            {% csrf_token %}  
-            <input type="text" name="randomString" value="">
-            <input type="submit" value="Submit">
-        </form>
+        <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 1vw;">
+            <h1 style="color: aliceblue;">Map page</h1>
+        </header>
+        <br/>
+        <div class="box1">
+            <p style="text-align: center;">Code Submission</p>
+            <form method="post" action="./submit/">
+                {% csrf_token %}  
+                <input type="text" name="randomString" value="">
+                <input type="submit" value="Submit">
+            </form>
 
-        <p>To get the challenge or quiz, please follow these steps</p>
-        <ul>
-            <li>Click the location marker</li>
-            <li>Scan the QR Code to obtain the text within</li>
-            <li>Enter the string from the QR Code into the input box and click submit</li>
-        </ul>
+            <p style = "text-align: center;">To get the challenge or quiz, please follow these steps</p>
+            <ul>
+                <li>Click the location marker</li>
+                <li>Scan the QR Code to obtain the text within</li>
+                <li>Enter the text into the input box and click submit</li>
+            </ul>
 
-        <div id="map-container" style="width: 100%; height: 500px; align-content: center;">
-            {{ map|safe }}
+            <div id="map-container" style="width: 100%; height: 60%; align-content: center;">
+                {{ map|safe }}
+            </div>
         </div>
     </main>
-
+    
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
