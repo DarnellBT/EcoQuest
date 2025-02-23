@@ -29,6 +29,7 @@
       a {
         text-decoration: none;
         color: black;
+        font-size: 1.2vw;
       }
     </style>
   </head>
@@ -40,7 +41,9 @@
           {% csrf_token %}
           {% for field in form %}
           <p>
-            {{ field.label_tag }}<br>
+            {% if field.label_tag %}
+            <small style="font-size: 1.5vw;">{{ field.label_tag | safe }}</small>
+            {% endif %}<br>
             {{ field }}
             {% if field.errors %}
             <div class="error">
