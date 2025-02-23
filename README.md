@@ -1,4 +1,65 @@
-# Running Django Webapp
+# EcoQuest
+
+Follow the instructions below to run the web application
+
+## Set-up Instructions
+
+### 1. Clone the repo 
+
+```bash
+git clone https://github.com/github_username/repo_name.git
+```
+
+### 2. Set up and activate local environmment 
+
+```bash
+python -m venv
+```
+
+- Activate venv on MacOS
+
+```bash
+.venv/bin/activate
+```
+
+- Activate venv on Windows
+
+```bash
+.venv/Scripts/activate
+```
+
+### 3. Install dependencies
+
+```bash
+python install -r requirements.txt
+```
+
+## Run the program
+
+### 1. Navigate into project folder
+
+```bash 
+cd groupproject
+```
+
+### 2. Run the dhango server
+
+```bash
+python manage.py
+```
+
+## Debugging
+
+If you encounter a problem during running the server run the folloding code
+
+```bash
+python manage.py migrate
+python manage.py makemigrations
+```
+
+
+
+
 
 VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
 
