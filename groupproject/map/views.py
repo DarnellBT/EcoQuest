@@ -14,18 +14,20 @@ from .models import Location
 # pylint: disable = line-too-long
 
 class MapView(TemplateView):
-    """Class creates map and defines markers"""
     template_name = 'map.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        
         # Create a map figure, with initial location and settings
-        map_fig = folium.Map(
+        mapFig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],
             zoom_start=7,
             tiles='OpenStreetMap',
-            width=700,
-            height=700,
+            width="100%",
+            height="100%",
         )
+        
         folium.plugins.LocateControl(auto_start=True).add_to(map_fig)
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
