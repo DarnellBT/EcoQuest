@@ -19,15 +19,12 @@ VS Code is the recommended text editor to locally run the web app, however, any 
 6) Enter into terminal [cd groupproject]
 7) Type into terminal [python manage.py runserver] and if that doesn't work follow the instructions given
 
-    It will either say that there are migrations that need to be done, to fix this do:
-       python manage.py migrate
-   If that doesn't work do:
-     python manage.py makemigrations
+This error occurs when there isn't a db.sqlite3 file in the groupproject directory. To create a new database to store the models and objects that will be made while running the web app, do "python manage.py makemigrations" to create the new tables and any alterations made to them. Once that is done do "python manage.py migrate" to apply the new migrations (tables and changes).
 
    Continue until db.sqlite3 has been made and no new migrations show in python manage.py migrate
 
-8) Enter python manage.py runserver into terminal and check it successfully runs and gives a local URL to see the website.
-9) Either CTRL + Click the URL or type the URL into a browser
+10) Enter python manage.py runserver into terminal and check it successfully runs and gives a local URL to see the website.
+11) Either CTRL + Click the URL or type the URL into a browser
 
 # Dependencies 
 
