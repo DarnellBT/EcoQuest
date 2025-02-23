@@ -42,7 +42,7 @@ python install -r requirements.txt
 cd groupproject
 ```
 
-### 2. Run the dhango server
+### 2. Run the django server
 
 ```bash
 python manage.py
