@@ -79,3 +79,52 @@ p {
     margin-top: 50px;
 }
 
+.form-fields {
+    width: 10%;
+    height: 30px;
+   
+    margin-left: 40%;
+    
+}
+
+.buttonSubmit {
+    
+    text-align: center;
+    margin: 47%;
+    font-size: 20px;
+    background-color: #00a87e;
+    padding: 7px;
+    border-radius: 25px;
+    border-style: none;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-top: 10px;
+}
+
+
+
+.challenge-name {
+    color: white;
+    font-weight: bold;
+    size: 35px;
+}
+
+.challenge-description {
+    color: white;
+    font-size: 20px;
+  
+}
+
+.challenge-box {
+    padding: 20px;
+    width: 70%;
+    height: 5%;
+    background-color: #00a87e;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.challenge-header {
+    margin-left: 44%;
+}

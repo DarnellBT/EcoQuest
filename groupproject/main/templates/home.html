@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     
   </head>
   <body>
     <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-      <h1 style="color: aliceblue;">Welcome to the Home Page</h1>
+      <h1 style="color: aliceblue; top: 0; position: sticky;">Welcome to the Home Page</h1>
       
       <a href="{% url 'logout' %}" class="logout-button">Logout</a>
     </header>
@@ -22,7 +23,7 @@
       <a href="/map" class="button button1">Contact</a>
       <a href="/map" class="button button2">Rewards</a>
       <a href="/map" class="button button1">Map</a>
-      <a href="/dashboard/" class="button button2">Dashboard</a>
+      <a href="/account/" class="button button2">Account</a>
     </div>
 
     

@@ -25,26 +25,29 @@ from challenge import views as challenge_view
 from quiz import views as quiz_view
 from challenge import views as challenge_view
 from leaderboard import views as leaderboard_view
-
+from qrcodescan import views as qr_view
+from sustain import views as sus_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register_view.register, name='register'),
-    path('login/', login_view.loginPage, name='login'),
+    path('login/', login_view.login_page, name='login'),
     path('home/', main_view.home, name='home'),
-    path('dashboard/', dashboard_view.dashboard, name='dashboard'),
+    path('account/', dashboard_view.dashboard, name='account'),
     path('', register_view.register, name='register'),
     path('map/', map_view.MapView.as_view(), name='map'),
-    path('map/submit/', map_view.submitProcess, name='submitView'),
+    path('map/submit/', map_view.submit_process, name='submitView'),
     path('challenge/', challenge_view.challenge, name='challenge'),
     path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
     path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
-    path('dashboard/challenges/', dashboard_view.challenges, name='challenges'),
-    path('dashboard/change-username/', dashboard_view.change_uname, name='change-uname'),
-    path('dashboard/change-name/', dashboard_view.change_name, name='change-name'),
-    path('dashboard/change-password/', dashboard_view.change_password, name='change-password'),
+    path('account/challenges/', dashboard_view.challenges, name='challenges'),
+    path('account/change-username/', dashboard_view.change_uname, name='change-uname'),
+    path('account/change-name/', dashboard_view.change_name, name='change-name'),
+    path('account/change-password/', dashboard_view.change_password, name='change-password'),
     path('map/submit-location/', map_view.submit_location, name="submit-location"),
     path('logout/', dashboard_view.logout_dashboard, name="logout"),
-    path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard')
+    path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
+    path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
+    path('sustainability/', sus_view.sustain, name='sustainability')
 ]
 
