@@ -17,6 +17,7 @@ form {
 }
 p {
     font-size: 1vw;
+    font-family: 'Poppins', sans-serif;
 }
 .link-login {
     text-decoration: none;
