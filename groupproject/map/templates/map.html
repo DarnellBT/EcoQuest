@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
     <title>My Website</title>
     
     <!-- Leaflet CSS -->
@@ -11,7 +13,17 @@
     <!-- Remove or correct the path to leafmap.css -->
      {% load static %}
     <link rel="stylesheet" href="{% static 'css/leafmap.css' %}"> 
-
+    <style>
+    .box1 {
+        margin: auto;
+        width: 40%;
+        background-color: #00a87e;
+        padding: 15px;
+      }
+    form{
+        text-align: center;
+    }
+    </style>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
