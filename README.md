@@ -89,7 +89,7 @@ pip --version
 
 ## Testing whole project
 
-### Enter into the terminal within groupproject folder
+Enter into the terminal within groupproject folder
 
 ```bash
 python manage.py test
