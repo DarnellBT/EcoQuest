@@ -1,68 +1,67 @@
-# Group-Software-Engineering-Project
-Group: NameNotFound
+# EcoQuest
 
-The group members are: 
+- Follow the instructions below to run the web application
+- VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
 
-1. Thuss Kongsiriwatana
-2. Bhaskar Madhu
-3. Hussein Witwit
-4. Dinmukhamed Iskakov
-5. Darnell Titre
-6. Tanat Tawinampant
-7. Samar Khan
+## Set-up Instructions
 
-This is our submission for Sprint 1 of the group project. There are 3 folders within this folder containing information including the source code and the website design process.
+### 1. Clone the repo 
 
-# PROCESS DOCUMENTS
-Our kanban board is managed by Trello, it manages our progress as we design, implement and test our project. 
-Trello link: https://trello.com/b/0D0DfQXv/group-software-engineer-project
+```bash
+git clone https://github.com/DarnellBT/Group-Software-Engineering-Project.git
+```
 
-We have taken regular snapshots of our kanban board to show our progress through time, they are held in:
-[./process-documents/kanban-snapshot/]
-Within process documents included are the following document: meeting notes (containing notes, role assignments, time and date). This document is in:
-[./process-documents/meeting-notes/]
+### 2. Set up and activate local environment 
 
-# Technical Documents
-The technical documents for our project are managed on GitHub. The link to our project is below
-GitHub link: [https://github.com/DarnellBT/Group-Software-Engineering-Project]
-Our source code is within [./technical-documents/source-code/]
+```bash
+python -m venv .venv
+```
 
-# Product Documents
-Our product documents are divided into two folders UI (Sprint 1's webpage designs) and Mockup (Sprint 2's initial future designs)
-These will be in [./product-documents/UI/] and [./product-documents/Mockup/]
+- Activate venv on macOS
 
-# Instructions for Running the Django website are in [./technical-documents/source-code/Group-Software-Engineering-Project/README.md/]
+```bash
+.venv/bin/activate
+```
 
-# Running Django Webapp
+- Activate venv on Windows
 
-VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
+```bash
+.venv/Scripts/activate
+```
 
-1) Clone the repository into your laptop or computer
-2) Check that all the files have been downloaded successfully
-3) Create a terminal if one is not open already and navigate into the [Group-Software-Engineering-Project/] folder using cd (to navigate directories). To check if you're in the correct folder, do [ls] (works regardless of operating system and lists files and folders in your current directory/folder)
-4) In the terminal, do the following:
-   4.1) python -m venv .venv (this creates a separate environment for any packages that need to be installed to get the web          app working)
-   4.2) Check if there is a .venv folder within Group-Software-Engineering-Project folder and if there is do the following
+### 3. Install dependencies
 
-    For Windows:
-       Use either / or \
-       .venv\Scripts\activate
-   For Linux and MacOS
-     source .venv/bin/activate
+```bash
+pip install -r requirements.txt
+```
 
-5) Once a ./venv folder has been made and in terminal there is a (.venv) appearing with your path when you type commands, do python install -r requirements.txt
-6) Enter into terminal [cd groupproject]
-7) Type into terminal [python manage.py runserver] and if that doesn't work follow the instructions given
+## Run the program
 
-    It will either say that there are migrations that need to be done, to fix this do:
-       python manage.py migrate
-   If that doesn't work do:
-     python manage.py makemigrations
+### 1. Navigate into project folder
 
-   Continue until db.sqlite3 has been made and no new migrations show in python manage.py migrate
+```bash 
+cd groupproject
+```
 
-8) Enter python manage.py runserver into terminal and check it successfully runs and gives a local URL to see the website.
-9) Either CTRL + Click the URL or type the URL into a browser
+### 2. Run the django server
+
+```bash
+python manage.py
+```
+
+## Debugging
+
+If you encounter a problem during running the server run the following code
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+
+
+- Enter python manage.py runserver into terminal and check it successfully runs and gives a local URL to see the website.
+- Either CTRL + Click the URL or type the URL into a browser.
 
 # Dependencies 
 
@@ -71,11 +70,82 @@ Pip (Should come with the virtual environment being set up correctly)
 Git (To clone the repository from GitHub)
 VS Code or another IDE
 
-To check Python (in VS Code or another terminal do python --version)
-To check Git (git --version in terminal)
-To check pip (pip --version in terminal)
+To check Python
+```bash
+python --version
+```
+
+To check Git in terminal
+```bash
+git --version
+```
+
+To check pip in terminal
+```bash
+pip --version
+```
 
 # Testing
 
-1) Enter into the terminal (python manage.py test) within groupproject folder
-   
+## Testing whole project
+
+Enter into the terminal within groupproject folder
+
+```bash
+python manage.py test
+```
+
+## Testing specific project package's tests module
+
+Enter into the terminal within the groupproject folder the following where ```<package-name>``` is the name of the package intended to be tested:
+
+```bash
+python manage.py test <package-name>
+```
+
+or the following could be entered where it is specified that the ```tests``` module within the package is being used to test the package:
+
+```bash
+python manage.py test <package-name>.tests
+```
+
+For example if you wanted to run all the tests in the package ```registration``` you could enter the following into the terminal:
+
+```bash
+python manage.py test registration
+```
+
+or alternatively the following could be entered:
+
+```bash
+python manage.py test registration.tests
+```
+
+
+## Testing specific test class
+
+Enter into the terminal within the groupproject folder where ```<package-name>``` is the name of the package containing the ```tests``` module that has the class intended to be used for testing followed by ```tests``` which is then followed by a ```<class-name>``` where this is the name of the class intended to be tested, all separated by a ```.``` symbol:
+
+```bash
+python manage.py test <package-name>.tests.<class-name>
+```
+
+For example if you wanted to run all the tests in the class ```RegistrationViewTest``` you could enter the following into the terminal:
+
+```bash
+python manage.py test registration.tests.RegistrationViewTest
+```
+
+## Testing specific test method
+
+Enter into the terminal within the groupproject folder where ```<package-name>``` is the name of the package containing the ```tests``` module that has the class that contains the method intended to be used for testing followed by ```tests``` which is then followed by a ```<class-name>``` where this is the name of the class with the method intended to be used for testing which is finally followed by a ```<method-name>``` which is the method intended to be used for testing, all separated by a ```.``` symbol:
+
+```bash
+python manage.py test <package-name>.tests.<class-name>.<method-name>
+```
+
+For example if you wanted to run all the tests in the method ```test_registration_page_loads``` you could enter the following into the terminal:
+
+```bash
+python manage.py test registration.tests.RegistrationViewTest.test_registration_page_loads
+```
