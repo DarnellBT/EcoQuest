@@ -22,9 +22,9 @@ def register(request):
                 return render(request, 'registration.html', {'form':form})
         else:
             x = form.fields['username']
-            x.help_text = "Please enter only Letters, Digits, and @ /./+/-/_"
+            x.help_text = "<br/>Please enter only Letters, Digits, and @ /./+/-/_"
             y = form.fields['password2']
-            y.help_text = "Please enter the same password as before."
+            y.help_text = ""
             z = form.fields['email']
             z.help_text = "Email is already taken"
             return render(request, 'registration.html', {'form':form})
@@ -32,7 +32,7 @@ def register(request):
         # Defines form fields with help messages assigned to them
         form = RegistrationForm()
         x = form.fields['username']
-        x.help_text = "Please enter only Letters, Digits, and @ /./+/-/_"
+        x.help_text = "<br/>Please enter only Letters, Digits, and @ /./+/-/_"
         y = form.fields['password2']
-        y.help_text = "Please enter the same password as before."
+        y.help_text = ""
     return render(request, 'registration.html', {'form':form})
