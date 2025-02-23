@@ -20,7 +20,7 @@ class MapView(TemplateView):
         context = super().get_context_data(**kwargs)
         
         # Create a map figure, with initial location and settings
-        mapFig = folium.Map(
+        map_fig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],
             zoom_start=7,
             tiles='OpenStreetMap',
