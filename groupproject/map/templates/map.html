@@ -11,13 +11,24 @@
     <!-- Remove or correct the path to leafmap.css -->
      {% load static %}
     <link rel="stylesheet" href="{% static 'css/leafmap.css' %}"> 
-
+    <style>
+    .box1 {
+        margin: auto;
+        width: 40%;
+        background-color: #00a87e;
+        padding: 15px;
+      }
+    form{
+        text-align: center;
+    }
+    </style>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
     <main>
         <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 1vw;">
             <h1 style="color: aliceblue;">Map page</h1>
+            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>
         <br/>
         <div class="box1">
