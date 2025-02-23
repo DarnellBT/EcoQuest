@@ -1,9 +1,11 @@
+"""Module contains test cases for login"""
 from django.test import TestCase
 from django.urls import reverse
 from .forms import LoginForm
 
 
 class LoginViewTest(TestCase):
+    """Class tests if pages load"""
     def test_login_page_loads(self):
         """Test if the login page loads successfully"""
         response = self.client.get(reverse('login'))
@@ -36,6 +38,7 @@ class LoginViewTest(TestCase):
 
 
 class LoginFormTest(TestCase):
+    """Class tests if a form is invalid or valid in certain cases"""
     def test_valid_form(self):
         """Test if the form is valid"""
         # Registers user.
