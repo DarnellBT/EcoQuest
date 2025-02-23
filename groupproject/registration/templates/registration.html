@@ -7,31 +7,8 @@
     <title>Register</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <style>
-      body {
-        overflow: hidden;
-      }
-      h2 {text-align: center;
-        font-size: 2vw;}
-      form {text-align: center;}
-      .box1 {
-        margin: auto;
-        width: 40%;
-        border: 3px solid black;
-        background-color: #00c896;
-        padding: 15px;
-      }
-      p {font-size: 1vw;}
-      .link-login {
-        text-decoration: none;
-        size: 10pt;
-      }
-      a {
-        text-decoration: none;
-        color: black;
-        font-size: 1.2vw;
-      }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
   </head>
   <body>
     <main>

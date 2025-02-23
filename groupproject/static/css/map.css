@@ -33,3 +33,7 @@ form {
 .button1 {
   background-color: #007d69;
 }
+#map-container {
+  height: 300px;
+  width: 20%;
+}
