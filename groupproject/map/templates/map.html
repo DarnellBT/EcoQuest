@@ -9,7 +9,8 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <!-- Remove or correct the path to leafmap.css -->
-    <!-- <link rel="stylesheet" href="../styling/leafmap.css"> -->
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/leafmap.css' %}"> 
 
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>

@@ -31,7 +31,7 @@ Our source code is within [./technical-documents/source-code/]
 Our product documents are divided into two folders UI (Sprint 1's webpage designs) and Mockup (Sprint 2's initial future designs)
 These will be in [./product-documents/UI/] and [./product-documents/Mockup/]
 
-# Instructions for Running the Django website are in [./technical-documents/source-code/Group-Software-Engineering-Project/README.md/]
+Instructions for Running the Django website are in [./technical-documents/source-code/Group-Software-Engineering-Project/README.md/]
 
 # Running Django Webapp
 
@@ -41,7 +41,7 @@ VS Code is the recommended text editor to locally run the web app, however, any 
 2) Check that all the files have been downloaded successfully
 3) Create a terminal if one is not open already and navigate into the [Group-Software-Engineering-Project/] folder using cd (to navigate directories). To check if you're in the correct folder, do [ls] (works regardless of operating system and lists files and folders in your current directory/folder)
 4) In the terminal, do the following:
-   4.1) python -m venv .venv (this creates a separate environment for any packages that need to be installed to get the web          app working)
+   4.1) python -m venv .venv (this creates a separate environment for any packages that need to be installed to get the web app working)
    4.2) Check if there is a .venv folder within Group-Software-Engineering-Project folder and if there is do the following
 
     For Windows:
