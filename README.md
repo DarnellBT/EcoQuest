@@ -8,7 +8,7 @@
 ### 1. Clone the repo 
 
 ```bash
-git clone [https://github.com/github_username/repo_name.git]()
+git clone https://github.com/DarnellBT/Group-Software-Engineering-Project.git
 ```
 
 ### 2. Set up and activate local environment 
