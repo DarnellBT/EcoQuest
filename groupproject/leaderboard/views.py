@@ -19,7 +19,7 @@ def leaderboard_page(request):
             points_list = sorted(points_list, reverse=True)
         rank_list = []
         # ranks users according to their points in descending order (puts user.username in ranked)
-        ranked = UserProfile.objects.all().order_by('-points', 'user__username')
+        ranked = UserProfile.objects.all().order_by('-points', 'user__username')[:5]
         # gets the usernames associated with the points  
         for rank_user in ranked:
             rank_list.append(rank_user.user.username)
