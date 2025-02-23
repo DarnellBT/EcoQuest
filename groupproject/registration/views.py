@@ -24,7 +24,9 @@ def register(request):
             x = form.fields['username']
             x.help_text = "<br/>Please enter only Letters, Digits, and @ /./+/-/_"
             y = form.fields['password2']
-            y.help_text = ""
+            y.help_text = "<ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul>"
+            y1 = form.fields['password1']
+            y1.help_text = ""
             z = form.fields['email']
             z.help_text = "Email is already taken"
             return render(request, 'registration.html', {'form':form})
@@ -34,5 +36,7 @@ def register(request):
         x = form.fields['username']
         x.help_text = "<br/>Please enter only Letters, Digits, and @ /./+/-/_"
         y = form.fields['password2']
-        y.help_text = ""
+        y.help_text = "<ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul>"
+        y1 = form.fields['password1']
+        y1.help_text = ""
     return render(request, 'registration.html', {'form':form})
