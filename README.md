@@ -1,7 +1,7 @@
 # EcoQuest
 
-Follow the instructions below to run the web application
-VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
+- Follow the instructions below to run the web application
+- VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
 
 ## Set-up Instructions
 
@@ -14,7 +14,7 @@ git clone https://github.com/github_username/repo_name.git
 ### 2. Set up and activate local environmment 
 
 ```bash
-python -m venv
+python -m venv .venv
 ```
 
 - Activate venv on MacOS
