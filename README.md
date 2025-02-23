@@ -1,38 +1,3 @@
-# Group-Software-Engineering-Project
-Group: NameNotFound
-
-The group members are: 
-
-1. Thuss Kongsiriwatana
-2. Bhaskar Madhu
-3. Hussein Witwit
-4. Dinmukhamed Iskakov
-5. Darnell Titre
-6. Tanat Tawinampant
-7. Samar Khan
-
-This is our submission for Sprint 1 of the group project. There are 3 folders within this folder containing information including the source code and the website design process.
-
-# PROCESS DOCUMENTS
-Our kanban board is managed by Trello, it manages our progress as we design, implement and test our project. 
-Trello link: https://trello.com/b/0D0DfQXv/group-software-engineer-project
-
-We have taken regular snapshots of our kanban board to show our progress through time, they are held in:
-[./process-documents/kanban-snapshot/]
-Within process documents included are the following document: meeting notes (containing notes, role assignments, time and date). This document is in:
-[./process-documents/meeting-notes/]
-
-# Technical Documents
-The technical documents for our project are managed on GitHub. The link to our project is below
-GitHub link: [https://github.com/DarnellBT/Group-Software-Engineering-Project]
-Our source code is within [./technical-documents/source-code/]
-
-# Product Documents
-Our product documents are divided into two folders UI (Sprint 1's webpage designs) and Mockup (Sprint 2's initial future designs)
-These will be in [./product-documents/UI/] and [./product-documents/Mockup/]
-
-Instructions for Running the Django website are in [./technical-documents/source-code/Group-Software-Engineering-Project/README.md/]
-
 # Running Django Webapp
 
 VS Code is the recommended text editor to locally run the web app, however, any IDE will work with a few adjustments in the instructions.
