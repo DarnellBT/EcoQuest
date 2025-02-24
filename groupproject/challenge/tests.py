@@ -119,7 +119,7 @@ class ChallengeViewTest(TestCase):
         }
         self.client.post('/login/', login_form_data)
         # Uploads image
-        with open('./challenge/static/Image/Test.png', 'wb') as image:
+        with open('./challenge/static/Image/Test.png', '+wb') as image:
             form_data = {
                 'image': SimpleUploadedFile(name='Test.png', content=image.read(), content_type='image/png')
             }
