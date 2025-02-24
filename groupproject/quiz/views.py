@@ -19,15 +19,20 @@ def quiz(request, id):
         questions = Question.objects.all()
         score = 0
         total_questions = Question.objects.all().count()
+        print("Count: ", total_questions)
         submitted = {}
         current_user = request.user
         current_user_id = current_user.id
         user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
+        print(user_profile)
         user_points = user_profile.points
+        num = 1
         # get user answer and compare with form submission and add marks as appropriate
         for question in questions:
-            user_answer = request.POST.get(f"question_{question.questionId}")
+            user_answer = request.POST.get(f"question_{num}")
             submitted[question.questionId] = user_answer
+            print(user_answer)
+            num += 1
             if user_answer == question.answer:
                 score += 1
                 question_points = question.points

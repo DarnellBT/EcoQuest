@@ -1,0 +1,40 @@
+.logout-button {
+    color: white;
+    background-color: red;
+    size: 25%;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+  }
+  .logout-button:hover {
+    background-color: darkred;
+    cursor: pointer;
+  }
+
+  .button {
+    color: aliceblue;
+    background-color: darkgreen;
+    size: 25%;
+    width: 12%; 
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: block; 
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .box1 {
+    margin: auto;
+    width: 40%;
+    background-color: #00a87e;
+    padding: 15px;
+    margin-top: 10%;
+    color: white;
+    size: 40%;
+    border-radius: 25px;
+
+    }

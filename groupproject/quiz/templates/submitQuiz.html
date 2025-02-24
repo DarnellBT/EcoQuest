@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Results</title>
-    <link rel="stylesheet" href="./style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
     <main>
-      <h1>Results</h1>
-
-      <!-- Display the score -->
+      <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 1vw;">
+        <h1 style="color: aliceblue;">Quiz Results</h1>
+        <a href="{% url 'home' %}" class="button button1">Home</a>
+        <a href="{% url 'map' %}" class="button button1">Map</a>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </header>
+    <br/>
+    <div class="box1">
+      
       <p>Your score: {{ score }} out of {{ total }} questions</p>
       <p>Your current points: {{ current_points }}</p>
-      <!-- Display submitted answers -->
+      
       <h2>Submitted Answers:</h2>
       <ul>
         {% for question_id, answer in submitted_answers.items %}
           <li>Question {{ question_id }}: Your answer was {{ answer }}</li>
         {% endfor %}
       </ul>
-
+    </div>
     </main>
     
     <script src="index.js"></script>
