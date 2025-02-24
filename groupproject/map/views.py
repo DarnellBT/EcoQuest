@@ -44,15 +44,15 @@ class MapView(TemplateView):
             folium.Marker(
                 location=[data.latitude, data.longitude],
                 popup=popup,
-                tooltip=f'Test{data.locationId}'
+                tooltip=f'{data.name}'
             ).add_to(map_fig)
         # Add a specific marker at given coordinates
         specific_lat = 50.7350
         specific_lon = -3.5343
         folium.Marker(
             location=[specific_lat, specific_lon],
-            popup='Specific Location',
-            tooltip='Specific Marker'
+            popup='Centre of Campus',
+            tooltip='Campus'
         ).add_to(map_fig)
         # Render map to HTML format
         map_html = map_fig._repr_html_()
@@ -101,6 +101,7 @@ def submit_process(request):
 def submit_location(request):
     """Handles POST method from javascript (geolocation of user)"""
     if request.method == 'POST':
+        # retrieves latitude and longitude from javascript frontend, useful for distance calculations
         data = json.loads(request.body)
         latitude = data.get('latitude')
         longitude = data.get('longitude')

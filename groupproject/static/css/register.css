@@ -1,3 +1,6 @@
+main {
+    font-family: 'Poppins', sans-serif;
+}
 body {
     overflow: hidden;
 }
@@ -17,7 +20,6 @@ form {
 }
 p {
     font-size: 1vw;
-    font-family: 'Poppins', sans-serif;
 }
 .link-login {
     text-decoration: none;
@@ -27,4 +29,5 @@ a {
     text-decoration: none;
     color: black;
     font-size: 1.2vw;
+    text-decoration: underline;
 }
