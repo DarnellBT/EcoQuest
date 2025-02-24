@@ -37,3 +37,15 @@ jobs:
       run: |
         python groupproject/manage.py migrate map
         python groupproject/manage.py test map
+    - name: Run Challenge Tests
+      run: |
+        python groupproject/manage.py migrate challenge
+        python groupproject/manage.py test challenge
+    - name: Run Dashboard Tests
+      run: |
+        python groupproject/manage.py migrate dashboard
+        python groupproject/manage.py test dashboard
+    - name: Run Main Tests
+      run: |
+        python groupproject/manage.py migrate main
+        python groupproject/manage.py test main

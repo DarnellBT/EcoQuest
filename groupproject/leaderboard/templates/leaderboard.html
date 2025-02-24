@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Leaderboard</title>
     {% load static %}
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-</head>
-<body>
-<main>
-    <h2>Leaderboard</h2>
-    <table>
-        <thead>
-        <tr>
-            <th class="leaderboard-header">Rank</th>
-            <th>Username</th>
-            <th>Points</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for rank, user, point in combined_list %}
-        <tr>
-            <td>{{ rank }}</td>
-            <td>{{ user }}</td>
-            <td>{{ point }}</td>
-
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</main>
-<script src="index.js"></script>
-</body>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Leaderboard page</h1>
+        <a href="/home" class="button button1">Home</a>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+      </header>
+      <h2>Current Leaderboard</h2>
+      <div class="box1">
+        <table>
+          <thead>
+            <tr>
+              <th class="leaderboard-header"><span>Rank</span></th>
+              <th style="border-left: 3px solid black;"><span>Username</span></th>
+              <th style="border-left: 3px solid black;"><span>Points</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for rank, user, point in combined_list %}
+            <tr>
+              <td style="text-align: center;"><span>{{ rank }}</span></td>
+              <td style="width: 100%;"><span>{{ user }}</span></td>
+              <td><span>{{ point }}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
 </html>
