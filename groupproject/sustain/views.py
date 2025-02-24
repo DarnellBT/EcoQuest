@@ -6,8 +6,5 @@ from django.contrib import messages
 
 
 def sustain(request):
-    """Function that retrieves sustain.html if user is logged in"""
-    if request.user.is_anonymous:
-        messages.error(request, 'You are not logged in')
-        return redirect('../login')
+    """Function that retrieves sustain.html"""
     return render(request, 'sustain.html')
