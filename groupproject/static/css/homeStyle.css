@@ -21,7 +21,7 @@ body::before {
     z-index: -1; /* Keeps it behind the content */
 }
 
-.container{
+.container {
     display: grid;
     width: 96%;
     gap: 1.8rem;
@@ -29,9 +29,7 @@ body::before {
     margin: 0 auto;
 }
 
-
-
-aside{
+aside {
     height: 100vh;
 }
 
@@ -40,28 +38,26 @@ aside{
     pointer-events: none; /* Disables interactions with the button */
 }
 
-
-aside .top{
+aside .top {
     background-color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 1.4rem;
+    padding: 1rem;
 }
 
-aside .logo{
+aside .logo {
     display: flex;
     gap: 1rem;
 }
 
-aside .sidebar{
+aside .sidebar {
     background-color: white;
     display: flex;
     flex-direction: column;
     height: 80vh;
     position: relative;
     top: 1rem;
-
 }
 
 aside .sidebar a {
@@ -71,92 +67,170 @@ aside .sidebar a {
     gap: 1rem;
     align-items: center;
     height: 3rem;
+    transition: color 0.3s ease; /* Add transition for text color */
 }
 
-aside .sidebar a:last-child{
-    position: absolute;
-    bottom: 1rem;
-    width: 100%;
-
+aside .sidebar a span {
+    transition: all .1s ease-in;
 }
 
-aside .sidebar a:hover{
+aside .sidebar a.active {
+    background: lightblue;
+    color: darkolivegreen; /* Ensure active text color changes */
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background-color: lightseagreen;
+}
+
+aside .sidebar a:hover {
     color: lightseagreen;
 }
 
-aside .sidebar a:hover span{
+aside .sidebar a:hover span {
     margin-left: 1rem;
     transition: .6s ease;
 }
 
-.right{
+.right {
     margin-top: 1.4rem;
 }
 
-.right .top{
+.right .top {
     display: flex;
     justify-content: start;
     gap: 2rem;
 }
 
-.right .top button{
+.right .top button {
     display: none;
 }
 
-
-
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1200px) {
     aside {
-        display: block; /* Ensure the sidebar is always visible */
-        position: relative; /* Ensure it's positioned normally */
-        left: 0; /* Reset any position offset */
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: white;
+        flex-direction: row; /* Horizontal layout */
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    aside .top {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-start; /* Logo stays at left */
+    }
+
+    aside .logo {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+
+    /* Sidebar items arranged horizontally */
+    aside .sidebar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+        height: auto;
+        width: 100%;
+    }
+
+    aside .sidebar a {
+        padding: 5px 15px;
+        margin: 0;
+        color: gray;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s, padding-right 0.3s;
+    }
+
+    /* Logout button adjustment */
+    aside .sidebar a:last-child {
+        margin-left: 20px; /* Adjust this to give some space from the rest */
+        padding-right: 100px; /* Optional: to add more spacing */
+    }
+
+    /* Hide menu button on larger screens */
+    #menu_bar {
+        display: none;
+    }
+
+    /* Ensure close button is hidden */
+    #close_button {
+        display: none;
+    }
+
+
+
+    /* Logout button moves to the far right */
+    aside .sidebar a:last-child {
+        margin-left: auto;
+    }
+
+    /* Hide menu button on larger screens */
+    #menu_bar {
+        display: none;
     }
 }
 
-@media screen and (max-width: 1200px){
-    .container{
+/* Mobile Sidebar */
+@media screen and (max-width: 1200px) {
+    .container {
         width: 100%;
-        grid-template-columns: repeat(1,1fr);
-        
+        grid-template-columns: repeat(1, 1fr);
     }
 
-    aside{
+    aside {
         position: fixed;
         width: 18rem;
         z-index: 3;
         background: white;
-        display:none;
+        display: none;
         left: -100px;
         animation: menuAni 1s forwards;
     }
 
     #close_button {
-        display: block; /* Ensure the close button is visible on larger screens */
-        pointer-events: auto; /* Ensures the button can be interacted with */
+        display: block;
+        pointer-events: auto;
     }
-
 
     @keyframes menuAni {
-        to{
+        to {
             left: 0;
         }
-        
     }
 
-    aside .logo h2{
+    aside .logo h2 {
         display: inline;
     }
-    aside .sidebar h3{
-        display: inline;
 
+    aside .sidebar h3 {
+        display: inline;
     }
 
-    aside .sidebar a{
+    aside .sidebar a {
         width: 100%;
         height: 3.4rem;
     }
 
-    aside .top div.close span{
+    aside .top div.close span {
         display: inline;
         position: absolute;
         right: 0;
@@ -164,8 +238,8 @@ aside .sidebar a:hover span{
         font-size: 35px;
     }
 
-    .right .top{
-        position:fixed;
+    .right .top {
+        position: fixed;
         top: 0;
         left: 0;
         display: flex;
@@ -178,61 +252,55 @@ aside .sidebar a:hover span{
         margin: 0;
     }
 
-    .right .top button{
+    .right .top button {
         display: inline-block;
         background: transparent;
         cursor: pointer;
         position: absolute;
         left: 1rem;
     }
-    
-    
-    
 }
 
-
-
-@media screen and (max-width: 768px){
-    .container{
+/* Smaller screens */
+@media screen and (max-width: 768px) {
+    .container {
         width: 100%;
-        grid-template-columns: repeat(1,1fr);
-        
+        grid-template-columns: repeat(1, 1fr);
     }
 
-    aside{
+    aside {
         position: fixed;
         width: 18rem;
         z-index: 3;
         background: white;
-        display:none;
+        display: none;
     }
 
     #close_button {
-        display: block; /* Ensure the close button is visible on larger screens */
-        pointer-events: auto; /* Ensures the button can be interacted with */
+        display: block;
+        pointer-events: auto;
     }
 
     @keyframes menuAni {
-        to{
+        to {
             left: 0;
         }
-        
     }
 
-    aside .logo h2{
+    aside .logo h2 {
         display: inline;
     }
-    aside .sidebar h3{
-        display: inline;
 
+    aside .sidebar h3 {
+        display: inline;
     }
 
-    aside .sidebar a{
+    aside .sidebar a {
         width: 100%;
         height: 3.4rem;
     }
 
-    aside .top div.close span{
+    aside .top div.close span {
         display: inline;
         position: absolute;
         right: 0;
@@ -240,12 +308,8 @@ aside .sidebar a:hover span{
         font-size: 35px;
     }
 
-    main h3{
-
-    }
-
-    .right .top{
-        position:fixed;
+    .right .top {
+        position: fixed;
         top: 0;
         left: 0;
         display: flex;
@@ -258,14 +322,11 @@ aside .sidebar a:hover span{
         margin: 0;
     }
 
-    .right .top button{
+    .right .top button {
         display: inline-block;
         background: transparent;
         cursor: pointer;
         position: absolute;
         left: 1rem;
     }
-            
-    
-    
 }
