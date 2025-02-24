@@ -1,5 +1,4 @@
 from django.db import models
-from registration.models import UserProfile
 
 
 class Challenge(models.Model):
@@ -9,9 +8,7 @@ class Challenge(models.Model):
     points = models.IntegerField(null=False)
 
 
-
 class ChallengeCompleted(models.Model):
     userId = models.ForeignKey('registration.UserProfile', on_delete=models.CASCADE)
     challengeId = models.ForeignKey('Challenge', on_delete=models.CASCADE)
     completed = models.BooleanField()
-

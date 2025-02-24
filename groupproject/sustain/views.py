@@ -1,8 +1,7 @@
 """
 Module contains the view for the sustainability page
 """
-from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.shortcuts import render
 
 
 def sustain(request):

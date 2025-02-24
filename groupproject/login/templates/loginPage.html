@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,27 +10,27 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
-  </head>
-  <body>
-    <main>
-        <h1>Login</h1>
-        {% if messages %}
-        <ul class="messages">
-          {% for message in messages %}
-            <li class="message">{{ message }}</li>
-          {% endfor %}
-        </ul>  
-        {% endif %}
-      <div class="box1">
+</head>
+<body>
+<main>
+    <h1>Login</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="message">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="box1">
         <form method="POST" action="">
-          {% csrf_token %}
-          {{form.as_p}}
-          <button type="submit">Submit</button>
-          <div class="register-link"><a href="{% url 'register' %}">Not have an account?</a></div>
-          
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Submit</button>
+            <div class="register-link"><a href="{% url 'register' %}">Not have an account?</a></div>
+
         </form>
-      </div>
-    </main>
-    <script src="index.js"></script>
-  </body>
+    </div>
+</main>
+<script src="index.js"></script>
+</body>
 </html>

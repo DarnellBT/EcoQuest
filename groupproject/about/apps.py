@@ -1,3 +1,4 @@
+"""Setup table for about models."""
 from django.apps import AppConfig
 
 

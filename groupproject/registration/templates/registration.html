@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,36 +9,36 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-  </head>
-  <body>
-    <main>
-        <h2>Registration</h2>
-      <div class="box1">
+</head>
+<body>
+<main>
+    <h2>Registration</h2>
+    <div class="box1">
         <form method="POST">
-          {% csrf_token %}
-          {% for field in form %}
-          <p>
-            {% if field.label_tag %}
-            <small style="font-size: 1.5vw;">{{ field.label_tag | safe }}</small>
-            {% endif %}<br>
-            {{ field }}
-            {% if field.errors %}
+            {% csrf_token %}
+            {% for field in form %}
+            <p>
+                {% if field.label_tag %}
+                <small style="font-size: 1.5vw;">{{ field.label_tag | safe }}</small>
+                {% endif %}<br>
+                {{ field }}
+                {% if field.errors %}
             <div class="error">
-              {{ field.errors }}
+                {{ field.errors }}
             </div>
             {% endif %}
             {% if field.help_text %}
             <small style="font-size: 1vw;">{{ field.help_text | safe }}</small>
             {% endif %}
-          </p>
-          {% endfor %}
-          <button type="submit">Submit</button>
-          <div class="link-login">
-            <a href="{% url 'login' %}">Already registered?</a>
-          </div>
-        
+            </p>
+            {% endfor %}
+            <button type="submit">Submit</button>
+            <div class="link-login">
+                <a href="{% url 'login' %}">Already registered?</a>
+            </div>
+
         </form>
-    </main>
-    <script src="index.js"></script>
-  </body>
+</main>
+<script src="index.js"></script>
+</body>
 </html>

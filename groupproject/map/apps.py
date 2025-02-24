@@ -1,3 +1,4 @@
+"""Setup table for map models."""
 from django.apps import AppConfig
 
 

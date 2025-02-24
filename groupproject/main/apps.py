@@ -1,3 +1,4 @@
+"""Setup table for main models."""
 from django.apps import AppConfig
 
 

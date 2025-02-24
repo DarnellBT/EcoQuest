@@ -8,6 +8,7 @@ body {
     text-align: center;
     background: #00a87e;
 }
+
 .container {
     width: 100%;
     max-width: 500px;
@@ -23,7 +24,7 @@ body {
     padding: 50px 30px;
     border: 1.5px solid #b2b2b2;
     border-radius: 0.25em;
-    
+
 }
 
 #my-qr-reader {

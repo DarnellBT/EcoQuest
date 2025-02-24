@@ -1,5 +1,6 @@
 """Module handles connection between url and view logic"""
 from django.urls import path
+
 from . import views
 
 urlpatterns = [

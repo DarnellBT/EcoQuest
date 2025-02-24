@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,24 +8,24 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-      <h1 style="color: aliceblue; top: 0; position: sticky;">Welcome to the Home Page</h1>
-      
-      <!-- Logout button wrapped inside a div for alignment -->
-      <div class="logout-container">
-        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
-      </div>
-    </header>
+</head>
+<body>
+<header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 10px;">
+    <h1 style="color: aliceblue; top: 0; position: sticky;">Welcome to the Home Page</h1>
 
-    <div class="button-container">
-      <a href="/sustainability" class="button button1">Sustainability</a>
-      <a href="/leaderboard" class="button button2">Leaderboard</a>
-      <a href="/map" class="button button1">Contact</a>
-      <a href="/map" class="button button2">Rewards</a>
-      <a href="/map" class="button button1">Map</a>
-      <a href="/account/" class="button button2">Account</a>
+    <!-- Logout button wrapped inside a div for alignment -->
+    <div class="logout-container">
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
     </div>
-  </body>
+</header>
+
+<div class="button-container">
+    <a href="/sustainability" class="button button1">Sustainability</a>
+    <a href="/leaderboard" class="button button2">Leaderboard</a>
+    <a href="/map" class="button button1">Contact</a>
+    <a href="/map" class="button button2">Rewards</a>
+    <a href="/map" class="button button1">Map</a>
+    <a href="/account/" class="button button2">Account</a>
+</div>
+</body>
 </html>

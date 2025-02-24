@@ -1,9 +1,12 @@
 """Module defines how qr-scanner url is presented"""
 import json
-from django.http import JsonResponse
-from django.shortcuts import render
+
 from django.contrib import messages
+from django.http import JsonResponse
 from django.shortcuts import redirect
+from django.shortcuts import render
+
+
 # Remember to add upkg link to attribution page
 # https://www.geeksforgeeks.org/create-a-qr-code-scanner-or-reader-in-html-css-javascript/
 # https://unpkg.com/browse/html5-qrcode@2.3.8/

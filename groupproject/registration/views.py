@@ -6,7 +6,7 @@ from .forms import RegistrationForm
 
 def register(request):
     """
-    Function puts a form into html with various fields given text. 
+    Function puts a form into html with various fields given text.
     Saves user details if valid
     """
     form = RegistrationForm()

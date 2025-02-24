@@ -1,18 +1,20 @@
+from django.contrib import messages
+from django.core.files.storage import default_storage
 from django.shortcuts import redirect, render
+from registration import models as register_models
+
+from .forms import ImageUpload
 from .models import Challenge
 from .models import ChallengeCompleted
-from .forms import ImageUpload
-from django.core.files.storage import default_storage
-from registration import models as register_models
-from django.contrib import messages
+
 
 def challenge(request, id):
     """
     Function handles dynamic content through changing challenge id
     """
     if request.user.is_anonymous:
-            messages.error(request, 'You are not logged in')
-            return redirect('../../login')
+        messages.error(request, 'You are not logged in')
+        return redirect('../../login')
     all_challenge = Challenge.objects.filter(challengeId=id)
     form = ImageUpload()
     # retrieve fields from Challenge objects
@@ -24,14 +26,14 @@ def challenge(request, id):
     upload_status = 'Upload Successful'
     current_user = request.user
     current_user_id = current_user.id
-    
+
     user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
     user_points = user_profile.points
     context = {
         'user_id': current_user.id,
         'challenge_points': challenge_points,
         'user_points': user_points,
-        'forms':form,
+        'forms': form,
         'challenge_descr': challenge_description,
         'challenge': challenge_task,
         'id': id,
@@ -40,6 +42,7 @@ def challenge(request, id):
     if request.method == 'POST':
         # retrieve data from form and file
         form = ImageUpload(request.POST, request.FILES)
+        print(request.POST)
         if form.is_valid():
             # retrieve image and path to img (where it will be saved)
             img = form.cleaned_data.get("image")
@@ -66,6 +69,6 @@ def challenge(request, id):
                 'challenge_descr': challenge_description,
                 'challenge': challenge_task,
                 'id': id,
-                }
+            }
             return redirect('../../map/')
     return render(request, 'challenge.html', context)

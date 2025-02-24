@@ -1,13 +1,15 @@
 """Module contains test cases for registration"""
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
-from .models import UserProfile
+
 from .forms import RegistrationForm
+from .models import UserProfile
 
 
 class RegistrationModelTest(TestCase):
     """Class contains tests that use assert to test registration model"""
+
     def test_create_user_profile(self):
         """Test creating a UserProfile instance"""
         # Creates a user instance.
@@ -19,7 +21,7 @@ class RegistrationModelTest(TestCase):
         )
         user.set_password('secret_pass')
         # Creates a UserProfile instance
-        user_profile = UserProfile.objects.create(user=user,)
+        user_profile = UserProfile.objects.create(user=user, )
         self.assertEqual(user_profile.userId, 1)
         self.assertEqual(user_profile.user, user)
         self.assertEqual(user_profile.points, 0)
@@ -31,6 +33,7 @@ class RegistrationModelTest(TestCase):
 
 class RegistrationViewTest(TestCase):
     """Class tests if pages load"""
+
     def test_registration_page_loads(self):
         """Test if the registration page loads successfully"""
         response = self.client.get(reverse('register'))
@@ -50,13 +53,15 @@ class RegistrationViewTest(TestCase):
         }
 
         response = self.client.post('/register/', form_data)
-        login_response = self.assertRedirects(response, '/login/', status_code=302, target_status_code=200, fetch_redirect_response=True)
+        login_response = self.assertRedirects(response, '/login/', status_code=302, target_status_code=200,
+                                              fetch_redirect_response=True)
         # Check we get loginPage template.
         self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
 
 
 class RegistrationFormTest(TestCase):
     """Class tests if a form is invalid or valid in certain cases"""
+
     def test_valid_form(self):
         """Test if the form is valid"""
         form_data = {
