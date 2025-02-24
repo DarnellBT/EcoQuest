@@ -101,6 +101,7 @@ def submit_process(request):
 def submit_location(request):
     """Handles POST method from javascript (geolocation of user)"""
     if request.method == 'POST':
+        # retrieves latitude and longitude from javascript frontend, useful for distance calculations
         data = json.loads(request.body)
         latitude = data.get('latitude')
         longitude = data.get('longitude')

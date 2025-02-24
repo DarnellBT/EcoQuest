@@ -6,7 +6,7 @@ from .models import Question
 # pylint: disable=line-too-long
 
 def quiz(request, id):
-    """Function contains quiz page logic"""
+    """Function contains quiz page logic, dynamically changes content via id"""
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')

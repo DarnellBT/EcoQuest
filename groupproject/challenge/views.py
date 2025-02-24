@@ -7,6 +7,9 @@ from registration import models as register_models
 from django.contrib import messages
 
 def challenge(request, id):
+    """
+    Function handles dynamic content through changing challenge id
+    """
     if request.user.is_anonymous:
             messages.error(request, 'You are not logged in')
             return redirect('../../login')
