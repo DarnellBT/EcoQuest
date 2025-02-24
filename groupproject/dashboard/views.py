@@ -63,6 +63,9 @@ def challenges(request):
     return render(request, 'dashboard_challenges.html', {'challenges':incomplete_challenges})
 
 def change_uname(request):
+    """
+    Function to provide render html page and process username updating
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
@@ -82,6 +85,9 @@ def change_uname(request):
     return render(request, 'dashboard_username.html', {'form':form})
 
 def change_name(request):
+    """
+    Function to provide render html page and process name updating
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
@@ -100,6 +106,9 @@ def change_name(request):
     return render(request, 'dashboard_name.html', {'form':form})
 
 def change_password(request):
+    """
+    Function to provide render html page and process password updating
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
