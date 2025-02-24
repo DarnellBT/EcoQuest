@@ -1,3 +1,4 @@
+"""Setup table for qrcodescan models."""
 from django.apps import AppConfig
 
 

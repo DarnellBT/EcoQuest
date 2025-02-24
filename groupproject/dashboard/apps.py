@@ -1,3 +1,4 @@
+"""Setup table for dashboard models."""
 from django.apps import AppConfig
 
 

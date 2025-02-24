@@ -1,8 +1,11 @@
 """Module contains logic for quiz app"""
-from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.shortcuts import render, redirect
 from registration import models as register_models
+
 from .models import Question
+
+
 # pylint: disable=line-too-long
 
 def quiz(request, id):
@@ -45,4 +48,3 @@ def quiz(request, id):
 
         return render(request, 'submitQuiz.html', context)
     return render(request, 'quiz.html', {'questions': all_questions})
-

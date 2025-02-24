@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -29,7 +28,9 @@ class Migration(migrations.Migration):
                 ('choice4', models.CharField(max_length=200)),
                 ('answer', models.CharField(max_length=200)),
                 ('points', models.IntegerField(default=0)),
-                ('quizId', models.ForeignKey(blank=True, default=0, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='quiz.quiz')),
+                ('quizId',
+                 models.ForeignKey(blank=True, default=0, null=True, on_delete=django.db.models.deletion.DO_NOTHING,
+                                   to='quiz.quiz')),
             ],
         ),
     ]

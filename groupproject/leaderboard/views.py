@@ -1,6 +1,7 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from registration.models import UserProfile
-from django.contrib import messages
+
 
 def leaderboard_page(request):
     """Function retrieves all user usernames, points and ranks them"""
@@ -15,7 +16,7 @@ def leaderboard_page(request):
         # retrieves points and sorts them in descending order
         for profile in userprofiles:
             points = profile.points
-            points_list.append(points)  #it retrieves the username by points and the
+            points_list.append(points)  # it retrieves the username by points and the
             points_list = sorted(points_list, reverse=True)
         rank_list = []
         # ranks users according to their points in descending order (puts user.username in ranked)
@@ -23,7 +24,7 @@ def leaderboard_page(request):
         # gets the usernames associated with the points  
         for rank_user in ranked:
             rank_list.append(rank_user.user.username)
-              
+
         rank = []
         # changes 0 index to 1 index
         len_username = len(rank_list) + 1
@@ -35,5 +36,3 @@ def leaderboard_page(request):
             'combined_list': combined_list,
         }
         return render(request, 'leaderboard.html', context)
-     
-    

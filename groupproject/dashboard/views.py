@@ -1,11 +1,13 @@
-from django.shortcuts import redirect, render
+from challenge.models import Challenge, ChallengeCompleted
+from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth import update_session_auth_hash
-from django.contrib import messages
 from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
 from registration.models import UserProfile
-from challenge.models import Challenge, ChallengeCompleted
+
 from .forms import NameForm, UsernameForm, PasswordForm
+
 
 def dashboard(request):
     """Handles account page - not yet renamed to account"""
@@ -29,12 +31,12 @@ def dashboard(request):
         role = 'User'
     # prepares to send data to html
     context = {
-        'username':username,
-        'firstName':first_name,
-        'lastName':last_name,
-        'email':email,
-        'points':points,
-        'role':role,
+        'username': username,
+        'firstName': first_name,
+        'lastName': last_name,
+        'email': email,
+        'points': points,
+        'role': role,
     }
     # only runs if a form is submitted (delete account in this case)
     if request.method == "POST":
@@ -45,6 +47,7 @@ def dashboard(request):
         current_userprofile.delete()
         return redirect("../../register")
     return render(request, 'dashboard.html', context)
+
 
 def challenges(request):
     """Function handles account challenge pages"""
@@ -60,7 +63,8 @@ def challenges(request):
     all_completed = ChallengeCompleted.objects.filter(userId=current_user_object).values_list("challengeId", flat=True)
     # Fill with incompleted challenges, check and put any challenges not in completed
     incomplete_challenges = [challenge for challenge in challenges_list if challenge.challengeId not in all_completed]
-    return render(request, 'dashboard_challenges.html', {'challenges':incomplete_challenges})
+    return render(request, 'dashboard_challenges.html', {'challenges': incomplete_challenges})
+
 
 def change_uname(request):
     """
@@ -82,7 +86,8 @@ def change_uname(request):
             current_user_object = current_user.user
         current_user_object.username = username
         current_user_object.save()
-    return render(request, 'dashboard_username.html', {'form':form})
+    return render(request, 'dashboard_username.html', {'form': form})
+
 
 def change_name(request):
     """
@@ -103,7 +108,8 @@ def change_name(request):
         current_user_object.first_name = first_name
         current_user_object.last_name = last_name
         current_user_object.save()
-    return render(request, 'dashboard_name.html', {'form':form})
+    return render(request, 'dashboard_name.html', {'form': form})
+
 
 def change_password(request):
     """
@@ -126,7 +132,8 @@ def change_password(request):
         # updates cookie so user isn't logged out and can carry on
         update_session_auth_hash(request, current_user_object)
         return redirect('change-password')
-    return render(request, 'dashboard_password.html', {'form':form})
+    return render(request, 'dashboard_password.html', {'form': form})
+
 
 def logout_dashboard(request):
     # removes session and takes user to login page

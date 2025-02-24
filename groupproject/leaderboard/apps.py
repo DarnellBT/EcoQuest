@@ -1,3 +1,4 @@
+"""Setup table for leaderboard models."""
 from django.apps import AppConfig
 
 

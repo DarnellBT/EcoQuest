@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Account</title>  
+    <title>Account</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/dashboardStyle.css' %}">
     <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <table class="table-outer">
-      <thead class="table-head">
-        <tr>
-          <th class="table-cell"><a href="{% url 'home' %}">Home</a></th>
-          <th class="table-cell"><a href="{% url 'account' %}">Profile</a></th>
-          <th class="table-cell"><a href="{% url 'change-uname' %}">Change Username</a></th>
-          <th class="table-cell"><a href="{% url 'change-name' %}">Change Name</a></th>
-          <th class="table-cell"><a href="{% url 'change-password' %}">Change Password</a></th>
-          <th class="table-cell"><a href="{% url 'challenges' %}">Challenges</a></th>
-          <th class="table-cell"><a href="{% url 'logout' %}">Logout</a></td>
-        </tr>
-      </thead>
-    </table>
+</head>
+<body>
+<table class="table-outer">
+    <thead class="table-head">
+    <tr>
+        <th class="table-cell"><a href="{% url 'home' %}">Home</a></th>
+        <th class="table-cell"><a href="{% url 'account' %}">Profile</a></th>
+        <th class="table-cell"><a href="{% url 'change-uname' %}">Change Username</a></th>
+        <th class="table-cell"><a href="{% url 'change-name' %}">Change Name</a></th>
+        <th class="table-cell"><a href="{% url 'change-password' %}">Change Password</a></th>
+        <th class="table-cell"><a href="{% url 'challenges' %}">Challenges</a></th>
+        <th class="table-cell"><a href="{% url 'logout' %}">Logout</a></td>
+    </tr>
+    </thead>
+</table>
 
-    <div class="box">
-      <p>Username: {{ username }}</p>
-      <p>First Name: {{ firstName }}</p>
-      <p>Last Name: {{ lastName }}</p>
-      <p>Email: {{ email }}</p>
-      <p>Points: {{ points }}</p>
-      <p>Role: {{ role }}</p>
-      
-    </div>
-    
-    <div class="warning">
-      <h3>WARNING: Deleting your account is permanent!</h3>
-    </div>
-    <form method="POST">
-      {% csrf_token %}
-      
-      <input type="submit" value="Delete Account" class="deleteButton">
-    </form>
+<div class="box">
+    <p>Username: {{ username }}</p>
+    <p>First Name: {{ firstName }}</p>
+    <p>Last Name: {{ lastName }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Points: {{ points }}</p>
+    <p>Role: {{ role }}</p>
 
-    
+</div>
 
-  </body>
+<div class="warning">
+    <h3>WARNING: Deleting your account is permanent!</h3>
+</div>
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="submit" value="Delete Account" class="deleteButton">
+</form>
+
+
+</body>
 </html>

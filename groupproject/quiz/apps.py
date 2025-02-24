@@ -1,3 +1,4 @@
+"""Setup table for quiz models."""
 from django.apps import AppConfig
 
 

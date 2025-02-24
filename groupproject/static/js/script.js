@@ -11,18 +11,18 @@ function domReady(fn) {
 
 domReady(function () {
 
-    
+
     function onScanSuccess(decodeText, decodeResult) {
 
         alert("Your QR code is: " + decodeText);
 
-      
+
         sendQRCodeToServer(decodeText);
     }
 
     let htmlscanner = new Html5QrcodeScanner(
         "my-qr-reader",
-        { fps: 10, qrbox: 250 }
+        {fps: 10, qrbox: 250}
     );
     htmlscanner.render(onScanSuccess);
 });
@@ -32,18 +32,18 @@ function sendQRCodeToServer(decodeText) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken() 
+            'X-CSRFToken': getCSRFToken()
         },
-        body: JSON.stringify({ decoded: decodeText }) 
+        body: JSON.stringify({decoded: decodeText})
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.redirect_url) {
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirect_url) {
 
-            window.location.href = data.redirect_url;
-        }
-    })
-    .catch(error => console.error('Error:', error));
+                window.location.href = data.redirect_url;
+            }
+        })
+        .catch(error => console.error('Error:', error));
 }
 
 function getCSRFToken() {

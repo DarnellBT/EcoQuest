@@ -1,9 +1,11 @@
 """Module contains forms needed for registration page"""
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django import forms
 from django.core.exceptions import ValidationError
+
 from .models import UserProfile
+
 
 class RegistrationForm(UserCreationForm):
     """Class contains registration form using django UserCreationForm and related functions"""
@@ -47,5 +49,3 @@ class RegistrationForm(UserCreationForm):
             user.save()
             user_profile.save()
         return user
-
-
