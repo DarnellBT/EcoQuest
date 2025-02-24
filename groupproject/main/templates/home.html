@@ -7,25 +7,77 @@
     <title>Home</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
   </head>
   <body>
-    <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-      <h1 style="color: aliceblue; top: 0; position: sticky;">Welcome to the Home Page</h1>
-      
-      <!-- Logout button wrapped inside a div for alignment -->
-      <div class="logout-container">
-        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
-      </div>
-    </header>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <h2><span class="danger">EcoQuest</span></h2>
+          </div>
+          <div class="close" id="close_button">
+            <span class="material-symbols-sharp">close</span>
+          </div>
+        </div>
 
-    <div class="button-container">
-      <a href="/sustainability" class="button button1">Sustainability</a>
-      <a href="/leaderboard" class="button button2">Leaderboard</a>
-      <a href="/map" class="button button1">Contact</a>
-      <a href="/map" class="button button2">Rewards</a>
-      <a href="/map" class="button button1">Map</a>
-      <a href="/account/" class="button button2">Account</a>
+        <div class="sidebar">
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">grid_view</span>
+            <h3> dashboard </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">leaderboard</span>
+            <h3> Leaderboard </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">map</span>
+            <h3> Map </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">trophy</span>
+            <h3> Rewards </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">account_circle</span>
+            <h3> Account </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">call</span>
+            <h3> Contact </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp"> logout </span>
+            <h3> Logout </h3>
+          </a>
+          
+        </div>
+      </aside>
+  
+      <main>
+       
+      </main>
+  
+      <div class="right">
+        <div class="top">
+          <button id="menu_bar">
+            <span class="material-symbols-sharp"> menu </span>
+          </button>
+      
+        </div>
+        
+      </div>
+
     </div>
+    
   </body>
 </html>
