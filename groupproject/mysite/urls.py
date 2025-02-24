@@ -27,6 +27,7 @@ from challenge import views as challenge_view
 from leaderboard import views as leaderboard_view
 from qrcodescan import views as qr_view
 from sustain import views as sus_view
+from about import views as about_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,6 +49,7 @@ urlpatterns = [
     path('logout/', dashboard_view.logout_dashboard, name="logout"),
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
-    path('sustainability/', sus_view.sustain, name='sustainability')
+    path('sustainability/', sus_view.sustain, name='sustainability'),
+    path('about/', about_view.about, name="about")
 ]
 

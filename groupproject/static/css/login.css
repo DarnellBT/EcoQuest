@@ -6,6 +6,9 @@ form {
     text-align: center;
     font-size: 1.5vw;
 }
+main {
+    font-family: 'Poppins', sans-serif;
+}
 .box1 {
     margin: auto;
     width: 50%;
@@ -20,6 +23,7 @@ a {
 }
 .register-link {
     size: 8pt;
+    text-decoration: underline;
 }
 .messages {
     list-style-type: none;

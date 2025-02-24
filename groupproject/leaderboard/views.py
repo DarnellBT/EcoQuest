@@ -15,7 +15,7 @@ def leaderboard_page(request):
         # retrieves points and sorts them in descending order
         for profile in userprofiles:
             points = profile.points
-            points_list.append(points)
+            points_list.append(points)  #it retrieves the username by points and the
             points_list = sorted(points_list, reverse=True)
         rank_list = []
         # ranks users according to their points in descending order (puts user.username in ranked)
