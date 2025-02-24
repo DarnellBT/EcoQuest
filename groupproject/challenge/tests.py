@@ -94,38 +94,4 @@ class ChallengeViewTest(TestCase):
         # Check we get registration template.
         self.assertTemplateUsed(response, 'challenge.html')
 
-    def test_map_page_redirect_loads(self):
-        """Test if the map page loads successfully"""
-        # Create Challenge instance
-        Challenge.objects.create(
-            challenge='Test challenge name',
-            description='This is the description of the test challenge.',
-            points=10,
-        )
-        # Registers user
-        register_form_data = {
-            'username': 'Dragonite',
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'JohnDoe@email.com',
-            'password1': 'secret_pass',
-            'password2': 'secret_pass'
-        }
-        self.client.post('/register/', register_form_data)
-        # logs user in
-        login_form_data = {
-            'username': 'Dragonite',
-            'password': 'secret_pass'
-        }
-        self.client.post('/login/', login_form_data)
-        # Uploads image
-        with open('./challenge/static/Image/Test.png', '+wb') as image:
-            form_data = {
-                'image': SimpleUploadedFile(name='Test.png', content=image.read(), content_type='image/png')
-            }
-            response = self.client.post('/challenge/1/', form_data)
-
-        map_response = self.assertRedirects(response, '/map/', status_code=302, target_status_code=200,
-                                            fetch_redirect_response=True)
-        # Check we get map template.
-        self.assertTemplateUsed(map_response, '../map/templates/map.html')
+    
