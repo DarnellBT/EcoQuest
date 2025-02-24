@@ -33,3 +33,7 @@ jobs:
       run: |
         python groupproject/manage.py migrate login
         python groupproject/manage.py test login
+    - name: Run Map Tests
+      run: |
+        python groupproject/manage.py migrate map
+        python groupproject/manage.py test map

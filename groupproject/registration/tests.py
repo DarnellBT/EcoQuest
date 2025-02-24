@@ -1,13 +1,13 @@
-"""Module contains test cases for login and registration"""
+"""Module contains test cases for registration"""
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import UserProfile
 from .forms import RegistrationForm
-# pylint: disable=line-too-long
+
 
 class RegistrationModelTest(TestCase):
-    """Class contains tests that use assert to test registration logic"""
+    """Class contains tests that use assert to test registration model"""
     def test_create_user_profile(self):
         """Test creating a UserProfile instance"""
         # Creates a user instance.
@@ -27,6 +27,7 @@ class RegistrationModelTest(TestCase):
         self.assertEqual(user_profile.is_game_keeper, 0)
         self.assertEqual(user_profile.is_admin, 0)
         self.assertTrue(user_profile.user.check_password('secret_pass'))
+
 
 class RegistrationViewTest(TestCase):
     """Class tests if pages load"""
@@ -53,8 +54,9 @@ class RegistrationViewTest(TestCase):
         # Check we get loginPage template.
         self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
 
+
 class RegistrationFormTest(TestCase):
-    """Class contains functiosn that test if a form is invalid or valid in certain cases"""
+    """Class tests if a form is invalid or valid in certain cases"""
     def test_valid_form(self):
         """Test if the form is valid"""
         form_data = {
