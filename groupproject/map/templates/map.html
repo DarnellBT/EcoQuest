@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/map.css' %}">
-    <title>My Website</title>
+    <title>Map</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
     <main>
-        <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 1vw;">
-            <h1 style="color: aliceblue;">Map page</h1>
+        <header>
+            <h1>Map page</h1>
             <a href="/home" class="button button1">Home</a>
             <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>

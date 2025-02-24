@@ -18,7 +18,7 @@ def register(request):
                 form.save()
                 return redirect('../login/')
             except Exception as e:
-                print(f"{"Exception: ", str(e)}")
+                print(f"{'Exception: ', str(e)}")
                 return render(request, 'registration.html', {'form':form})
         else:
             x = form.fields['username']

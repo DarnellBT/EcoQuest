@@ -2,6 +2,16 @@ main {
   font-family: 'Poppins', sans-serif;
   font-size: 1vw;
 }
+header {
+  background-color: #00a87e; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 1vw;
+}
+h1 {
+  color: aliceblue;
+}
 .box1 {
   margin: auto;
   width: 40%;
@@ -24,6 +34,8 @@ form {
   text-align: center;
   text-decoration: none;
   display: block; 
+  border: 3px solid aliceblue;
+  border-radius: 5px;
 }
 .logout-button {
   color: white;
