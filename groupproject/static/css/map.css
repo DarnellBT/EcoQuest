@@ -1,1 +1,40 @@
+.box1 {
+  margin: auto;
+  width: 40%;
+  background-color: #00a87e;
+  padding: 15px;
+  }
+form {
+  text-align: center;
+}
+.button {
+  color: aliceblue;
+  background-color: darkgreen;
+  font-size: 2vw;
+  width: 12%; 
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: block; 
+}
+.logout-button {
+  color: white;
+  background-color: red;
+  font-size: 18px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+}
+.logout-button:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+.button1 {
+  background-color: #007d69;
+}
+#map-container {
+  height: 300px;
+  width: 20%;
+}
 
