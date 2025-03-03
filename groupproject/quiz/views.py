@@ -27,7 +27,6 @@ def quiz(request, id):
         current_user = request.user
         current_user_id = current_user.id
         user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-        print(user_profile)
         user_points = user_profile.points
         num = 1
         # get user answer and compare with form submission and add marks as appropriate
