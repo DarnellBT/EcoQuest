@@ -1,10 +1,9 @@
 """Module contains logic for quiz app"""
 from django.contrib import messages
+from django.contrib import sessions
 from django.shortcuts import render, redirect
-from registration import models as register_models
-
 from .models import Question
-
+from registration.models import UserProfile
 
 # pylint: disable=line-too-long
 
@@ -13,42 +12,136 @@ def quiz(request, id):
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
-    # retrieves all columns neccessary to fill the form
-    all_questions = Question.objects.filter(quizId=id).values('question', 'choice1', 'choice2', 'choice3', 'choice4')
-    # convert the dict into a iterable format
+    
+    all_questions = Question.objects.filter(quizId=id)
     all_questions = list(all_questions)
-    if request.method == 'POST':
-        # retrieve all objects, number of questions, default score and new dict
-        questions = Question.objects.all()
-        score = 0
-        total_questions = Question.objects.all().count()
-        print("Count: ", total_questions)
-        submitted = {}
-        current_user = request.user
-        current_user_id = current_user.id
-        user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-        user_points = user_profile.points
-        num = 1
-        # get user answer and compare with form submission and add marks as appropriate
-        for question in questions:
-            user_answer = request.POST.get(f"question_{num}")
-            submitted[question.questionId] = user_answer
-            print(user_answer)
-            num += 1
-            if user_answer == question.answer:
-                score += 1
-                question_points = question.points
-                user_points += question_points
-        user_profile.points = user_points
-        user_profile.save()
-        # Send information to html page
-        context = {
-            'score': score,
-            'current_points': user_points,
-            'total': total_questions,
-            'submitted_answers': submitted,
-            'questions': questions,
-        }
+    
+    
 
-        return render(request, 'submitQuiz.html', context)
-    return render(request, 'quiz.html', {'questions': all_questions})
+    choices = []
+    question_index = request.session.get('question_index', 0)
+    user_points = request.session.get('user_points', 0)
+    question_number = question_index + 1
+    questions = []
+    correct_answers = []
+    question_points = []
+    submitted_answers = []
+    for initialise_data in all_questions:
+        questions.append(initialise_data.question)
+        question_choices = [initialise_data.choice1, initialise_data.choice2, initialise_data.choice3, initialise_data.choice4]
+        choices.append(question_choices)
+        correct_answers.append(initialise_data.answer)
+        question_points.append(initialise_data.points)
+    
+    if request.method == 'POST':
+
+        index_post = request.session.get('question_index', 0)
+        questions_post = request.session.get('questions', questions)
+        choices_post = request.session.get('choices', choices)
+        
+        user_choice = request.POST.get("question")
+        
+        request.session['submitted'].append(user_choice)
+        
+
+        all_questions_choices = Question.objects.filter(quizId=id)
+        all_questions_choices = list(all_questions_choices)
+        print(request.session['points'])
+        # sets user points in session (change so user points are reset in results after being used)
+        # send question, user answer, correct answer
+        if request.session['answers'][index_post] == user_choice:
+            question_point = request.session['points'][index_post]
+            request.session['user_points'] += question_point
+            print("User Score:", request.session['user_points'])
+            request.session['correct_total'] += 1
+        else:
+            print("Question ", index_post+1, "is wrong")
+        
+
+        request.session['question_index'] = index_post + 1
+        request.session.modified = True
+        
+        if request.session['question_index'] >= len(questions_post):
+            request.session['question_index'] = 0  
+            request.session['points'] = 0
+            request.session['choices'] = []
+            return redirect('./results')
+        
+        question_number = request.session['question_index'] + 1
+        index_post = request.session['question_index']
+        
+        context = {
+            'question_index': index_post,
+            'question_number': question_number,
+            'question': questions_post[index_post],
+            'choice1': choices_post[index_post][0],
+            'choice2': choices_post[index_post][1],
+            'choice3': choices_post[index_post][2],
+            'choice4': choices_post[index_post][3],
+            'total_number': len(questions_post),
+        }
+        return render(request, 'quiz.html', context)
+    
+    request.session['question_index'] = question_index   
+    request.session['questions'] = questions
+    request.session['choices'] = choices
+    request.session['answers'] = correct_answers
+    request.session['points'] = question_points
+    request.session['user_points'] = user_points
+    request.session['submitted'] = submitted_answers
+    request.session['correct_total'] = 0
+    context = {
+        'question_index': question_index,
+        'question_number': question_number,
+        'question': questions[question_index],
+        'choice1': choices[question_index][0],
+        'choice2': choices[question_index][1],
+        'choice3': choices[question_index][2],
+        'choice4': choices[question_index][3],
+        'total_number': len(questions),
+    }
+    return render(request, 'quiz.html', context)
+
+def results(request, id):
+    # check sessions are reset
+    userProfile = UserProfile.objects.get(userId=request.user.id)
+    points = request.session['user_points']
+    total_correct = request.session['correct_total']
+    total_questions =  len(request.session['questions'])
+
+    total_points = userProfile.points + points
+    userProfile.points = total_points
+    userProfile.save()
+    
+    submitted_user_answers = request.session['submitted']
+    submitted_answers = []
+    for i in range(0, total_questions):
+        submitted_list = []
+        submitted_list.append(i+1)
+        submitted_list.append(submitted_user_answers[i])
+        submitted_answers.append(submitted_list)
+
+
+    correct_question_answers = request.session['answers']
+    correct_answers = []
+    for i in range(0, total_questions):
+        correct = []
+        correct.append(i+1)
+        correct.append(correct_question_answers[i])
+        correct_answers.append(correct)
+
+    request.session['user_points'] = 0
+    request.session['questions'] = []
+    request.session['submitted'] = []
+    request.session['correct_total'] = 0
+    request.session['answers'] = []
+
+   
+    context = {
+        'score': total_correct,
+        'total': total_questions,
+        'current_points': total_points,
+        'submitted_answers': submitted_answers,
+        'correct_answers': correct_answers,
+    }
+    return render(request, 'submitQuiz.html', context)
