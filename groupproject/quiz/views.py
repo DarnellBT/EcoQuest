@@ -35,7 +35,6 @@ def quiz(request, id):
     
     if request.method == 'POST':
 
-      
         index_post = request.session.get('question_index', 0)
         questions_post = request.session.get('questions', questions)
         choices_post = request.session.get('choices', choices)
