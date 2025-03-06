@@ -23,24 +23,16 @@
     <div class="box">
         <form method="post" class="form-box">
             {% csrf_token %}
-            {% for question_iter in questions %}
-            <b class="quiz-question">{{ question_iter.question }}</b><br>
-            <input class="quiz-answer" type="radio" id="choice1_{{ forloop.counter }}"
-                   name="question_{{ forloop.counter }}" value="{{ question_iter.choice1 }}">
-            <label for="choice1_{{ forloop.counter }}" class="quiz-text">{{ question_iter.choice1 }}</label><br>
-
-            <input class="quiz-answer" type="radio" id="choice2_{{ forloop.counter }}"
-                   name="question_{{ forloop.counter }}" value="{{ question_iter.choice2 }}">
-            <label for="choice2_{{ forloop.counter }}" class="quiz-text">{{ question_iter.choice2 }}</label><br>
-
-            <input class="quiz-answer" type="radio" id="choice3_{{ forloop.counter }}"
-                   name="question_{{ forloop.counter }}" value="{{ question_iter.choice3 }}">
-            <label for="choice3_{{ forloop.counter }}" class="quiz-text">{{ question_iter.choice3 }}</label><br>
-
-            <input class="quiz-answer" type="radio" id="choice4_{{ forloop.counter }}"
-                   name="question_{{ forloop.counter }}" value="{{ question_iter.choice4 }}">
-            <label for="choice4_{{ forloop.counter }}" class="quiz-text">{{ question_iter.choice4 }}</label><br>
-            {% endfor %}
+            <b class="quiz-question">{{ question }}</b><br>
+            <b class="quiz-question">Question {{ question_number }} of {{ total_number }}</b><br>
+            <input class="quiz-answer" type="radio" id="choice1" name="question" value="{{ choice1 }}">
+            <label for="choice1" class="quiz-text">{{ choice1 }}</label><br>
+            <input class="quiz-answer" type="radio" id="choice2" name="question" value="{{ choice2 }}">
+            <label for="choice2" class="quiz-text">{{ choice2 }}</label><br>
+            <input class="quiz-answer" type="radio" id="choice3" name="question" value="{{ choice3 }}">
+            <label for="choice3" class="quiz-text">{{ choice3 }}</label><br>
+            <input class="quiz-answer" type="radio" id="choice4" name="question" value="{{ choice4 }}">
+            <label for="choice4" class="quiz-text">{{ choice4 }}</label><br>
 
             <input type="submit" value="Submit" class="submit">
         </form>

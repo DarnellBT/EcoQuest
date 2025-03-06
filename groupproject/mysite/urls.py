@@ -49,5 +49,7 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('about/', about_view.about, name="about")
+    path('about/', about_view.about, name="about"),
+    path('quiz/<int:id>/results/', quiz_view.results, name='results'),
+    
 ]
