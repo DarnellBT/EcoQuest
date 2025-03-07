@@ -1,3 +1,4 @@
+"""Setup table for login models."""
 from django.apps import AppConfig
 
 

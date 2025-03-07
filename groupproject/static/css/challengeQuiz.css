@@ -1,7 +1,4 @@
 
-
-
-
 .page-header {
     border-radius: 40px;
 
@@ -10,7 +7,7 @@
     background-color: #00c87e;
     margin: auto;
     margin-top: 4%;
-    
+
 
 }
 
@@ -19,7 +16,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 40px;
-    margin:0;
+    margin: 0;
 
 }
 
@@ -47,7 +44,7 @@
     height: 40%;
     background-color: #00c87e;
     margin: auto;
-    
+
     margin-top: 100px;
 }
 
@@ -68,7 +65,7 @@ form {
     color: white;
     padding: 2%;
     font-weight: bold;
-    
+
 }
 
 .nav-left {
@@ -82,8 +79,7 @@ form {
     border-radius: 40px;
     width: 10%;
 
-    
-    
+
 }
 
 .nav-right {
@@ -104,16 +100,15 @@ a {
 }
 
 table {
-    width: 100%;  
-   
-}
+    width: 100%;
 
+}
 
 
 tr {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
 
 .quiz-question {
@@ -129,11 +124,11 @@ tr {
 
 form label {
     display: inline-block;
-    margin-left: 5px; 
-    vertical-align: middle; 
+    margin-left: 5px;
+    vertical-align: middle;
 }
 
 input[type="radio"] {
-    vertical-align: middle; 
-    margin-right: 10px; 
+    vertical-align: middle;
+    margin-right: 10px;
 }

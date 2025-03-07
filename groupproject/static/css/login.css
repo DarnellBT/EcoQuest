@@ -2,13 +2,16 @@ h1 {
     text-align: center;
     font-size: 2vw;
 }
+
 form {
     text-align: center;
     font-size: 1.5vw;
 }
+
 main {
     font-family: 'Poppins', sans-serif;
 }
+
 .box1 {
     margin: auto;
     width: 50%;
@@ -16,18 +19,22 @@ main {
     background-color: #00c896;
     padding: 15px;
 }
+
 a {
     text-decoration: none;
     color: black;
     text-align: center;
 }
+
 .register-link {
     size: 8pt;
     text-decoration: underline;
 }
+
 .messages {
     list-style-type: none;
 }
+
 .message {
     color: red;
     font-weight: bold;

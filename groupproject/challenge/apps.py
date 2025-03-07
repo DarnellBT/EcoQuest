@@ -1,3 +1,4 @@
+"""Setup table for challenge models."""
 from django.apps import AppConfig
 
 

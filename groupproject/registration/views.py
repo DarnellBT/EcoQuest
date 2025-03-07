@@ -6,7 +6,7 @@ from .forms import RegistrationForm
 
 def register(request):
     """
-    Function puts a form into html with various fields given text. 
+    Function puts a form into html with various fields given text.
     Saves user details if valid
     """
     form = RegistrationForm()
@@ -18,7 +18,7 @@ def register(request):
                 form.save()
                 return redirect('../login/')
             except Exception as e:
-                print(f"{"Exception: ", str(e)}")
+                print(f"{'Exception: ', str(e)}")
                 return render(request, 'registration.html', {'form':form})
         else:
             x = form.fields['username']

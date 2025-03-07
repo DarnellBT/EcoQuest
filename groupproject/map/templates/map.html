@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/map.css' %}">
-    <title>My Website</title>
+    <title>Map</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
     <main>
-        <header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 1vw;">
-            <h1 style="color: aliceblue;">Map page</h1>
+        <header>
+            <h1>Map page</h1>
             <a href="/home" class="button button1">Home</a>
             <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>
@@ -20,7 +20,7 @@
         <div class="box1">
             <p style="text-decoration: underline;">Code Submission</p>
             <form method="post" action="./submit/">
-                {% csrf_token %}  
+                {% csrf_token %}
                 <input type="text" name="randomString" value="">
                 <input type="submit" value="Submit">
             </form>
@@ -37,12 +37,12 @@
             </div>
         </div>
     </main>
-    
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         let watchID;
-        
+
 
         function startTracking() {
             if (navigator.geolocation) {
@@ -106,12 +106,12 @@
                     break;
             }
         }
-       
+
 
         // Start tracking when the page loads
         window.onload = startTracking;
     </script>
     <br>
-    
+
 </body>
 </html>

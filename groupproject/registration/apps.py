@@ -1,3 +1,4 @@
+"""Setup table for registration models."""
 from django.apps import AppConfig
 
 

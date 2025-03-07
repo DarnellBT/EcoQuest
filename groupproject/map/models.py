@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Location(models.Model):
     """Attributes of Location table"""
     name = models.CharField(max_length=100)

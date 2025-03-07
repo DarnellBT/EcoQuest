@@ -14,20 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from about import views as about_view
+from challenge import views as challenge_view
+from dashboard import views as dashboard_view
 from django.contrib import admin
-from django.urls import path, include
-from registration import views as register_view
+from django.urls import path
+from leaderboard import views as leaderboard_view
 from login import views as login_view
 from main import views as main_view
-from dashboard import views as dashboard_view
 from map import views as map_view
-from challenge import views as challenge_view
-from quiz import views as quiz_view
-from challenge import views as challenge_view
-from leaderboard import views as leaderboard_view
 from qrcodescan import views as qr_view
+from quiz import views as quiz_view
+from registration import views as register_view
 from sustain import views as sus_view
-from about import views as about_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,6 +49,7 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('about/', about_view.about, name="about")
+    path('about/', about_view.about, name="about"),
+    path('quiz/<int:id>/results/', quiz_view.results, name='results'),
+    
 ]
-
