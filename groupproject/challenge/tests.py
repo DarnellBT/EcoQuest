@@ -175,7 +175,7 @@ class ImageUploadTest(TestCase):
         }
         form = ImageUpload({}, form_data)
         self.assertFalse(form.is_valid())
-        # Uploads invalid format.
+        # Uploads invalid empty file.
         form_data = {
             'image': [
                 InMemoryUploadedFile(
@@ -184,6 +184,26 @@ class ImageUploadTest(TestCase):
                     name='test.png',
                     content_type='image/png',
                     size=0,
+                    charset='utf-8',
+                )
+            ]
+        }
+        form = ImageUpload({}, form_data)
+        self.assertFalse(form.is_valid())
+        # Uploads invalid file type.
+        file = BytesIO()
+        image = Image.new('RGB', (1000, 1000))
+        image.save(file, 'png')
+        file.name = 'test.png'
+        file.seek(0)
+        form_data = {
+            'image': [
+                InMemoryUploadedFile(
+                    file,
+                    field_name='test',
+                    name='test.png',
+                    content_type='text/plain',
+                    size=sys.getsizeof(file),
                     charset='utf-8',
                 )
             ]
