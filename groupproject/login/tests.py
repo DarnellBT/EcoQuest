@@ -1,8 +1,21 @@
 """Module contains test cases for login"""
 from django.test import TestCase
 from django.urls import reverse
-
 from .forms import LoginForm
+
+
+def setup_registration(instance):
+    """Sets up the user registration"""
+    register_form_data = {
+        'username': 'Dragonite',
+        'first_name': 'John',
+        'last_name': 'Doe',
+        'email': 'JohnDoe@email.com',
+        'password1': 'secret_pass',
+        'password2': 'secret_pass'
+    }
+    # Registers user.
+    instance.client.post('/register/', register_form_data)
 
 
 class LoginViewTest(TestCase):
@@ -17,16 +30,7 @@ class LoginViewTest(TestCase):
 
     def test_home_page_redirect_loads(self):
         """Test if the login page loads successfully"""
-        # Registers user.
-        register_form_data = {
-            'username': 'Dragonite',
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'JohnDoe@email.com',
-            'password1': 'secret_pass',
-            'password2': 'secret_pass'
-        }
-        self.client.post('/register/', register_form_data)
+        setup_registration(self)
 
         form_data = {
             'username': 'Dragonite',
@@ -45,16 +49,7 @@ class LoginFormTest(TestCase):
 
     def test_valid_form(self):
         """Test if the form is valid"""
-        # Registers user.
-        register_form_data = {
-            'username': 'Dragonite',
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'JohnDoe@email.com',
-            'password1': 'secret_pass',
-            'password2': 'secret_pass'
-        }
-        self.client.post('/register/', register_form_data)
+        setup_registration(self)
 
         form_data = {
             'username': 'Dragonite',
@@ -65,16 +60,7 @@ class LoginFormTest(TestCase):
 
     def test_invalid_form(self):
         """Test if an invalid form is rejected"""
-        # Registers user.
-        register_form_data = {
-            'username': 'Dragonite',
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'JohnDoe@email.com',
-            'password1': 'secret_pass',
-            'password2': 'secret_pass'
-        }
-        self.client.post('/register/', register_form_data)
+        setup_registration(self)
         # Checks that if all fields are empty, the form should not be valid.
         form_data = {
             'username': '',
