@@ -4,7 +4,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from ..registration.models import UserProfile
+from registration.models import UserProfile
 from .models import Challenge, ChallengeCompleted
 from .forms import ImageUpload
 from io import BytesIO
