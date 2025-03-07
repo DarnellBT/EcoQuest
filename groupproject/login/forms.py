@@ -1,5 +1,5 @@
+from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
-
 class LoginForm(AuthenticationForm):
-    pass
+    username = forms.EmailField(label='Email', max_length=254)
