@@ -18,6 +18,15 @@ class RegistrationForm(UserCreationForm):
         widgets = {
             'password': forms.PasswordInput()
         }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'placeholder':'Username'})
+        self.fields['first_name'].widget.attrs.update({'placeholder':'First Name'})
+        self.fields['last_name'].widget.attrs.update({'placeholder':'Last Name'})
+        self.fields['email'].widget.attrs.update({'placeholder':'Email'})
+        self.fields['password1'].widget.attrs.update({'placeholder':'Password'})
+        self.fields['password2'].widget.attrs.update({'placeholder':'Password'})
 
     def clean_username(self):
         """Checks whether username exists in database"""
