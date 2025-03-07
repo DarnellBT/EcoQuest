@@ -8,7 +8,6 @@ class MainViewTest(TestCase):
 
     def test_main_page_loads(self):
         """Test if the main page loads successfully"""
-
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         # Check we get registration template.
