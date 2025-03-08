@@ -2,11 +2,24 @@ from django.shortcuts import render, redirect
 from challenge.models import Challenge, ChallengeCompleted, ChallengeImages
 from django.contrib.auth.models import User
 from registration.models import UserProfile
+from django.contrib import messages
 
 def admin_portal(request):
     return render(request, 'admin_page.html')
 
 def gamekeeper_portal(request):
+    user_profile = UserProfile.objects.get(userId=request.user.id)
+
+    if user_profile.is_admin:
+        pass
+    elif user_profile.is_game_keeper:
+        pass
+    else: 
+        messages.error(request, 'You do not have access!')
+        return redirect("../home/")
+   
+
+
     all_entries = ChallengeImages.objects.all()
     all_info = []
 
