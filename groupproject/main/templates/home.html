@@ -18,6 +18,13 @@
         <a href="{% url 'logout' %}" class="logout-button">Logout</a>
     </div>
 </header>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="message">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 <div class="button-container">
     <a href="/sustainability" class="button button1">Sustainability</a>

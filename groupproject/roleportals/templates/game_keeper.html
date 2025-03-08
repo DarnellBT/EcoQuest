@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game Keeper Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    {% for userId, challenge, image, points, imageId in info %}
+    <div>
+        <p>User ID: {{ userId }}</p>
+        <p>Challenge: {{ challenge }}</p>
+        <p><img src="{{ image }}" alt="img" width="200" height="200"></p>
+        <p>Points: {{ points }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="checkbox" id="reject_{{ userId }}_{{ challenge }}" name="rejected_{{ userId }}_{{ challenge }}" value="Reject">
+            <label for="reject_{{ userId }}_{{ challenge }}">Reject</label><br>
+            <input type="checkbox" id="approve_{{ userId }}_{{ challenge }}" name="approved_{{ userId }}_{{ challenge }}" value="Approved">
+            <label for="approve_{{ userId }}_{{ challenge }}">Approve</label><br>
+            <input type="hidden" name="userId" value="{{ userId }}">
+            <input type="hidden" name="challenge" value="{{ challenge }}">
+            <input type="hidden" name="image" value="{{ image }}">
+            <input type="hidden" name="imageId" value="{{ imageId }}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <hr>
+{% endfor %}
+
+
+</body>
+</html>
