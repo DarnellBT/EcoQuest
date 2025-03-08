@@ -1,42 +1,84 @@
+/*Change overall font*/
+main {
+    font-family: 'Poppins', sans-serif;
+}
+
+/*Title*/
 h1 {
     text-align: center;
     font-size: 2vw;
 }
 
+/*The form itself*/
 form {
     text-align: center;
     font-size: 1.5vw;
 }
 
-main {
-    font-family: 'Poppins', sans-serif;
+/*Styling for help messages*/
+.messages {
+    list-style-type: none;
+}
+.message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
 }
 
+/*The box containing it*/
 .box1 {
     margin: auto;
     width: 50%;
-    border: 3px solid black;
+    border-radius: 25px;
+    border: solid aliceblue;
+    padding: 1vw;
     background-color: #00c896;
-    padding: 15px;
 }
 
+/*Submit button*/
+button {
+    color: aliceblue;
+    font-size: 1.2vw;
+    width: 25%;
+    background-color: #007d69;
+
+    padding: 0.5vw 2vw;
+    text-decoration: none;
+    border-radius: 5px;
+    border: solid aliceblue;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+button:hover {
+    background-color: #00a87e;
+    cursor: pointer;
+}
+
+/*Links to Register page*/
+.register-link {
+    size: 8pt;
+    text-decoration: underline;
+}
 a {
     text-decoration: none;
     color: black;
     text-align: center;
 }
 
-.register-link {
-    size: 8pt;
-    text-decoration: underline;
-}
+/* Responsive Styles */
+/*tablet*/
+@media screen and (max-width: 768px) {
 
-.messages {
-    list-style-type: none;
 }
-
-.message {
-    color: red;
-    font-weight: bold;
-    text-align: center;
+/*Phone*/
+@media screen and (max-width: 480px) {
+    button {
+        font-size: 1.5vw;
+        width: 30%;
+        margin: 10px auto;
+    }
+    .box1 {
+        width: 50%;
+    }
 }
