@@ -33,7 +33,7 @@ class LoginViewTest(TestCase):
         setup_registration(self)
 
         form_data = {
-            'username': 'Dragonite',
+            'username': 'JohnDoe@email.com',
             'password': 'secret_pass'
         }
 
@@ -52,7 +52,7 @@ class LoginFormTest(TestCase):
         setup_registration(self)
 
         form_data = {
-            'username': 'Dragonite',
+            'username': 'JohnDoe@email.com',
             'password': 'secret_pass'
         }
         form = LoginForm(data=form_data)
@@ -70,14 +70,14 @@ class LoginFormTest(TestCase):
         self.assertFalse(form.is_valid())
         # Checks that if password is not correct, the form should not be valid.
         form_data = {
-            'username': 'Dragonite',
+            'username': 'JohnDoe@email.com',
             'password': 'secret_wrong'
         }
         form = LoginForm(data=form_data)
         self.assertFalse(form.is_valid())
-        # Checks that if username is not correct, the form should not be valid.
+        # Checks that if email is not correct, the form should not be valid.
         form_data = {
-            'username': 'Not_Dragonite',
+            'username': 'JohnDoe@email.wrong',
             'password': 'secret_pass'
         }
         form = LoginForm(data=form_data)
