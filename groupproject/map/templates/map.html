@@ -17,6 +17,7 @@
             <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>
         <br/>
+        
         <div class="box1">
             <p style="text-decoration: underline;">Code Submission</p>
             <form method="post" action="./submit/">
@@ -35,6 +36,7 @@
             <div id="map-container" style="width: 100%; height: 60%; align-content: center;">
                 {{ map|safe }}
             </div>
+            <a href="{% url 'qr-scanner' %}">Scan QR Code</a>
         </div>
     </main>
 
@@ -49,7 +51,7 @@
                 watchID = navigator.geolocation.watchPosition(updateLocation, showError, {
                     enableHighAccuracy: true,
                     maximumAge: 0,
-                    timeout: 5000
+                    timeout: 5000,
                 });
             } else {
                 alert("Geolocation is not supported by this browser.");
@@ -59,24 +61,27 @@
         function updateLocation(position) {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
-            document.getElementById('lat').textContent = lat.toFixed(6);
-            document.getElementById('long').textContent = lon.toFixed(6);
-            // Send location to the backend
             sendLocationToServer(lat, lon);
         }
-
+        let lastUpdateTime = 0;
         function sendLocationToServer(lat, lon) {
-            fetch('/map/submit-location/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken() // Get CSRF token from cookies
-                },
-                body: JSON.stringify({ latitude: lat, longitude: lon })
-            })
-            .then(response => response.json())
-            .then(data => console.log('Location sent:', data))
-            .catch(error => console.error('Error sending location:', error));
+            const currentTime = Date.now();
+            if (currentTime - lastUpdateTime >= 20000) {
+                fetch('/map/submit-location/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken() // Get CSRF token from cookies
+                    },
+                    body: JSON.stringify({ latitude: lat, longitude: lon })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('map-container').innerHTML = data.map;
+                    lastUpdateTime = Date.now();
+                })
+                .catch(error => console.error('Error sending location:', error));
+            }
         }
 
         function getCSRFToken() {
