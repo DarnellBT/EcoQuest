@@ -27,6 +27,7 @@ from qrcodescan import views as qr_view
 from quiz import views as quiz_view
 from registration import views as register_view
 from sustain import views as sus_view
+from roleportals import views as role_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,5 +52,6 @@ urlpatterns = [
     path('sustainability/', sus_view.sustain, name='sustainability'),
     path('about/', about_view.about, name="about"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
-    
+    path('admin-portal/', role_view.admin_portal, name='admin-portal'),
+    path('gamekeeper-portal/', role_view.gamekeeper_portal, name="gamekeeper-portal"),
 ]
