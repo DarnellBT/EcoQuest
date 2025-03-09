@@ -119,3 +119,13 @@ h1 {
         padding: 8px 16px;
     }
 }
+
+.messages {
+    list-style-type: none;
+}
+
+.message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
