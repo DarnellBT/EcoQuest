@@ -1,131 +1,311 @@
 body {
-    background-color: darkgray;
-    background-image: url("../images/exeteruni.jpg");
+    background-color: white;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     margin: 0;
+    height: 100vh;
+    position: relative;
 }
 
-/* Headings */
-h1 {
-    color: aliceblue;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Button Container */
-.button-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 20px;
-    width: 80vw;
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 10px;
-}
-
-/* Button Styling */
-.button {
-    color: aliceblue;
-    background-color: darkgreen;
-    font-size: 24px;
-    width: 100%;
-    height: 150px;
-    text-align: center;
-    line-height: 150px;
-    border: 3px solid aliceblue;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: normal;
-    display: block;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Button Variations */
-.button1 {
-    background-color: #007d69;
-}
-
-.button2 {
-    background-color: #00c896;
-}
-
-.button1:hover, .button2:hover {
-    background-color: #00a87e;
-}
-
-/* Logout Button */
-.logout-container {
+/* Ensure the main container takes full height of the viewport */
+main {
     display: flex;
-    justify-content: flex-end; /* Pushes button to the right */
-    padding: 20px;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align content to top */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    padding-top: 25vh; /* Adjust space from the top */
+    gap: 1rem; /* Space between image and text */
 }
 
 
-.logout-button {
-    color: white;
-    background-color: red;
-    font-size: 18px;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none;
-    display: block;
-    margin: 20px auto;
+.image-banner {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 50vh; /* Set the desired height for the image */
+    width: 90vw; /* Set the container width to be less than the full width */
+}
+
+.image-banner img {
+    width: 100%; /* The image takes full width of its container */
+    height: 100%; /* The image takes full height of the container */
+    object-fit: cover; /* Maintain the image's aspect ratio, cover the box */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Shadow */
+}
+
+
+.content-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 900px;
+    margin-top: 1rem;
+}
+
+.content-box {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 200px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.logout-button:hover {
-    background-color: darkred;
-    cursor: pointer;
+    width: 100%;
 }
 
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    /* Tablet */
-    .button-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .button {
-        font-size: 20px;
-        height: 120px;
-        line-height: 120px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    /* Mobile screens */
-    .button-container {
-        grid-template-columns: 1fr;
-    }
-
-    .button {
-        font-size: 18px;
-        height: 100px;
-        line-height: 100px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .logout-button {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-}
-
-.messages {
-    list-style-type: none;
-}
-
-.message {
-    color: red;
+h2 {
+    font-size: 1.8rem;
     font-weight: bold;
-    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Lower opacity for a more subtle effect */
+    z-index: -1;
+}
+
+
+.container {
+    display: grid;
+    width: 96%;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 14rem;
+    margin: 0 auto;
+}
+
+aside {
+    height: 100vh;
+    position: fixed;  /* Keep the sidebar fixed on large screens */
+    top: 0;
+    left: 0;
+    width: 18rem;  /* Width of the sidebar */
+    background: white;
+    z-index: 1000;
+}
+
+#close_button {
+    display: none;
+    pointer-events: none;
+}
+
+aside .top {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+aside .logo {
+    display: flex;
+    gap: 1rem;
+    margin-top: -20px; /* Move it up */
+}
+
+
+aside .sidebar {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: gray;
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    height: 3rem;
+    transition: color 0.3s ease;
+}
+
+aside .sidebar a:hover {
+    color: lightseagreen;
+}
+
+aside .sidebar a.active {
+    background: lightseagreen; /* Highlight color */
+    color: white !important; /* Ensure text is visible */
+    font-weight: bold;
+    border-radius: 10px;
+    padding-left: 1rem;
+}
+
+/* Large Screens */
+@media screen and (min-width: 1200px) {
+    aside {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: white;
+        flex-direction: row; /* Horizontal layout */
+        align-items: center;
+        justify-content: flex-start; /* Make sure other items align properly */
+        padding: 1rem 2rem;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    aside .sidebar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2rem;
+        height: auto;
+        width: 100%;
+    }
+
+    aside .sidebar a {
+        padding: 5px 15px; /* Increase padding on the right */
+        margin: 0;
+        color: gray;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s, padding-right 0.3s;
+    }
+
+    /* Adjust the position of the last item (Login) to the far right */
+    aside .sidebar a:last-child {
+        margin-left: auto; /* Push the Login link to the far right */
+        padding-right: 20px; /* Optional: To add more spacing */
+        margin-right: 40px; /* Adds space from the edge of the sidebar */
+    }
+
+    /* Hide menu button on larger screens */
+    #menu_bar {
+        display: none;
+    }
+}
+
+/* Mobile Sidebar */
+@media screen and (max-width: 1200px) {
+    
+    main {
+        display: flex;
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: flex-start; /* Align content to top */
+        height: 100vh; /* Full viewport height */
+        width: 100vw; /* Full viewport width */
+        padding-top: 10vh; /* Adjust space from the top for smaller screens */
+        gap: 1rem; /* Space between image and text */
+    }
+
+    .container {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    aside {
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        background: white;
+        display: none;
+        left: -100px;
+        animation: menuAni 1s forwards;
+    }
+
+    #close_button {
+        display: block;
+        pointer-events: auto;
+    }
+
+    @keyframes menuAni {
+        to {
+            left: 0;
+        }
+    }
+
+    aside .logo h2 {
+        display: inline;
+    }
+
+    aside .sidebar h3 {
+        display: inline;
+    }
+
+    aside .sidebar a {
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .top div.close span {
+        display: inline;
+        position: absolute;
+        right: 0;
+        margin-right: 35px;
+        font-size: 35px;
+    }
+
+    /* Menu button fixed at top-left for smaller screens */
+    #menu_bar {
+        position: fixed;
+        top: 1rem; /* Space from the top */
+        left: 1rem; /* Space from the left */
+        z-index: 1000; /* Ensure it's above other content */
+        background: white;
+        cursor: pointer;
+        font-size: 2rem; /* Adjust size as needed */
+        display: block;
+    }
+
+    /* Hide menu button when the sidebar is active */
+    #menu_bar.hidden {
+        display: none;
+    }
+}
+
+/* Smaller screens */
+@media screen and (max-width: 768px) {
+    aside {
+        position: fixed;
+        width: 18rem;
+        z-index: 3;
+        background: white;
+        display: none;
+    }
+
+    #close_button {
+        display: block;
+        pointer-events: auto;
+    }
+
+    .right .top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0.8rem;
+        background: white;
+        width: 100%;
+        z-index: 2;
+        margin: 0;
+    }
+
+    .right .top button {
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        position: absolute;
+        left: 1rem;
+    }
 }
