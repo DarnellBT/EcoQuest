@@ -37,7 +37,6 @@ def generate_test_image():
     file = BytesIO()
     image = Image.new('RGB', (1000, 1000))
     image.save(file, 'png')
-    file.name = 'test.png'
     file.seek(0)
     upload_image = InMemoryUploadedFile(
         file,
@@ -129,6 +128,7 @@ class ChallengeViewTest(TestCase):
             'image': [generate_test_image()]
         }
         # Upload image.
+        # File named 'test.png' is uploaded to 'groupproject/static/Image/' and should be deleted after testing
         response = self.client.post('/challenge/1/', form_data)
         # Check we successfully redirect to map at we also get the map template.
         map_response = self.assertRedirects(response, '/map/', status_code=302, target_status_code=200, fetch_redirect_response=True)
@@ -141,16 +141,14 @@ class ChallengeViewTest(TestCase):
         """Test if the login page loads successfully when a user logs out."""
         setup_account(self)
         response = self.client.get(reverse('logout'))
-        login_response = self.assertRedirects(response, 'login', status_code=302, target_status_code=404,
-                                              fetch_redirect_response=True)
+        login_response = self.assertRedirects(response, 'login', status_code=302, target_status_code=404, fetch_redirect_response=True)
         # Check we get loginPage template.
         self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
 
     def test_login_page_redirect_loads_if_not_logged_in(self):
         """Test if the login page loads successfully if a user is not logged in."""
         response = self.client.get(reverse('challenge', kwargs={'id': 1}))
-        login_response = self.assertRedirects(response, '/login', status_code=302, target_status_code=301,
-                                              fetch_redirect_response=True)
+        login_response = self.assertRedirects(response, '/login', status_code=302, target_status_code=301, fetch_redirect_response=True)
         # Check we get loginPage template.
         self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
 
@@ -172,7 +170,7 @@ class ImageUploadTest(TestCase):
         form_data = {
             'image': []
         }
-        form = ImageUpload({}, form_data)
+        form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
         # Uploads invalid empty file.
         form_data = {
@@ -187,25 +185,24 @@ class ImageUploadTest(TestCase):
                 )
             ]
         }
-        form = ImageUpload({}, form_data)
+        form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
         # Uploads invalid file type.
         file = BytesIO()
         image = Image.new('RGB', (1000, 1000))
         image.save(file, 'png')
-        file.name = 'test.png'
         file.seek(0)
         form_data = {
             'image': [
                 InMemoryUploadedFile(
                     file,
                     field_name='test',
-                    name='test.png',
+                    name='test.txt',
                     content_type='text/plain',
                     size=sys.getsizeof(file),
                     charset='utf-8',
                 )
             ]
         }
-        form = ImageUpload({}, form_data)
+        form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
