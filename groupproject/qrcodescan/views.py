@@ -20,7 +20,7 @@ def scanner(request):
         data = json.loads(request.body)
         decoded_test = data.get('decoded')
         # checks if url is successfully scanned
-        print('Decoded QR Code: ', decoded_test)
+        #print('Decoded QR Code: ', decoded_test)
         # send to javascript and redirect back to map
-        return JsonResponse({'redirect_url': '/map/'})
+        return JsonResponse({'redirect_url': f'../{decoded_test}/'})
     return render(request, 'scan.html')
