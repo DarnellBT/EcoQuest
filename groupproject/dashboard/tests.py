@@ -20,7 +20,7 @@ def setup_account(instance):
     }
     instance.client.post('/register/', register_form_data)
     form_data = {
-        'username': 'Dragonite',
+        'username': 'JohnDoe@email.com',
         'password': 'secret_pass'
     }
     instance.client.post('/login/', form_data)
