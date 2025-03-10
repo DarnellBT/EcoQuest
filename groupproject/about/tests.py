@@ -8,7 +8,7 @@ class AboutViewTest(TestCase):
 
     def test_about_page_loads(self):
         """Test if the about page loads successfully"""
-        response = self.client.get(reverse('about'))
+        response = self.client.get(reverse('contact'))
         # Check we successfully load about at we also get the about template.
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'about.html')
