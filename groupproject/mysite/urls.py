@@ -28,6 +28,7 @@ from qrcodescan import views as qr_view
 from quiz import views as quiz_view
 from registration import views as register_view
 from sustain import views as sus_view
+from roleportals import views as role_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,10 +51,12 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('about/', about_view.about, name="about"),
+    path('contact/', about_view.about, name="contact"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='passwordResetConfirm.html'), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete'),
+    path('admin-portal/', role_view.admin_portal, name='admin-portal'),
+    path('gamekeeper-portal/', role_view.gamekeeper_portal, name="gamekeeper-portal"),
 ]

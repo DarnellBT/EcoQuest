@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'qrcodescan',
     'sustain',
     'about',
+    'roleportals',
 ]
 
 MIDDLEWARE = [

@@ -7,25 +7,95 @@
     <title>Home</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-</head>
-<body>
-<header style="background-color: #00a87e; display: flex; justify-content: space-between; align-items: center; padding: 10px;">
-    <h1 style="color: aliceblue; top: 0; position: sticky;">Welcome to the Home Page</h1>
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <h2><span class="danger">EcoQuest</span></h2>
+          </div>
+          <div class="close" id="close_button">
+            <span class="material-symbols-sharp">close</span>
+          </div>
+        </div>
 
-    <!-- Logout button wrapped inside a div for alignment -->
-    <div class="logout-container">
-        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+        <div class="sidebar">
+
+          <a href="#" class="active"> 
+            <span class="material-symbols-sharp">grid_view</span>
+            <h3> Home </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">leaderboard</span>
+            <h3> Leaderboard </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">map</span>
+            <h3> Map </h3>
+          </a>
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">trophy</span>
+            <h3> Rewards </h3>
+          </a>
+
+
+          <a href="#"> 
+            <span class="material-symbols-sharp">call</span>
+            <h3> Contact </h3>
+          </a>
+
+
+          <a href="#"> 
+            <span class="material-symbols-sharp"> login </span>
+            <h3> Login </h3>
+          </a>
+        
+          
+        </div>
+      </aside>
+  
+      <main>
+        <div class="image-banner">
+            <img src="{% static 'images/exeteruni.jpg' %}" alt="University of Exeter">
+        </div>
+    
+        <div class="content-boxes">
+            <section class="content-box">
+                <h2>Welcome to <span class="highlight">EcoQuest</span></h2>
+                <p>EcoQuest is a platform dedicated to promoting sustainability and eco-friendly initiatives.</p>
+            </section>
+    
+            <section class="content-box">
+                <h2>What is <span class="highlight">Sustainability</span>?</h2>
+                <p>Sustainability is about meeting our needs without compromising the ability of future generations to meet theirs.</p>
+            </section>
+    
+            <section class="content-box">
+                <h2>What <span class="highlight">We Do</span></h2>
+                <p>We provide resources, challenges, and community engagement to encourage a greener lifestyle.</p>
+            </section>
+        </div>
+      </main>
+    
+  
+      <div class="right">
+        <div class="top">
+          <button id="menu_bar">
+            <span class="material-symbols-sharp"> menu </span>
+          </button>
+      
+        </div>
+        
+      </div>
+
     </div>
-</header>
-
-<div class="button-container">
-    <a href="/sustainability" class="button button1">Sustainability</a>
-    <a href="/leaderboard" class="button button2">Leaderboard</a>
-    <a href="/map" class="button button1">Contact</a>
-    <a href="/map" class="button button2">Rewards</a>
-    <a href="/map" class="button button1">Map</a>
-    <a href="/account/" class="button button2">Account</a>
-</div>
-</body>
+    
+  </body>
 </html>
