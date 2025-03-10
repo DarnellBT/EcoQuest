@@ -40,11 +40,3 @@ class LeaderboardViewTest(TestCase):
                                               fetch_redirect_response=True)
         # Check we get loginPage template.
         self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
-
-    def test_login_page_redirect_loads_if_not_logged_in(self):
-        """Test if the login page loads successfully if a user is not logged in."""
-        response = self.client.get(reverse('leaderboard'))
-        login_response = self.assertRedirects(response, '/login', status_code=302, target_status_code=301,
-                                              fetch_redirect_response=True)
-        # Check we get loginPage template.
-        self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
