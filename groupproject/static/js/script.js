@@ -12,11 +12,7 @@ function domReady(fn) {
 domReady(function () {
 
 
-    function onScanSuccess(decodeText, decodeResult) {
-
-        alert("Your QR code is: " + decodeText);
-
-
+    function onScanSuccess(decodeText) {
         sendQRCodeToServer(decodeText);
     }
 
