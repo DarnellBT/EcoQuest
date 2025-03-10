@@ -1,6 +1,6 @@
 """Module defined django models to create tables in database"""
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Quiz(models.Model):
     """Attributes in Quiz table"""
@@ -19,3 +19,8 @@ class Question(models.Model):
     choice4 = models.CharField(max_length=200)
     answer = models.CharField(max_length=200)
     points = models.IntegerField(default=0)
+
+class QuizCompleted(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    quiz = models.ForeignKey(Quiz, on_delete=models.DO_NOTHING)
+    completed = models.BooleanField()

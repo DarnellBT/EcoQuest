@@ -37,19 +37,18 @@ class MapView(TemplateView):
         all_locations = Location.objects.all()
         for data in all_locations:
             print(f"Adding marker for location: {data.name}, Latitude: {data.latitude}, Longitude: {data.longitude}")
+            image_path = f"{data.icon}"
+            print("Image Path: ", image_path)
+            
             folium.Marker(
                 location=[data.latitude, data.longitude],
-                popup=data.name,
-                tooltip=f'{data.name}'
+                
+                icon= folium.CustomIcon(icon_image=f"static/images/{data.icon}.png"),
+                tooltip=f'{data.name}',
             ).add_to(map_fig)
         # Add a specific marker at given coordinates
-        specific_lat = 50.7350
-        specific_lon = -3.5343
-        folium.Marker(
-            location=[specific_lat, specific_lon],
-            popup='Centre of Campus',
-            tooltip='Campus'
-        ).add_to(map_fig)
+        
+        
         # Render map to HTML format
         map_html = map_fig._repr_html_()
         # Pass HTML content to map.html
@@ -57,9 +56,9 @@ class MapView(TemplateView):
         # send it to map
         return context
 
-
+"""
 def submit_process(request):
-    """Function processes POST method once form is submitted"""
+    Function processes POST method once form is submitted
     if request.method == 'POST':
         # retrieve form data and get all Location and Challenge objects    
         randomString = request.POST.get('randomString')
@@ -98,7 +97,7 @@ def submit_process(request):
     return render(request, 'submitProcessing.html')
 
 def create_map(all_locations):
-    """Creates a folium map with markers for all locations."""
+    Creates a folium map with markers for all locations.
     map_fig = folium.Map(
         location=[50.73632605587163, -3.5348055751142917],
         zoom_start=7,
@@ -125,7 +124,7 @@ def create_map(all_locations):
         folium.Marker(
             location=[data.latitude, data.longitude],
             popup=data.name,
-            tooltip=f'{data.name}'
+            tooltip=f'{data.name'
         ).add_to(map_fig)
 
     
@@ -133,7 +132,7 @@ def create_map(all_locations):
     return map_fig._repr_html_()
 
 def submit_location(request):
-    """Handles POST method from javascript (geolocation of user)"""
+    Handles POST method from javascript (geolocation of user)
     if request.method == 'POST':
         data = json.loads(request.body)
         latitude = data.get('latitude')
@@ -146,7 +145,7 @@ def submit_location(request):
             loc_long = location.longitude
             distance = calc_distance(latitude, longitude, loc_lat, loc_long)
 
-            print(f"Distance to {location.name}: ", distance)
+            print("Distance to location.name}: ", distance)
             if distance < 40.01:
                 location_include.append(location)
         print(f"Locations to include after inclusion: {len(location_include)}")
@@ -168,3 +167,4 @@ def calc_distance(lat1, lon1, lat2, lon2):
     c = 2 * math.asin(math.sqrt(a))
     r = 6371000
     return c * r
+    """

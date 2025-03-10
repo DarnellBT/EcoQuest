@@ -42,81 +42,9 @@
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        let watchID;
-
-
-        function startTracking() {
-            if (navigator.geolocation) {
-                watchID = navigator.geolocation.watchPosition(updateLocation, showError, {
-                    enableHighAccuracy: true,
-                    maximumAge: 0,
-                    timeout: 5000,
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function updateLocation(position) {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            sendLocationToServer(lat, lon);
-        }
-        let lastUpdateTime = 0;
-        function sendLocationToServer(lat, lon) {
-            const currentTime = Date.now();
-            if (currentTime - lastUpdateTime >= 20000) {
-                fetch('/map/submit-location/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCSRFToken() // Get CSRF token from cookies
-                    },
-                    body: JSON.stringify({ latitude: lat, longitude: lon })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('map-container').innerHTML = data.map;
-                    lastUpdateTime = Date.now();
-                })
-                .catch(error => console.error('Error sending location:', error));
-            }
-        }
-
-        function getCSRFToken() {
-            let cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim();
-                if (cookie.startsWith('csrftoken=')) {
-                    return cookie.split('=')[1];
-                }
-            }
-            return '';
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        }
-
-
-        // Start tracking when the page loads
-        window.onload = startTracking;
-    </script>
-    <br>
-
+    <!-- Put in another location on the page-->
+    <a href="https://www.flaticon.com/free-icons/recycle" title="recycle icons">Recycle icons created by Pixel perfect - Flaticon</a><br>
+    <a href="https://www.flaticon.com/free-icons/library" title="library icons">Library icons created by Freepik - Flaticon</a><br>
+    <a href="https://www.flaticon.com/free-icons/computer-lab" title="computer lab icons">Computer lab icons created by Vectorsclub - Flaticon</a>
 </body>
 </html>
