@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'qrcodescan',
     'sustain',
     'about',
+    'roleportals',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+# Email Validation
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Keep the default backend
+    'login.backends.EmailBackend',   # Add the custom email backend
 ]
 
 # Internationalization
