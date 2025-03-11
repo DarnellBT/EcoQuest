@@ -5,13 +5,9 @@ import math
 import folium
 import folium.elements
 import folium.plugins
-from challenge.models import Challenge, ChallengeCompleted
-from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from django.contrib.messages import get_messages
+from django.shortcuts import redirect
 from django.views.generic import TemplateView
-from quiz import models as quiz_model
-from registration.models import UserProfile
-
 from .models import Location
 
 
@@ -23,6 +19,9 @@ class MapView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        storage = get_messages(self.request)
+        print(storage)
+        context['messages'] = storage
         # Create a map figure, with initial location and settings
         map_fig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],

@@ -19,18 +19,20 @@
         <br/>
         
         <div class="box1">
-            <p style="text-decoration: underline;">Code Submission</p>
-            <form method="post" action="./submit/">
-                {% csrf_token %}
-                <input type="text" name="randomString" value="">
-                <input type="submit" value="Submit">
-            </form>
+           
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
             <p>To get the challenge or quiz, please follow these steps</p>
             <ul>
-                <li>Click the location marker</li>
-                <li>Scan the QR Code to obtain the text within</li>
-                <li>Enter the text into the input box and click submit</li>
+                <li>Click the QR Code Button</li>
+                <li>Scan the QR Code</li>
+                <li>You will be redirected to the quiz or challenge</li>
             </ul>
 
             <div id="map-container" style="width: 100%; height: 60%; align-content: center;">

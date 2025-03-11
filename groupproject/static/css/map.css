@@ -38,3 +38,13 @@ form {
   width: 20%;
 }
 
+.messages {
+  list-style-type: none;
+
+}
+.message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
