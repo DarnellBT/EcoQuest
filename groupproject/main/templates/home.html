@@ -25,38 +25,47 @@
 
         <div class="sidebar">
 
-          <a href="#" class="active"> 
+          <a href="{% url 'home' %}" class="active"> 
             <span class="material-symbols-sharp">grid_view</span>
             <h3> Home </h3>
           </a>
 
-          <a href="#"> 
+          <a href="{% url 'leaderboard' %}"> 
             <span class="material-symbols-sharp">leaderboard</span>
             <h3> Leaderboard </h3>
           </a>
 
-          <a href="#"> 
+          <a href="{% url 'map' %}"> 
             <span class="material-symbols-sharp">map</span>
             <h3> Map </h3>
           </a>
 
-          <a href="#"> 
-            <span class="material-symbols-sharp">trophy</span>
-            <h3> Rewards </h3>
-          </a>
-
-
-          <a href="#"> 
+          <a href="{% url 'contact' %}"> 
             <span class="material-symbols-sharp">call</span>
             <h3> Contact </h3>
           </a>
 
 
-          <a href="#"> 
-            <span class="material-symbols-sharp"> login </span>
-            <h3> Login </h3>
+          
+
+          {% if userprofile.is_user %}
+          <a href="{% url 'account' %}"> 
+            <span class="material-symbols-sharp">trophy</span>
+            <h3> Account </h3>
           </a>
+          {% endif %}
+          
+          {% if userprofile.is_game_keeper %}
+          <a href="{% url 'gamekeeper-portal' %}"> 
+            <span class="material-symbols-sharp">trophy</span>
+            <h3> Game Keeper </h3>
+          </a>
+          {% endif %}
         
+          <a href="{% url 'logout'%}"> 
+            <span class="material-symbols-sharp"> login </span>
+            <h3> Logout </h3>
+          </a>
           
         </div>
       </aside>
