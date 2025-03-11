@@ -45,20 +45,24 @@
             <h3> Contact </h3>
           </a>
 
-
-          
-
           {% if userprofile.is_user %}
           <a href="{% url 'account' %}"> 
-            <span class="material-symbols-sharp">trophy</span>
+            <span class="material-symbols-sharp">exit_to_app</span>
             <h3> Account </h3>
           </a>
           {% endif %}
           
           {% if userprofile.is_game_keeper %}
           <a href="{% url 'gamekeeper-portal' %}"> 
-            <span class="material-symbols-sharp">trophy</span>
+            <span class="material-symbols-sharp">exit_to_app</span>
             <h3> Game Keeper </h3>
+          </a>
+          {% endif %}
+
+          {% if userprofile.is_admin %}
+          <a href="{% url 'admin-portal' %}"> 
+            <span class="material-symbols-sharp">exit_to_app</span>
+            <h3> Admin </h3>
           </a>
           {% endif %}
         
