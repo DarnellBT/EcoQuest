@@ -1,4 +1,5 @@
 """Module contains test cases for dashboard"""
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 from registration.models import UserProfile
@@ -18,12 +19,11 @@ def setup_account(instance):
         'password2': 'secret_pass'
     }
     instance.client.post('/register/', register_form_data)
-    # Logs user in.
-    login_form_data = {
-        'username': 'Dragonite',
+    form_data = {
+        'username': 'JohnDoe@email.com',
         'password': 'secret_pass'
     }
-    instance.client.post('/login/', login_form_data)
+    instance.client.post('/login/', form_data)
 
 
 class DashboardViewTest(TestCase):

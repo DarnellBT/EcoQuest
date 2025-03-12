@@ -52,7 +52,6 @@ def challenge(request, id):
     if request.method == 'POST':
         # retrieve data from form and file
         form = ImageUpload(request.POST, request.FILES)
-        print(request.POST)
         if form.is_valid():
             # retrieve image and path to img (where it will be saved)
             img = form.cleaned_data.get("image")
