@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from about import views as about_view
+from about import views as contact_view
 from challenge import views as challenge_view
 from dashboard import views as dashboard_view
 from django.contrib import admin
@@ -49,7 +49,7 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('contact/', about_view.about, name="contact"),
+    path('contact/', contact_view.contact, name="contact"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
