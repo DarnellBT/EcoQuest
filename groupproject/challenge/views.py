@@ -18,8 +18,8 @@ def challenge(request, id):
     challenge_obj = Challenge.objects.get(challengeId=id)
     user_obj = register_models.UserProfile.objects.get(userId=request.user.id)
     challenge_completed_obj = ChallengeCompleted.objects.filter(challengeId=challenge_obj, userId=user_obj)
-
-    if challenge_completed_obj.exists:
+    print(challenge_completed_obj)
+    if challenge_completed_obj is None:
         messages.error(request, "You have already completed this challenge")
         return redirect("../../../map/")
     else: 

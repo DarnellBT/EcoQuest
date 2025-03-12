@@ -19,7 +19,7 @@ def quiz(request, id):
 
     quiz_completed_record = QuizCompleted.objects.filter(quiz=quiz_obj, user=user_obj)
   
-    if quiz_completed_record.exists():
+    if quiz_completed_record is None:
         messages.error(request, "You have already completed this quiz")
         return redirect("../../../map/")
     else: 
