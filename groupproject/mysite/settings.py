@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'sustain',
     'about',
     'roleportals',
+    'achievements',
 ]
 
 MIDDLEWARE = [

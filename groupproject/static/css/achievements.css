@@ -1,0 +1,15 @@
+.img {
+    width: 3%;
+    height: 3%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.achievements-box {
+    display: flex;
+    align-items: center;
+}
+
+.challenge-name {
+    font-weight: bold;
+}
