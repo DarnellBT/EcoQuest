@@ -31,7 +31,7 @@ def contact(request):
                 subject="Contact Form Submission",
                 body=html_content,
                 from_email="ecoquest.noreply@gmail.com",
-                to=[""], # Replace this with your own personal email to send to it
+                to=["ecoquest.customer.service@outlook.com"],
             )
 
             email.content_subtype = "html"
