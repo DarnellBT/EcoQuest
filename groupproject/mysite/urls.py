@@ -58,5 +58,17 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete'),
     path('admin-portal/', role_view.admin_portal, name='admin-portal'),
     path('gamekeeper-portal/', role_view.gamekeeper_portal, name="gamekeeper-portal"),
-    path('achievements/', achievements_view.achievements, name="achievements")
+    path('achievements/', achievements_view.achievements, name="achievements"),
+    path('admin-portal/edit-location/', role_view.admin_location, name='admin-location'),
+    path('admin-portal/edit-quiz/', role_view.admin_quiz, name='admin-quiz'),
+    path('admin-portal/edit-question/', role_view.admin_question, name='admin-question'),
+    path('admin-portal/edit-challenge/', role_view.admin_challenge, name='admin-challenge'),
+    path('admin-portal/edit-location/edit-location/<int:location_id>/', role_view.edit_location, name='edit_location'),
+    path('admin-portal/edit-location/delete-location/<int:location_id>/', role_view.delete_location, name='delete_location'),
+     path('admin-portal/edit-quiz/edit-quiz/<int:quiz_id>/', role_view.edit_quiz, name='edit_quiz'),
+    path('admin-portal/edit-quiz/delete-quiz/<int:quiz_id>/', role_view.delete_quiz, name='delete_quiz'),
+    path('admin-portal/edit-question/edit-question/<int:question_id>/', role_view.edit_question, name='edit_question'),
+    path('admin-portal/edit-question/delete-question/<int:question_id>/', role_view.delete_question, name='delete_question'),
+    path('admin-portal/edit-challenge/edit-challenge/<int:challenge_id>/', role_view.edit_challenge, name='edit_challenge'),
+    path('admin-portal/edit-challenge/delete-challenge/<int:challenge_id>/', role_view.delete_challenge, name='delete_challenge'),
 ]
