@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'sustain',
     'about',
     'roleportals',
+    'achievements',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 TEMPLATES = [
     {

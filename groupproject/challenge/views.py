@@ -14,6 +14,17 @@ def challenge(request, id):
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
+    
+    challenge_obj = Challenge.objects.get(challengeId=id)
+    user_obj = register_models.UserProfile.objects.get(userId=request.user.id)
+    challenge_completed_obj = ChallengeCompleted.objects.filter(challengeId=challenge_obj, userId=user_obj)
+    print(challenge_completed_obj)
+    if challenge_completed_obj is None:
+        messages.error(request, "You have already completed this challenge")
+        return redirect("../../../map/")
+    else: 
+        pass
+
     all_challenge = Challenge.objects.filter(challengeId=id)
     form = ImageUpload()
     # retrieve fields from Challenge objects

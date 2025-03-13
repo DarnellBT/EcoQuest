@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from about import views as about_view
+from about import views as contact_view
 from challenge import views as challenge_view
 from dashboard import views as dashboard_view
 from django.contrib import admin
@@ -29,6 +29,7 @@ from quiz import views as quiz_view
 from registration import views as register_view
 from sustain import views as sus_view
 from roleportals import views as role_view
+from achievements import views as achievements_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,7 +50,7 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('contact/', about_view.about, name="contact"),
+    path('contact/', contact_view.contact, name="contact"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
@@ -57,4 +58,5 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete'),
     path('admin-portal/', role_view.admin_portal, name='admin-portal'),
     path('gamekeeper-portal/', role_view.gamekeeper_portal, name="gamekeeper-portal"),
+    path('achievements/', achievements_view.achievements, name="achievements")
 ]

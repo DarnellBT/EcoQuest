@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact</title>
+   
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body>
+<main>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            <p><input type="submit" name="submit"></p>
+    </form>
+    
+</main>
+<script src="index.js"></script>
+</body>
+</html>
