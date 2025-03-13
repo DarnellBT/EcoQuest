@@ -25,18 +25,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run Registration Tests
+    - name: Run About Tests
       run: |
-        python groupproject/manage.py migrate registration
-        python groupproject/manage.py test registration
-    - name: Run Login Tests
-      run: |
-        python groupproject/manage.py migrate login
-        python groupproject/manage.py test login
-    - name: Run Map Tests
-      run: |
-        python groupproject/manage.py migrate map
-        python groupproject/manage.py test map
+        python groupproject/manage.py migrate about
+        python groupproject/manage.py test about
     - name: Run Challenge Tests
       run: |
         python groupproject/manage.py migrate challenge
@@ -45,7 +37,31 @@ jobs:
       run: |
         python groupproject/manage.py migrate dashboard
         python groupproject/manage.py test dashboard
+    - name: Run Leaderboard Tests
+      run: |
+        python groupproject/manage.py migrate leaderboard
+        python groupproject/manage.py test leaderboard
+    - name: Run Login Tests
+      run: |
+        python groupproject/manage.py migrate login
+        python groupproject/manage.py test login
     - name: Run Main Tests
       run: |
         python groupproject/manage.py migrate main
         python groupproject/manage.py test main
+    - name: Run Map Tests
+      run: |
+        python groupproject/manage.py migrate map
+        python groupproject/manage.py test map
+    - name: Run Quiz Tests
+      run: |
+        python groupproject/manage.py migrate quiz
+        python groupproject/manage.py test quiz
+    - name: Run Registration Tests
+      run: |
+        python groupproject/manage.py migrate registration
+        python groupproject/manage.py test registration
+    - name: Run Sustain Tests
+      run: |
+        python groupproject/manage.py migrate sustain
+        python groupproject/manage.py test sustain

@@ -1,9 +1,10 @@
 """Module contains logic for quiz app"""
 from django.contrib import messages
-from django.contrib import sessions
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from .models import Question
+from .models import Question, Quiz, QuizCompleted
 from registration.models import UserProfile
+
 
 # pylint: disable=line-too-long
 
@@ -13,7 +14,18 @@ def quiz(request, id):
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
     
-    all_questions = Question.objects.filter(quizId=id)
+    quiz_obj = Quiz.objects.get(quizId=id)
+    user_obj = UserProfile.objects.get(userId=request.user.id).user
+
+    quiz_completed_record = QuizCompleted.objects.filter(quiz=quiz_obj, user=user_obj)
+    print("Completed:", quiz_completed_record.exists())
+    if quiz_completed_record.exists() == True:
+        messages.error(request, "You have already completed this quiz")
+        return redirect("../../../map/")
+    else: 
+        pass
+
+    all_questions = Question.objects.filter(quiz=quiz_obj)
     all_questions = list(all_questions)
     
     
@@ -42,17 +54,16 @@ def quiz(request, id):
         user_choice = request.POST.get("question")
         
         request.session['submitted'].append(user_choice)
-        
-
-        all_questions_choices = Question.objects.filter(quizId=id)
+       
+        all_questions_choices = Question.objects.filter(quiz=quiz_obj)
         all_questions_choices = list(all_questions_choices)
         print(request.session['points'])
         # sets user points in session (change so user points are reset in results after being used)
         # send question, user answer, correct answer
+       
         if request.session['answers'][index_post] == user_choice:
             question_point = request.session['points'][index_post]
             request.session['user_points'] += question_point
-            print("User Score:", request.session['user_points'])
             request.session['correct_total'] += 1
         else:
             print("Question ", index_post+1, "is wrong")
@@ -60,11 +71,14 @@ def quiz(request, id):
 
         request.session['question_index'] = index_post + 1
         request.session.modified = True
-        
         if request.session['question_index'] >= len(questions_post):
             request.session['question_index'] = 0  
             request.session['points'] = 0
             request.session['choices'] = []
+            quiz_obj = Quiz.objects.get(quizId=id)
+            
+            user_obj = (UserProfile.objects.get(userId=request.user.id)).user
+            QuizCompleted.objects.create(user=user_obj, quiz=quiz_obj, completed=True)
             return redirect('./results')
         
         question_number = request.session['question_index'] + 1
@@ -114,6 +128,7 @@ def results(request, id):
     userProfile.save()
     
     submitted_user_answers = request.session['submitted']
+    print(submitted_user_answers)
     submitted_answers = []
     for i in range(0, total_questions):
         submitted_list = []

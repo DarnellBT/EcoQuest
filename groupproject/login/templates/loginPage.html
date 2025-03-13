@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="./style.css">
+   
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-
 </head>
 <body>
 <main>
     <h1>Login</h1>
+
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -21,13 +21,18 @@
         {% endfor %}
     </ul>
     {% endif %}
+
     <div class="box1">
         <form method="POST" action="">
             {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Submit</button>
-            <div class="register-link"><a href="{% url 'register' %}">Not have an account?</a></div>
+            {{ form.as_p }}
 
+            <!--Submission button-->
+            <button type="submit">Submit</button>
+
+            <!--Register page linking-->
+            <div class="register-link"><a href="{% url 'register' %}">Don't have an account?</a></div>
+            <div class="register-link"><a href="{% url 'password_reset' %}">Forgot Password?</a></div>
         </form>
     </div>
 </main>

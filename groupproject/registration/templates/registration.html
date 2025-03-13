@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
-    <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
@@ -17,26 +16,37 @@
         <form method="POST">
             {% csrf_token %}
             {% for field in form %}
+            <!--Forms from backend -->
             <p>
                 {% if field.label_tag %}
                 <small style="font-size: 1.5vw;">{{ field.label_tag | safe }}</small>
                 {% endif %}<br>
+
+                {% if field%}
+                <div class="boxres">
                 {{ field }}
+                </div>
+                {% endif %}
+        
                 {% if field.errors %}
-            <div class="error">
+                <div class="error">
                 {{ field.errors }}
-            </div>
-            {% endif %}
-            {% if field.help_text %}
-            <small style="font-size: 1vw;">{{ field.help_text | safe }}</small>
-            {% endif %}
+                </div>
+                {% endif %}
+
+                {% if field.help_text %}
+                <small style="font-size: 1vw;">{{ field.help_text | safe }}</small>
+                {% endif %}
             </p>
             {% endfor %}
+
+            <!--Submission buttom-->
             <button type="submit">Submit</button>
+            
+            <!--Log-in page linking-->
             <div class="link-login">
                 <a href="{% url 'login' %}">Already registered?</a>
             </div>
-
         </form>
 </main>
 <script src="index.js"></script>

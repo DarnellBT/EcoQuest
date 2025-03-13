@@ -6,10 +6,8 @@ from registration.models import UserProfile
 def leaderboard_page(request):
     """Function retrieves all user usernames, points and ranks them"""
     if request.method == "GET":
-        if request.user.is_anonymous:
-            messages.error(request, 'You are not logged in')
-            return redirect('../login')
-        # retrieves userprofiles
+        
+        # retrieves userprofiles 
         userprofiles = UserProfile.objects.all()
         userprofiles = list(userprofiles)
         points_list = []

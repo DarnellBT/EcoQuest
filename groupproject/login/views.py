@@ -14,11 +14,10 @@ def login_page(request):
         # take the data submitted from the form
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('username')  # Use 'username' field to get the email
             password = form.cleaned_data.get('password')
-            # check whether there username and password are valid
-            print(password)
-            user = authenticate(request, username=username, password=password)
+            # check whether the email and password are valid
+            user = authenticate(request, username=email, password=password)
             if user is not None:
                 # check user table against details provided to validate user
                 login(request, user)

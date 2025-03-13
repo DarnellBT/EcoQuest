@@ -17,101 +17,36 @@
             <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>
         <br/>
+        
         <div class="box1">
-            <p style="text-decoration: underline;">Code Submission</p>
-            <form method="post" action="./submit/">
-                {% csrf_token %}
-                <input type="text" name="randomString" value="">
-                <input type="submit" value="Submit">
-            </form>
+           
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
 
             <p>To get the challenge or quiz, please follow these steps</p>
             <ul>
-                <li>Click the location marker</li>
-                <li>Scan the QR Code to obtain the text within</li>
-                <li>Enter the text into the input box and click submit</li>
+                <li>Click the QR Code Button</li>
+                <li>Scan the QR Code</li>
+                <li>You will be redirected to the quiz or challenge</li>
             </ul>
 
             <div id="map-container" style="width: 100%; height: 60%; align-content: center;">
                 {{ map|safe }}
             </div>
+            <a href="{% url 'qr-scanner' %}">Scan QR Code</a>
         </div>
     </main>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-        let watchID;
-
-
-        function startTracking() {
-            if (navigator.geolocation) {
-                watchID = navigator.geolocation.watchPosition(updateLocation, showError, {
-                    enableHighAccuracy: true,
-                    maximumAge: 0,
-                    timeout: 5000
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function updateLocation(position) {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            document.getElementById('lat').textContent = lat.toFixed(6);
-            document.getElementById('long').textContent = lon.toFixed(6);
-            // Send location to the backend
-            sendLocationToServer(lat, lon);
-        }
-
-        function sendLocationToServer(lat, lon) {
-            fetch('/map/submit-location/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken() // Get CSRF token from cookies
-                },
-                body: JSON.stringify({ latitude: lat, longitude: lon })
-            })
-            .then(response => response.json())
-            .then(data => console.log('Location sent:', data))
-            .catch(error => console.error('Error sending location:', error));
-        }
-
-        function getCSRFToken() {
-            let cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim();
-                if (cookie.startsWith('csrftoken=')) {
-                    return cookie.split('=')[1];
-                }
-            }
-            return '';
-        }
-
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        }
-
-
-        // Start tracking when the page loads
-        window.onload = startTracking;
-    </script>
-    <br>
-
+    <!-- Put in another location on the page-->
+    <a href="https://www.flaticon.com/free-icons/recycle" title="recycle icons">Recycle icons created by Pixel perfect - Flaticon</a><br>
+    <a href="https://www.flaticon.com/free-icons/library" title="library icons">Library icons created by Freepik - Flaticon</a><br>
+    <a href="https://www.flaticon.com/free-icons/computer-lab" title="computer lab icons">Computer lab icons created by Vectorsclub - Flaticon</a>
 </body>
 </html>
