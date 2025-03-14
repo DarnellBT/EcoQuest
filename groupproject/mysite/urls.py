@@ -71,4 +71,5 @@ urlpatterns = [
     path('admin-portal/edit-question/delete-question/<int:question_id>/', role_view.delete_question, name='delete_question'),
     path('admin-portal/edit-challenge/edit-challenge/<int:challenge_id>/', role_view.edit_challenge, name='edit_challenge'),
     path('admin-portal/edit-challenge/delete-challenge/<int:challenge_id>/', role_view.delete_challenge, name='delete_challenge'),
+    path('account/edit-account/', dashboard_view.edit_account, name='edit_account'),
 ]

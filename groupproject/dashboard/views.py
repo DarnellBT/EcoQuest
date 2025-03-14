@@ -1,12 +1,12 @@
 from challenge.models import Challenge, ChallengeCompleted
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from registration.models import UserProfile
-
-from .forms import NameForm, UsernameForm, PasswordForm
+from .forms import NameForm, UsernameForm, PasswordForm, UserForm
 
 
 def dashboard(request):
@@ -37,6 +37,7 @@ def dashboard(request):
         'email': email,
         'points': points,
         'role': role,
+        'userId':current_user_id,
     }
     # only runs if a form is submitted (delete account in this case)
     if request.method == "POST":
@@ -139,3 +140,18 @@ def logout_dashboard(request):
     # removes session and takes user to login page
     logout(request)
     return redirect("../../../")
+
+def edit_account(request):
+    userprofile = get_object_or_404(UserProfile, userId=request.user.id)
+    user_instance = userprofile.user
+    if request.method == "POST":
+        form = UserForm(request.POST, instance=user_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('../')
+    else: 
+        form = UserForm(instance=user_instance)
+    return render(request, 'edit_details.html', {'form': form})
+
+
+
