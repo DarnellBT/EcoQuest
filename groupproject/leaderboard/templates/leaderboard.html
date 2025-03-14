@@ -8,36 +8,110 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/leaderboard.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
   </head>
   <body>
-    <main>
-      <header>
-        <h1>Leaderboard page</h1>
-        <a href="/home" class="button button1">Home</a>
-        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
-      </header>
-      <h2>Current Leaderboard</h2>
-      <div class="box1">
-        <table>
-          <thead>
-            <tr>
-              <th class="leaderboard-header"><span>Rank</span></th>
-              <th style="border-left: 3px solid black;"><span>Username</span></th>
-              <th style="border-left: 3px solid black;"><span>Points</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for rank, user, point in combined_list %}
-            <tr>
-              <td style="text-align: center;"><span>{{ rank }}</span></td>
-              <td style="width: 100%;"><span>{{ user }}</span></td>
-              <td><span>{{ point }}</span></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+
+
+    <aside>
+      <div class="top">
+        <div class="logo">
+          <h2><span class="danger">EcoQuest</span></h2>
+        </div>
+        <div class="close" id="close_button">
+          <span class="material-symbols-sharp">close</span>
+        </div>
       </div>
-    </main>
+
+      <div class="sidebar">
+
+        <a href="{% url 'home' %}" > 
+          <span class="material-symbols-sharp">grid_view</span>
+          <h3> Home </h3>
+        </a>
+
+        <a href="{% url 'leaderboard' %}" class="active"> 
+          <span class="material-symbols-sharp">leaderboard</span>
+          <h3> Leaderboard </h3>
+        </a>
+
+        <a href="{% url 'map' %}"> 
+          <span class="material-symbols-sharp">map</span>
+          <h3> Map </h3>
+        </a>
+
+        <a href="{% url 'contact' %}"> 
+          <span class="material-symbols-sharp">call</span>
+          <h3> Contact </h3>
+        </a>
+
+        {% if userprofile.is_user %}
+        <a href="{% url 'account' %}"> 
+          <span class="material-symbols-sharp">exit_to_app</span>
+          <h3> Account </h3>
+        </a>
+        {% endif %}
+        
+        {% if userprofile.is_game_keeper %}
+        <a href="{% url 'gamekeeper-portal' %}"> 
+          <span class="material-symbols-sharp">exit_to_app</span>
+          <h3> Game Keeper </h3>
+        </a>
+        {% endif %}
+
+        {% if userprofile.is_admin %}
+        <a href="{% url 'admin-portal' %}"> 
+          <span class="material-symbols-sharp">exit_to_app</span>
+          <h3> Admin </h3>
+        </a>
+        {% endif %}
+      
+        <a href="{% url 'logout'%}"> 
+          <span class="material-symbols-sharp"> login </span>
+          <h3> Logout </h3>
+        </a>
+        
+      </div>
+    </aside>
+
+    <main class="leaderboard-main">
+      <header class="leaderboard-header">
+          <h1 class="leaderboard-title">Leaderboard</h1>
+      </header>
+      <div class="leaderboard-box">
+          <table class="leaderboard-table">
+              <thead>
+                  <tr>
+                      <th class="leaderboard-th"><span>Rank</span></th>
+                      <th class="leaderboard-th leaderboard-username"><span>Username</span></th>
+                      <th class="leaderboard-th leaderboard-points"><span>Points</span></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for rank, user, point in combined_list %}
+                  <tr class="leaderboard-row">
+                      <td class="leaderboard-td leaderboard-rank"><span>{{ rank }}</span></td>
+                      <td class="leaderboard-td leaderboard-username"><span>{{ user }}</span></td>
+                      <td class="leaderboard-td leaderboard-points"><span>{{ point }}</span></td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </main>
+  
+
+    <div class="right">
+      <div class="top">
+        <button id="menu_bar">
+          <span class="material-symbols-sharp"> menu </span>
+        </button>
+    
+      </div>
+      
     <script src="index.js"></script>
   </body>
 </html>
