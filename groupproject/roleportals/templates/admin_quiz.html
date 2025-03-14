@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <h1>Manage Quiz</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Quiz</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.name }}</td>
+                <td>
+                    <a href="{% url 'edit_quiz' quiz.quizId %}">Edit</a>
+                    <a href="{% url 'delete_quiz' quiz.quizId %}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
