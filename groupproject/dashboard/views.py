@@ -138,4 +138,4 @@ def change_password(request):
 def logout_dashboard(request):
     # removes session and takes user to login page
     logout(request)
-    return redirect("../../login")
+    return redirect("../../../")
