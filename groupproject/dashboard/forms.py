@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ValidationError
-
+from django.contrib.auth.models import User
 
 class UsernameForm(forms.Form):
     username = forms.CharField(
@@ -29,3 +29,9 @@ class NameForm(forms.Form):
 class PasswordForm(forms.Form):
     password = forms.CharField(max_length=50, required=True,
                                widget=forms.TextInput(attrs={'class': 'form-fields', 'placeholder': 'Password'}))
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
