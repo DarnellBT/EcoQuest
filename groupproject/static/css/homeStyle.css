@@ -139,12 +139,15 @@ aside .sidebar a.active {
     background: lightseagreen; /* Highlight color */
     color: white !important; /* Ensure text is visible */
     font-weight: bold;
+    margin-left: 0;
     border-radius: 10px;
     padding-left: 1rem;
 }
 
 /* Large Screens */
 @media screen and (min-width: 1200px) {
+
+
     aside {
         display: flex;
         position: fixed;
@@ -195,7 +198,6 @@ aside .sidebar a.active {
 
 /* Mobile Sidebar */
 @media screen and (max-width: 1200px) {
-    
     main {
         display: flex;
         flex-direction: column; /* Stack image and text vertically */
@@ -246,6 +248,18 @@ aside .sidebar a.active {
         height: 3.4rem;
     }
 
+    aside .sidebar a.active {
+        background: lightseagreen; /* Highlight color */
+        color: white !important; /* Ensure text is visible */
+        font-weight: bold;
+        border-radius: 0px;
+        margin-right: 0; /* Remove right margin */
+        box-sizing: border-box; /* Include padding in total width */
+        width: 100%; /* Ensure it does not expand beyond the link's width */
+        
+    }
+
+    
     aside .top div.close span {
         display: inline;
         position: absolute;
@@ -281,6 +295,18 @@ aside .sidebar a.active {
         background: white;
         display: none;
     }
+
+    aside .sidebar a.active {
+        background: lightseagreen; /* Highlight color */
+        color: white !important; /* Ensure text is visible */
+        font-weight: bold;
+        border-radius: 0px;
+        margin-right: 0; /* Remove right margin */
+        box-sizing: border-box; /* Include padding in total width */
+        width: 100%; /* Ensure it does not expand beyond the link's width */
+        
+    }
+
 
     #close_button {
         display: block;
