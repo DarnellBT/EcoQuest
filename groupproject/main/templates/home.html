@@ -52,14 +52,14 @@
           </a>
           {% endif %}
 
-          {% if userprofile.is_user %}
+          {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
           <a href="{% url 'account' %}"> 
             <span class="material-symbols-sharp">exit_to_app</span>
             <h3> Account </h3>
           </a>
           {% endif %}
           
-          {% if userprofile.is_game_keeper %}
+          {% if userprofile.is_game_keeper or userprofile.is_admin %}
           <a href="{% url 'gamekeeper-portal' %}"> 
             <span class="material-symbols-sharp">exit_to_app</span>
             <h3> Game Keeper </h3>
@@ -73,10 +73,19 @@
           </a>
           {% endif %}
         
+          {% if user_auth.is_anonymous %}
+          <a href="{% url 'login'%}"> 
+            <span class="material-symbols-sharp"> login </span>
+            <h3> Sign In </h3>
+          </a>
+          {% endif %}
+
+          {% if user_auth.is_authenticated %}
           <a href="{% url 'logout'%}"> 
             <span class="material-symbols-sharp"> login </span>
             <h3> Logout </h3>
           </a>
+          {% endif %}
           
         </div>
       </aside>
