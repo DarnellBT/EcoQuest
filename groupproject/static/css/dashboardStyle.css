@@ -14,6 +14,7 @@
     font-size: 20px;
 
 
+
 }
 
 tr {
@@ -52,7 +53,7 @@ table {
 }
 
 p {
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 20px;
 
 }
@@ -127,3 +128,4 @@ p {
 .challenge-header {
     margin-left: 44%;
 }
+

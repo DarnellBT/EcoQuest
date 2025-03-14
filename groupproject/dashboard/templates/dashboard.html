@@ -32,17 +32,21 @@
     <p>Email: {{ email }}</p>
     <p>Points: {{ points }}</p>
     <p>Role: {{ role }}</p>
-
+    <a href="{% url 'password_reset' %}">Reset Password?</a>
+    <a href="{% url 'edit_account' %}">Edit</a>
 </div>
+
 
 <div class="warning">
     <h3>WARNING: Deleting your account is permanent!</h3>
+    
 </div>
 <form method="POST">
     {% csrf_token %}
 
     <input type="submit" value="Delete Account" class="deleteButton">
 </form>
+
 
 
 </body>

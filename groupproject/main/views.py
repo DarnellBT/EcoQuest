@@ -14,4 +14,4 @@ def home(request):
             userprofile = UserProfile.objects.get(userId=request.user.id)
 
 
-        return render(request, 'home.html', {'userprofile':userprofile})
+        return render(request, 'home.html', {'userprofile':userprofile, 'user_auth':request.user})
