@@ -277,9 +277,10 @@ aside .sidebar a.active {
     aside {
         position: fixed;
         width: 18rem;
-        z-index: 3;
+     
         background: white;
         display: none;
+    
     }
 
     #close_button {
@@ -307,5 +308,18 @@ aside .sidebar a.active {
         cursor: pointer;
         position: absolute;
         left: 1rem;
+
     }
+
+    .privacy-box {
+        margin: 1rem;
+        background:fixed;
+        
+    }
+   
+}
+
+.privacy-box {
+    margin: 2rem;
+    
 }
