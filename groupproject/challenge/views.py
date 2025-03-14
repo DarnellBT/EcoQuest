@@ -18,8 +18,8 @@ def challenge(request, id):
     challenge_obj = Challenge.objects.get(challengeId=id)
     user_obj = register_models.UserProfile.objects.get(userId=request.user.id)
     challenge_completed_obj = ChallengeCompleted.objects.filter(challengeId=challenge_obj, userId=user_obj)
-
-    if challenge_completed_obj.exists:
+    print(challenge_completed_obj.exists())
+    if challenge_completed_obj.exists() == True:
         messages.error(request, "You have already completed this challenge")
         return redirect("../../../map/")
     else: 
@@ -52,7 +52,6 @@ def challenge(request, id):
     if request.method == 'POST':
         # retrieve data from form and file
         form = ImageUpload(request.POST, request.FILES)
-        print(request.POST)
         if form.is_valid():
             # retrieve image and path to img (where it will be saved)
             img = form.cleaned_data.get("image")
@@ -71,7 +70,8 @@ def challenge(request, id):
             #user_profile.points = user_points
             # save new points and create a record in ChallengeCompleted
             #user_profile.save()
-            
+            ChallengeCompleted.objects.create(userId=user_profile, challengeId=challenge_obj, completed=True)
+
             context = {
                 'user_id': current_user.id,
                 'user_points': user_points,

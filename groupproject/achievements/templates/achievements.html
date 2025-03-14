@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Achievements</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+    <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+
+
+<h2 class="challenge-header">Challenges</h2>
+{% for challenge, image in challenges_list %}
+<div class="achievements-box">
+    <img src="../../static/images/{{ image }}" alt="image" class="img"> 
+    <p class="challenge-name">{{ challenge }}</p>
+</div>
+{% endfor %}
+
+<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Pixel perfect - Flaticon</a><br>
+<a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by kliwir art - Flaticon</a>
+
+</body>
+</html>

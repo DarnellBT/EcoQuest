@@ -20,8 +20,9 @@ class MapView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         storage = get_messages(self.request)
-        print(storage)
+        
         context['messages'] = storage
+        storage.used
         # Create a map figure, with initial location and settings
         map_fig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],

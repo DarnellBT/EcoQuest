@@ -1,5 +1,5 @@
 """
-URL configuration for mysite project.
+URL configuration for ecoquest project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from about import views as about_view
+from about import views as contact_view
 from challenge import views as challenge_view
 from dashboard import views as dashboard_view
 from django.contrib import admin
@@ -29,6 +29,7 @@ from quiz import views as quiz_view
 from registration import views as register_view
 from sustain import views as sus_view
 from roleportals import views as role_view
+from achievements import views as achievements_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,7 +50,7 @@ urlpatterns = [
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
     path('sustainability/', sus_view.sustain, name='sustainability'),
-    path('contact/', about_view.about, name="contact"),
+    path('contact/', contact_view.contact, name="contact"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
@@ -57,4 +58,17 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete'),
     path('admin-portal/', role_view.admin_portal, name='admin-portal'),
     path('gamekeeper-portal/', role_view.gamekeeper_portal, name="gamekeeper-portal"),
+    path('achievements/', achievements_view.achievements, name="achievements"),
+    path('admin-portal/edit-location/', role_view.admin_location, name='admin-location'),
+    path('admin-portal/edit-quiz/', role_view.admin_quiz, name='admin-quiz'),
+    path('admin-portal/edit-question/', role_view.admin_question, name='admin-question'),
+    path('admin-portal/edit-challenge/', role_view.admin_challenge, name='admin-challenge'),
+    path('admin-portal/edit-location/edit-location/<int:location_id>/', role_view.edit_location, name='edit_location'),
+    path('admin-portal/edit-location/delete-location/<int:location_id>/', role_view.delete_location, name='delete_location'),
+     path('admin-portal/edit-quiz/edit-quiz/<int:quiz_id>/', role_view.edit_quiz, name='edit_quiz'),
+    path('admin-portal/edit-quiz/delete-quiz/<int:quiz_id>/', role_view.delete_quiz, name='delete_quiz'),
+    path('admin-portal/edit-question/edit-question/<int:question_id>/', role_view.edit_question, name='edit_question'),
+    path('admin-portal/edit-question/delete-question/<int:question_id>/', role_view.delete_question, name='delete_question'),
+    path('admin-portal/edit-challenge/edit-challenge/<int:challenge_id>/', role_view.edit_challenge, name='edit_challenge'),
+    path('admin-portal/edit-challenge/delete-challenge/<int:challenge_id>/', role_view.delete_challenge, name='delete_challenge'),
 ]

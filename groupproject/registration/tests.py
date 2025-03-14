@@ -2,7 +2,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-
 from .forms import RegistrationForm
 from .models import UserProfile
 
@@ -21,7 +20,9 @@ class RegistrationModelTest(TestCase):
         )
         user.set_password('secret_pass')
         # Creates a UserProfile instance
-        user_profile = UserProfile.objects.create(user=user, )
+        user_profile = UserProfile.objects.create(
+            user=user,
+        )
         self.assertEqual(user_profile.userId, 1)
         self.assertEqual(user_profile.user, user)
         self.assertEqual(user_profile.points, 0)

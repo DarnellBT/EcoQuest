@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from challenge.models import Challenge, ChallengeCompleted, ChallengeImages
 from django.contrib.auth.models import User
 from registration.models import UserProfile
+from map.models import Location
 from django.contrib import messages
+from quiz.models import Quiz, Question
+from .forms import LocationForm, ChallengeForm, QuestionForm, QuizForm
 
 def admin_portal(request):
     return render(request, 'admin_page.html')
@@ -63,26 +66,149 @@ def gamekeeper_portal(request):
 
 
 
-    
+def admin_location(request):
+    locations = Location.objects.all()
+    if request.method == 'POST':
+        form = LocationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('./')
+    else:
+        form = LocationForm()
+    return render(request, 'admin_location.html', {'locations': locations, 'form': form})
+
+def edit_location(request, location_id):
+    location = get_object_or_404(Location, locationId=location_id)
+    if request.method == 'POST':
+        form = LocationForm(request.POST, instance=location)
+        if form.is_valid():
+            form.save()
+            return redirect('../../')
+    else:
+        form = LocationForm(instance=location)
+    return render(request, 'edit_location.html', {'form': form})
+
+def delete_location(request, location_id):
+    location = get_object_or_404(Location, locationId=location_id)
+    location.delete()
+    return redirect('../../')
 
 
-    
 
+
+def admin_quiz(request):
+    quizzes = Quiz.objects.all()
+    if request.method == 'POST':
+        form = QuizForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('./')
+    else:
+        form = QuizForm()
+    return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form})
+
+def edit_quiz(request, quiz_id):
+    quiz = get_object_or_404(Quiz, quizId=quiz_id)
+    if request.method == 'POST':
+        form = QuizForm(request.POST, instance=quiz)
+        if form.is_valid():
+            form.save()
+            return redirect('../../')
+    else:
+        form = QuizForm(instance=quiz)
+    return render(request, 'edit_quiz.html', {'form': form})
+
+def delete_quiz(request, quiz_id):
+    quiz = get_object_or_404(Quiz, quizId=quiz_id)
+    quiz.delete()
+    return redirect('../../')
+
+
+
+
+
+
+def edit_location(request, location_id):
+    location = get_object_or_404(Location, locationId=location_id)
+    if request.method == 'POST':
+        form = LocationForm(request.POST, instance=location)
+        if form.is_valid():
+            form.save()
+            return redirect('../../')
+    else:
+        form = LocationForm(instance=location)
+    return render(request, 'edit_location.html', {'form': form})
+
+def delete_location(request, location_id):
+    location = get_object_or_404(Location, locationId=location_id)
+    location.delete()
+    return redirect('../../')
+
+
+
+
+
+def admin_question(request):
+    questions = Question.objects.all()
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('./')
+    else:
+        form = QuestionForm()
+    return render(request, 'admin_question.html', {'questions': questions, 'form': form})
    
 
 
+def edit_question(request, question_id):
+    question = get_object_or_404(Question, questionId=question_id)
+    if request.method == 'POST':
+        form = QuestionForm(request.POST, instance=question)
+        if form.is_valid():
+            form.save()
+            return redirect('../../')
+    else:
+        form = QuestionForm(instance=question)
+    return render(request, 'edit_question.html', {'form': form})
 
-#imageId = models.BigAutoField(primary_key=True, null=False)
-#user = models.ForeignKey(User, on_delete=models.CASCADE)
-#challenge = models.ForeignKey('Challenge', on_delete=models.CASCADE)
-#image = models.ImageField(upload_to='./static/Image/')
+def delete_question(request, question_id):
+    question = get_object_or_404(Question, questionId=question_id)
+    question.delete()
+    return redirect('../../')
 
 
 
-#Functionality needed
-# Create, Modify, Delete Database Records
-# UserProfile
-# Quiz
-# Question
-# Challenge
-# Location
+
+
+def admin_challenge(request):
+    challenges = Challenge.objects.all()
+    if request.method == 'POST':
+        form = ChallengeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('./')
+    else:
+        form = ChallengeForm()
+    return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form})
+    
+
+
+def edit_challenge(request, challenge_id):
+    challenge = get_object_or_404(Challenge, challengeId=challenge_id)
+    if request.method == 'POST':
+        form = ChallengeForm(request.POST, instance=challenge)
+        if form.is_valid():
+            form.save()
+            return redirect('../../')
+    else:
+        form = ChallengeForm(instance=challenge)
+    return render(request, 'edit_challenge.html', {'form': form})
+
+def delete_challenge(request, challenge_id):
+    challenge = get_object_or_404(Challenge, challengeId=challenge_id)
+    challenge.delete()
+    return redirect('../../')
+
+
+
