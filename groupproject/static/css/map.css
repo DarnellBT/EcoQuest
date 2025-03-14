@@ -1,23 +1,52 @@
+/*Put the image in and change font for all texts*/
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/*Box containing everything*/
 .box1 {
   margin: auto;
-  width: 40%;
+  width: 60%;
   background-color: #00a87e;
-  padding: 15px;
-  }
+  border-radius: 2dvw;
+  border: solid aliceblue;
+  padding: 1dvw;
+}
+
 form {
   text-align: center;
 }
-.button {
-  color: aliceblue;
-  background-color: darkgreen;
-  font-size: 2vw;
-  width: 12%; 
-  height: 100%;
-  text-align: center;
-  text-decoration: none;
-  display: block; 
+#map-container {
+  width: 100%; 
+  height: 60%; 
+  align-content: center;
 }
-.logout-button {
+
+/*QR code scanning button*/
+.qr-scanner{
+  color: aliceblue;
+  width: 25%;
+  background-color: #007d69;
+  padding: 0.5dvw 1dvw;
+  text-decoration: none;
+  border-radius: 5px;
+  border: solid aliceblue;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+}
+.qr-scanner:hover {
+  background-color: #00a87e;
+  cursor: pointer;
+}
+a {
+  color: aliceblue;
+  font-size: 2dvw;
+  text-decoration: none;
+}
+
+/*To be used in Tanat's navbar*/
+/*.logout-button {
   color: white;
   background-color: red;
   font-size: 18px;
@@ -30,21 +59,76 @@ form {
   background-color: darkred;
   cursor: pointer;
 }
+.button {
+  color: aliceblue;
+  background-color: darkgreen;
+  font-size: 2vw;
+  width: 12%; 
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: block; 
+}
 .button1 {
   background-color: #007d69;
-}
-#map-container {
-  height: 300px;
-  width: 20%;
-}
+}*/
 
+/*Messages?*/
 .messages {
   list-style-type: none;
-
 }
 .message {
   color: red;
   font-weight: bold;
   text-align: center;
 }
+p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2dvw;
+}
+ul {
+  font-size: 1.5dvw;
+}
 
+/* Responsive Styles */
+/*tablet*/
+@media screen and (max-width: 768px) {
+  p, ul {
+    font-size: 3.5dvw;
+    }
+  .box1 {
+    width: 80%;
+    border-radius: 2.5dvw;
+    padding: 2dvw;
+  }
+
+  .qr-scanner{
+    width: 35%;
+    padding: 0.5dvw 1dvw;
+    border-radius: 5px;
+  }
+  a {
+    font-size: 3dvw;
+  }
+}
+/*Phone*/
+@media screen and (max-width: 480px) {
+  p, ul {
+  font-size: 3dvw;
+  }
+  .box1 {
+    width: 80%;
+    border-radius: 2.5dvw;
+    padding: 2dvw;
+  }
+
+  .qr-scanner{
+    width: 35%;
+    padding: 0.5dvw 1dvw;
+    border-radius: 5px;
+  }
+  a {
+    font-size: 3dvw;
+  }
+}
