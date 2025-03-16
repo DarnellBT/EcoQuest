@@ -20,7 +20,6 @@ main {
     gap: 1rem; /* Space between image and text */
 }
 
-
 .image-banner {
     display: flex;
     justify-content: center; /* Centers horizontally */
@@ -36,7 +35,6 @@ main {
     border-radius: 10px; /* Optional: Rounded corners */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Shadow */
 }
-
 
 .content-boxes {
     display: flex;
@@ -57,7 +55,6 @@ main {
     width: 100%;
 }
 
-
 h2 {
     font-size: 1.8rem;
     font-weight: bold;
@@ -75,7 +72,6 @@ body::before {
     z-index: -1;
 }
 
-
 .container {
     display: grid;
     width: 96%;
@@ -84,6 +80,7 @@ body::before {
     margin: 0 auto;
 }
 
+/* Sidebar styles */
 aside {
     height: 100vh;
     position: fixed;  /* Keep the sidebar fixed on large screens */
@@ -92,6 +89,8 @@ aside {
     width: 18rem;  /* Width of the sidebar */
     background: white;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 #close_button {
@@ -112,7 +111,6 @@ aside .logo {
     gap: 1rem;
     margin-top: -20px; /* Move it up */
 }
-
 
 aside .sidebar {
     background-color: white;
@@ -139,6 +137,7 @@ aside .sidebar a.active {
     background: lightseagreen; /* Highlight color */
     color: white !important; /* Ensure text is visible */
     font-weight: bold;
+    margin-left: 0;
     border-radius: 10px;
     padding-left: 1rem;
 }
@@ -180,9 +179,9 @@ aside .sidebar a.active {
         transition: color 0.3s, padding-right 0.3s;
     }
 
-    /* Adjust the position of the last item (Login) to the far right */
+    /* Adjust the position of the last item (Log out) to the far right */
     aside .sidebar a:last-child {
-        margin-left: auto; /* Push the Login link to the far right */
+        margin-left: auto; /* Push the Log out link to the far right */
         padding-right: 20px; /* Optional: To add more spacing */
         margin-right: 40px; /* Adds space from the edge of the sidebar */
     }
@@ -195,7 +194,6 @@ aside .sidebar a.active {
 
 /* Mobile Sidebar */
 @media screen and (max-width: 1200px) {
-    
     main {
         display: flex;
         flex-direction: column; /* Stack image and text vertically */
@@ -246,6 +244,16 @@ aside .sidebar a.active {
         height: 3.4rem;
     }
 
+    aside .sidebar a.active {
+        background: lightseagreen; /* Highlight color */
+        color: white !important; /* Ensure text is visible */
+        font-weight: bold;
+        border-radius: 0px;
+        margin-right: 0; /* Remove right margin */
+        box-sizing: border-box; /* Include padding in total width */
+        width: 100%; /* Ensure it does not expand beyond the link's width */
+    }
+
     aside .top div.close span {
         display: inline;
         position: absolute;
@@ -281,6 +289,16 @@ aside .sidebar a.active {
         background: white;
         display: none;
     
+    }
+
+    aside .sidebar a.active {
+        background: lightseagreen; /* Highlight color */
+        color: white !important; /* Ensure text is visible */
+        font-weight: bold;
+        border-radius: 0px;
+        margin-right: 0; /* Remove right margin */
+        box-sizing: border-box; /* Include padding in total width */
+        width: 100%; /* Ensure it does not expand beyond the link's width */
     }
 
     #close_button {
