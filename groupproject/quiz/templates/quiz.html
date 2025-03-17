@@ -5,41 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/challengeQuiz.css' %}">
+    <link rel="stylesheet" href="../../static/css/challengeQuiz.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<main>
-    <table>
-        <thead class="table-headr">
-        <tr>
-            <th class="nav-left"><a href="{% url 'home' %}">Home</a></th>
-            <th class="nav-left"><a href="{% url 'map' %}">Map</a></th>
-            <th class="nav-right"><a href="{% url 'logout' %}">Logout</a></th>
-        </tr>
-        </thead>
-    </table>
-    <div class="box">
-        <form method="post" class="form-box">
-            {% csrf_token %}
-            <b class="quiz-question">{{ question }}</b><br>
-            <b class="quiz-question">Question {{ question_number }} of {{ total_number }}</b><br>
-            <input class="quiz-answer" type="radio" id="choice1" name="question" value="{{ choice1 }}">
-            <label for="choice1" class="quiz-text">{{ choice1 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice2" name="question" value="{{ choice2 }}">
-            <label for="choice2" class="quiz-text">{{ choice2 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice3" name="question" value="{{ choice3 }}">
-            <label for="choice3" class="quiz-text">{{ choice3 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice4" name="question" value="{{ choice4 }}">
-            <label for="choice4" class="quiz-text">{{ choice4 }}</label><br>
-
-            <input type="submit" value="Submit" class="submit">
-        </form>
+  <h1>Quiz</h1>
+  
+  <div class="question">
+    <div class="question-text">1. What is the primary benefit of recycling in terms of carbon emissions?</div>
+    <div class="options">
+      <label><input type="checkbox"> Increases landfills</label>
+      <label><input type="checkbox"> Reduces greenhouse gas emissions</label>
+      <label><input type="checkbox"> Increases energy consumption</label>
+      <label><input type="checkbox"> Promotes deforestation</label>
     </div>
-
-</main>
-
-<script src="index.js"></script>
+  </div>
+  
+  <div class="question">
+    <div class="question-text">2. How does recycling paper help in reducing carbon emissions?</div>
+    <div class="options">
+      <label><input type="checkbox"> Reduces the need for deforestation</label>
+      <label><input type="checkbox"> Increases energy use in paper mills</label>
+      <label><input type="checkbox"> Lowers transportation emissions</label>
+      <label><input type="checkbox"> Increases landfill waste</label>
+    </div>
+  </div>
+  
+  <div class="question">
+    <div class="question-text">3. Which of the following is a common misconception about recycling?</div>
+    <div class="options">
+      <label><input type="checkbox"> It saves energy</label>
+      <label><input type="checkbox"> It reduces carbon emissions</label>
+      <label><input type="checkbox"> All plastics can be recycled</label>
+      <label><input type="checkbox"> It conserves natural resources</label>
+    </div>
+  </div>
+  
+  <div class="question">
+    <div class="question-text">4. What is the environmental impact of not recycling electronic waste (e-waste)?</div>
+    <div class="options">
+      <label><input type="checkbox"> Increased greenhouse gas emissions</label>
+      <label><input type="checkbox"> Depletion of natural resources</label>
+      <label><input type="checkbox"> Release of toxic substances</label>
+      <label><input type="checkbox"> All of the above</label>
+    </div>
+  </div>
+  
+  <button class="back-button">Back</button>
 </body>
 </html>
