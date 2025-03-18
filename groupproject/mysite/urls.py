@@ -42,10 +42,6 @@ urlpatterns = [
     path('challenge/', challenge_view.challenge, name='challenge'),
     path('quiz/<int:id>/', quiz_view.quiz, name='quiz'),
     path('challenge/<int:id>/', challenge_view.challenge, name='challenge'),
-    path('account/challenges/', dashboard_view.challenges, name='challenges'),
-    path('account/change-username/', dashboard_view.change_uname, name='change-uname'),
-    path('account/change-name/', dashboard_view.change_name, name='change-name'),
-    path('account/change-password/', dashboard_view.change_password, name='change-password'),
     path('logout/', dashboard_view.logout_dashboard, name="logout"),
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
@@ -72,4 +68,6 @@ urlpatterns = [
     path('admin-portal/edit-challenge/edit-challenge/<int:challenge_id>/', role_view.edit_challenge, name='edit_challenge'),
     path('admin-portal/edit-challenge/delete-challenge/<int:challenge_id>/', role_view.delete_challenge, name='delete_challenge'),
     path('account/edit-account/', dashboard_view.edit_account, name='edit_account'),
+    path('home/privacy/', main_view.privacy, name='privacy'),
+    path('account/rewards/', dashboard_view.rewards, name='rewards')
 ]

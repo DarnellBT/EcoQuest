@@ -285,9 +285,10 @@ aside .sidebar a.active {
     aside {
         position: fixed;
         width: 18rem;
-        z-index: 3;
+     
         background: white;
         display: none;
+    
     }
 
     aside .sidebar a.active {
@@ -325,5 +326,20 @@ aside .sidebar a.active {
         cursor: pointer;
         position: absolute;
         left: 1rem;
+
     }
+
+    .privacy-box {
+        width: 100%;
+        padding: 10px;
+        margin-top: 50px;
+        z-index: 1;
+        height: 80%;
+    }
+   
+}
+
+.privacy-box {
+    margin: 2rem;
+    
 }
