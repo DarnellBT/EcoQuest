@@ -7,7 +7,8 @@
     <title>Admin Portal</title>
     {% load static %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
-    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/rolePortal.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="{% static 'js/dashboard.js' %}" defer></script>
 </head>
@@ -27,7 +28,7 @@
             
             {% if userprofile.is_admin %}
             <a href="{% url 'home' %}"> 
-              <span class="material-symbols-sharp">exit_to_app</span>
+              <span class="material-symbols-sharp">home</span>
               <h3> Home </h3>
             </a>
             {% endif %}
@@ -38,23 +39,23 @@
             </a>
   
             <a href="{% url 'admin-location' %}"> 
-              <span class="material-symbols-sharp">leaderboard</span>
+              <span class="material-symbols-sharp">location_on</span>
               <h3> Location </h3>
             </a>
   
             <a href="{% url 'admin-quiz' %}"> 
-              <span class="material-symbols-sharp">map</span>
+              <span class="material-symbols-sharp">quiz</span>
               <h3> Quiz </h3>
             </a>
   
             <a href="{% url 'admin-question' %}"> 
-              <span class="material-symbols-sharp">call</span>
+              <span class="material-symbols-sharp">question_mark</span>
               <h3> Question </h3>
             </a>
   
             
             <a href="{% url 'admin-challenge' %}">
-              <span class="material-symbols-sharp">trophy</span>
+              <span class="material-symbols-sharp">task</span>
               <h3> Challenge </h3>
             </a>
            
@@ -72,13 +73,43 @@
             
             {% if user_auth.is_authenticated %}
             <a href="{% url 'logout'%}"> 
-              <span class="material-symbols-sharp"> login </span>
+              <span class="material-symbols-sharp"> logout </span>
               <h3> Logout </h3>
             </a>
             {% endif %}
             
           </div>
         </aside>
+
+        <div class="right">
+          <div class="top">
+            <button id="menu_bar">
+              <span class="material-symbols-sharp"> menu </span>
+            </button>
+        
+          </div>
+          
+        </div>
+        
+        <div class="admin-page-box">
+        
+          <h2>Welcome to <span class="highlight">Admin Panel</span></h2>
+          <p>This panel controls the challenges, quizzes and map locations</p>
+       
+        </div>
+    
+
+    
+  </div>
+
+
+  
+    
+  
+
+    
+
+    
 
 
 </body>

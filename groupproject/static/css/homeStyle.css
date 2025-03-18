@@ -330,9 +330,11 @@ aside .sidebar a.active {
     }
 
     .privacy-box {
-        margin: 1rem;
-        background:fixed;
-        
+        width: 100%;
+        padding: 10px;
+        margin-top: 50px;
+        z-index: 1;
+        height: 80%;
     }
    
 }

@@ -1,63 +1,19 @@
-.table-outer {
-    width: 100%;
-
-}
-
-.table-cell {
-
-    border-radius: 25px;
-    background-color: #00a87e;
-    padding: 10px;
-    height: 30px;
-    width: 100px;
-    text-align: center;
-    font-size: 20px;
 
 
-
-}
-
-tr {
-    border-spacing: 30px;
-    border-collapse: separate;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
 
 .table-cell-right {
     float: right;
 }
 
-table {
-    margin-top: 0;
-    border-spacing: 35px;
 
-}
 
-.table-cell:active {
-    background-color: hsla(120, 86%, 28%, 0.801);
-}
 
-.box {
-    background-color: #00a87e;
-    width: 25%;
-    height: 30%;
-    padding: 10px;
-    text-align: center;
-    border-radius: 25px;
-    margin: auto;
-    margin-top: 100px;
-}
+
+
 
 p {
-    color: white;
-    font-size: 20px;
-
+    color: black;
 }
-
 .deleteButton {
     align-self: center;
     text-align: center;
@@ -80,13 +36,6 @@ p {
     margin-top: 50px;
 }
 
-.form-fields {
-    width: 10%;
-    height: 30px;
-
-    margin-left: 40%;
-
-}
 
 .buttonSubmit {
 
@@ -104,28 +53,4 @@ p {
 }
 
 
-.challenge-name {
-    color: white;
-    font-weight: bold;
-    size: 35px;
-}
-
-.challenge-description {
-    color: white;
-    font-size: 20px;
-
-}
-
-.challenge-box {
-    padding: 20px;
-    width: 70%;
-    height: 5%;
-    background-color: #00a87e;
-    border-radius: 25px;
-    margin: auto;
-}
-
-.challenge-header {
-    margin-left: 44%;
-}
 
