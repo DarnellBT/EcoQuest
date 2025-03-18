@@ -8,7 +8,15 @@ from quiz.models import Quiz, Question
 from .forms import LocationForm, ChallengeForm, QuestionForm, QuizForm
 
 def admin_portal(request):
-    return render(request, 'admin_page.html')
+    user_profile = UserProfile.objects.get(userId=request.user.id)
+
+    if user_profile.is_admin:
+        pass
+    elif user_profile.is_game_keeper:
+        messages.error(request, 'You do not have access!')
+    else: 
+        messages.error(request, 'You do not have access!')
+    return render(request, 'admin_page.html', {'user_auth':user_profile.user})
 
 def gamekeeper_portal(request):
     user_profile = UserProfile.objects.get(userId=request.user.id)
