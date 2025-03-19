@@ -6,7 +6,7 @@ def leaderboard_page(request):
     """Function retrieves all user usernames, points and ranks them"""
     if request.method == "GET":
         
-        # Retrieve all user profiles 
+        # Retrieve all user profiles
         userprofiles = UserProfile.objects.all().order_by('-points', 'user__username')
         
         # Create a ranking system
@@ -27,11 +27,12 @@ def leaderboard_page(request):
         user_rank = None
         current_user_points = None
         user_entry = None
-        
+        userprofile = None  # Ensure `userprofile` is available
+
         if request.user.is_authenticated:
-            # Find the logged-in user's profile
-            current_user_profile = UserProfile.objects.get(user=request.user)
-            current_user_points = current_user_profile.points
+            # Get the logged-in user's profile
+            userprofile = UserProfile.objects.get(user=request.user)
+            current_user_points = userprofile.points
             
             # Check if user is in top 5
             user_entry = next((entry for entry in rank_list if entry[1] == request.user.username), None)
@@ -49,6 +50,7 @@ def leaderboard_page(request):
             'combined_list': top_5,
             'user_entry': user_entry,  # Holds current user info if not in top 5
             'user_auth': request.user,
+            'userprofile': userprofile,  # Pass userprofile to template
         }
 
         return render(request, 'leaderboard.html', context)

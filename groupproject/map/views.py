@@ -1,28 +1,22 @@
 """Module contains logic for map page"""
-import base64
-import json
-import math
 import folium
-import folium.elements
 import folium.plugins
 from django.contrib.messages import get_messages
-from django.shortcuts import redirect
+from django.templatetags.static import static
 from django.views.generic import TemplateView
 from .models import Location
+from registration.models import UserProfile
 
-
-# pylint: disable = line-too-long
 
 class MapView(TemplateView):
     template_name = 'map.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         storage = get_messages(self.request)
-        
         context['messages'] = storage
         storage.used
+
         # Create a map figure, with initial location and settings
         map_fig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],
@@ -33,28 +27,35 @@ class MapView(TemplateView):
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(map_fig)
+
+        # Check if user is authenticated
+        userprofile = None
+        if self.request.user.is_authenticated:
+            userprofile = UserProfile.objects.get(user=self.request.user)
+
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
         for data in all_locations:
-            print(f"Adding marker for location: {data.name}, Latitude: {data.latitude}, Longitude: {data.longitude}")
-            image_path = f"{data.icon}"
-            print("Image Path: ", image_path)
-            
+            icon_url = static(f'images/{data.icon}.png')  # Generate full static URL
+
             folium.Marker(
                 location=[data.latitude, data.longitude],
-                
-                icon= folium.CustomIcon(icon_image=f"static/images/{data.icon}.png"),
+                icon=folium.CustomIcon(
+                    icon_image=icon_url,  # Use absolute URL for icon
+                    icon_size=(30, 30)  # Ensure correct display size
+                ),
                 tooltip=f'{data.name}',
+                popup=f"<strong>{data.name}</strong>"
             ).add_to(map_fig)
-        # Add a specific marker at given coordinates
-        
-        
+
         # Render map to HTML format
-        map_html = map_fig._repr_html_()
-        # Pass HTML content to map.html
-        context['map'] = map_html
-        # send it to map
+        context['map'] = map_fig._repr_html_()
+        context['user_auth'] = self.request.user
+        context['userprofile'] = userprofile  # Pass user profile to template
+        
         return context
+
+
 
 """
 def submit_process(request):
