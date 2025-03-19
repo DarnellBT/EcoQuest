@@ -72,6 +72,32 @@
 }
 
 
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #f9f9f9;
+  color: #00a87e;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.icon-text {
+  color: #00a87e;
+  font-size: 16px !important;
+}
+
+
+/* Links */
+a {
+  color: aliceblue;
+  font-size: 2dvw;
+  text-decoration: none;
+}
+
+
 /* Messages styling */
 .messages {
   list-style-type: none;
