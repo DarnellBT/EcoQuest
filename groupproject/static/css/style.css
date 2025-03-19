@@ -3,17 +3,12 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 170vh !important;
     box-sizing: border-box;
     text-align: center;
     
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-    margin: 5px;
-}
 
 .container h1 {
     color: #f9f9f9;
@@ -22,6 +17,7 @@ body {
 .section {
     background-color: #f9f9f9;
     padding: 50px 30px;
+    height: 50%;
 
    
 
@@ -37,8 +33,8 @@ body {
 }
 
 #my-qr-reader img[alt="Camera based scan"] {
-    width: 100px !important;
-    height: 100px !important;
+    width: 80px !important;
+    height: 80px !important;
 }
 
 button {
@@ -73,3 +69,23 @@ video {
    
    
 }
+
+.footer {
+    position: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2%;
+    background-color: #f9f9f9;
+    color: #00a87e;
+    text-align: center;
+    margin-top: 6rem;
+  }
+  
+  .icon-text {
+    color: #00a87e;
+    font-size: 16px !important;
+    text-decoration: none !important;
+  }
+
+  
