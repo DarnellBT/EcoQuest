@@ -327,6 +327,7 @@ aside .sidebar a.active {
         position: absolute;
         left: 1rem;
 
+
     }
 
     .privacy-box {
@@ -336,6 +337,9 @@ aside .sidebar a.active {
         z-index: 1;
         height: 80%;
     }
+
+
+
    
 }
 
