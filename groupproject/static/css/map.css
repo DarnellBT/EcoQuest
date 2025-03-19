@@ -1,7 +1,4 @@
-/* General body styling */
-body {
-  font-family: 'Poppins', sans-serif;
-}
+
 
 /* Box containing map-related content */
 .map-box {
@@ -64,6 +61,8 @@ body {
   width: 100%;
   height: 100%;
   padding: inherit; /* Ensures same padding as .qr-scanner */
+  color: aliceblue;
+  font-size: 2dvw;
 }
 
 /* Hover effect */
@@ -72,12 +71,6 @@ body {
   cursor: pointer;
 }
 
-/* Links */
-a {
-  color: aliceblue;
-  font-size: 2dvw;
-  text-decoration: none;
-}
 
 /* Messages styling */
 .messages {
@@ -125,7 +118,7 @@ ul {
     border-radius: 5px;
   }
 
-  a {
+  .qr-scanner a {
     font-size: 3dvw;
   }
 }
@@ -153,7 +146,7 @@ ul {
     border-radius: 5px;
   }
 
-  a {
+  .qr-scanner a {
     font-size: 3dvw;
   }
 }
@@ -166,7 +159,7 @@ ul {
     border-radius: 5px;
   }
 
-  a {
+  .qr-scanner a {
     font-size: 2.5dvw; /* Slightly smaller font size */
   }
 
