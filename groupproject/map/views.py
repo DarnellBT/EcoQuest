@@ -1,12 +1,8 @@
 """Module contains logic for map page"""
-import base64
-import json
-import math
 import folium
-import folium.elements
 import folium.plugins
 from django.contrib.messages import get_messages
-from django.shortcuts import redirect, render
+from django.templatetags.static import static
 from django.views.generic import TemplateView
 from .models import Location
 from registration.models import UserProfile
@@ -31,7 +27,7 @@ class MapView(TemplateView):
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(map_fig)
-        
+
         # Check if user is authenticated
         userprofile = None
         if self.request.user.is_authenticated:
@@ -40,19 +36,25 @@ class MapView(TemplateView):
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
         for data in all_locations:
+            icon_url = static(f'images/{data.icon}.png')  # Generate full static URL
+
             folium.Marker(
                 location=[data.latitude, data.longitude],
-                icon=folium.CustomIcon(icon_image=f"static/images/{data.icon}.png"),
+                icon=folium.CustomIcon(
+                    icon_image=icon_url,  # Use absolute URL for icon
+                    icon_size=(30, 30)  # Ensure correct display size
+                ),
                 tooltip=f'{data.name}',
+                popup=f"<strong>{data.name}</strong>"
             ).add_to(map_fig)
-        
+
         # Render map to HTML format
-        map_html = map_fig._repr_html_()
-        context['map'] = map_html
+        context['map'] = map_fig._repr_html_()
         context['user_auth'] = self.request.user
         context['userprofile'] = userprofile  # Pass user profile to template
         
         return context
+
 
 
 """
