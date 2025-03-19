@@ -2,24 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/map.css' %}">
-    <title>Map</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
 </head>
 <body>
-    <main>
+    <aside>
+        <div class="top">
+            <div class="logo">
+                <h2><span class="danger">EcoQuest</span></h2>
+            </div>
+            <div class="close" id="close_button">
+                <span class="material-symbols-sharp">close</span>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <a href="{% url 'home' %}">
+                <span class="material-symbols-sharp">grid_view</span>
+                <h3> Home </h3>
+            </a>
+
+            <a href="{% url 'leaderboard' %}">
+                <span class="material-symbols-sharp">leaderboard</span>
+                <h3> Leaderboard </h3>
+            </a>
+
+            <a href="{% url 'map' %}" class="active">
+                <span class="material-symbols-sharp">map</span>
+                <h3> Map </h3>
+            </a>
+
+            <a href="{% url 'contact' %}">
+                <span class="material-symbols-sharp">call</span>
+                <h3> Contact </h3>
+            </a>
+
+            {% if userprofile.is_user %}
+            <a href="{% url 'account' %}">
+                <span class="material-symbols-sharp">exit_to_app</span>
+                <h3> Account </h3>
+            </a>
+            {% endif %}
+
+            {% if userprofile.is_game_keeper %}
+            <a href="{% url 'gamekeeper-portal' %}">
+                <span class="material-symbols-sharp">exit_to_app</span>
+                <h3> Game Keeper </h3>
+            </a>
+            {% endif %}
+
+            {% if userprofile.is_admin %}
+            <a href="{% url 'admin-portal' %}">
+                <span class="material-symbols-sharp">exit_to_app</span>
+                <h3> Admin </h3>
+            </a>
+            {% endif %}
+
+            <!-- Add dynamic Sign In / Logout button logic -->
+            {% if user_auth.is_anonymous %}
+            <a href="{% url 'login' %}">
+                <span class="material-symbols-sharp">login</span>
+                <h3> Sign In </h3>
+            </a>
+            {% else %}
+            <a href="{% url 'logout' %}">
+                <span class="material-symbols-sharp">logout</span>
+                <h3> Logout </h3>
+            </a>
+            {% endif %}
+        </div>
+    </aside>
+
+    <main class="map-main"> <!-- Added class for map-specific styling -->
         <header>
             <h1>Map page</h1>
-            <a href="/home" class="button button1">Home</a>
-            <a href="{% url 'logout' %}" class="logout-button">Logout</a>
         </header>
         <br/>
-        
-        <div class="box1">
-           
+
+        <div class="map-box"> <!-- Added unique class for map box -->
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -41,6 +108,15 @@
             <div class="qr-scanner"><a href="{% url 'qr-scanner' %}">Scan QR Code</a></div>
         </div>
     </main>
+
+
+    <div class="right">
+        <div class="top">
+            <button id="menu_bar">
+                <span class="material-symbols-sharp"> menu </span>
+            </button>
+        </div>
+    </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
