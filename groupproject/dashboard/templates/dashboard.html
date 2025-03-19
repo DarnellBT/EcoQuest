@@ -6,48 +6,84 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Account</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/dashboardStyle.css' %}">
-    <!-- Add a link to stylesheet in here, and then put the style sheet in static in root folder-->
+    <link rel="stylesheet" href="{% static 'css/delete_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_edit.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+   
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src = "{% static 'js/dashboard.js' %}" defer></script>
+    
 </head>
 <body>
-<table class="table-outer">
-    <thead class="table-head">
-    <tr>
-        <th class="table-cell"><a href="{% url 'home' %}">Home</a></th>
-        <th class="table-cell"><a href="{% url 'account' %}">Profile</a></th>
-        <th class="table-cell"><a href="{% url 'change-uname' %}">Change Username</a></th>
-        <th class="table-cell"><a href="{% url 'change-name' %}">Change Name</a></th>
-        <th class="table-cell"><a href="{% url 'change-password' %}">Change Password</a></th>
-        <th class="table-cell"><a href="{% url 'challenges' %}">Challenges</a></th>
-        <th class="table-cell"><a href="{% url 'logout' %}">Logout</a></td>
-    </tr>
-    </thead>
-</table>
 
-<div class="box">
-    <p>Username: {{ username }}</p>
-    <p>First Name: {{ firstName }}</p>
-    <p>Last Name: {{ lastName }}</p>
-    <p>Email: {{ email }}</p>
-    <p>Points: {{ points }}</p>
-    <p>Role: {{ role }}</p>
-    <a href="{% url 'password_reset' %}">Reset Password?</a><br>
-    <a href="{% url 'edit_account' %}">Edit Details</a>
+    <div class="container">
+        <aside>
+          <div class="top">
+            <div class="logo">
+              <h2><span class="danger">Account</span></h2>
+            </div>
+            <div class="close" id="close_button">
+              <span class="material-symbols-sharp">close</span>
+            </div>
+          </div>
+  
+          <div class="sidebar">
+            
+            {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
+            <a href="{% url 'home' %}"> 
+              <span class="material-symbols-sharp">home</span>
+              <h3> Home </h3>
+            </a>
+            {% endif %}
+            
+            {% if userprofile.is_game_keeper or userprofile.is_admin %}
+            <a href="{% url 'gamekeeper-portal' %}"> 
+              <span class="material-symbols-sharp">exit_to_app</span>
+              <h3> Game Keeper </h3>
+            </a>
+            {% endif %}
+  
+           
+          
+            
+            {% if user_auth.is_authenticated %}
+            <a href="{% url 'logout'%}"> 
+              <span class="material-symbols-sharp"> logout </span>
+              <h3> Logout </h3>
+            </a>
+            {% endif %}
+            
+          </div>
+        </aside>
+
+
+        <div class="right">
+          <div class="top">
+            <button id="menu_bar">
+              <span class="material-symbols-sharp"> menu </span>
+            </button>
+        
+          </div>
+          
+        </div>
+
+<div class="admin-page-box">
+    <div class="user-info">
+        <div class="user-info-item"><strong>Username:</strong> {{ username }}</div>
+        <div class="user-info-item"><strong>First Name:</strong> {{ firstName }}</div>
+        <div class="user-info-item"><strong>Last Name:</strong> {{ lastName }}</div>
+        <div class="user-info-item"><strong>Email:</strong> {{ email }}</div>
+        <div class="user-info-item"><strong>Points:</strong> {{ points }}</div>
+        <div class="user-info-item"><strong>Role:</strong> {{ role }}</div>
+    </div>
+    <div class="account-actions">
+        <a href="{% url 'password_reset' %}" class="action-link reset-password-link">Reset Password?</a><br>
+        <a href="{% url 'edit_account' %}" class="action-link edit-details-link">Edit Details</a>
+    </div>
+    <form method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+        {% csrf_token %}
+        <input type="submit" value="Delete Account" class="delete-button">
+    </form>
 </div>
-
-
-<div class="warning">
-    <h3>WARNING: Deleting your account is permanent!</h3>
-    
-</div>
-<form method="POST">
-    {% csrf_token %}
-
-    <input type="submit" value="Delete Account" class="deleteButton">
-</form>
-
-
-
 </body>
 </html>
