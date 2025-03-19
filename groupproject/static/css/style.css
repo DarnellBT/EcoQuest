@@ -6,7 +6,7 @@ body {
     height: 100vh;
     box-sizing: border-box;
     text-align: center;
-    background: #00a87e;
+    
 }
 
 .container {
@@ -16,22 +16,21 @@ body {
 }
 
 .container h1 {
-    color: #ffffff;
+    color: #f9f9f9;
 }
 
 .section {
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     padding: 50px 30px;
-    border: 1.5px solid #b2b2b2;
-    border-radius: 0.25em;
+
+   
 
 }
-
 #my-qr-reader {
     padding: 20px !important;
-    border: 1.5px solid #b2b2b2 !important;
-    border-radius: 8px;
+
 }
+
 
 #my-qr-reader img[alt="Info icon"] {
     display: none;
@@ -44,16 +43,20 @@ body {
 
 button {
     padding: 10px 20px;
-    border: 1px solid #b2b2b2;
+    
     outline: none;
-    border-radius: 0.25em;
-    color: white;
+  
+    color: #f9f9f9;
     font-size: 15px;
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 10px;
     background-color: #008000ad;
     transition: 0.3s background-color;
+}
+
+#menu_bar {
+    color: black;
 }
 
 button:hover {
@@ -67,15 +70,6 @@ button:hover {
 
 video {
     width: 100% !important;
-    border: 1px solid #b2b2b2 !important;
-    border-radius: 0.25em;
-}
-
-.form-style {
-    margin: auto;
-}
-
-.form-fields {
-    border: 2px solid red;
-    border-radius: 4px;
+   
+   
 }
