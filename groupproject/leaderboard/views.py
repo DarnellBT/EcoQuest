@@ -2,35 +2,53 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from registration.models import UserProfile
 
-
 def leaderboard_page(request):
     """Function retrieves all user usernames, points and ranks them"""
     if request.method == "GET":
         
-        # retrieves userprofiles 
-        userprofiles = UserProfile.objects.all()
-        userprofiles = list(userprofiles)
-        points_list = []
-        # retrieves points and sorts them in descending order
-        for profile in userprofiles:
-            points = profile.points
-            points_list.append(points)  # it retrieves the username by points and the
-            points_list = sorted(points_list, reverse=True)
+        # Retrieve all user profiles 
+        userprofiles = UserProfile.objects.all().order_by('-points', 'user__username')
+        
+        # Create a ranking system
         rank_list = []
-        # ranks users according to their points in descending order (puts user.username in ranked)
-        ranked = UserProfile.objects.all().order_by('-points', 'user__username')[:5]
-        # gets the usernames associated with the points  
-        for rank_user in ranked:
-            rank_list.append(rank_user.user.username)
+        prev_points = None
+        rank = 0
+        
+        for index, profile in enumerate(userprofiles):
+            if profile.points != prev_points:
+                rank = index + 1  # New rank if different points
+            prev_points = profile.points
+            rank_list.append((rank, profile.user.username, profile.points))
+        
+        # Extract top 5 users
+        top_5 = rank_list[:5]
 
-        rank = []
-        # changes 0 index to 1 index
-        len_username = len(rank_list) + 1
-        for i in range(1, len_username):
-            rank.append(i)
-            # combines all lists into easier format
-        combined_list = zip(rank, rank_list, points_list)
+        # Check if the user is logged in
+        user_rank = None
+        current_user_points = None
+        user_entry = None
+        
+        if request.user.is_authenticated:
+            # Find the logged-in user's profile
+            current_user_profile = UserProfile.objects.get(user=request.user)
+            current_user_points = current_user_profile.points
+            
+            # Check if user is in top 5
+            user_entry = next((entry for entry in rank_list if entry[1] == request.user.username), None)
+            
+            if user_entry:
+                user_rank = user_entry[0]
+            
+            # If the user isn't in the top 5, show them separately at the bottom
+            if user_rank and user_rank > 5:
+                user_entry = (user_rank, request.user.username, current_user_points)
+            else:
+                user_entry = None  # Don't show duplicate if already in top 5
+
         context = {
-            'combined_list': combined_list,
+            'combined_list': top_5,
+            'user_entry': user_entry,  # Holds current user info if not in top 5
+            'user_auth': request.user,
         }
+
         return render(request, 'leaderboard.html', context)
