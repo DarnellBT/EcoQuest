@@ -1,7 +1,3 @@
-html {
-    font-size: 85%; /* Slightly larger than before (85% of the default size) */
-}
-
 body {
     background-color: white;
     background-size: cover;
@@ -10,7 +6,6 @@ body {
     margin: 0;
     height: 100vh;
     position: relative;
-    font-size: 1rem; /* Default font size */
 }
 
 /* Ensure the main container takes full height of the viewport */
@@ -61,7 +56,7 @@ main {
 }
 
 h2 {
-    font-size: 1.53rem; /* Slightly larger than before */
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
@@ -180,7 +175,7 @@ aside .sidebar a.active {
         margin: 0;
         color: gray;
         text-decoration: none;
-        font-size: 0.85rem; /* Slightly larger than before */
+        font-size: 1rem;
         transition: color 0.3s, padding-right 0.3s;
     }
 
@@ -319,30 +314,4 @@ aside .sidebar a.active {
         justify-content: center;
         align-items: center;
         padding: 0 0.8rem;
-        background: white;
-        width: 100%;
-        z-index: 2;
-        margin: 0;
-    }
-
-    .right .top button {
-        display: inline-block;
-        background: transparent;
-        cursor: pointer;
-        position: absolute;
-        left: 1rem;
-
-    }
-
-    .privacy-box {
-        margin: 1rem;
-        background:fixed;
         
-    }
-   
-}
-
-.privacy-box {
-    margin: 2rem;
-    
-}
