@@ -1,6 +1,6 @@
 """Module defines how qr-scanner url is presented"""
 import json
-
+from registration.models import UserProfile
 from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import redirect
@@ -15,12 +15,14 @@ def scanner(request):
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../login')
+    
+    userprofile = UserProfile.objects.get(user=request.user)
     if request.method == 'POST':
         # retrieves data from json in javascript
         data = json.loads(request.body)
         decoded_test = data.get('decoded')
         # checks if url is successfully scanned
-        #print('Decoded QR Code: ', decoded_test)
+        
         # send to javascript and redirect back to map
         return JsonResponse({'redirect_url': f'../{decoded_test}/'})
-    return render(request, 'scan.html')
+    return render(request, 'scan.html', {'user_auth': request.user, 'userprofile':userprofile})
