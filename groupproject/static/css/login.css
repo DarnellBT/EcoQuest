@@ -1,23 +1,21 @@
-/*Change overall font*/
 main {
     font-family: 'Poppins', sans-serif;
 }
 
-/*Title*/
 h1 {
     text-align: center;
     font-size: 2vw;
 }
 
-/*The form itself*/
 form {
     text-align: center;
     font-size: 1.5vw;
 }
 
-/*Styling for help messages*/
 .messages {
     list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
 }
 .message {
     color: red;
@@ -25,60 +23,123 @@ form {
     text-align: center;
 }
 
-/*The box containing it*/
-.box1 {
-    margin: auto;
-    width: 50%;
-    border-radius: 25px;
-    border: solid aliceblue;
-    padding: 1vw;
-    background-color: #00c896;
+.error-message {
+    color: #ff4d4d;
+    background-color: #ffe6e6;
+    border: 1px solid #ff4d4d;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
-/*Submit button*/
-button {
-    color: aliceblue;
-    font-size: 1.2vw;
-    width: 25%;
-    background-color: #007d69;
+.box1 {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
 
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    color: white !important;
+    font-size: 1.2vw;
+    width: 100%;
+    max-width: 200px;
+    background-color: #28a745;
     padding: 0.5vw 2vw;
     text-decoration: none;
     border-radius: 5px;
-    border: solid aliceblue;
+    border: none;
     display: block;
     margin: 20px auto;
     text-align: center;
 }
 button:hover {
-    background-color: #00a87e;
+    background-color: #218838;
     cursor: pointer;
 }
 
-/*Links to Register page*/
+.login-page-title {
+    color: #4CAF50 !important;
+    font-size: 20px !important;
+}
+
 .register-link {
-    size: 8pt;
-    text-decoration: underline;
+    font-size: 1rem;
+    text-decoration: none !important;
+    margin-top: 10px;
+    text-align: center;
 }
 a {
     text-decoration: none;
-    color: black;
     text-align: center;
 }
 
-/* Responsive Styles */
-/*tablet*/
-@media screen and (max-width: 768px) {
-
+.register-link a {
+    color: #28a745;
+    text-decoration: none;
 }
-/*Phone*/
-@media screen and (max-width: 480px) {
+
+.register-link a:hover {
+    color: #218838;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .box1 {
+        width: 80%;
+        margin: 30px auto;
+    }
     button {
         font-size: 1.5vw;
-        width: 30%;
-        margin: 10px auto;
+        width: 100%;
+        max-width: 200px;
+        color: white;
     }
+    .register-link {
+        font-size: 0.9rem;
+        text-decoration: none !important;
+    }
+    .messages {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
     .box1 {
-        width: 50%;
+        width: 90%;
+        margin: 20px auto;
+    }
+    button {
+        font-size: 1.8vw;
+        width: 100%;
+        max-width: 200px;
+        color: white !important;
+    }
+    .register-link {
+        font-size: 0.8rem;
+        text-decoration: none !important;
+    }
+    .messages {
+        font-size: 0.8rem;
+        padding: 5px;
     }
 }

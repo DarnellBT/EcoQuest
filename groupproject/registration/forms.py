@@ -33,7 +33,7 @@ class RegistrationForm(UserCreationForm):
         """Checks whether username exists in database"""
         username = self.cleaned_data.get('username')
         if User.objects.filter(username=username).exists():
-            raise ValidationError(f"The email {username} is already taken")
+            raise ValidationError(f"The username {username} is already taken")
         return username
 
     def clean_email(self):
