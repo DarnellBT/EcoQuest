@@ -36,7 +36,8 @@ class MapView(TemplateView):
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
         for data in all_locations:
-            icon_url = static(f'images/{data.icon}.png')  # Generate full static URL
+         
+            icon_url =f'static/images/{data.icon}.png'  # Generate full static URL
 
             folium.Marker(
                 location=[data.latitude, data.longitude],
