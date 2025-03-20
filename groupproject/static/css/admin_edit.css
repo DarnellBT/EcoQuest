@@ -1,4 +1,3 @@
-
 .admin-page-box {
     background: #f9f9f9;
     padding: 1.5rem;
@@ -38,26 +37,14 @@ label {
     font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    margin-top: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    box-sizing: border-box;
-}
-
-input[type="email"] {
-    width: 100%;
-    max-width: 400px;
-    padding: 12px;
-    margin-top: 10px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    box-sizing: border-box;
+    max-width: 400px; /* Ensure consistent width */
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box; /* Include padding in width */
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 input[type="number"] {
