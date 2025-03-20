@@ -1,4 +1,64 @@
-.back_button {
-    background-color: rgb(28, 117, 194) !important;
-    color: rebeccapurple;
+.button-back {
+    color: #079b38 !important;
+    padding: 5px 10px !important;
+    border-radius: 5px !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: auto;
+    align-items: center;
+    align-self: auto;
+    cursor: pointer;
+    margin-top: 3rem; 
+    font-family: 'poppy', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 3rem;
+}
+
+body {
+    height: auto;
+    width: 100vw;
+    margin: 0;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 96%;
+    height: 4%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+    line-height: 50px;
+    gap: 5rem !important;
+    margin-bottom: 0%;
+}
+
+.footer-text {
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    text-decoration: none !important;
+    color: #00a87e !important;
+    font-family: 'poppy', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: #00a87e;
+    font-family: 'poppy', sans-serif;
+    word-wrap: break-word;
 }
