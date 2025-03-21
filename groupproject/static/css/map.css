@@ -4,9 +4,9 @@
 .map-box {
   margin: auto;
   width: 60%;
-  background-color: #00a87e;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 2dvw;
-  border: solid aliceblue;
   padding: 1dvw;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
   height: 50vh; /* Ensures map resizes with screen */
   background-color: #007d69;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid lightseagreen;
   margin-bottom: 1rem; /* Space before the QR button */
   position: relative; /* Keeps internal elements inside */
   overflow: hidden; /* Prevents content from overflowing */

@@ -13,10 +13,13 @@ def contact(request):
     """
     form = ContactForm()
     
-    if request.user.is_authenticated:
-        userprofile = UserProfile.objects.get(user=request.user)
+    if request.user.is_anonymous:
+        userprofile = None
     else:
-        pass
+        userprofile = UserProfile.objects.get(user=request.user)
+        
+
+
 
     if request.method == "POST":
         form = ContactForm(request.POST)
