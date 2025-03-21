@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Leaderboard</title>
     {% load static %}
@@ -10,72 +10,85 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="{% static 'js/dashboard.js' %}" defer></script>
-  </head>
-  <body>
-
-
-    <aside>
-      <div class="top">
-        <div class="logo">
-          <h2><span class="danger">EcoQuest</span></h2>
-        </div>
-        <div class="close" id="close_button">
-          <span class="material-symbols-sharp">close</span>
-        </div>
+</head>
+<body>
+  <aside>
+    <div class="top">
+      <div class="logo">
+        <h2><span class="danger">EcoQuest</span></h2>
       </div>
+      <div class="close" id="close_button">
+        <span class="material-symbols-sharp">close</span>
+      </div>
+    </div>
 
-      <div class="sidebar">
+    <div class="sidebar">
 
-        <a href="{% url 'home' %}" > 
-          <span class="material-symbols-sharp">grid_view</span>
-          <h3> Home </h3>
-        </a>
+      <a href="{% url 'home' %}"> 
+        <span class="material-symbols-sharp">grid_view</span>
+        <h3> Home </h3>
+      </a>
 
-        <a href="{% url 'leaderboard' %}" class="active"> 
-          <span class="material-symbols-sharp">leaderboard</span>
-          <h3> Leaderboard </h3>
-        </a>
+      <a href="{% url 'leaderboard' %}" class="active"> 
+        <span class="material-symbols-sharp">leaderboard</span>
+        <h3> Leaderboard </h3>
+      </a>
 
-        <a href="{% url 'map' %}"> 
-          <span class="material-symbols-sharp">map</span>
-          <h3> Map </h3>
-        </a>
+      <a href="{% url 'map' %}"> 
+        <span class="material-symbols-sharp">map</span>
+        <h3> Map </h3>
+      </a>
 
-        <a href="{% url 'contact' %}"> 
-          <span class="material-symbols-sharp">call</span>
-          <h3> Contact </h3>
-        </a>
+      <a href="{% url 'contact' %}"> 
+        <span class="material-symbols-sharp">call</span>
+        <h3> Contact </h3>
+      </a>
 
-        {% if userprofile.is_user %}
-        <a href="{% url 'account' %}"> 
-          <span class="material-symbols-sharp">exit_to_app</span>
-          <h3> Account </h3>
-        </a>
-        {% endif %}
-        
-        {% if userprofile.is_game_keeper %}
-        <a href="{% url 'gamekeeper-portal' %}"> 
-          <span class="material-symbols-sharp">exit_to_app</span>
-          <h3> Game Keeper </h3>
-        </a>
-        {% endif %}
+      {% if userprofile.is_user %}
+      <a href="{% url 'achievements' %}">
+        <span class="material-symbols-sharp">trophy</span>
+        <h3> Achievements </h3>
+      </a>
+      {% endif %}
 
-        {% if userprofile.is_admin %}
-        <a href="{% url 'admin-portal' %}"> 
-          <span class="material-symbols-sharp">exit_to_app</span>
-          <h3> Admin </h3>
-        </a>
-        {% endif %}
+      {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
+      <a href="{% url 'account' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Account </h3>
+      </a>
+      {% endif %}
       
-        <a href="{% url 'logout'%}"> 
-          <span class="material-symbols-sharp"> login </span>
-          <h3> Logout </h3>
-        </a>
-        
-      </div>
-    </aside>
+      {% if userprofile.is_game_keeper or userprofile.is_admin %}
+      <a href="{% url 'gamekeeper-portal' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Game Keeper </h3>
+      </a>
+      {% endif %}
+
+      {% if userprofile.is_admin %}
+      <a href="{% url 'admin-portal' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Admin </h3>
+      </a>
+      {% endif %}
+    
+      {% if user_auth.is_anonymous %}
+      <a href="{% url 'login'%}"> 
+        <span class="material-symbols-sharp"> login </span>
+        <h3> Sign In </h3>
+      </a>
+      {% endif %}
+
+      {% if user_auth.is_authenticated %}
+      <a href="{% url 'logout'%}"> 
+        <span class="material-symbols-sharp"> login </span>
+        <h3> Logout </h3>
+      </a>
+      {% endif %}
+      
+    </div>
+  </aside>
 
     <main class="leaderboard-main">
       <header class="leaderboard-header">
@@ -91,27 +104,50 @@
                   </tr>
               </thead>
               <tbody>
-                  {% for rank, user, point in combined_list %}
-                  <tr class="leaderboard-row">
-                      <td class="leaderboard-td leaderboard-rank"><span>{{ rank }}</span></td>
-                      <td class="leaderboard-td leaderboard-username"><span>{{ user }}</span></td>
-                      <td class="leaderboard-td leaderboard-points"><span>{{ point }}</span></td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
+                {% for rank, user, point in combined_list %}
+                <tr class="leaderboard-row {% if user == request.user.username and rank <= 5 %}leaderboard-current-user-top5{% endif %}">
+                    <td class="leaderboard-td leaderboard-rank">
+                        <span class="{% if rank == 1 %}gold-rank{% elif rank == 2 %}silver-rank{% elif rank == 3 %}bronze-rank{% endif %}">
+                            {% if rank <= 3 %}
+                                <span class="material-symbols-sharp">emoji_events</span>
+                            {% endif %}
+                            {{ rank }}
+                        </span>
+                    </td>
+                    <td class="leaderboard-td leaderboard-username">
+                        <span>
+                            {% if user == request.user.username %}
+                                {{ user }} (YOU)
+                            {% else %}
+                                {{ user }}
+                            {% endif %}
+                        </span>
+                    </td>
+                    <td class="leaderboard-td leaderboard-points"><span>{{ point }}</span></td>
+                </tr>
+                {% endfor %}
+
+            
+                {% if user_entry %}
+                <tr class="leaderboard-row leaderboard-current-user">
+                    <td class="leaderboard-td leaderboard-rank"><span>{{ user_entry.0 }}</span></td>
+                    <td class="leaderboard-td leaderboard-username"><span>(YOU) {{ user_entry.1 }}</span></td>
+                    <td class="leaderboard-td leaderboard-points"><span>{{ user_entry.2 }}</span></td>
+                </tr>
+                {% endif %}
+            </tbody>
+            
+            
           </table>
       </div>
-  </main>
-  
+    </main>
 
     <div class="right">
       <div class="top">
         <button id="menu_bar">
           <span class="material-symbols-sharp"> menu </span>
         </button>
-    
       </div>
-      
-    <script src="index.js"></script>
-  </body>
+    </div>
+</body>
 </html>

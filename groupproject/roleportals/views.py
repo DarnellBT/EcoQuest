@@ -8,7 +8,15 @@ from quiz.models import Quiz, Question
 from .forms import LocationForm, ChallengeForm, QuestionForm, QuizForm
 
 def admin_portal(request):
-    return render(request, 'admin_page.html')
+    user_profile = UserProfile.objects.get(userId=request.user.id)
+
+    if user_profile.is_admin:
+        pass
+    elif user_profile.is_game_keeper:
+        messages.error(request, 'You do not have access!')
+    else: 
+        messages.error(request, 'You do not have access!')
+    return render(request, 'admin_page.html', {'userprofile':user_profile,'user_auth':request.user})
 
 def gamekeeper_portal(request):
     user_profile = UserProfile.objects.get(userId=request.user.id)
@@ -74,8 +82,16 @@ def admin_location(request):
             form.save()
             return redirect('./')
     else:
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
         form = LocationForm()
-    return render(request, 'admin_location.html', {'locations': locations, 'form': form})
+    return render(request, 'admin_location.html', {'locations': locations, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
 def edit_location(request, location_id):
     location = get_object_or_404(Location, locationId=location_id)
@@ -105,7 +121,15 @@ def admin_quiz(request):
             return redirect('./')
     else:
         form = QuizForm()
-    return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
 def edit_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, quizId=quiz_id)
@@ -157,7 +181,15 @@ def admin_question(request):
             return redirect('./')
     else:
         form = QuestionForm()
-    return render(request, 'admin_question.html', {'questions': questions, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_question.html', {'questions': questions, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
    
 
 
@@ -190,7 +222,15 @@ def admin_challenge(request):
             return redirect('./')
     else:
         form = ChallengeForm()
-    return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
     
 
 

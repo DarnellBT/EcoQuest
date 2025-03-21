@@ -327,13 +327,19 @@ aside .sidebar a.active {
         position: absolute;
         left: 1rem;
 
+
     }
 
     .privacy-box {
-        margin: 1rem;
-        background:fixed;
-        
+        width: 100%;
+        padding: 10px;
+        margin-top: 50px;
+        z-index: 1;
+        height: 80%;
     }
+
+
+
    
 }
 
@@ -341,3 +347,4 @@ aside .sidebar a.active {
     margin: 2rem;
     
 }
+
