@@ -101,8 +101,8 @@
                 <td>{{ quiz.name }}</td>
                 
                 <td>
-                    <a href="{% url 'edit_quiz' quiz.quizId %}">Edit</a>
-                    <a href="{% url 'delete_quiz' quiz.quizId %}" onclick="return confirm('Are you sure?');">Delete</a>
+                    <a href="{% url 'edit_quiz' quiz.quizId %}" class="edit-details-link">Edit</a>
+                    <a href="{% url 'delete_quiz' quiz.quizId %}" onclick="return confirm('Are you sure?');" class="delete-link">Delete</a>
                 </td>
             </tr>
             {% endfor %}

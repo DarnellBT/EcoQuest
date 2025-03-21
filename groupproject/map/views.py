@@ -9,6 +9,10 @@ from registration.models import UserProfile
 
 
 class MapView(TemplateView):
+    """
+    Handles the map page view.
+    Displays a map with markers for all locations and user-specific data if authenticated.
+    """
     template_name = 'map.html'
 
     def get_context_data(self, **kwargs):
@@ -36,7 +40,8 @@ class MapView(TemplateView):
         # Create markers with popup and hover text
         all_locations = Location.objects.all()
         for data in all_locations:
-            icon_url = static(f'images/{data.icon}.png')  # Generate full static URL
+         
+            icon_url =f'static/images/{data.icon}.png'  # Generate full static URL
 
             folium.Marker(
                 location=[data.latitude, data.longitude],

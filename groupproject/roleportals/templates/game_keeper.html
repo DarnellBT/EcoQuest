@@ -6,34 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game Keeper Portal</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+    <link rel="stylesheet" href="{% static 'css/rolePortal.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% for userId, challenge, image, points, imageId in info %}
-    <div>
-        <p>User ID: {{ userId }}</p>
-        <p>Challenge: {{ challenge }}</p>
-        <p><img src="{{ image }}" alt="img" width="200" height="200"></p>
-        <p>Points: {{ points }}</p>
-        <form method="post">
-            {% csrf_token %}
-            <input type="checkbox" id="reject_{{ userId }}_{{ challenge }}" name="rejected_{{ userId }}_{{ challenge }}" value="Reject">
-            <label for="reject_{{ userId }}_{{ challenge }}">Reject</label><br>
-            <input type="checkbox" id="approve_{{ userId }}_{{ challenge }}" name="approved_{{ userId }}_{{ challenge }}" value="Approved">
-            <label for="approve_{{ userId }}_{{ challenge }}">Approve</label><br>
-            <input type="hidden" name="userId" value="{{ userId }}">
-            <input type="hidden" name="challenge" value="{{ challenge }}">
-            <input type="hidden" name="image" value="{{ image }}">
-            <input type="hidden" name="imageId" value="{{ imageId }}">
-            <input type="submit" value="Submit">
-        </form>
+    
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <h2><span class="danger">Game Keeper</span></h2>
+                </div>
+                <div class="close" id="close_button">
+                    <span class="material-symbols-sharp">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+            
+                <a href="{% url 'home' %}" class="sidebar-link">
+                    <span class="material-symbols-sharp">home</span>
+                    <h3>Home</h3>
+                </a>
+            
+                
+                <a href="{% url 'logout' %}" class="sidebar-link">
+                    <span class="material-symbols-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+             
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <button id="menu_bar" class="menu-button">
+                    <span class="material-symbols-sharp">menu</span>
+                </button>
+            </div>
+
+            <div class="admin-grid-container">
+                {% for userId, challenge, image, points, imageId in info %}
+                <div class="admin-page-box">
+                    <p><strong>User ID:</strong> {{ userId }}</p>
+                    <p><strong>Challenge:</strong> {{ challenge }}</p>
+                    <p><img src="{{ image }}" alt="Challenge Image" class="challenge-image"></p>
+                    <p><strong>Points:</strong> {{ points }}</p>
+                    <form method="post" class="approval-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="checkbox" id="reject_{{ userId }}_{{ challenge }}" name="rejected_{{ userId }}_{{ challenge }}" value="Reject">
+                            <label for="reject_{{ userId }}_{{ challenge }}">Reject</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="approve_{{ userId }}_{{ challenge }}" name="approved_{{ userId }}_{{ challenge }}" value="Approved">
+                            <label for="approve_{{ userId }}_{{ challenge }}">Approve</label>
+                        </div>
+                        <input type="hidden" name="userId" value="{{ userId }}">
+                        <input type="hidden" name="challenge" value="{{ challenge }}">
+                        <input type="hidden" name="image" value="{{ image }}">
+                        <input type="hidden" name="imageId" value="{{ imageId }}">
+                        <button type="submit" class="btn-submit">Submit</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
     </div>
-    <hr>
-{% endfor %}
-
-
+    <script src="{% static 'js/dashboard.js' %}"></script>
 </body>
 </html>

@@ -10,13 +10,54 @@
 }
 
 .admin-page-box {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 10px;
     background: #f9f9f9;
-    padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+.btn-submit {
     width: 100%;
-    margin-top: 10rem; 
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-page-box form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.admin-page-box form button:hover {
+    background-color: #45a049;
 }
 
 body {
@@ -29,39 +70,38 @@ body {
     position: relative;
 }
 
-/* Ensure the main container takes full height of the viewport */
 main {
     display: flex;
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align content to top */
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
-    padding-top: 25vh; /* Adjust space from the top */
-    gap: 1rem; /* Space between image and text */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 25vh;
+    gap: 1rem;
 }
 
 .image-banner {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    height: 50vh; /* Set the desired height for the image */
-    width: 90vw; /* Set the container width to be less than the full width */
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 90vw;
 }
 
 .image-banner img {
-    width: 100%; /* The image takes full width of its container */
-    height: 100%; /* The image takes full height of the container */
-    object-fit: cover; /* Maintain the image's aspect ratio, cover the box */
-    border-radius: 10px; /* Optional: Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: Shadow */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .content-boxes {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem; /* Adds spacing between content boxes */
+    gap: 2rem;
     width: 80%;
     max-width: 900px;
     margin-top: 1rem;
@@ -89,7 +129,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.2); /* Lower opacity for a more subtle effect */
+    background: rgba(255, 255, 255, 0.2);
     z-index: -1;
 }
 
@@ -99,20 +139,20 @@ body::before {
     gap: 1.8rem;
     grid-template-columns: 14rem auto 14rem;
     margin: 0 auto;
+    margin-bottom: 10rem;
 }
 
-/* Sidebar styles */
 aside {
     height: 100vh;
-    position: fixed;  /* Keep the sidebar fixed on large screens */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 18rem;  /* Width of the sidebar */
+    width: 18rem;
     background: white;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    height: auto; /* Ensure the height is consistent across screen sizes */
+    height: auto;
 }
 
 #close_button {
@@ -131,7 +171,7 @@ aside .top {
 aside .logo {
     display: flex;
     gap: 1rem;
-    margin-top: -20px; /* Move it up */
+    margin-top: -20px;
 }
 
 aside .sidebar {
@@ -156,15 +196,14 @@ aside .sidebar a:hover {
 }
 
 aside .sidebar a.active {
-    background: lightseagreen; /* Highlight color */
-    color: white !important; /* Ensure text is visible */
+    background: lightseagreen;
+    color: white !important;
     font-weight: bold;
     margin-left: 0;
     border-radius: 10px;
     padding-left: 1rem;
 }
 
-/* Large Screens */
 @media screen and (min-width: 1200px) {
     aside {
         display: flex;
@@ -174,9 +213,9 @@ aside .sidebar a.active {
         width: 100%;
         height: auto;
         background: white;
-        flex-direction: row; /* Horizontal layout */
+        flex-direction: row;
         align-items: center;
-        justify-content: flex-start; /* Make sure other items align properly */
+        justify-content: flex-start;
         padding: 1rem 2rem;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
@@ -193,7 +232,7 @@ aside .sidebar a.active {
     }
 
     aside .sidebar a {
-        padding: 5px 15px; /* Increase padding on the right */
+        padding: 5px 15px;
         margin: 0;
         color: gray;
         text-decoration: none;
@@ -201,37 +240,33 @@ aside .sidebar a.active {
         transition: color 0.3s, padding-right 0.3s;
     }
 
-    /* Adjust the position of the last item (Log out) to the far right */
     aside .sidebar a:last-child {
-        margin-left: auto; /* Push the Log out link to the far right */
-        padding-right: 20px; /* Optional: To add more spacing */
-        margin-right: 40px; /* Adds space from the edge of the sidebar */
+        margin-left: auto;
+        padding-right: 20px;
+        margin-right: 40px;
     }
 
-    /* Hide menu button on larger screens */
     #menu_bar {
         display: none;
     }
-
-    
 }
 
-/* Mobile Sidebar */
 @media screen and (max-width: 1200px) {
     main {
         display: flex;
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center; /* Center items horizontally */
-        justify-content: flex-start; /* Align content to top */
-        height: 100vh; /* Full viewport height */
-        width: 100vw; /* Full viewport width */
-        padding-top: 10vh; /* Adjust space from the top for smaller screens */
-        gap: 1rem; /* Space between image and text */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        width: 100vw;
+        padding-top: 10vh;
+        gap: 1rem;
     }
 
     .container {
         width: 100%;
         grid-template-columns: repeat(1, 1fr);
+        margin-bottom: 6rem;
     }
 
     aside {
@@ -269,13 +304,13 @@ aside .sidebar a.active {
     }
 
     aside .sidebar a.active {
-        background: lightseagreen; /* Highlight color */
-        color: white !important; /* Ensure text is visible */
+        background: lightseagreen;
+        color: white !important;
         font-weight: bold;
         border-radius: 0px;
-        margin-right: 0; /* Remove right margin */
-        box-sizing: border-box; /* Include padding in total width */
-        width: 100%; /* Ensure it does not expand beyond the link's width */
+        margin-right: 0;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     aside .top div.close span {
@@ -286,26 +321,27 @@ aside .sidebar a.active {
         font-size: 35px;
     }
 
-    /* Menu button fixed at top-left for smaller screens */
     #menu_bar {
         position: fixed;
-        top: 1rem; /* Space from the top */
-        left: 1rem; /* Space from the left */
-        z-index: 1000; /* Ensure it's above other content */
+        top: 1rem;
+        left: 1rem;
+        z-index: 1000;
         background: white;
         cursor: pointer;
-        font-size: 2rem; /* Adjust size as needed */
+        font-size: 2rem;
         display: block;
     }
 
-    /* Hide menu button when the sidebar is active */
     #menu_bar.hidden {
         display: none;
     }
 }
 
-/* Smaller screens */
 @media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     aside {
         position: fixed;
         width: 18rem;
@@ -314,13 +350,13 @@ aside .sidebar a.active {
     }
 
     aside .sidebar a.active {
-        background: lightseagreen; /* Highlight color */
-        color: white !important; /* Ensure text is visible */
+        background: lightseagreen;
+        color: white !important;
         font-weight: bold;
         border-radius: 0px;
-        margin-right: 0; /* Remove right margin */
-        box-sizing: border-box; /* Include padding in total width */
-        width: 100%; /* Ensure it does not expand beyond the link's width */
+        margin-right: 0;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     #close_button {
@@ -357,7 +393,33 @@ aside .sidebar a.active {
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         width: 100%;
-        margin-top: 4rem; 
+        margin-top: 4rem;
     }
+}
+
+.admin-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 5px;
+    padding: 5px;
+    width: 95%;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.admin-page-box img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.admin-page-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
 }
 

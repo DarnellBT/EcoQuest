@@ -3,17 +3,14 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 120vh !important;
     box-sizing: border-box;
     text-align: center;
+    align-items:flex-start;
+    flex-direction:column;
     
 }
 
-.container {
-    width: 100%;
-    max-width: 500px;
-    margin: 5px;
-}
 
 .container h1 {
     color: #f9f9f9;
@@ -22,6 +19,7 @@ body {
 .section {
     background-color: #f9f9f9;
     padding: 50px 30px;
+    height: 50%;
 
    
 
@@ -37,8 +35,8 @@ body {
 }
 
 #my-qr-reader img[alt="Camera based scan"] {
-    width: 100px !important;
-    height: 100px !important;
+    width: 80px !important;
+    height: 80px !important;
 }
 
 button {
@@ -51,7 +49,9 @@ button {
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 10px;
-    background-color: #008000ad;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
     transition: 0.3s background-color;
 }
 
@@ -65,7 +65,7 @@ button:hover {
 
 #html5-qrcode-anchor-scan-type-change {
     text-decoration: none !important;
-    color: #1d9bf0;
+    color: #4CAF50;
 }
 
 video {
@@ -73,3 +73,24 @@ video {
    
    
 }
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4%;
+    background-color: #f9f9f9;
+    color: #00a87e;
+    text-align: center;
+    margin-bottom: 0;
+ 
+  }
+  
+  .icon-text {
+    color: #00a87e;
+    font-size: 16px !important;
+    text-decoration: none !important;
+  }
+
+  

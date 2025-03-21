@@ -3,7 +3,11 @@ from django.shortcuts import render, redirect
 from registration.models import UserProfile
 
 def leaderboard_page(request):
-    """Function retrieves all user usernames, points and ranks them"""
+    """
+    Handles the leaderboard page.
+    Retrieves all user profiles, ranks them by points, and displays the top 5 users.
+    Also shows the current user's rank if they are not in the top 5.
+    """
     if request.method == "GET":
         
         # Retrieve all user profiles
