@@ -6,7 +6,10 @@ from .forms import LoginForm
 
 
 def login_page(request):
-    """Defines login form and authentication"""
+    """
+    Handles the login page.
+    Authenticates users based on their email and password and redirects them to the homepage upon successful login.
+    """
     # load default login form
     form = LoginForm()
     # check if user has submitted the form

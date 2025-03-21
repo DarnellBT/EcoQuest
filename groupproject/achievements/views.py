@@ -3,6 +3,10 @@ from registration.models import UserProfile
 from challenge.models import Challenge, ChallengeCompleted
 
 def achievements(request):
+    """
+    Handles the achievements page.
+    Displays a list of challenges and indicates whether each challenge has been completed by the user.
+    """
     if request.method == "GET":
 
         userprofile = UserProfile.objects.get(userId=request.user.id)

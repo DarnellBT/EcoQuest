@@ -9,6 +9,10 @@ from registration.models import UserProfile
 
 
 class MapView(TemplateView):
+    """
+    Handles the map page view.
+    Displays a map with markers for all locations and user-specific data if authenticated.
+    """
     template_name = 'map.html'
 
     def get_context_data(self, **kwargs):
