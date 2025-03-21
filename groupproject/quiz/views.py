@@ -9,7 +9,11 @@ from registration.models import UserProfile
 # pylint: disable=line-too-long
 
 def quiz(request, id):
-    """Function contains quiz page logic, dynamically changes content via id"""
+    """
+    Handles the quiz page logic.
+    Dynamically changes content based on the quiz ID.
+    Tracks user progress, calculates points, and prevents reattempts.
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
@@ -125,6 +129,11 @@ def quiz(request, id):
     return render(request, 'quiz.html', context)
 
 def results(request, id):
+    """
+    Handles the results page logic.
+    Displays the user's score, correct answers, and updates their points.
+    Resets session variables after the quiz is completed.
+    """
     # check sessions are reset
     userProfile = UserProfile.objects.get(userId=request.user.id)
     points = request.session['user_points']

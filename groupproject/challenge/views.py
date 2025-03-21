@@ -9,7 +9,9 @@ from .models import Challenge, ChallengeCompleted, ChallengeImages
 
 def challenge(request, id):
     """
-    Function handles dynamic content through changing challenge id
+    Handles the challenge page.
+    Displays challenge details and allows users to upload images as proof of completion.
+    Prevents users from reattempting completed challenges.
     """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')

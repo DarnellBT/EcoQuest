@@ -6,8 +6,9 @@ from .forms import RegistrationForm
 
 def register(request):
     """
-    Function puts a form into html with various fields given text.
-    Saves user details if valid
+    Handles user registration.
+    Displays a registration form and saves user details if the form is valid.
+    Provides help text for form fields and handles errors during registration.
     """
     form = RegistrationForm()
     if request.method == 'POST':

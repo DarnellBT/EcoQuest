@@ -9,7 +9,10 @@ from registration.models import UserProfile
 from .forms import UserForm
 
 def dashboard(request):
-    """Handles account page - not yet renamed to account"""
+    """
+    Handles the account page.
+    Displays user-specific information and allows account deletion.
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../login')
@@ -53,11 +56,18 @@ def dashboard(request):
 
 
 def logout_dashboard(request):
+    """
+    Logs out the user and redirects them to the homepage.
+    """
     # removes session and takes user to login page
     logout(request)
     return redirect("../../../")
 
 def edit_account(request):
+    """
+    Handles editing user account details.
+    Updates user information if the form is valid.
+    """
     userprofile = get_object_or_404(UserProfile, userId=request.user.id)
     user_instance = userprofile.user
     if request.method == "POST":
@@ -70,6 +80,10 @@ def edit_account(request):
     return render(request, 'edit_details.html', {'form': form})
 
 def rewards(request):
+    """
+    Displays the rewards page.
+    Shows the user's progress towards earning rewards based on their points.
+    """
     if request.method == 'GET':
         userprofile = get_object_or_404(UserProfile, userId=request.user.id)
         user_points = userprofile.points
