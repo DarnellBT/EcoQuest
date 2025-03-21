@@ -30,8 +30,8 @@ def achievements(request):
             
             challenges_list.append(challenge_list)
 
-            context = {
-                'challenges_list': challenges_list,
+        context = {
+            'challenges_list': challenges_list,
             }
 
         return render(request, "achievements.html", context)
