@@ -104,8 +104,8 @@
                 <td>{{ challenge.description }}</td>
                 <td>{{ challenge.points }}</td>
                 <td>
-                    <a href="{% url 'edit_challenge' challenge.challengeId %}">Edit</a>
-                    <a href="{% url 'delete_challenge' challenge.challengeId %}" onclick="return confirm('Are you sure?');">Delete</a>
+                    <a href="{% url 'edit_challenge' challenge.challengeId %}" class="edit-details-link">Edit</a>
+                    <a href="{% url 'delete_challenge' challenge.challengeId %}" onclick="return confirm('Are you sure?');" class="delete-link">Delete</a>
                 </td>
             </tr>
             {% endfor %}

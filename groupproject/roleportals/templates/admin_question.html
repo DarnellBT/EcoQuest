@@ -112,8 +112,8 @@
                 <td>{{ question.answer }}</td>
                 <td>{{ question.points }}</td>
                 <td>
-                    <a href="{% url 'edit_question' question.questionId %}">Edit</a>
-                    <a href="{% url 'delete_question' question.questionId %}" onclick="return confirm('Are you sure?');">Delete</a>
+                    <a href="{% url 'edit_question' question.questionId %}" class="edit-details-link">Edit</a>
+                    <a href="{% url 'delete_question' question.questionId %}" onclick="return confirm('Are you sure?');" class="delete-link">Delete</a>
                 </td>
             </tr>
             {% endfor %}
