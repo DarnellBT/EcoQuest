@@ -1,3 +1,4 @@
+# Import necessary modules and models
 from django.shortcuts import render, redirect, get_object_or_404
 from challenge.models import Challenge, ChallengeCompleted, ChallengeImages
 from django.contrib.auth.models import User
@@ -8,9 +9,25 @@ from quiz.models import Quiz, Question
 from .forms import LocationForm, ChallengeForm, QuestionForm, QuizForm
 
 def admin_portal(request):
-    return render(request, 'admin_page.html')
+    """
+    Handles the admin portal view.
+    Checks if the user is an admin and renders the admin page.
+    """
+    user_profile = UserProfile.objects.get(userId=request.user.id)
+
+    if user_profile.is_admin:
+        pass
+    elif user_profile.is_game_keeper:
+        messages.error(request, 'You do not have access!')
+    else: 
+        messages.error(request, 'You do not have access!')
+    return render(request, 'admin_page.html', {'userprofile':user_profile,'user_auth':request.user})
 
 def gamekeeper_portal(request):
+    """
+    Handles the gamekeeper portal view.
+    Displays challenges submitted by users for approval or rejection.
+    """
     user_profile = UserProfile.objects.get(userId=request.user.id)
 
     if user_profile.is_admin:
@@ -34,8 +51,10 @@ def gamekeeper_portal(request):
             info.append(entry.image.url)
             info.append(entry.challenge.points)
             info.append(entry.imageId)
-        all_info.append(info)
+            all_info.append(info)
 
+        
+        
         if request.method == 'POST':
             userId = request.POST.get("userId")
             challenge_info = request.POST.get("challenge")
@@ -52,12 +71,15 @@ def gamekeeper_portal(request):
                 user_profile.points += challenge_points
                 user_profile.save()
 
-                return redirect("./")
+                return redirect("../gamekeeper-portal/")
             if rejected:
-                return redirect("./")
+                ChallengeImages.objects.filter(imageId=imageId).delete()
+                return redirect("../gamekeeper-portal")
 
         context = {
         'info':all_info,
+        'userprofile':user_profile,
+        'user_auth':request.user
         }
         return render(request, "game_keeper.html", context)
     else:
@@ -67,6 +89,10 @@ def gamekeeper_portal(request):
 
 
 def admin_location(request):
+    """
+    Handles the admin location management view.
+    Allows admins to add new locations or view existing ones.
+    """
     locations = Location.objects.all()
     if request.method == 'POST':
         form = LocationForm(request.POST)
@@ -74,10 +100,22 @@ def admin_location(request):
             form.save()
             return redirect('./')
     else:
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
         form = LocationForm()
-    return render(request, 'admin_location.html', {'locations': locations, 'form': form})
+    return render(request, 'admin_location.html', {'locations': locations, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
 def edit_location(request, location_id):
+    """
+    Handles editing a specific location.
+    Retrieves the location by ID and updates it if the form is valid.
+    """
     location = get_object_or_404(Location, locationId=location_id)
     if request.method == 'POST':
         form = LocationForm(request.POST, instance=location)
@@ -89,6 +127,10 @@ def edit_location(request, location_id):
     return render(request, 'edit_location.html', {'form': form})
 
 def delete_location(request, location_id):
+    """
+    Handles deleting a specific location.
+    Retrieves the location by ID and deletes it.
+    """
     location = get_object_or_404(Location, locationId=location_id)
     location.delete()
     return redirect('../../')
@@ -97,6 +139,10 @@ def delete_location(request, location_id):
 
 
 def admin_quiz(request):
+    """
+    Handles the admin quiz management view.
+    Allows admins to add new quizzes or view existing ones.
+    """
     quizzes = Quiz.objects.all()
     if request.method == 'POST':
         form = QuizForm(request.POST)
@@ -105,9 +151,21 @@ def admin_quiz(request):
             return redirect('./')
     else:
         form = QuizForm()
-    return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
 def edit_quiz(request, quiz_id):
+    """
+    Handles editing a specific quiz.
+    Retrieves the quiz by ID and updates it if the form is valid.
+    """
     quiz = get_object_or_404(Quiz, quizId=quiz_id)
     if request.method == 'POST':
         form = QuizForm(request.POST, instance=quiz)
@@ -119,6 +177,10 @@ def edit_quiz(request, quiz_id):
     return render(request, 'edit_quiz.html', {'form': form})
 
 def delete_quiz(request, quiz_id):
+    """
+    Handles deleting a specific quiz.
+    Retrieves the quiz by ID and deletes it.
+    """
     quiz = get_object_or_404(Quiz, quizId=quiz_id)
     quiz.delete()
     return redirect('../../')
@@ -129,6 +191,10 @@ def delete_quiz(request, quiz_id):
 
 
 def edit_location(request, location_id):
+    """
+    Handles editing a specific location.
+    Retrieves the location by ID and updates it if the form is valid.
+    """
     location = get_object_or_404(Location, locationId=location_id)
     if request.method == 'POST':
         form = LocationForm(request.POST, instance=location)
@@ -140,6 +206,10 @@ def edit_location(request, location_id):
     return render(request, 'edit_location.html', {'form': form})
 
 def delete_location(request, location_id):
+    """
+    Handles deleting a specific location.
+    Retrieves the location by ID and deletes it.
+    """
     location = get_object_or_404(Location, locationId=location_id)
     location.delete()
     return redirect('../../')
@@ -149,6 +219,10 @@ def delete_location(request, location_id):
 
 
 def admin_question(request):
+    """
+    Handles the admin question management view.
+    Allows admins to add new questions or view existing ones.
+    """
     questions = Question.objects.all()
     if request.method == 'POST':
         form = QuestionForm(request.POST)
@@ -157,11 +231,23 @@ def admin_question(request):
             return redirect('./')
     else:
         form = QuestionForm()
-    return render(request, 'admin_question.html', {'questions': questions, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_question.html', {'questions': questions, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
    
 
 
 def edit_question(request, question_id):
+    """
+    Handles editing a specific question.
+    Retrieves the question by ID and updates it if the form is valid.
+    """
     question = get_object_or_404(Question, questionId=question_id)
     if request.method == 'POST':
         form = QuestionForm(request.POST, instance=question)
@@ -173,6 +259,10 @@ def edit_question(request, question_id):
     return render(request, 'edit_question.html', {'form': form})
 
 def delete_question(request, question_id):
+    """
+    Handles deleting a specific question.
+    Retrieves the question by ID and deletes it.
+    """
     question = get_object_or_404(Question, questionId=question_id)
     question.delete()
     return redirect('../../')
@@ -182,6 +272,10 @@ def delete_question(request, question_id):
 
 
 def admin_challenge(request):
+    """
+    Handles the admin challenge management view.
+    Allows admins to add new challenges or view existing ones.
+    """
     challenges = Challenge.objects.all()
     if request.method == 'POST':
         form = ChallengeForm(request.POST)
@@ -190,11 +284,23 @@ def admin_challenge(request):
             return redirect('./')
     else:
         form = ChallengeForm()
-    return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form})
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+        else: 
+            messages.error(request, 'You do not have access!')
+    return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
     
 
 
 def edit_challenge(request, challenge_id):
+    """
+    Handles editing a specific challenge.
+    Retrieves the challenge by ID and updates it if the form is valid.
+    """
     challenge = get_object_or_404(Challenge, challengeId=challenge_id)
     if request.method == 'POST':
         form = ChallengeForm(request.POST, instance=challenge)
@@ -206,6 +312,10 @@ def edit_challenge(request, challenge_id):
     return render(request, 'edit_challenge.html', {'form': form})
 
 def delete_challenge(request, challenge_id):
+    """
+    Handles deleting a specific challenge.
+    Retrieves the challenge by ID and deletes it.
+    """
     challenge = get_object_or_404(Challenge, challengeId=challenge_id)
     challenge.delete()
     return redirect('../../')

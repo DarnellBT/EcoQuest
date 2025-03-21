@@ -2,12 +2,24 @@
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
+from registration.models import UserProfile
 from .forms import ContactForm
 
 
 def contact(request):
-
+    """
+    Handles the contact page.
+    Displays a contact form and sends an email with the submitted details if the form is valid.
+    """
     form = ContactForm()
+    
+    if request.user.is_anonymous:
+        userprofile = None
+    else:
+        userprofile = UserProfile.objects.get(user=request.user)
+        
+
+
 
     if request.method == "POST":
         form = ContactForm(request.POST)
@@ -40,7 +52,9 @@ def contact(request):
             return redirect("./")
 
     context = {
-        'form':form,
+        'forms':form,
+        'user_auth': request.user,
+        'userprofile': userprofile,
     }
 
     return render(request, 'contact.html', context)

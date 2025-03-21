@@ -4,51 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     {% load static %}
+    
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
 </head>
 <body>
-<main>
-    <h2>Registration</h2>
-    <div class="box1">
-        <form method="POST">
+    
+
+    <div class="admin-page-box">
+        <h3 class="register-page-title">Register</h3>      
+        <form method="POST" class="registration-form">
             {% csrf_token %}
-            {% for field in form %}
-            <!--Forms from backend -->
-            <p>
-                {% if field.label_tag %}
-                <small style="font-size: 1.5vw;">{{ field.label_tag | safe }}</small>
-                {% endif %}<br>
-
-                {% if field%}
-                <div class="boxres">
-                {{ field }}
+            
+            <!-- Username Field -->
+            <p class="form-field">
+       
+                <div class="box-response">
+                    {{ form.username }}
+                </div>
+                {% if form.username.errors %}
+                <div class="error alert-error">
+                    {{ form.username.errors }}
                 </div>
                 {% endif %}
-        
-                {% if field.errors %}
-                <div class="error">
-                {{ field.errors }}
-                </div>
-                {% endif %}
-
-                {% if field.help_text %}
-                <small style="font-size: 1vw;">{{ field.help_text | safe }}</small>
+                {% if form.username.help_text %}
+                    {{ form.username.help_text | safe }}
                 {% endif %}
             </p>
-            {% endfor %}
+
+            <!-- First Name Field -->
+            <p class="form-field">
+          
+                <div class="box-response">
+                    {{ form.first_name }}
+                </div>
+                {% if form.first_name.errors %}
+                <div class="error alert-error">
+                    {{ form.first_name.errors }}
+                </div>
+                {% endif %}
+                {% if form.first_name.help_text %}
+                    {{ form.first_name.help_text | safe }}
+                {% endif %}
+            </p>
+
+            <!-- Last Name Field -->
+            <p class="form-field">
+      
+                <div class="box-response">
+                    {{ form.last_name }}
+                </div>
+                {% if form.last_name.errors %}
+                <div class="error alert-error">
+                    {{ form.last_name.errors }}
+                </div>
+                {% endif %}
+                {% if form.last_name.help_text %}
+                    {{ form.last_name.help_text | safe }}
+                {% endif %}
+            </p>
+
+            <!-- Email Field -->
+            <p class="form-field">
+           
+                <div class="box-response">
+                    {{ form.email }}
+                </div>
+                {% if form.email.errors %}
+                <div class="error alert-error">
+                    {{ form.email.errors }}
+                </div>
+                {% endif %}
+                {% if form.email.help_text %}
+                    {{ form.email.help_text | safe }}
+                {% endif %}
+            </p>
+
+            <!-- Password1 Field -->
+            <p class="form-field">
+                <div class="box-response" style="display: flex; align-items: center;">
+                    {{ form.password1 }}
+                    <button type="button" class="info-button" onclick="showPasswordRequirements()" style="margin-left: 10px;">i</button>
+                </div>
+                {% if form.password1.errors %}
+                <div class="error alert-error">
+                    {{ form.password1.errors }}
+                </div>
+                {% endif %}
+            </p>
+
+            <!-- Password2 Field -->
+            <p class="form-field">
+
+                <div class="box-response">
+                    {{ form.password2 }}
+                </div>
+                {% if form.password2.errors %}
+                <div class="error alert-error">
+                    {{ form.password2.errors }}
+                </div>
+                {% endif %}
+                
+            </p>
+
+            <!-- Private Policy Field -->
+            <p class="form-field">
+                <div class="checkbox">
+                    <div class="checkbox-label">
+                    {{ form.private_policy.label_tag }}
+                    </div>  
+                    {{ form.private_policy }}
+                </div>
+                {% if form.private_policy.errors %}
+                <div class="error alert-error">
+                    {{ form.private_policy.errors }}
+                </div>
+                {% endif %}
+            </p>
+
+            <div class="privacy">
+                <!--Private policy linking-->
+            
+                <a href="{% url 'privacy' %}" class="privacy-link">When you create an account, you agree to our private policy</a>
+            </div>
 
             <!--Submission buttom-->
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn-submit">Submit</button>
             
             <!--Log-in page linking-->
             <div class="link-login">
-                <a href="{% url 'login' %}">Already registered?</a>
+                <a href="{% url 'login' %}" class="login-link">Already registered?</a>
             </div>
+
         </form>
-</main>
-<script src="index.js"></script>
+    </div>
+
+    <script>
+        function showHelpText(helpText) {
+            
+            alert(helpText);
+        }
+
+        function showPasswordRequirements() {
+            alert("Password requirements:\n- Your password can’t be too similar to your other personal information.\n- Your password must contain at least 8 characters.\n- Your password can’t be a commonly used password.\n- Your password can’t be entirely numeric.");
+        }
+    </script>
+
 </body>
 </html>

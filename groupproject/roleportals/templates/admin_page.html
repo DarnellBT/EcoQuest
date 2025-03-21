@@ -6,12 +6,110 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Portal</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+    
+    <link rel="stylesheet" href="{% static 'css/admin_edit.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
 </head>
 <body>
-    <a href="{% url 'gamekeeper-portal' %}">Game Keeper</a>
+    <div class="container">
+        <aside>
+          <div class="top">
+            <div class="logo">
+              <h2><span class="danger">Admin</span></h2>
+            </div>
+            <div class="close" id="close_button">
+              <span class="material-symbols-sharp">close</span>
+            </div>
+          </div>
+  
+          <div class="sidebar">
+            
+            {% if userprofile.is_admin %}
+            <a href="{% url 'home' %}"> 
+              <span class="material-symbols-sharp">home</span>
+              <h3> Home </h3>
+            </a>
+            {% endif %}
 
+            <a href="{% url 'admin-portal' %}" class="active"> 
+              <span class="material-symbols-sharp">grid_view</span>
+              <h3> Dashboard </h3>
+            </a>
+  
+            <a href="{% url 'admin-location' %}"> 
+              <span class="material-symbols-sharp">location_on</span>
+              <h3> Location </h3>
+            </a>
+  
+            <a href="{% url 'admin-quiz' %}"> 
+              <span class="material-symbols-sharp">quiz</span>
+              <h3> Quiz </h3>
+            </a>
+  
+            <a href="{% url 'admin-question' %}"> 
+              <span class="material-symbols-sharp">question_mark</span>
+              <h3> Question </h3>
+            </a>
+  
+            
+            <a href="{% url 'admin-challenge' %}">
+              <span class="material-symbols-sharp">task</span>
+              <h3> Challenge </h3>
+            </a>
+           
+  
+         
+            {% if userprofile.is_game_keeper or userprofile.is_admin %}
+            <a href="{% url 'gamekeeper-portal' %}"> 
+              <span class="material-symbols-sharp">exit_to_app</span>
+              <h3> Game Keeper </h3>
+            </a>
+            {% endif %}
+  
+           
+          
+            
+            {% if user_auth.is_authenticated %}
+            <a href="{% url 'logout'%}"> 
+              <span class="material-symbols-sharp"> logout </span>
+              <h3> Logout </h3>
+            </a>
+            {% endif %}
+            
+          </div>
+        </aside>
+
+        <div class="right">
+          <div class="top">
+            <button id="menu_bar">
+              <span class="material-symbols-sharp"> menu </span>
+            </button>
+        
+          </div>
+          
+        </div>
+        
+        <div class="admin-page-box">
+        
+          <h2>Welcome to <span class="highlight">Admin Panel</span></h2>
+          <p>This panel controls the challenges, quizzes and map locations</p>
+       
+        </div>
+    
+
+    
+  </div>
+
+
+  
+    
+  
+
+    
+
+    
 
 
 </body>

@@ -5,23 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
+    <link rel="stylesheet" href="{% static '/css/homeStyle.css' %}">
+    <link rel="stylesheet" href="{% static '/css/admin_edit.css' %}">
     <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
     <title>Scanner</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
-<div class="container">
-    <h1>Scan QR Codes</h1>
+    <div class="container">
+        <aside>
+          <div class="top">
+            <div class="logo">
+              <h2><span class="danger">Scanner</span></h2>
+            </div>
+            <div class="close" id="close_button">
+              <span class="material-symbols-sharp">close</span>
+            </div>
+          </div>
+  
+          <div class="sidebar">
+  
+            <a href="{% url 'home' %}" class="active"> 
+              <span class="material-symbols-sharp">grid_view</span>
+              <h3> Home </h3>
+            </a>
+  
+            <a href="{% url 'leaderboard' %}"> 
+              <span class="material-symbols-sharp">leaderboard</span>
+              <h3> Leaderboard </h3>
+            </a>
+  
+            <a href="{% url 'map' %}"> 
+              <span class="material-symbols-sharp">map</span>
+              <h3> Map </h3>
+            </a>
+  
+            <a href="{% url 'contact' %}"> 
+              <span class="material-symbols-sharp">call</span>
+              <h3> Contact </h3>
+            </a>
+  
+            {% if userprofile.is_user %}
+            <a href="{% url 'achievements' %}">
+              <span class="material-symbols-sharp">trophy</span>
+              <h3> Achievements </h3>
+            </a>
+            {% endif %}
+  
+            {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
+            <a href="{% url 'account' %}"> 
+              <span class="material-symbols-sharp">exit_to_app</span>
+              <h3> Account </h3>
+            </a>
+            {% endif %}
+            
+            {% if userprofile.is_game_keeper or userprofile.is_admin %}
+            <a href="{% url 'gamekeeper-portal' %}"> 
+              <span class="material-symbols-sharp">exit_to_app</span>
+              <h3> Game Keeper </h3>
+            </a>
+            {% endif %}
+  
+            {% if userprofile.is_admin %}
+            <a href="{% url 'admin-portal' %}"> 
+              <span class="material-symbols-sharp">exit_to_app</span>
+              <h3> Admin </h3>
+            </a>
+            {% endif %}
+          
+            {% if user_auth.is_anonymous %}
+            <a href="{% url 'login'%}"> 
+              <span class="material-symbols-sharp"> login </span>
+              <h3> Sign In </h3>
+            </a>
+            {% endif %}
+  
+            {% if user_auth.is_authenticated %}
+            <a href="{% url 'logout'%}"> 
+              <span class="material-symbols-sharp"> login </span>
+              <h3> Logout </h3>
+            </a>
+            {% endif %}
+            
+          </div>
+        </aside>
+        <div class="right">
+            <div class="top">
+              <button id="menu_bar">
+                <span class="material-symbols-sharp"> menu </span>
+              </button>
+          
+            </div>
+            
+          </div>
+    </div>  
+<div class="admin-page-box">
     <div class="section">
         <div id="my-qr-reader">
         </div>
-        <a href="{% url 'map' %}">Map</a><br>
-        <a href="https://www.geeksforgeeks.org/create-a-qr-code-scanner-or-reader-in-html-css-javascript/">Styling and Javascript </a><br>
-        <a href="https://unpkg.com/browse/html5-qrcode@2.3.8/">QR Scanner By mebjas</a>
+        
     </div>
 </div>
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script src="{% static '/js/script.js' %}"></script>
+<script src="{% static '/js/dashboard.js' %}"></script>
+
+<div class="footer">
+    <a href="https://www.geeksforgeeks.org/create-a-qr-code-scanner-or-reader-in-html-css-javascript/" class="icon-text">Styling and Javascript </a><br>
+    <a href="https://unpkg.com/browse/html5-qrcode@2.3.8/" class="icon-text">QR Scanner By mebjas</a>
+</div>
+
 
 </body>
 </html>

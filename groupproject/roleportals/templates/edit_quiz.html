@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Portal</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin_edit.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <h1>Edit Quiz</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Changes</button>
-    </form>
+    <div class="admin-page-box">
+        <h1>Edit Quiz</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Save Changes</button>
+        </form>
+        </div>
 
 
 
