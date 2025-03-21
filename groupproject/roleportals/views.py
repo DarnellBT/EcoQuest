@@ -42,8 +42,10 @@ def gamekeeper_portal(request):
             info.append(entry.image.url)
             info.append(entry.challenge.points)
             info.append(entry.imageId)
-        all_info.append(info)
+            all_info.append(info)
 
+        
+        
         if request.method == 'POST':
             userId = request.POST.get("userId")
             challenge_info = request.POST.get("challenge")
@@ -60,12 +62,15 @@ def gamekeeper_portal(request):
                 user_profile.points += challenge_points
                 user_profile.save()
 
-                return redirect("./")
+                return redirect("../gamekeeper-portal/")
             if rejected:
-                return redirect("./")
+                ChallengeImages.objects.filter(imageId=imageId).delete()
+                return redirect("../gamekeeper-portal")
 
         context = {
         'info':all_info,
+        'userprofile':user_profile,
+        'user_auth':request.user
         }
         return render(request, "game_keeper.html", context)
     else:

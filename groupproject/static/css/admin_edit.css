@@ -39,10 +39,10 @@ label {
 
 input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
-    max-width: 400px; /* Ensure consistent width */
+    max-width: 400px;
     padding: 10px;
     margin: 10px 0;
-    box-sizing: border-box; /* Include padding in width */
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -50,11 +50,11 @@ input[type="text"], input[type="password"], input[type="email"] {
 input[type="number"] {
     width: 100%;
     max-width: 400px;
-    padding: 12px;
+    padding: 10px;
     margin-top: 10px;
     border: 1px solid #aaa;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    border-radius: 4px;
+
     box-sizing: border-box;
 }
 
@@ -65,7 +65,7 @@ select {
     margin-top: 10px;
     border: 1px solid #aaa;
     border-radius: 5px;
-    font-size: 1.1rem;
+    
     box-sizing: border-box;
 }
 
@@ -231,7 +231,7 @@ aside .sidebar a:hover {
 
 aside .sidebar a.active {
     background: lightseagreen;
-    color: white !important;
+    color: white;
     font-weight: bold;
     margin-left: 0;
     border-radius: 10px;
@@ -303,33 +303,50 @@ aside .sidebar a.active {
 }
 
 .reset-password-link {
-    color: #4CAF50; /* Green color from save buttons */
+    color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .reset-password-link:hover {
-    color: #45a049; /* Slightly darker green on hover */
+    color: #45a049;
     text-decoration: underline;
 }
 
 .edit-details-link {
-    color: #4CAF50; /* Green color from save buttons */
+    color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 .edit-details-link:hover {
-    color: #45a049; /* Slightly darker green on hover */
+    color: #45a049;
     text-decoration: underline;
 }
 
-/* Add spacing to ensure the two links are not confused */
+.delete-link {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    margin-inline-start: 2rem;
+}
+
+.delete-link:hover {
+    color: red;
+    text-decoration: underline;
+}
+
 .account-actions a + a {
     margin-top: 10px;
     display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
 }
 
 @media screen and (min-width: 1200px) {
@@ -432,7 +449,7 @@ aside .sidebar a.active {
 
     aside .sidebar a.active {
         background: lightseagreen;
-        color: white !important;
+        color: white;
         font-weight: bold;
         border-radius: 0px;
         margin-right: 0;
@@ -478,7 +495,7 @@ aside .sidebar a.active {
 
     aside .sidebar a.active {
         background: lightseagreen;
-        color: white !important;
+        color: white;
         font-weight: bold;
         border-radius: 0px;
         margin-right: 0;
