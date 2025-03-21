@@ -11,7 +11,10 @@ from django.shortcuts import render
 # https://www.geeksforgeeks.org/create-a-qr-code-scanner-or-reader-in-html-css-javascript/
 # https://unpkg.com/browse/html5-qrcode@2.3.8/
 def scanner(request):
-    """Function retrieves scanned qr code's content and either redirects successfully back to map"""
+    """
+    Handles the QR code scanner page.
+    Retrieves scanned QR code content and redirects the user based on the decoded data.
+    """
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../login')
