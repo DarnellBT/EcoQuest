@@ -175,5 +175,7 @@ def results(request, id):
         'current_points': total_points,
         'submitted_answers': submitted_answers,
         'correct_answers': correct_answers,
+        'user_auth': request.user,
+        'userprofile': userProfile,
     }
     return render(request, 'submitQuiz.html', context)
