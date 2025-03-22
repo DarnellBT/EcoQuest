@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/homeStyle.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
-    <link rel="stylesheet" href="{% static 'css/challengeQuiz.css' %}">
+    <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -17,7 +16,7 @@
     <aside>
         <div class="top">
           <div class="logo">
-            <h2><span class="danger">EcoQuest</span></h2>
+            <h2><span class="danger">Quiz</span></h2>
           </div>
           <div class="close" id="close_button">
             <span class="material-symbols-sharp">close</span>
@@ -61,21 +60,28 @@
       </div>
 
     
-    <div class="box">
+    <div class="admin-page-box">
         <form method="post" class="form-box">
             {% csrf_token %}
-            <b class="quiz-question">{{ question }}</b><br>
-            <b class="quiz-question">Question {{ question_number }} of {{ total_number }}</b><br>
-            <input class="quiz-answer" type="radio" id="choice1" name="question" value="{{ choice1 }}">
-            <label for="choice1" class="quiz-text">{{ choice1 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice2" name="question" value="{{ choice2 }}">
-            <label for="choice2" class="quiz-text">{{ choice2 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice3" name="question" value="{{ choice3 }}">
-            <label for="choice3" class="quiz-text">{{ choice3 }}</label><br>
-            <input class="quiz-answer" type="radio" id="choice4" name="question" value="{{ choice4 }}">
-            <label for="choice4" class="quiz-text">{{ choice4 }}</label><br>
-
-            <input type="submit" value="Submit" class="submit">
+            <b class="quiz-question">{{ question }}</b>
+            <b class="quiz-rolling">Question {{ question_number }} of {{ total_number }}</b><br>
+            <div class="quiz-option">
+                <input class="quiz-answer" type="radio" id="choice1" name="question" value="{{ choice1 }}">
+                <label for="choice1" class="quiz-text">{{ choice1 }}</label>
+            </div>
+            <div class="quiz-option">
+                <input class="quiz-answer" type="radio" id="choice2" name="question" value="{{ choice2 }}">
+                <label for="choice2" class="quiz-text">{{ choice2 }}</label>
+            </div>
+            <div class="quiz-option">
+                <input class="quiz-answer" type="radio" id="choice3" name="question" value="{{ choice3 }}">
+                <label for="choice3" class="quiz-text">{{ choice3 }}</label>
+            </div>
+            <div class="quiz-option">
+                <input class="quiz-answer" type="radio" id="choice4" name="question" value="{{ choice4 }}">
+                <label for="choice4" class="quiz-text">{{ choice4 }}</label>
+            </div>
+            <input type="submit" value="Submit" class="btn-submit">
         </form>
     </div>
 
