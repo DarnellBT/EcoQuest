@@ -99,6 +99,8 @@ def quiz(request, id):
             'choice3': choices_post[index_post][2],
             'choice4': choices_post[index_post][3],
             'total_number': len(questions_post),
+            'user_auth': request.user,
+            'userprofile': user_obj,
         }
         return render(request, 'quiz.html', context)
     # set user session with these variables 
@@ -110,6 +112,8 @@ def quiz(request, id):
     request.session['user_points'] = user_points
     request.session['submitted'] = submitted_answers
     request.session['correct_total'] = 0
+    print(request.user, user_obj)
+
     context = {
         'question_index': question_index,
         'question_number': question_number,
@@ -119,6 +123,8 @@ def quiz(request, id):
         'choice3': choices[question_index][2],
         'choice4': choices[question_index][3],
         'total_number': len(questions),
+        'user_auth': request.user,
+        'userprofile': user_obj,
     }
     return render(request, 'quiz.html', context)
 
