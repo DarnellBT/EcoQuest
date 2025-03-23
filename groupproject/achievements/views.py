@@ -48,5 +48,6 @@ def achievements(request):
                 'user_auth': request.user,  # Pass user authentication status
                 'userprofile': userprofile,  # Pass user profile
             }
+            }
 
         return render(request, "achievements.html", context)
