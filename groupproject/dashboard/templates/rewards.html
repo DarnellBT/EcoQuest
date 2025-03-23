@@ -36,12 +36,6 @@
                 <span class="material-symbols-sharp"> home </span>
                 <h3> Account </h3>
               </a>
-<!--
-            <a href="{% url 'rewards'%}" class="active"> 
-              <span class="material-symbols-sharp"> home </span>
-              <h3> Rewards </h3>
-            </a>
-        -->
             <a href="{% url 'logout'%}"> 
               <span class="material-symbols-sharp"> logout </span>
               <h3> Logout </h3>
@@ -60,7 +54,7 @@
     </div>
     <!-- Navigation bar ends -->
 
-    <!-- Rewards -->
+    <!-- Box containing the rest of the page -->
     <div class="content-boxes">
         {% for title, points,image in rewards %}
         <section class="content-box">
