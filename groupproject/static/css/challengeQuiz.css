@@ -1,109 +1,87 @@
-
+/* Main Content Header Section */
 .page-header {
     border-radius: 40px;
-
     width: 70%;
-    height: 15%;
-    background-color: #00c87e;
+    height: auto;  /* Adjust height to accommodate content */
     margin: auto;
     margin-top: 4%;
-
-
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .challenge {
-    color: white;
+    color: black;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
     margin: 0;
-
 }
 
 .challenge-descr {
     font-size: 25px;
-    color: white;
+    color: black;
     text-align: center;
-    margin: 0;
+    margin: 10px 0; /* Space between description and points */
 }
 
 .challenge-points {
     text-align: center;
-    margin: 0;
-    color: white;
+    margin: 10px 0;
+    color: black;
+    font-size: 18px;  /* Slightly smaller font size for points */
 }
 
-.image-field {
-    color: white;
-}
-
+/* Box for Form */
 .box {
     border-radius: 25px;
-
     width: 40%;
-    height: 40%;
-    background-color: #00c87e;
+    height: auto; /* Adjust height to accommodate form */
+    background-color: #4CAF50;
     margin: auto;
-
-    margin-top: 100px;
+    margin-top: 30px;  /* Reduced margin-top to bring it closer */
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
     margin: auto;
     text-align: left;
-    margin-top: 3%;
     padding: 4%;
     margin-left: 30%;
 }
 
 .submit {
-    background-color: #007d69;
-    margin-top: 10%;
-    border-radius: 25px;
-    outline: none;
-    margin-bottom: 5%;
-    color: white;
-    padding: 2%;
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: bold;
-
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-left {
+.submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* For the file upload field (if applicable) */
+.image-field {
     color: white;
-    padding: 1%;
-    background-color: #00c87e;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    margin-right: auto;
-    border-radius: 40px;
-    width: 10%;
-
-
+    margin-top: 15px;
 }
 
-.nav-right {
-    color: white;
-    padding: 1%;
-    background-color: red;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    margin-right: right;
-    border-radius: 40px;
-    width: 10%;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
+/* Style adjustments for table, if necessary */
 table {
     width: 100%;
-
 }
-
 
 tr {
     display: flex;
@@ -122,6 +100,7 @@ tr {
     background-color: beige;
 }
 
+/* For form labels and radio buttons */
 form label {
     display: inline-block;
     margin-left: 5px;

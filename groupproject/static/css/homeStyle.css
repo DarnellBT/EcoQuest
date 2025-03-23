@@ -53,7 +53,34 @@ main {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;
+    display: flex;
+    flex-direction: column; /* Ensures all elements stack properly */
+    align-items: center;
+    gap: 1rem; /* Even spacing between paragraphs */
 }
+
+.content-box p {
+    text-align: left; /* Ensures text aligns properly */
+    max-width: 90%; /* Prevents text from stretching too wide */
+}
+
+.content-box ul {
+    list-style: none; /* Removes default bullet styling */
+    padding: 0;
+    margin: 0;
+}
+
+.content-box ul li {
+    text-align: left;
+    margin-bottom: 0.5rem; /* Adds spacing between list items */
+}
+
+/* Ensures the bullet points have proper spacing and alignment */
+.content-box ul li::before {
+    content: "🔹"; /* Custom bullet point */
+    margin-right: 8px;
+}
+
 
 h2 {
     font-size: 1.8rem;

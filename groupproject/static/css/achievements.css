@@ -6,7 +6,7 @@
 }
 
 .challenge-header-container {
-    background-color: lightseagreen; /* Green color for the header */
+    background-color: #4CAF50; /* Green color for the header */
     padding: 10px 0; /* Adjust padding to give space around the header */
     width: 100%; /* Makes sure it spans the full width of the parent container */
     border-radius: 2dvw 2dvw 0 0; /* Ensures the top corners are rounded */
@@ -54,7 +54,7 @@
     justify-content: flex-start; /* Aligns items properly in each row */
     width: 100%; /* Make it take up full width of the parent container */
     padding: 25px 0;
-    border: 2px solid lightseagreen;
+    border: 2px solid #4CAF50;
     margin-bottom: 1vh; /* Adds space between challenges */
     background-color: #f9f9f9; /* Light background color for each item */
     border-radius: 10px; /* Rounds the corners of each item */
