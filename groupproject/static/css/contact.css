@@ -56,7 +56,7 @@ form {
 label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px; /* Add space between the label and input */
+    margin-bottom: 5px; 
 }
 
 /* First Name, Email, Message label specific styles */

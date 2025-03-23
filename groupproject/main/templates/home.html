@@ -12,17 +12,20 @@
     <script src="{% static 'js/dashboard.js' %}" defer></script>
   </head>
   <body>
-    <div class="container">
-      <aside>
+    <div class="container"> 
+      <aside> 
+        <!-- Sidebar for navigation -->
         <div class="top">
           <div class="logo">
             <h2><span class="danger">EcoQuest</span></h2>
           </div>
+          <!-- Close button for small screens -->
           <div class="close" id="close_button">
             <span class="material-symbols-sharp">close</span>
           </div>
         </div>
 
+        <!-- Sidebar navigation menu -->
         <div class="sidebar">
 
           <a href="{% url 'home' %}" class="active"> 
