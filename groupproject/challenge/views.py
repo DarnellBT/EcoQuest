@@ -13,15 +13,15 @@ def challenge(request, id):
     if request.user.is_anonymous:
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
-
-    # Get the challenge object by its id
+    
+    # retrieve records from the database
     challenge_obj = Challenge.objects.get(challengeId=id)
     
     # Get the user profile and check if the user has completed the challenge already
     user_obj = register_models.UserProfile.objects.get(userId=request.user.id)
     challenge_completed_obj = ChallengeCompleted.objects.filter(challengeId=challenge_obj, userId=user_obj)
-
-    if challenge_completed_obj.exists():
+    # if the record exists, user is redirected to map as they have already completed it
+    if challenge_completed_obj.exists() == True:
         messages.error(request, "You have already completed this challenge")
         return redirect("../../../map/")
 
@@ -33,8 +33,9 @@ def challenge(request, id):
     # Initialize form for image upload
     form = ImageUpload()
 
-    # Get the user's current points
-    user_points = user_obj.points
+    # retrieve current user and their id
+    current_user = request.user
+    current_user_id = current_user.id
 
     context = {
         'user_id': request.user.id,
@@ -52,16 +53,19 @@ def challenge(request, id):
         form = ImageUpload(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data.get("image")
-            ChallengeImages.objects.create(user=user_obj.user, challenge=challenge_obj, image=img)
-            upload_status = 'Upload Successful'
+            # create new records in database for image 
+            ChallengeImages.objects.create(user=user_profile.user,challenge=Challenge.objects.get(challengeId=id), image=img)
+            
+            user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
 
-            # Add the challenge completion record
-            ChallengeCompleted.objects.create(userId=user_obj, challengeId=challenge_obj, completed=True)
-
-            context.update({
-                'upload_status': upload_status,
+            context = {
+                'user_id': current_user.id,
+                'user_points': user_points,
                 'image': img,
-            })
+                'challenge_descr': challenge_description,
+                'challenge': challenge_task,
+                'id': id,
+            }
             return redirect('../../map/')
 
     return render(request, 'challenge.html', context)

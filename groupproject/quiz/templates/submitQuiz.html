@@ -12,9 +12,7 @@
   </head>
   <body>
     <main>
-
-   
-        <div class='container'>
+      <div class='container'>
         <aside>
             <div class="top">
               <div class="logo">
@@ -60,27 +58,23 @@
             </div>
             
           </div>
-
-      <div class="admin-page-box">
+        
+      <div class="results-container">
       <h1>Results</h1>
-
       <!-- Display the score -->
-      <p>Your score: {{ score }} out of {{ total }} questions</p>
-      <p>Your current points: {{ current_points }}</p>
+      <p>Your Score: {{ score }} out of {{ total }} questions</p>
+      <p>Your Current Points: {{ current_points }}</p>
+      </div>
       <!-- Display submitted answers -->
-      <h2>Submitted Answers:</h2>
-      <ul>
-        {% for question_id, answer in submitted_answers %}
-          <li>Question {{ question_id }}: Your answer was {{ answer }}</li>
-        {% endfor %}
-      </ul>
-
-      <h2>Correct Answers:</h2>
-      <ul>
-        {% for question_id, answer in correct_answers %}
-          <li>Question {{ question_id }}: The correct answer is {{ answer }}</li>
-        {% endfor %}  
-      </ul>
+      {% for question_id, question, answer, correct in submitted_answers %}
+      <div class="admin-page-box">
+        <h2>Question {{ question_id }}</h2>
+        <b>{{ question }}</b>
+        <b>Your Answer: {{ answer }}</b>
+        <b>Correct Answer: {{ correct }}</b>
+       </div>
+       {% endfor %}
+      
       </div>
     </main>
     

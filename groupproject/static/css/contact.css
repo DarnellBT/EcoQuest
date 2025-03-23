@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+html {
+    font-family: 'poppins', 'sans-serif';
+}
+
 /* Form styling within the admin-page-box */
 .admin-page-box form {
     width: 100%;

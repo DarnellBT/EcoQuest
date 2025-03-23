@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-    {% if messages %}
+    
+    
+    <div class="admin-page-box">
+        <h3 class="login-page-title">Login</h3> 
+        {% if messages %}
     <ul class="messages">
         {% for message in messages %}
         <li class="message error-message">{{ message }}</li>
         {% endfor %}
     </ul>
-    {% endif %}
-
-    <div class="admin-page-box">
-        <h3 class="login-page-title">Login</h3>      
+    {% endif %}     
         <form method="POST" action="">
             {% csrf_token %}
             <div class="form-group">
