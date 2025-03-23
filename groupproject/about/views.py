@@ -19,18 +19,15 @@ def contact(request):
         userprofile = UserProfile.objects.get(user=request.user)
         
 
-
-
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
+            # retrieves data from the contact form
             name = form.cleaned_data.get('first_name')
             email = form.cleaned_data.get('email')
             message = form.cleaned_data.get('message')
-            print(name, email, message)
-            
-          
-
+           
+        
             html_content = render_to_string(
                 "email/contact_email.html", {
                 'name': name,
@@ -38,7 +35,7 @@ def contact(request):
                 'message': message,
                 }
             )
-
+            # contructs email and sends using noreply email to customer service email
             email = EmailMessage(
                 subject="Contact Form Submission",
                 body=html_content,
@@ -51,6 +48,7 @@ def contact(request):
 
             return redirect("./")
 
+    # variables passed into form
     context = {
         'forms':form,
         'user_auth': request.user,
