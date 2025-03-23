@@ -1,6 +1,4 @@
-
-
-/* Box containing map-related content */
+/* Main content box */
 .map-box {
   margin: auto;
   width: 60%;
@@ -13,65 +11,62 @@
   align-items: center;
 }
 
-/* Map container styling */
+/* Map container */
 #map-container {
   width: 100%;
-  max-height: 350px; /* Limit max height */
-  height: 50vh; /* Ensures map resizes with screen */
-  background-color: #007d69;
+  max-height: 350px;
+  height: 50vh;
+  background-color: #4CAF50;
   border-radius: 10px;
-  border: 2px solid lightseagreen;
-  margin-bottom: 1rem; /* Space before the QR button */
-  position: relative; /* Keeps internal elements inside */
-  overflow: hidden; /* Prevents content from overflowing */
+  border: 2px solid #4CAF50;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Ensure Leaflet map resizes correctly */
+/* Leaflet map adjustments */
 .leaflet-container {
   width: 100% !important;
   height: 100% !important;
   max-height: inherit;
 }
 
-/* QR code scanning button */
+/* QR scanner button */
 .qr-scanner {
   color: aliceblue;
-  background-color: #007d69;
-  padding: 0.5dvw 1dvw;
+  background-color: #4CAF50;
+  padding: 0.4dvw 0.8dvw; /* Reduced padding */
   text-decoration: none;
   border-radius: 5px;
   border: solid aliceblue;
-  display: flex; /* Use flex to center content */
-  justify-content: center; /* Horizontally center content */
-  align-items: flex-start; /* Align items to the top (adjust this) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 1rem; /* Space below map */
-  margin-left: auto; /* Center the button horizontally */
-  margin-right: auto; /* Center the button horizontally */
-  white-space: nowrap; /* Prevents text from wrapping */
-  height: auto; /* Let height adjust automatically */
-  line-height: 2vw; /* Adjust line-height to move the text down */
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+  height: auto;
+  line-height: 1.8vw; /* Reduced line height */
 }
 
-/* Ensure the link inside behaves like a button */
+/* QR scanner text inside the button */
 .qr-scanner a {
-  color: inherit; /* Inherits aliceblue from .qr-scanner */
-  text-decoration: none; /* Removes underline */
-  display: block; /* Makes sure the entire button is clickable */
+  color: inherit;
+  text-decoration: none;
+  display: block;
   width: 100%;
   height: 100%;
-  padding: inherit; /* Ensures same padding as .qr-scanner */
-  color: aliceblue;
-  font-size: 2dvw;
+  font-size: 1.5dvw; /* Made the text smaller */
 }
 
-/* Hover effect */
 .qr-scanner:hover {
   background-color: #00a87e;
   cursor: pointer;
 }
 
-
+/* Footer */
 .footer {
   position: relative;
   left: 0;
@@ -84,42 +79,48 @@
   margin-top: 6rem;
 }
 
+.footer a {
+  color: #00a87e;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 .icon-text {
   color: #00a87e;
   font-size: 16px !important;
 }
 
-
 /* Links */
 a {
   color: aliceblue;
-  font-size: 2dvw;
+  font-size: 1.5dvw; /* Reduced link size */
   text-decoration: none;
 }
 
-
-/* Messages styling */
+/* Messages */
 .messages {
   list-style-type: none;
 }
+
 .message {
   color: red;
   font-weight: bold;
   text-align: center;
 }
 
-/* Paragraph and list items for instructions */
+/* Paragraph and list items */
 p {
   text-align: center;
   font-weight: bold;
-  font-size: 2dvw;
+  font-size: 1.5dvw; /* Made the text smaller */
 }
 
 ul {
-  font-size: 1.5dvw;
+  font-size: 1.2dvw; /* Reduced size */
 }
-
-/* Responsive Styles */
 
 /* Tablet */
 @media screen and (max-width: 768px) {
@@ -177,24 +178,29 @@ ul {
   }
 }
 
-/* Laptop and larger screens */
+/* Laptop screens (smaller sizes) */
 @media screen and (min-width: 1025px) {
+  .map-box {
+    padding: 0.8dvw; /* Less padding */
+  }
+
+  p, ul {
+    font-size: 1.2dvw; /* Smaller text */
+  }
+
   .qr-scanner {
-    width: 40%; /* Make the button slightly smaller */
-    padding: 0.4dvw 1dvw; /* Adjust padding for a cleaner look */
-    border-radius: 5px;
+    width: 30%; /* Smaller button */
+    padding: 0.3dvw 0.7dvw;
+    border-radius: 7px;
   }
 
   .qr-scanner a {
-    font-size: 2.5dvw; /* Slightly smaller font size */
+    font-size: 1.3dvw; /* Smaller text */
   }
 
-  /* Ensure horizontal text alignment and prevent overflow */
   .qr-scanner {
-    white-space: nowrap; /* Prevents text from wrapping */
-    text-overflow: ellipsis; /* Truncates the text if it overflows */
-    overflow: hidden; /* Ensures no text spills out */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
-
-
