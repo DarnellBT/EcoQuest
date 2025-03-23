@@ -86,7 +86,7 @@ aside {
     position: fixed;  /* Keep the sidebar fixed on large screens */
     top: 0;
     left: 0;
-    width: 18rem;  /* Width of the sidebar */
+    width: 16rem;  /* Smaller width of the sidebar */
     background: white;
     z-index: 1000;
     display: flex;
@@ -96,6 +96,7 @@ aside {
 #close_button {
     display: none;
     pointer-events: none;
+    font-size: 1.4rem; /* Smaller close button */
 }
 
 aside .top {
@@ -103,13 +104,14 @@ aside .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem; /* Smaller padding */
+    
 }
 
 aside .logo {
     display: flex;
-    gap: 1rem;
-    margin-top: -20px; /* Move it up */
+    margin-top: -15px; /* Move it up a bit */
+    gap: 0.6rem; /* Smaller gap between logo and text */
 }
 
 aside .sidebar {
@@ -117,20 +119,23 @@ aside .sidebar {
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 0.6rem; /* Smaller padding */
 }
 
 aside .sidebar a {
     display: flex;
     color: gray;
-    margin-left: 2rem;
-    gap: 1rem;
+    margin-left: 1.5rem; /* Smaller margin */
+    gap: 0.8rem; /* Smaller gap between icon and text */
     align-items: center;
-    height: 3rem;
+    height: 2.5rem; /* Smaller height */
     transition: color 0.3s ease;
 }
 
 aside .sidebar a:hover {
     color: lightseagreen;
+    font-size: 0.8rem; /* Ensure hover link is the same size */
+    padding: 4px 10px; /* Keep consistent padding */
 }
 
 aside .sidebar a.active {
@@ -139,8 +144,20 @@ aside .sidebar a.active {
     font-weight: bold;
     margin-left: 0;
     border-radius: 10px;
-    padding-left: 1rem;
+    padding-left: 0.8rem; /* Smaller padding */
 }
+
+/* Sidebar heading style */
+aside .sidebar h3 {
+    font-size: 1rem; /* Smaller heading size */
+}
+
+
+/* Adjust menu button */
+#menu_bar {
+    font-size: 1.4rem; /* Smaller size for the menu icon */
+}
+
 
 /* Large Screens */
 @media screen and (min-width: 1200px) {
@@ -149,13 +166,13 @@ aside .sidebar a.active {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
+        width: 100%; /* Smaller width */
         height: auto;
         background: white;
         flex-direction: row; /* Horizontal layout */
         align-items: center;
         justify-content: flex-start; /* Make sure other items align properly */
-        padding: 1rem 2rem;
+        padding: 0.5rem 1.5rem; /* Smaller padding */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
     }
@@ -165,25 +182,28 @@ aside .sidebar a.active {
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
-        gap: 2rem;
+        gap: 1.5rem; /* Smaller gap */
         height: auto;
         width: 100%;
     }
 
     aside .sidebar a {
-        padding: 5px 15px; /* Increase padding on the right */
+        padding: 4px 12px; /* Reduced padding for links */
         margin: 0;
         color: gray;
         text-decoration: none;
-        font-size: 1rem;
         transition: color 0.3s, padding-right 0.3s;
+        font-size: 0.8rem; /* Smaller text for the links */
+        padding: 4px 10px; /* Reduced padding for links */
+        margin-left: 1.2rem; /* Smaller margin */
+        gap: 0.6rem; /* Smaller gap between icon and text */
     }
 
     /* Adjust the position of the last item (Log out) to the far right */
     aside .sidebar a:last-child {
         margin-left: auto; /* Push the Log out link to the far right */
-        padding-right: 20px; /* Optional: To add more spacing */
-        margin-right: 40px; /* Adds space from the edge of the sidebar */
+        padding-right: 16px; /* Optional: To add more spacing */
+        margin-right: 30px; /* Adds space from the edge of the sidebar */
     }
 
     /* Hide menu button on larger screens */
@@ -212,7 +232,7 @@ aside .sidebar a.active {
 
     aside {
         position: fixed;
-        width: 18rem;
+        width: 16rem; /* Smaller width */
         z-index: 3;
         background: white;
         display: none;
@@ -233,6 +253,7 @@ aside .sidebar a.active {
 
     aside .logo h2 {
         display: inline;
+        font-size: 1rem; /* Smaller font size */
     }
 
     aside .sidebar h3 {
@@ -241,7 +262,7 @@ aside .sidebar a.active {
 
     aside .sidebar a {
         width: 100%;
-        height: 3.4rem;
+        height: 3rem; /* Smaller height for links */
     }
 
     aside .sidebar a.active {
@@ -252,6 +273,8 @@ aside .sidebar a.active {
         margin-right: 0; /* Remove right margin */
         box-sizing: border-box; /* Include padding in total width */
         width: 100%; /* Ensure it does not expand beyond the link's width */
+        font-size: 0.8rem; /* Keep active link font size the same */
+        padding: 4px 10px; /* Reduced padding for active link */
     }
 
     aside .top div.close span {
@@ -259,7 +282,7 @@ aside .sidebar a.active {
         position: absolute;
         right: 0;
         margin-right: 35px;
-        font-size: 35px;
+        font-size: 30px; /* Smaller close button font size */
     }
 
     /* Menu button fixed at top-left for smaller screens */
@@ -270,7 +293,7 @@ aside .sidebar a.active {
         z-index: 1000; /* Ensure it's above other content */
         background: white;
         cursor: pointer;
-        font-size: 2rem; /* Adjust size as needed */
+        font-size: 1.5rem; /* Smaller menu icon font size */
         display: block;
     }
 
@@ -284,11 +307,9 @@ aside .sidebar a.active {
 @media screen and (max-width: 768px) {
     aside {
         position: fixed;
-        width: 18rem;
-     
+        width: 16rem; /* Smaller sidebar width */
         background: white;
         display: none;
-    
     }
 
     aside .sidebar a.active {
@@ -313,7 +334,7 @@ aside .sidebar a.active {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 0.8rem;
+        padding: 0 0.6rem; /* Smaller padding */
         background: white;
         width: 100%;
         z-index: 2;
@@ -326,25 +347,16 @@ aside .sidebar a.active {
         cursor: pointer;
         position: absolute;
         left: 1rem;
-
-
     }
 
     .privacy-box {
         width: 100%;
-        padding: 10px;
+        padding: 8px; /* Smaller padding */
         margin-top: 50px;
         z-index: 1;
         height: 80%;
     }
-
-
-
-   
 }
 
-.privacy-box {
-    margin: 2rem;
-    
-}
+
 

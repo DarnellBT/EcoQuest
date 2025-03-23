@@ -84,6 +84,15 @@
   margin-top: 6rem;
 }
 
+.footer a {
+  color: #00a87e; /* Sets the color of the links */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Adds underline when hovering over the link */
+}
+
 .icon-text {
   color: #00a87e;
   font-size: 16px !important;

@@ -5,11 +5,159 @@
     margin-bottom: 2%;
 }
 
-.achievements-box {
-    display: flex;
-    align-items: center;
+.challenge-header-container {
+    background-color: lightseagreen; /* Green color for the header */
+    padding: 10px 0; /* Adjust padding to give space around the header */
+    width: 100%; /* Makes sure it spans the full width of the parent container */
+    border-radius: 2dvw 2dvw 0 0; /* Ensures the top corners are rounded */
+    margin-bottom: 0; /* No margin below, so it blends in with the content below */
+    position: absolute; /* Absolute positioning to position it exactly where we want */
+    top: 0; /* Places it at the very top of the parent box */
+    left: 0; /* Aligns it to the left of the parent */
+    right: 0; /* Aligns it to the right of the parent */
 }
 
+.challenge-header {
+    text-align: center; /* Keeps it centered */
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2.5vw;
+    color: white; /* Text color */
+}
+
+.achievement-container {
+    width: 80%; /* Increase width */
+    padding: 4vw; /* Add padding for spacing */
+    max-width: 900px; /* Ensure it doesn’t get too large on big screens */
+    align-items: center;
+    margin-top: 3vh; /* Adds space from the top */
+}
+
+
+.achievement-box {
+    margin: auto;
+    margin-top: 5vh; /* Moves it higher on larger screens */
+    width: 60%;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2dvw;
+    padding: 1dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.achievements-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns items properly in each row */
+    width: 100%; /* Make it take up full width of the parent container */
+    padding: 25px 0;
+    border: 2px solid lightseagreen;
+    margin-bottom: 1vh; /* Adds space between challenges */
+    background-color: #f9f9f9; /* Light background color for each item */
+    border-radius: 10px; /* Rounds the corners of each item */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for a subtle 3D effect */
+}
+
+.achievements-list img {
+    margin-right: 10px; /* Space between image and challenge name */
+    margin-left: 10px; /* Adds space between the image and the left edge of the container */
+}
+
+
+
+
 .challenge-name {
-    font-weight: bold;
+    font-size: 1.5vw; /* Keeps text bigger */
+    font-weight: normal;
+    position: relative;
+    top: -0.5vw; /* Moves text slightly upwards */
+}
+
+
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #f9f9f9;
+    color: #00a87e;
+    text-align: center;
+    margin-top: 6rem;
+  }
+
+  .footer a {
+    color: #00a87e; /* Sets the color of the links */
+    text-decoration: none; /* Removes underline from links */
+}
+
+.footer a:hover {
+    text-decoration: underline; /* Adds underline when hovering over the link */
+}
+
+/* Ensure the height adjustment only applies to larger screens */
+@media screen and (min-width: 1024px) {
+    .achievement-box {
+        margin-top: 2vh; /* Moves it even higher on laptops */
+    }
+
+    .challenge-header {
+        margin-left: -2vw; /* Moves it slightly left */
+    }
+}
+
+/* Mobile (screens under 768px) */
+@media screen and (max-width: 768px) {
+    /* Adjust the achievement container width and padding */
+    .achievement-container {
+        width: 90%; /* Increase the width of the container for mobile */
+        padding: 8vw; /* Add more padding for spaciousness */
+        max-width: 100%; /* Ensure the container fills up to the screen size */
+        margin-top: 5vh; /* Adds space from the top */
+    }
+
+    /* Adjust the achievement box to make it bigger */
+    .achievement-box {
+        margin-top: 4vh; /* Move it higher on smaller screens */
+        width: 80%; /* Increase width to take up more space */
+        padding: 3dvw; /* Add more padding for spaciousness */
+    }
+
+    /* Make the challenge header text slightly bigger for mobile */
+    .challenge-header {
+        font-size: 4vw; /* Make text bigger */
+        margin: 0 auto;
+    }
+
+    /* Adjust the achievement list container */
+    .achievements-list {
+        padding: 30px 0; /* More padding for better spacing */
+        margin-bottom: 3vh; /* More space between challenges */
+    }
+
+    /* Make images in achievements list slightly bigger */
+    .achievements-list img {
+        width: 4vw; /* Slightly larger images */
+        height: 4vw; /* Maintain aspect ratio */
+        margin-right: 12px; /* Space between image and challenge name */
+    }
+
+    /* Increase the challenge name font size */
+    .challenge-name {
+        font-size: 2.5vw; /* Larger text for mobile */
+        top: -1vw; /* Adjust positioning */
+    }
+
+    /* Adjust the footer for mobile */
+    .footer {
+        height: 12%; /* Make footer slightly bigger */
+        margin-top: 8rem; /* Add more space before the footer */
+    }
+
+    .footer a {
+        font-size: 3.5vw; /* Make link text bigger */
+    }
 }
