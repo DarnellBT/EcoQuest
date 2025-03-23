@@ -215,6 +215,14 @@ aside .sidebar h3 {
     font-size: 1.4rem; /* Smaller size for the menu icon */
 }
 
+.privacy-box {
+    width: 80%;
+    padding: 8px; 
+    margin-top: 50px;
+    z-index: 1;
+    height: 80%;
+}
+
 
 /* Large Screens */
 @media screen and (min-width: 1200px) {
@@ -407,11 +415,12 @@ aside .sidebar h3 {
     }
 
     .privacy-box {
-        width: 100%;
+        width: 80%;
         padding: 8px; 
         margin-top: 50px;
         z-index: 1;
         height: 80%;
+        word-wrap: break-word;
     }
 }
 
