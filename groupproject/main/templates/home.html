@@ -58,7 +58,11 @@
             <h3> Account </h3>
           </a>
           {% endif %}
-          
+          <a href="{% url 'privacy' %}"> 
+            <span class="material-symbols-sharp">policy</span>
+            <h3> Policy </h3>
+          </a>
+            
           {% if userprofile.is_game_keeper or userprofile.is_admin %}
           <a href="{% url 'gamekeeper-portal' %}"> 
             <span class="material-symbols-sharp">exit_to_app</span>

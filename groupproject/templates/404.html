@@ -3,27 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, 
-                   initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/admin_edit.css' %}">
     <title>
         500 Page Not Found
     </title>
 
 </head>
-
 <body>
-
-<h1> 404 </h1>
-<p>
-    Oops! The page you're
-    looking for is not here.
-</p>
-
-<a href="{% url 'login'%}">
-    Go Back to login
-</a>
+    
+<!-- Box containing everything -->
+<div class="admin-page-box">
+    <h1>Error 500 </h1>
+    <p>
+        Oops! The page you're
+        looking for is not here.
+        Please go back to home page
+    </p>
+    
+    <!--Button for going back to home page-->
+    <a href="{% url 'home'%}" class="btn-submit">
+        Home
+    </a>
+    
 </div>
+    
 </body>
-
 </html>
