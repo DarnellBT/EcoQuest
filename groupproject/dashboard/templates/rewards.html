@@ -33,9 +33,15 @@
               </a>
 
             <a href="{% url 'account' %}"> 
-                <span class="material-symbols-sharp"> home </span>
+                <span class="material-symbols-sharp">exit_2_app</span>
                 <h3> Account </h3>
               </a>
+            {% if user_auth.is_authenticated %}
+            <a href="{% url 'rewards'%}"> 
+              <span class="material-symbols-sharp">social_leaderboard</span>
+              <h3> Rewards </h3>
+            </a>
+            {% endif %}
             <a href="{% url 'logout'%}"> 
               <span class="material-symbols-sharp"> logout </span>
               <h3> Logout </h3>
