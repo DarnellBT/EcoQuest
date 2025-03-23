@@ -12,17 +12,20 @@
     <script src="{% static 'js/dashboard.js' %}" defer></script>
   </head>
   <body>
-    <div class="container">
-      <aside>
+    <div class="container"> 
+      <aside> 
+        <!-- Sidebar for navigation -->
         <div class="top">
           <div class="logo">
             <h2><span class="danger">EcoQuest</span></h2>
           </div>
+          <!-- Close button for small screens -->
           <div class="close" id="close_button">
             <span class="material-symbols-sharp">close</span>
           </div>
         </div>
 
+        <!-- Sidebar navigation menu -->
         <div class="sidebar">
 
           <a href="{% url 'home' %}" class="active"> 
@@ -102,20 +105,31 @@
         <div class="content-boxes">
             <section class="content-box">
                 <h2>Welcome to <span class="highlight">EcoQuest</span></h2>
-                <p>EcoQuest is a platform dedicated to promoting sustainability and eco-friendly initiatives.</p>
+                <p>EcoQuest is an interactive platform dedicated to promoting sustainability and eco-friendly initiatives through an engaging and educational web game. Designed for players of all ages, EcoQuest transforms environmental challenges into exciting missions, where players solve eco-puzzles, and complete quests that mirror real-world sustainability efforts.</p>
+                <p>From reducing carbon footprints and recycling waste to restoring natural habitats and advocating for renewable energy, EcoQuest empowers players to make a positive impact while having fun. Whether you're an aspiring eco-warrior or simply looking to learn more about sustainable living, EcoQuest is your gateway to an immersive, green future.</p>
+                <p>Join the adventure and become a champion for the planet!</p>
             </section>
     
             <section class="content-box">
                 <h2>What is <span class="highlight">Sustainability</span>?</h2>
-                <p>Sustainability is about meeting our needs without compromising the ability of future generations to meet theirs.</p>
+                <p>To begin, let's talk about what sustainability actually is. Sustainability is a social goal for us to co-exist with our planet for as long as possible. In other words, the aim is to be able to do the things we do daily, whilst minimizing the negative impact on the Earth. This could be done in many different ways, which we will go through to try and help you understand further.</p>
+                <p>One main practice for improving sustainability is recycling. Recycling is the process of converting waste into reusable material. A big example of this is reusing plastic bottles and making it useful again. There are large repercussions for a lack of plastic recycling, such as climate change and plastic pollution, leading to death of Sealife. Currently, at least 1,000 turtles die each year due to plastic (that’s one turtle every 9 hours!). The benefits of recycling are to reduce greenhouse gas emissions, reduce depletion of natural resources, and decrease the release of toxic substances into the atmosphere.</p>
+                <p>By embracing sustainability, we can work towards a future where economic growth, environmental health, and human well-being coexist harmoniously. Every action, no matter how small, contributes to a more sustainable world.</p>
             </section>
     
             <section class="content-box">
                 <h2>What <span class="highlight">We Do</span></h2>
-                <p>We provide resources, challenges, and community engagement to encourage a greener lifestyle.</p>
+                <p>At EcoQuest, we provide a dynamic and interactive platform designed to inspire and empower individuals to adopt a greener lifestyle. Through a combination of engaging challenges, valuable educational resources, and exciting rewards, we make sustainability both fun and rewarding.</p>
+                <p>
+                    🔹 <strong>Interactive Challenges</strong> - Take on exciting eco-missions that test your knowledge and skills in sustainability. Whether it's reducing energy consumption, minimizing waste, or restoring ecosystems, our challenges encourage real-world action through virtual gameplay.<br><br>
+                    🔹 <strong>Educational Resources</strong> - Learn about environmental issues, green technologies, and sustainable practices with our in-depth articles, videos, and interactive lessons. We break down complex topics into easy-to-understand and actionable steps.<br><br>
+                    🔹 <strong>Earn Rewards</strong> - Your sustainable actions don't go unnoticed! Complete challenges, level up your eco-hero, and unlock exclusive rewards, achievements, and in-game perks. The more you engage, the more you earn—making every green choice even more exciting.
+                </p>
+                <p>By combining education, entertainment, and incentives, EcoQuest turns sustainability into an adventure where every action counts!</p>
             </section>
         </div>
-      </main>
+    </main>
+    
     
   
       <div class="right">
