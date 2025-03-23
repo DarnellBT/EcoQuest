@@ -6,15 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rewards</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/rolePortalStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rolePortal.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp&display=swap"/>
+    <script src = "{% static 'js/dashboard.js' %}" defer></script>
+    
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 <body>
-    {% for title, points,image in rewards %}
-    <h3>{{ title }}</h3><br>
-    <p>{{ points }}</p>
-    <img src="../../static/images/{{ image }}/">
-    {% endfor %}
+    <!-- Navigation bar -->
+    <div class="container">
+        <aside>
+          <div class="top">
+            <div class="logo">
+              <h2><span class="danger">Rewards</span></h2>
+            </div>
+            <div class="close" id="close_button">
+              <span class="material-symbols-sharp">close</span>
+            </div>
+          </div>
+  
+          <div class="sidebar">
+
+            <a href="{% url 'home' %}"> 
+                <span class="material-symbols-sharp">grid_view</span>
+                <h3> Home </h3>
+              </a>
+
+            <a href="{% url 'account' %}"> 
+                <span class="material-symbols-sharp"> home </span>
+                <h3> Account </h3>
+              </a>
+<!--
+            <a href="{% url 'rewards'%}" class="active"> 
+              <span class="material-symbols-sharp"> home </span>
+              <h3> Rewards </h3>
+            </a>
+        -->
+            <a href="{% url 'logout'%}"> 
+              <span class="material-symbols-sharp"> logout </span>
+              <h3> Logout </h3>
+            </a>
+            
+          </div>
+        </aside>
+
+        <div class="right">
+          <div class="top">
+            <button id="menu_bar">
+              <span class="material-symbols-sharp"> menu </span>
+            </button>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation bar ends -->
+
+    <!-- Rewards -->
+    <div class="content-boxes">
+        {% for title, points,image in rewards %}
+        <section class="content-box">
+            <h3 class="title">{{ title }}</h3><br> 
+            <p class="point">{{ points }} points</p>
+            <img class="img1" src="../../static/images/{{ image }}/">
+        </section>
+        {% endfor %}
+    </div>
 
 </body>
 </html>
