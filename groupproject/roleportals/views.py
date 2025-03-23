@@ -13,14 +13,22 @@ def admin_portal(request):
     Handles the admin portal view.
     Checks if the user is an admin and renders the admin page.
     """
+
+    if request.user.is_anonymous:
+        messages.error(request, 'You are not logged in')
+        return redirect('../login')
+
     user_profile = UserProfile.objects.get(userId=request.user.id)
 
     if user_profile.is_admin:
         pass
     elif user_profile.is_game_keeper:
         messages.error(request, 'You do not have access!')
+        return redirect('../home')
+        
     else: 
         messages.error(request, 'You do not have access!')
+        return redirect('../home')
     return render(request, 'admin_page.html', {'userprofile':user_profile,'user_auth':request.user})
 
 def gamekeeper_portal(request):
@@ -28,6 +36,11 @@ def gamekeeper_portal(request):
     Handles the gamekeeper portal view.
     Displays challenges submitted by users for approval or rejection.
     """
+
+    if request.user.is_anonymous:
+        messages.error(request, 'You are not logged in')
+        return redirect('../login')
+
     user_profile = UserProfile.objects.get(userId=request.user.id)
 
     if user_profile.is_admin:
@@ -93,6 +106,9 @@ def admin_location(request):
     Handles the admin location management view.
     Allows admins to add new locations or view existing ones.
     """
+
+    
+    
     locations = Location.objects.all()
     if request.method == 'POST':
         form = LocationForm(request.POST)
@@ -100,14 +116,21 @@ def admin_location(request):
             form.save()
             return redirect('./')
     else:
+
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
+    
         user_profile = UserProfile.objects.get(userId=request.user.id)
 
         if user_profile.is_admin:
             pass
         elif user_profile.is_game_keeper:
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
         else: 
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
         form = LocationForm()
     return render(request, 'admin_location.html', {'locations': locations, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
@@ -122,7 +145,23 @@ def edit_location(request, location_id):
         if form.is_valid():
             form.save()
             return redirect('../../')
+        
     else:
+
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../../login')
+
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        else: 
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
         form = LocationForm(instance=location)
     return render(request, 'edit_location.html', {'form': form})
 
@@ -150,15 +189,25 @@ def admin_quiz(request):
             form.save()
             return redirect('./')
     else:
-        form = QuizForm()
+
+        
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
+
         user_profile = UserProfile.objects.get(userId=request.user.id)
 
         if user_profile.is_admin:
             pass
         elif user_profile.is_game_keeper:
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
         else: 
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
+        
+        form = QuizForm()
+
     return render(request, 'admin_quiz.html', {'quizzes': quizzes, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
 
 def edit_quiz(request, quiz_id):
@@ -173,6 +222,22 @@ def edit_quiz(request, quiz_id):
             form.save()
             return redirect('../../')
     else:
+
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../../login')
+
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        else: 
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        
         form = QuizForm(instance=quiz)
     return render(request, 'edit_quiz.html', {'form': form})
 
@@ -184,38 +249,6 @@ def delete_quiz(request, quiz_id):
     quiz = get_object_or_404(Quiz, quizId=quiz_id)
     quiz.delete()
     return redirect('../../')
-
-
-
-
-
-
-def edit_location(request, location_id):
-    """
-    Handles editing a specific location.
-    Retrieves the location by ID and updates it if the form is valid.
-    """
-    location = get_object_or_404(Location, locationId=location_id)
-    if request.method == 'POST':
-        form = LocationForm(request.POST, instance=location)
-        if form.is_valid():
-            form.save()
-            return redirect('../../')
-    else:
-        form = LocationForm(instance=location)
-    return render(request, 'edit_location.html', {'form': form})
-
-def delete_location(request, location_id):
-    """
-    Handles deleting a specific location.
-    Retrieves the location by ID and deletes it.
-    """
-    location = get_object_or_404(Location, locationId=location_id)
-    location.delete()
-    return redirect('../../')
-
-
-
 
 
 def admin_question(request):
@@ -230,15 +263,24 @@ def admin_question(request):
             form.save()
             return redirect('./')
     else:
-        form = QuestionForm()
+
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
+
         user_profile = UserProfile.objects.get(userId=request.user.id)
 
         if user_profile.is_admin:
             pass
         elif user_profile.is_game_keeper:
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
         else: 
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
+        
+        form = QuestionForm()
+        
     return render(request, 'admin_question.html', {'questions': questions, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
    
 
@@ -255,6 +297,21 @@ def edit_question(request, question_id):
             form.save()
             return redirect('../../')
     else:
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../../login')
+
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        else: 
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        
         form = QuestionForm(instance=question)
     return render(request, 'edit_question.html', {'form': form})
 
@@ -283,15 +340,23 @@ def admin_challenge(request):
             form.save()
             return redirect('./')
     else:
-        form = ChallengeForm()
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../login')
+
         user_profile = UserProfile.objects.get(userId=request.user.id)
 
         if user_profile.is_admin:
             pass
         elif user_profile.is_game_keeper:
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
         else: 
             messages.error(request, 'You do not have access!')
+            return redirect('../../home')
+        
+        form = ChallengeForm()
+        
     return render(request, 'admin_challenge.html', {'challenges': challenges, 'form': form, 'userprofile':user_profile,'user_auth':request.user})
     
 
@@ -308,6 +373,20 @@ def edit_challenge(request, challenge_id):
             form.save()
             return redirect('../../')
     else:
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../../../login')
+
+        user_profile = UserProfile.objects.get(userId=request.user.id)
+
+        if user_profile.is_admin:
+            pass
+        elif user_profile.is_game_keeper:
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
+        else: 
+            messages.error(request, 'You do not have access!')
+            return redirect('../../../home')
         form = ChallengeForm(instance=challenge)
     return render(request, 'edit_challenge.html', {'form': form})
 

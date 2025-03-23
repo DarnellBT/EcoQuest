@@ -134,12 +134,16 @@ def results(request, id):
     Displays the user's score, correct answers, and updates their points.
     Resets session variables after the quiz is completed.
     """
-    # check sessions are reset
+    if request.user.is_anonymous:
+        messages.error(request, 'You are not logged in')
+        return redirect('../login')
+    
+    # retrieves session info 
     userProfile = UserProfile.objects.get(userId=request.user.id)
     points = request.session['user_points']
     total_correct = request.session['correct_total']
     total_questions =  len(request.session['questions'])
-    
+    # give points to user
     total_points = userProfile.points + points
     userProfile.points = total_points
     userProfile.save()
@@ -155,8 +159,7 @@ def results(request, id):
         submitted_list.append(submitted_user_answers[i])
         submitted_list.append(correct_question_answers[i])
         submitted_answers.append(submitted_list)   
-
-    print(submitted_answers)
+    # reset session for user to start another question
     request.session['user_points'] = 0
     request.session['questions'] = []
     request.session['submitted'] = []
