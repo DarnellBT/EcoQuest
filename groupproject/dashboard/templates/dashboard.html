@@ -37,6 +37,11 @@
               <h3> Home </h3>
             </a>
             {% endif %}
+              
+            <a href="{% url 'account' %}" class="active"> 
+                <span class="material-symbols-sharp">exit_2_app</span>
+                <h3> Account </h3>
+            </a>
 
             {% if user_auth.is_authenticated %}
             <a href="{% url 'rewards'%}"> 
