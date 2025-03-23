@@ -34,6 +34,7 @@
             {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
             <a href="{% url 'home' %}"> 
               <span class="material-symbols-sharp">grid_view</span>
+              <span class="material-symbols-sharp">grid_view</span>
               <h3> Home </h3>
             </a>
             {% endif %}
@@ -45,7 +46,7 @@
 
             {% if user_auth.is_authenticated %}
             <a href="{% url 'rewards'%}"> 
-              <span class="material-symbols-sharp">social_leaderboard</span>
+              <span class="material-symbols-sharp"> social_leaderboard </span>
               <h3> Rewards </h3>
             </a>
             {% endif %}

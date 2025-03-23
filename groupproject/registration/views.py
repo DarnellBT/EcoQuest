@@ -22,6 +22,7 @@ def register(request):
                 print(f"{'Exception: ', str(e)}")
                 return render(request, 'registration.html', {'form':form})
         else:
+            # set help messages
             x = form.fields['username']
             x.help_text = "<br/>Please enter only Letters, Digits, and @ /./+/-/_"
             y = form.fields['password2']

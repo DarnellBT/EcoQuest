@@ -68,14 +68,20 @@ def edit_account(request):
     Handles editing user account details.
     Updates user information if the form is valid.
     """
+    if request.user.is_anonymous:
+        messages.error(request, 'You are not logged in')
+        return redirect('../login')
+    # retrieve object or raise exception if not found
     userprofile = get_object_or_404(UserProfile, userId=request.user.id)
     user_instance = userprofile.user
     if request.method == "POST":
         form = UserForm(request.POST, instance=user_instance)
         if form.is_valid():
+            # save updated info
             form.save()
             return redirect('../')
     else: 
+        #pass in current info
         form = UserForm(instance=user_instance)
     return render(request, 'edit_details.html', {'form': form})
 
@@ -85,6 +91,11 @@ def rewards(request):
     Shows the user's progress towards earning rewards based on their points.
     """
     if request.method == 'GET':
+
+        if request.user.is_anonymous:
+            messages.error(request, 'You are not logged in')
+            return redirect('../login')
+
         userprofile = get_object_or_404(UserProfile, userId=request.user.id)
         user_points = userprofile.points
       

@@ -48,7 +48,7 @@
             <h3> Contact </h3>
           </a>
 
-          {% if userprofile.is_user %}
+          {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
           <a href="{% url 'achievements' %}">
             <span class="material-symbols-sharp">trophy</span>
             <h3> Achievements </h3>
@@ -99,8 +99,15 @@
           
         </div>
       </aside>
-  
+      
       <main>
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="message error-message">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} 
         <div class="image-banner">
             <img src="{% static 'images/exeteruni.jpg' %}" alt="University of Exeter">
         </div>
