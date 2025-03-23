@@ -14,6 +14,7 @@ def challenge(request, id):
         messages.error(request, 'You are not logged in')
         return redirect('../../login')
     
+    # retrieve records from the database
     challenge_obj = Challenge.objects.get(challengeId=id)
     
     # Get the user profile and check if the user has completed the challenge already
@@ -32,7 +33,7 @@ def challenge(request, id):
     # Initialize form for image upload
     form = ImageUpload()
 
-    upload_status = 'Upload Successful'
+    # retrieve current user and their id
     current_user = request.user
     current_user_id = current_user.id
 
@@ -52,28 +53,15 @@ def challenge(request, id):
         form = ImageUpload(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data.get("image")
-            #img_path = f'./challenge/static/Image/{img}'
+            # create new records in database for image 
             ChallengeImages.objects.create(user=user_profile.user,challenge=Challenge.objects.get(challengeId=id), image=img)
-            # use form data and save the image
-            #with default_storage.open(img_path, 'wb+') as destination:
-            #    for chunk in img.chunks():
-            #        destination.write(chunk)
-            upload_status = 'Upload Successful'
-            #current_user = request.user
-            #current_user_id = current_user.id
+            
             user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-            # Add points for challenge
-            #user_points = user_profile.points + challenge_points
-            #user_profile.points = user_points
-            # save new points and create a record in ChallengeCompleted
-            #user_profile.save()
-            ChallengeCompleted.objects.create(userId=user_profile, challengeId=challenge_obj, completed=True)
 
             context = {
                 'user_id': current_user.id,
                 'user_points': user_points,
                 'image': img,
-                'upload_status': upload_status,
                 'challenge_descr': challenge_description,
                 'challenge': challenge_task,
                 'id': id,
