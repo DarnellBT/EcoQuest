@@ -62,7 +62,7 @@ def quiz(request, id):
        
         all_questions_choices = Question.objects.filter(quiz=quiz_obj)
         all_questions_choices = list(all_questions_choices)
-        print(request.session['points'])
+  
         # sets user points in session (change so user points are reset in results after being used)
         # send question, user answer, correct answer
         # records amount of points user has gotten, total correct answers 
@@ -71,7 +71,7 @@ def quiz(request, id):
             request.session['user_points'] += question_point
             request.session['correct_total'] += 1
         else:
-            print("Question ", index_post+1, "is wrong")
+            pass
         
         # increments questioj index for use to get correct question, answer, choice and points 
         request.session['question_index'] = index_post + 1
@@ -112,7 +112,7 @@ def quiz(request, id):
     request.session['user_points'] = user_points
     request.session['submitted'] = submitted_answers
     request.session['correct_total'] = 0
-    print(request.user, user_obj)
+   
 
     context = {
         'question_index': question_index,
@@ -139,29 +139,24 @@ def results(request, id):
     points = request.session['user_points']
     total_correct = request.session['correct_total']
     total_questions =  len(request.session['questions'])
-
+    
     total_points = userProfile.points + points
     userProfile.points = total_points
     userProfile.save()
     
     submitted_user_answers = request.session['submitted']
-    print(submitted_user_answers)
+    correct_question_answers = request.session['answers']
+    quiz_questions = request.session['questions']
     submitted_answers = []
     for i in range(0, total_questions):
         submitted_list = []
         submitted_list.append(i+1)
+        submitted_list.append(quiz_questions[i])
         submitted_list.append(submitted_user_answers[i])
-        submitted_answers.append(submitted_list)
+        submitted_list.append(correct_question_answers[i])
+        submitted_answers.append(submitted_list)   
 
-
-    correct_question_answers = request.session['answers']
-    correct_answers = []
-    for i in range(0, total_questions):
-        correct = []
-        correct.append(i+1)
-        correct.append(correct_question_answers[i])
-        correct_answers.append(correct)
-
+    print(submitted_answers)
     request.session['user_points'] = 0
     request.session['questions'] = []
     request.session['submitted'] = []
@@ -174,7 +169,6 @@ def results(request, id):
         'total': total_questions,
         'current_points': total_points,
         'submitted_answers': submitted_answers,
-        'correct_answers': correct_answers,
         'user_auth': request.user,
         'userprofile': userProfile,
     }
