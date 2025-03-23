@@ -93,21 +93,25 @@
         </div>
       </aside>
   
-      <main class="achievements-main">
-        <div class="achievement-box">
-            <h2 class="challenge-header">Achievements</h2>
-        {% for challenge, image in challenges_list %}
-        <div class="achievements-box">
-            <img src="../../static/images/{{ image }}" alt="image" class="img"> 
-            <p class="challenge-name">{{ challenge }}</p>
+      <main class="achievements-main"> 
+        <div class="achievement-box"> 
+            
+            <div class="challenge-header-container">
+              <h2 class="challenge-header">Achievements</h2>
+            </div>
+            
+            <div class="achievement-container">
+                {% for challenge, image in challenges_list %}
+                <div class="achievements-list">
+                    <img src="../../static/images/{{ image }}" alt="image" class="img"> 
+                    <p class="challenge-name">{{ challenge }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            
         </div>
-        {% endfor %}
-
-        <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Pixel perfect - Flaticon</a><br>
-        <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by kliwir art - Flaticon</a>
-
-        </div>
-      </main>
+    </main>
+    
     
   
       <div class="right">
@@ -120,6 +124,13 @@
         
       </div>
 
+      
+
+    </div>
+
+    <div class="footer">
+      <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Pixel perfect - Flaticon</a><br>
+                <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by kliwir art - Flaticon</a>
     </div>
     
   </body>

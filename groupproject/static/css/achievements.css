@@ -5,11 +5,154 @@
     margin-bottom: 2%;
 }
 
-.achievements-box {
-    display: flex;
-    align-items: center;
+/* Header section */
+.challenge-header-container {
+    background-color: #4CAF50; 
+    padding: 10px 0;
+    width: 100%;
+    border-radius: 2dvw 2dvw 0 0; 
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
+.challenge-header {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2.5vw;
+    color: white; 
+}
+
+/* Main achievement container */
+.achievement-container {
+    width: 80%;
+    padding: 4vw;
+    max-width: 900px;
+    align-items: center;
+    margin-top: 3vh;
+}
+
+/* Box for each achievement */
+.achievement-box {
+    margin: auto;
+    margin-top: 5vh;
+    width: 60%;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2dvw;
+    padding: 1dvw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* List of achievements */
+.achievements-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 25px 0;
+    border: 2px solid #4CAF50;
+    margin-bottom: 1vh;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Images inside the list */
+.achievements-list img {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* Challenge text */
 .challenge-name {
-    font-weight: bold;
+    font-size: 1.5vw;
+    font-weight: normal;
+    position: relative;
+    top: -0.5vw;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #f9f9f9;
+    color: #00a87e;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+.footer a {
+    color: #00a87e;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Large screens */
+@media screen and (min-width: 1024px) {
+    .achievement-box {
+        margin-top: 2vh;
+    }
+
+    .challenge-header {
+        margin-left: -2vw;
+    }
+}
+
+/* Small screens */
+@media screen and (max-width: 768px) {
+    .achievement-container {
+        width: 90%;
+        padding: 8vw;
+        max-width: 100%;
+        margin-top: 5vh;
+    }
+
+    .achievement-box {
+        margin-top: 4vh;
+        width: 80%;
+        padding: 3dvw;
+    }
+
+    .challenge-header {
+        font-size: 4vw;
+        margin: 0 auto;
+    }
+
+    .achievements-list {
+        padding: 30px 0;
+        margin-bottom: 3vh;
+    }
+
+    .achievements-list img {
+        width: 4vw;
+        height: 4vw;
+        margin-right: 12px;
+    }
+
+    .challenge-name {
+        font-size: 2.5vw;
+        top: -1vw;
+    }
+
+    .footer {
+        height: 12%;
+        margin-top: 8rem;
+    }
+
+    .footer a {
+        font-size: 3.5vw;
+    }
 }

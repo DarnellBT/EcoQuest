@@ -6,7 +6,8 @@
 
 /* Header section */
 .leaderboard-header {
-    background-color: #00a87e;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +17,7 @@
 
 /* Title style */
 .leaderboard-title {
-    color: aliceblue;
+    color: Black;
     margin-bottom: 0;
     padding: 0.5vw;
     line-height: 2;
@@ -35,6 +36,8 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0.5vw;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Leaderboard box */
@@ -50,7 +53,7 @@
 .leaderboard-table {
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid lightseagreen;
+    border: 3px solid #4CAF50;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 1vw;
@@ -61,10 +64,10 @@
 /* Table headers */
 .leaderboard-th {
     font-size: 1.5vw;
-    background-color: lightseagreen;
+    background-color: #4CAF50;
     color: aliceblue;
     padding: 0.7vw;
-    border: 3px solid lightseagreen;
+    border: 3px solid #4CAF50;
 }
 
 /* Table rows */
@@ -74,7 +77,7 @@
 
 /* Table cells with rounded effect */
 .leaderboard-td {
-    border: 1px solid lightseagreen;
+    border: 1px solid #4CAF50;
     font-size: 1.2vw;
     padding: 0.7vw;
     text-align: center;
@@ -188,12 +191,12 @@
 
 /* Table row borders */
 .leaderboard-row + .leaderboard-row {
-    border-top: 2px solid lightseagreen;
+    border-top: 2px solid #4CAF50;
 }
 
 /* Cell borders */
 .leaderboard-td + .leaderboard-td {
-    border-left: 3px solid lightseagreen;
+    border-left: 3px solid #4CAF50;
 }
 
 /* Rank number */
@@ -256,132 +259,132 @@
 /* Larger Screens (over 1200px) */
 @media screen and (min-width: 1201px) {
     .leaderboard-box {
-        width: 60%; /* Decrease the width slightly for a more balanced look */
-        padding: 2vw; /* Add a bit of padding */
-        margin: 0 auto; /* Center the box */
-        height: 70vh; /* Make the box fill a good portion of the screen height */
+        width: 60%; 
+        padding: 2vw; 
+        margin: 0 auto; 
+        height: 70vh; 
     }
 
     .leaderboard-table {
-        width: 100%; /* Ensure table fills the box */
-        height: 60vh; /* Adjust the height for the table */
+        width: 100%; 
+        height: 60vh; 
     }
 
     .leaderboard-td,
     .leaderboard-th {
-        font-size: 1.5vw; /* Set font size for readability */
-        padding: 1.5vw; /* Add padding for better spacing */
+        font-size: 1.5vw; 
+        padding: 1.5vw; 
     }
 
     .leaderboard-title {
-        font-size: 3vw; /* Large title font size */
-        padding: 1.5vw; /* Add padding around the title */
+        font-size: 3vw; 
+        padding: 1.5vw; 
     }
 
     .leaderboard-heading {
-        width: 50%; /* Set heading width to 50% */
-        font-size: 2.5vw; /* Adjust heading size */
-        padding: 1.5vw; /* Add padding around the heading */
+        width: 50%; 
+        font-size: 2.5vw; 
+        padding: 1.5vw; 
     }
 
     .leaderboard-button {
-        font-size: 1.5vw; /* Set font size for the button */
-        height: 2.5vw; /* Increase button height for a better fit */
-        width: 15%; /* Adjust width of the button */
-        top: 10vw; /* Adjust the button position */
+        font-size: 1.5vw; 
+        height: 2.5vw; 
+        width: 15%; 
+        top: 10vw; 
     }
 
     .leaderboard-text {
-        font-size: 2vw; /* Adjust text size for readability */
-        padding: 2vw; /* Add padding around the text */
+        font-size: 2vw; 
+        padding: 2vw; 
     }
 }
 
 /* Screens up to 1200px */
 @media screen and (max-width: 1200px) {
     .leaderboard-box {
-        width: 80%; /* Make the box wider to occupy more space */
-        padding: 4vw; /* More padding for a spacious look */
-        margin: 0 auto; /* Center the box */
-        height: 70vh; /* Make the box take up more vertical space */
+        width: 80%; 
+        padding: 4vw; 
+        margin: 0 auto; 
+        height: 70vh; 
     }
 
     .leaderboard-table {
-        width: 100%; /* Ensure the table fills the box */
-        height: 60vh; /* Ensure the table takes more vertical space */
+        width: 100%; 
+        height: 60vh; 
     }
 
     .leaderboard-td,
     .leaderboard-th {
-        font-size: 2vw; /* Increase font size to fill out space */
-        padding: 2vw; /* Add padding for better spacing */
+        font-size: 2vw; 
+        padding: 2vw; 
     }
 
     .leaderboard-title {
-        font-size: 5vw; /* Increase title font size */
-        padding: 2vw; /* Add padding around the title */
+        font-size: 5vw;
+        padding: 2vw; 
     }
 
     .leaderboard-heading {
-        width: 70%; /* Increase width of heading */
-        font-size: 4vw; /* Make heading font larger */
-        padding: 2vw; /* Add padding around the heading */
+        width: 70%; 
+        font-size: 4vw; 
+        padding: 2vw; 
     }
 
     .leaderboard-button {
-        font-size: 3vw; /* Make button font size bigger */
-        height: 5vw; /* Increase button height */
-        width: 20%; /* Make the button wider */
-        top: 12vw; /* Adjust the button position */
+        font-size: 3vw; 
+        height: 5vw; 
+        width: 20%;
+        top: 12vw; 
     }
 
     .leaderboard-text {
-        font-size: 3vw; /* Increase text size for readability */
-        padding: 3vw; /* Add padding for better spacing */
+        font-size: 3vw; 
+        padding: 3vw; 
     }
 }
 
 /* Screens under 768px (Mobile) */
 @media screen and (max-width: 768px) {
     .leaderboard-box {
-        width: 90%; /* Make the box wider to occupy more space */
-        padding: 6vw; /* More padding for a spacious look */
-        margin: 0 auto; /* Center the box */
-        height: 80vh; /* Make the box take up more vertical space */
-        overflow-y: auto; /* Allow scrolling if content exceeds height */
+        width: 90%; 
+        padding: 6vw; 
+        margin: 0 auto; 
+        height: 80vh; 
+        overflow-y: auto; 
     }
 
     .leaderboard-table {
-        width: 100%; /* Ensure the table fills the box */
-        height: 70vh; /* Ensure the table takes up more vertical space */
+        width: 100%; 
+        height: 70vh; 
     }
 
     .leaderboard-td,
     .leaderboard-th {
-        font-size: 3vw; /* Increase font size to fill out space */
-        padding: 2.5vw; /* Add padding for better spacing */
+        font-size: 3vw;
+        padding: 2.5vw; 
     }
 
     .leaderboard-title {
-        font-size: 7vw; /* Increase title font size */
-        padding: 2vw; /* Add padding around the title */
+        font-size: 7vw; 
+        padding: 2vw; 
     }
 
     .leaderboard-heading {
-        width: 85%; /* Increase width of heading */
-        font-size: 6vw; /* Make heading font larger */
-        padding: 2vw; /* Add padding around the heading */
+        width: 85%; 
+        font-size: 6vw; 
+        padding: 2vw; 
     }
 
     .leaderboard-button {
-        font-size: 4vw; /* Make button font size bigger */
-        height: 7vw; /* Increase button height */
-        width: 30%; /* Make the button wider */
-        top: 15vw; /* Adjust the button position */
+        font-size: 4vw; 
+        height: 7vw; 
+        width: 30%; 
+        top: 15vw; 
     }
 
     .leaderboard-text {
-        font-size: 4vw; /* Increase text size for readability */
-        padding: 3vw; /* Add padding for better spacing */
+        font-size: 4vw; 
+        padding: 3vw; 
     }
 }

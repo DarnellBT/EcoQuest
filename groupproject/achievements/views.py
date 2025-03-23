@@ -47,10 +47,10 @@ def achievements(request):
                 'challenges_list': challenges_list,
                 'user_auth': request.user,  # Pass user authentication status
                 'userprofile': userprofile,  # Pass user profile
+              }
 
-        context = {
-            'challenges_list': challenges_list,
-
-            }
 
         return render(request, "achievements.html", context)
+        
+
+
