@@ -1,16 +1,18 @@
+
+/* Main Content Header Section */
 .page-header {
     border-radius: 40px;
     width: 70%;
-    height: auto; /* Adjusted for dynamic height */
-    background-color: #00c87e;
+    height: auto;  
     margin: auto;
     margin-top: 4%;
-    text-align: center;
-    padding: 20px; /* Added padding for better spacing */
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .challenge {
-    color: black; /* Changed color to black */
+    color: black; 
     text-align: center;
     font-weight: bold;
     font-size: 40px;
@@ -19,96 +21,73 @@
 
 .challenge-descr {
     font-size: 25px;
-    color: black; /* Changed color to black */
+    color: black; 
     text-align: center;
-    margin: 0;
+    margin: 10px 0; 
 }
 
 .challenge-points {
     text-align: center;
-    margin: 0;
+    margin: 10px 0;
     color: black;
+    font-size: 18px;  
 }
 
 .image-field {
     color: white;
+    margin-top: 15px;
 }
 
+/* Box for Form */
 .box {
     border-radius: 25px;
-    width: 50%; /* Increased width for better layout */
-    height: auto;
-    background-color: #00c87e;
+    width: 40%;
+    height: auto; 
+    background-color: #4CAF50;
     margin: auto;
-    margin-top: 50px; /* Reduced margin for better spacing */
-    padding: 30px; /* Increased padding for better spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better visual appeal */
-    display: flex; /* Added flexbox for alignment */
-    flex-direction: column; /* Align items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    gap: 20px; /* Added spacing between elements */
+    margin-top: 30px;  
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
     margin: auto;
-    text-align: center; /* Centered the form */
-    margin-top: 3%;
+    text-align: left;
     padding: 4%;
-    width: 80%; /* Adjusted width for better responsiveness */
+    margin-left: 30%; /
 }
 
 .submit {
-    background-color: #007d69;
-    margin-top: 20px; /* Reduced margin for better spacing */
-    border-radius: 25px;
-    outline: none;
-    margin-bottom: 5%;
-    color: white;
-    padding: 10px 20px; /* Adjusted padding for better button size */
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    border: none;
-    text-align: center;
-    display: block; /* Centered the button */
-    width: 50%; /* Adjusted button width */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-left {
+.submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* For the file upload field (if applicable) */
+.image-field {
     color: white;
-    padding: 1%;
-    background-color: #00c87e;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    margin-right: auto;
-    border-radius: 40px;
-    width: 10%;
-    cursor: pointer; /* Added for better UX */
+    margin-top: 15px;
 }
 
-.nav-right {
-    color: white;
-    padding: 1%;
-    background-color: red;
-    font-weight: bold;
-    text-align: center;
-    align-items: center;
-    margin-right: auto; /* Fixed alignment issue */
-    border-radius: 40px;
-    width: 10%;
-    cursor: pointer; /* Added for better UX */
-}
-
-a {
-    text-decoration: none;
-    color: white;
-}
-
+/* Style adjustments for table, if necessary */
 table {
     width: 100%;
-    border-collapse: collapse; /* Added for cleaner table layout */
-}
+  }
 
 tr {
     display: flex;
@@ -118,33 +97,35 @@ tr {
 
 .quiz-question {
     color: black;
-    margin: 20px 0; /* Added margin for spacing */
-    font-size: 20px; /* Increased font size for readability */
-    text-align: center; /* Centered the question text */
+    margin: 20px 0; 
+    font-size: 20px; 
+    text-align: center; 
 }
 
 .quiz-answer {
-    margin: 10px 0; /* Added margin for spacing */
-    background-color: transparent; /* Removed background for cleaner look */
-    padding: 0; /* Removed padding for better alignment */
-    border-radius: 0; /* Removed border radius */
-    display: flex; /* Added flex for horizontal alignment */
-    align-items: center; /* Vertically align items */
-    justify-content: flex-start; /* Align items to the left */
-    gap: 10px; /* Added spacing between radio button and text */
-    width: auto; /* Adjusted width for better layout */
+    margin: 10px 0; 
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 10px; 
+    width: auto; 
 }
 
+/* For form labels and radio buttons */
 form label {
-    display: flex; /* Changed to flex for horizontal alignment */
-    align-items: center; /* Vertically align radio button and text */
-    gap: 10px; /* Added spacing between radio button and text */
-    margin: 5px 0; /* Added vertical margin for spacing between options */
-    font-size: 16px; /* Increased font size for readability */
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin: 5px 0; 
+    font-size: 16px;
 }
 
 input[type="radio"] {
     vertical-align: middle;
-    margin: 0; /* Removed unnecessary margin */
-    cursor: pointer; /* Added for better UX */
+    margin-right: 10px;
 }
+
+

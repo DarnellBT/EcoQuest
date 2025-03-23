@@ -13,88 +13,98 @@
     <script src="{% static 'js/dashboard.js' %}" defer></script>
 </head>
 <body>
-    <aside>
-        <div class="top">
-          <div class="logo">
-            <h2><span class="danger">EcoQuest</span></h2>
-          </div>
-          <div class="close" id="close_button">
-            <span class="material-symbols-sharp">close</span>
-          </div>
-        </div>
-    
-        <div class="sidebar">
-    
-          <a href="{% url 'home' %}"> 
-            <span class="material-symbols-sharp">grid_view</span>
-            <h3> Home </h3>
-          </a>
-    
-          <a href="{% url 'leaderboard' %}"> 
-            <span class="material-symbols-sharp">leaderboard</span>
-            <h3> Leaderboard </h3>
-          </a>
-    
-          <a href="{% url 'map' %}" class="active"> 
-            <span class="material-symbols-sharp">map</span>
-            <h3> Map </h3>
-          </a>
-    
-          <a href="{% url 'contact' %}"> 
-            <span class="material-symbols-sharp">call</span>
-            <h3> Contact </h3>
-          </a>
-    
-          {% if userprofile.is_user %}
-          <a href="{% url 'achievements' %}">
-            <span class="material-symbols-sharp">trophy</span>
-            <h3> Achievements </h3>
-          </a>
-          {% endif %}
-    
-          {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
-          <a href="{% url 'account' %}"> 
-            <span class="material-symbols-sharp">exit_to_app</span>
-            <h3> Account </h3>
-          </a>
-          {% endif %}
-          
-          {% if userprofile.is_game_keeper or userprofile.is_admin %}
-          <a href="{% url 'gamekeeper-portal' %}"> 
-            <span class="material-symbols-sharp">exit_to_app</span>
-            <h3> Game Keeper </h3>
-          </a>
-          {% endif %}
-    
-          {% if userprofile.is_admin %}
-          <a href="{% url 'admin-portal' %}"> 
-            <span class="material-symbols-sharp">exit_to_app</span>
-            <h3> Admin </h3>
-          </a>
-          {% endif %}
-        
-          {% if user_auth.is_anonymous %}
-          <a href="{% url 'login'%}"> 
-            <span class="material-symbols-sharp"> login </span>
-            <h3> Sign In </h3>
-          </a>
-          {% endif %}
-    
-          {% if user_auth.is_authenticated %}
-          <a href="{% url 'logout'%}"> 
-            <span class="material-symbols-sharp"> login </span>
-            <h3> Logout </h3>
-          </a>
-          {% endif %}
-          
-        </div>
-      </aside>
+  <aside> 
+    <!-- Sidebar for navigation -->
+    <div class="top">
+      <div class="logo">
+        <h2><span class="danger">EcoQuest</span></h2>
+      </div>
+      <!-- Close button for small screens -->
+      <div class="close" id="close_button">
+        <span class="material-symbols-sharp">close</span>
+      </div>
+    </div>
 
-    <main class="map-main"> <!-- Added class for map-specific styling -->
+    <!-- Sidebar navigation menu -->
+    <div class="sidebar">
+
+      <a href="{% url 'home' %}"> 
+        <span class="material-symbols-sharp">grid_view</span>
+        <h3> Home </h3>
+      </a>
+
+      <a href="{% url 'leaderboard' %}"> 
+        <span class="material-symbols-sharp">leaderboard</span>
+        <h3> Leaderboard </h3>
+      </a>
+
+      <a href="{% url 'map' %}" class="active"> 
+        <span class="material-symbols-sharp">map</span>
+        <h3> Map </h3>
+      </a>
+
+      <a href="{% url 'contact' %}"> 
+        <span class="material-symbols-sharp">call</span>
+        <h3> Contact </h3>
+      </a>
+
+      {% if userprofile.is_user %}
+      <a href="{% url 'achievements' %}">
+        <span class="material-symbols-sharp">trophy</span>
+        <h3> Achievements </h3>
+      </a>
+      {% endif %}
+
+      {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
+      <a href="{% url 'account' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Account </h3>
+      </a>
+      {% endif %}
+
+      {% if not userprofile.is_game_keeper or not userprofile.is_admin %}
+      <a href="{% url 'privacy' %}"> 
+        <span class="material-symbols-sharp">policy</span>
+        <h3> Policy </h3>
+      </a>
+      {% endif %}
+        
+      {% if userprofile.is_game_keeper or userprofile.is_admin %}
+      <a href="{% url 'gamekeeper-portal' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Game Keeper </h3>
+      </a>
+      {% endif %}
+
+      {% if userprofile.is_admin %}
+      <a href="{% url 'admin-portal' %}"> 
+        <span class="material-symbols-sharp">exit_to_app</span>
+        <h3> Admin </h3>
+      </a>
+      {% endif %}
+    
+      {% if user_auth.is_anonymous %}
+      <a href="{% url 'login'%}"> 
+        <span class="material-symbols-sharp"> login </span>
+        <h3> Sign In </h3>
+      </a>
+      {% endif %}
+
+      {% if user_auth.is_authenticated %}
+      <a href="{% url 'logout'%}"> 
+        <span class="material-symbols-sharp"> login </span>
+        <h3> Logout </h3>
+      </a>
+      {% endif %}
+      
+    </div>
+  </aside>
+
+    <main class="map-main"> 
       
      
 
-        <div class="map-box"> <!-- Added unique class for map box -->
+        <div class="map-box"> 
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}

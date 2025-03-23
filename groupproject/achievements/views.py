@@ -52,3 +52,6 @@ def achievements(request):
             
 
         return render(request, "achievements.html", context)
+        
+
+

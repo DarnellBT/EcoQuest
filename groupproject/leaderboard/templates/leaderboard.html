@@ -13,16 +13,19 @@
     <script src="{% static 'js/dashboard.js' %}" defer></script>
 </head>
 <body>
-  <aside>
+  <aside> 
+    <!-- Sidebar for navigation -->
     <div class="top">
       <div class="logo">
         <h2><span class="danger">EcoQuest</span></h2>
       </div>
+      <!-- Close button for small screens -->
       <div class="close" id="close_button">
         <span class="material-symbols-sharp">close</span>
       </div>
     </div>
 
+    <!-- Sidebar navigation menu -->
     <div class="sidebar">
 
       <a href="{% url 'home' %}"> 
@@ -58,7 +61,14 @@
         <h3> Account </h3>
       </a>
       {% endif %}
-      
+
+      {% if not userprofile.is_game_keeper or not userprofile.is_admin %}
+      <a href="{% url 'privacy' %}"> 
+        <span class="material-symbols-sharp">policy</span>
+        <h3> Policy </h3>
+      </a>
+      {% endif %}
+        
       {% if userprofile.is_game_keeper or userprofile.is_admin %}
       <a href="{% url 'gamekeeper-portal' %}"> 
         <span class="material-symbols-sharp">exit_to_app</span>
