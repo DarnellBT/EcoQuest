@@ -223,6 +223,10 @@ aside .sidebar h3 {
     height: 80%;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
 
 /* Large Screens */
 @media screen and (min-width: 1200px) {

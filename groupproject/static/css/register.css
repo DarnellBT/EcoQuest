@@ -121,6 +121,11 @@ main {
     overflow: visible;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 h2 {
     font-size: 1.8rem;
     font-weight: bold;

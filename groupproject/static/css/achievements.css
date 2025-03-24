@@ -18,6 +18,11 @@
     right: 0;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 .challenge-header {
     text-align: center;
     width: 100%;

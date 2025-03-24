@@ -24,6 +24,11 @@ body {
    
 
 }
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
 #my-qr-reader {
     padding: 20px !important;
 

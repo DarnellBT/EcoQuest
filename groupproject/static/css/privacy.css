@@ -44,6 +44,11 @@ body {
     margin-bottom: 0%;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 .footer-text {
     font-size: 1rem !important;
     font-weight: bold !important;

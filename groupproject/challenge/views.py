@@ -37,6 +37,7 @@ def challenge(request, id):
     current_user = request.user
     current_user_id = current_user.id
 
+    user_points = user_obj.points
     context = {
         'user_id': request.user.id,
         'challenge_points': challenge_points,
@@ -57,7 +58,7 @@ def challenge(request, id):
             ChallengeImages.objects.create(user=user_profile.user,challenge=Challenge.objects.get(challengeId=id), image=img)
             
             user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-
+            
             context = {
                 'user_id': current_user.id,
                 'user_points': user_points,

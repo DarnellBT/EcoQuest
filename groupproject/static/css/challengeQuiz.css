@@ -26,6 +26,11 @@
     margin: 10px 0; 
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 .challenge-points {
     text-align: center;
     margin: 10px 0;
@@ -128,4 +133,23 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
+.btn-submit {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
 
