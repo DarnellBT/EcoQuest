@@ -21,7 +21,8 @@ def setup_account(instance):
         'last_name': 'Doe',
         'email': 'JohnDoe@email.com',
         'password1': 'secret_pass',
-        'password2': 'secret_pass'
+        'password2': 'secret_pass',
+        'private_policy': True,
     }
     instance.client.post('/register/', register_form_data)
     form_data = {
@@ -60,10 +61,10 @@ class ChallengeModelTest(TestCase):
             description='This is the description of the test challenge.',
             points=10,
         )
-        self.assertEqual(challenge.challengeId, 1)
-        self.assertEqual(challenge.challenge, 'Test challenge name')
-        self.assertEqual(challenge.description, 'This is the description of the test challenge.')
-        self.assertEqual(challenge.points, 10)
+        self.assertEqual(challenge.challengeId, 1, 'The challengeId should be 1 for the first challenge created.')
+        self.assertEqual(challenge.challenge, 'Test challenge name', 'The challenge name was not correctly stored.')
+        self.assertEqual(challenge.description, 'This is the description of the test challenge.', 'The challenge desciption was not stored or cannot be accessed correctly.')
+        self.assertEqual(challenge.points, 10, 'The challenge points was not stored or cannot be accessed correctly.')
 
     def test_create_challenge_completed(self):
         """Test creating a ChallengeCompleted instance"""
@@ -91,9 +92,9 @@ class ChallengeModelTest(TestCase):
             completed=False,
         )
         # Assertion tests for ChallengeCompleted
-        self.assertEqual(challenge_completed.userId.userId, 1)
-        self.assertEqual(challenge_completed.challengeId.challengeId, 1)
-        self.assertFalse(challenge_completed.completed)
+        self.assertEqual(challenge_completed.userId.userId, 1, 'The completed challenge was not assigned to the correct user.')
+        self.assertEqual(challenge_completed.challengeId.challengeId, 1, 'The challenge was not completed for the correct user.')
+        self.assertFalse(challenge_completed.completed, 'The challenge should not be completed.')
 
 
 class ChallengeViewTest(TestCase):
