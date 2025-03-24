@@ -142,6 +142,7 @@ def results(request, id):
     userProfile = UserProfile.objects.get(userId=request.user.id)
     points = request.session['user_points']
     total_correct = request.session['correct_total']
+   
     total_questions =  len(request.session['questions'])
     # give points to user
     total_points = userProfile.points + points
