@@ -61,7 +61,9 @@ def gamekeeper_portal(request):
             info = []
             info.append(entry.user.id)
             info.append(entry.challenge.challenge)
-            info.append(entry.image.url)
+            url = entry.image.url.rstrip('/')
+       
+            info.append(url)
             info.append(entry.challenge.points)
             info.append(entry.imageId)
             all_info.append(info)
