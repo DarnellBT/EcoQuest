@@ -21,5 +21,5 @@ class ChallengeImages(models.Model):
     imageId = models.BigAutoField(primary_key=True, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     challenge = models.ForeignKey('Challenge', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='./staticfiles/Image/')
+    image = models.ImageField(upload_to='./static/Image/')
 
