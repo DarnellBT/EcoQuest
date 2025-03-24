@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'about',
     'roleportals',
     'achievements',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
