@@ -35,6 +35,11 @@ body {
   height: 100% !important;
 }
 
+html {
+  font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 /* QR scanner button */
 .qr-scanner {
   color: aliceblue;

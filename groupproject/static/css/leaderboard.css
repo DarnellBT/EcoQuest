@@ -18,6 +18,11 @@ font-family: 'Poppins', sans-serif;
     border-radius: 1vw;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 /* Title style */
 .leaderboard-title {
     color: Black;

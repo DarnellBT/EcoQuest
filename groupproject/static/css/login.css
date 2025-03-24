@@ -16,6 +16,11 @@ form {
     font-size: 1.2rem; 
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 .messages {
     list-style-type: none;
     padding: 0;

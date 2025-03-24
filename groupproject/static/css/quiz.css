@@ -276,6 +276,11 @@ aside .sidebar a.active {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
 .btn-submit:hover {
     background-color: #45a049;
     transform: scale(1.05);
@@ -389,6 +394,7 @@ input[type="radio"] {
     width: 100%;
 }
 
+
 .quiz-answer input[type="radio"] {
     flex-shrink: 0;
     margin: 0 10px 0 20px;
@@ -399,6 +405,8 @@ input[type="radio"] {
 .quiz-answer label {
     flex-grow: 1;
     word-wrap: break-word;
+    width: 100%;
+    align-items: flex-start;
 }
 
 @media screen and (min-width: 1200px) {

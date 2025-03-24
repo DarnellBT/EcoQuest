@@ -276,6 +276,11 @@ aside .sidebar a.active {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 .btn-submit:hover {
     background-color: #45a049;
     transform: scale(1.05);

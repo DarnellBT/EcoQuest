@@ -21,6 +21,11 @@
     flex-direction: column;
     align-items: center;
 }
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
 .content-boxes {
     margin: auto;
     display: flex;

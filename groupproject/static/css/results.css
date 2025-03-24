@@ -20,6 +20,11 @@ h1 {
   font-weight: bold;
 }
 
+html {
+  font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
 form {
   display: flex;
   flex-direction: column;
