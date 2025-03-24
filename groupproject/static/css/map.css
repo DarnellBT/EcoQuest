@@ -1,7 +1,7 @@
 /* Main content box */
 .map-box {
   margin: auto;
-  width: 60%;
+  width: 80%;
   background-color: #f9f9f9;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 2dvw;
@@ -9,13 +9,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3vh;
 }
 
 /* Map container */
 #map-container {
   width: 100%;
-  max-height: 350px;
-  height: 50vh;
+  height: 80vh;  /* Make sure it fills the viewport */
+  max-height: 80vh;
+  position: relative;
   background-color: #4CAF50;
   border-radius: 10px;
   border: 2px solid #4CAF50;
@@ -24,11 +26,10 @@
   overflow: hidden;
 }
 
-/* Leaflet map adjustments */
+/* Ensure the Leaflet map fills the container */
 .leaflet-container {
   width: 100% !important;
   height: 100% !important;
-  max-height: inherit;
 }
 
 /* QR scanner button */
@@ -129,14 +130,12 @@ ul {
   }
 
   .map-box {
-    width: 80%;
+    width: 90%;
     border-radius: 2.5dvw;
-    padding: 2dvw;
   }
 
   #map-container {
-    max-height: 300px;
-    height: 40vh;
+    height: 100%;
   }
 
   .qr-scanner {
@@ -148,6 +147,8 @@ ul {
   .qr-scanner a {
     font-size: 3dvw;
   }
+
+
 }
 
 /* Phone */
@@ -159,12 +160,10 @@ ul {
   .map-box {
     width: 90%;
     border-radius: 2.5dvw;
-    padding: 2dvw;
   }
 
   #map-container {
-    max-height: 250px;
-    height: 35vh;
+    height: 100%;
   }
 
   .qr-scanner {
@@ -178,10 +177,15 @@ ul {
   }
 }
 
-/* Laptop screens (smaller sizes) */
+/* Laptop screens */
 @media screen and (min-width: 1025px) {
   .map-box {
     padding: 0.8dvw; /* Less padding */
+  }
+
+  #map-container {
+    max-height: 600px; /* Give more space */
+    height: 65vh;
   }
 
   p, ul {
