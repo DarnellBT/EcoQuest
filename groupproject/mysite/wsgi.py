@@ -1,3 +1,4 @@
+
 """
 WSGI config for ecoquest project.
 
@@ -16,3 +17,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 
 application = get_wsgi_application()
 application = WhiteNoise(application)
+

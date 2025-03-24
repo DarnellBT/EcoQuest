@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.urls import reverse
 from registration.models import UserProfile
 
-from .forms import UsernameForm, NameForm, PasswordForm
+from .forms import UserForm
 
 
 def setup_account(instance):
@@ -96,7 +96,7 @@ class UsernameFormTest(TestCase):
         form_data = {
             'username': 'Pikachu'
         }
-        form = UsernameForm(data=form_data)
+        form = UserForm(data=form_data)
         self.assertTrue(form.is_valid())
         self.client.post(reverse('change-uname'), form_data)
         user_profile = UserProfile.objects.get(userId=1)
@@ -110,13 +110,17 @@ class NameFormTest(TestCase):
         """Test if the user can change their name"""
         setup_account(self)
         form_data = {
-            'firstName': 'Sarah',
-            'lastName': 'Parker'
+            'username': 'Mewtwo',
+            'first_name': 'Peter',
+            'last_name': 'Parker',
+            'email': 'i-am@email.com'
         }
-        form = NameForm(data=form_data)
+        form = UserForm(data=form_data)
         self.assertTrue(form.is_valid())
-        self.client.post(reverse('change-name'), form_data)
+        self.client.post(reverse('edit_account'), form_data)
         user_profile = UserProfile.objects.get(userId=1)
+        self.assertEqual(user_profile.user.first_name, 'Peter')
+        self.assertEqual(user_profile.user.last_name, 'Parker')
         self.assertEqual(user_profile.user.first_name, 'Sarah')
         self.assertEqual(user_profile.user.last_name, 'Parker')
 

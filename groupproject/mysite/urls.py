@@ -70,3 +70,4 @@ urlpatterns = [
     path('home/privacy/', main_view.privacy, name='privacy'),
     path('account/rewards/', dashboard_view.rewards, name='rewards')
 ] 
+
