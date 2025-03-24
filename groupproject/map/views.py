@@ -25,9 +25,8 @@ class MapView(TemplateView):
         map_fig = folium.Map(
             location=[50.73632605587163, -3.5348055751142917],
             zoom_start=7,
+            control_scale=True,
             tiles='OpenStreetMap',
-            width="100%",
-            height="100%",
         )
 
         folium.plugins.LocateControl(auto_start=True).add_to(map_fig)

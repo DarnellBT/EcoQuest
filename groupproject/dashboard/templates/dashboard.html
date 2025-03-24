@@ -33,16 +33,17 @@
             
             {% if userprofile.is_user or userprofile.is_game_keeper or userprofile.is_admin %}
             <a href="{% url 'home' %}"> 
-              <span class="material-symbols-sharp">grid_view</span>
-              <span class="material-symbols-sharp">grid_view</span>
+
+              <span class="material-symbols-sharp">home</span>
               <h3> Home </h3>
             </a>
             {% endif %}
-              
+
             <a href="{% url 'account' %}" class="active"> 
-                <span class="material-symbols-sharp">exit_2_app</span>
+                <span class="material-symbols-sharp">exit_to_app</span>
                 <h3> Account </h3>
             </a>
+
 
             {% if user_auth.is_authenticated %}
             <a href="{% url 'rewards'%}"> 

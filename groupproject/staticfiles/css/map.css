@@ -1,0 +1,185 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+/* Main content box */
+.map-box {
+  margin: auto;
+  width: 80%;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 2dvw;
+  padding: 1dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
+}
+
+/* Map container */
+#map-container {
+  width: 80%;
+  height: fit-content;
+  position: relative;
+  background-color: #4CAF50;
+  border-radius: 10px;
+  border: 2px solid #4CAF50;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the Leaflet map fills the container */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+html {
+  font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
+/* QR scanner button */
+.qr-scanner {
+  color: aliceblue;
+  background-color: #4CAF50;
+  padding: 0.4dvw 0.8dvw; /* Reduced padding */
+  text-decoration: none;
+  border-radius: 5px;
+  border: solid aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+  height: auto;
+  line-height: 1.8vw; /* Reduced line height */
+}
+
+/* QR scanner text inside the button */
+.qr-scanner a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5dvw; /* Made the text smaller */
+}
+
+.qr-scanner:hover {
+  background-color: #00a87e;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #f9f9f9;
+  color: #00a87e;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.footer a {
+  color: #00a87e;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.icon-text {
+  color: #00a87e;
+  font-size: 16px !important;
+}
+
+/* Links */
+a {
+  color: aliceblue;
+  font-size: 1.5dvw; /* Reduced link size */
+  text-decoration: none;
+}
+
+/* Messages */
+.messages {
+  list-style-type: none;
+}
+
+.message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Paragraph and list items */
+p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5dvw; /* Made the text smaller */
+}
+
+ul {
+  font-size: 1.2dvw; /* Reduced size */
+}
+
+
+
+/* Phone */
+@media screen and (min-width: 650px) {
+  p, ul {
+    font-size: 3dvw;
+  }
+
+  .map-box {
+    width: 90%;
+    border-radius: 2.5dvw;
+  }
+
+
+  .qr-scanner {
+    width: 50%;
+    padding: 0.5dvw 1dvw;
+    border-radius: 5px;
+  }
+
+  .qr-scanner a {
+    font-size: 3dvw;
+  }
+}
+
+/* Laptop screens */
+@media screen and (min-width: 1025px) {
+  .map-box {
+    padding: 0.8dvw; /* Less padding */
+  }
+
+  p, ul {
+    font-size: 1.2dvw; /* Smaller text */
+  }
+
+  .qr-scanner {
+    width: 30%; /* Smaller button */
+    padding: 0.3dvw 0.7dvw;
+    border-radius: 7px;
+  }
+
+  .qr-scanner a {
+    font-size: 1.3dvw; /* Smaller text */
+  }
+
+  .qr-scanner {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+

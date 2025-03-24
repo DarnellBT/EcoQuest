@@ -32,7 +32,7 @@
         <div class="sidebar">
     
           <a href="{% url 'home' %}"> 
-            <span class="material-symbols-sharp">grid_view</span>
+            <span class="material-symbols-sharp">home</span>
             <h3> Home </h3>
           </a>
     
@@ -51,7 +51,7 @@
             <h3> Contact </h3>
           </a>
     
-          {% if userprofile.is_user %}
+          {% if user_auth.is_authenticated %}
           <a href="{% url 'achievements' %}" class="active">
             <span class="material-symbols-sharp">trophy</span>
             <h3> Achievements </h3>

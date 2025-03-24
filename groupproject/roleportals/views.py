@@ -61,11 +61,11 @@ def gamekeeper_portal(request):
             info = []
             info.append(entry.user.id)
             info.append(entry.challenge.challenge)
+            
             info.append(entry.image.url)
             info.append(entry.challenge.points)
             info.append(entry.imageId)
             all_info.append(info)
-
         
         
         if request.method == 'POST':

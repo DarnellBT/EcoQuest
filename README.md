@@ -5,13 +5,13 @@
 
 ## Set-up Instructions
 
-### 1. Clone the repo
+### 1. Clone the repo 
 
 ```bash
 git clone https://github.com/DarnellBT/EcoQuest.git
 ```
 
-### 2. Set up and activate local environment
+### 2. Set up and activate local environment 
 
 ```bash
 python -m venv .venv

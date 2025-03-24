@@ -1,7 +1,10 @@
 /* Main styling for the leaderboard */
 .leaderboard-main {
-    font-family: 'Poppins', sans-serif;
     font-size: 1vw;
+}
+
+body {
+font-family: 'Poppins', sans-serif;
 }
 
 /* Header section */
@@ -14,6 +17,11 @@
     padding: 0.5vw;
     border-radius: 1vw;
 }
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
 
 /* Title style */
 .leaderboard-title {

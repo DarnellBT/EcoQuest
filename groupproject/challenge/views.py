@@ -37,6 +37,7 @@ def challenge(request, id):
     current_user = request.user
     current_user_id = current_user.id
 
+    user_points = user_obj.points
     context = {
         'user_id': request.user.id,
         'challenge_points': challenge_points,
@@ -53,11 +54,12 @@ def challenge(request, id):
         form = ImageUpload(request.POST, request.FILES)
         if form.is_valid():
             img = form.cleaned_data.get("image")
-            # create new records in database for image 
-            ChallengeImages.objects.create(user=user_profile.user,challenge=Challenge.objects.get(challengeId=id), image=img)
+            # create new records in database for 
+     
+            ChallengeImages.objects.create(user=user_obj.user,challenge=Challenge.objects.get(challengeId=id), image=img)
             
             user_profile = register_models.UserProfile.objects.get(userId=current_user_id)
-
+            user_points = user_profile.points
             context = {
                 'user_id': current_user.id,
                 'user_points': user_points,
