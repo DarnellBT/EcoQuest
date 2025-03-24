@@ -1,6 +1,10 @@
 /* Contact Page Specific Styles */
 
 /* Style for the admin page box only on the contact page */
+body {
+    font-family: 'poppins', 'sans-serif';
+}
+
 .admin-page-box {
     background: #f9f9f9;
     padding: 2rem;
@@ -13,10 +17,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-html {
-    font-family: 'poppins', 'sans-serif';
 }
 
 /* Form styling within the admin-page-box */

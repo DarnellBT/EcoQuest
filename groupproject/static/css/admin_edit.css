@@ -1,3 +1,7 @@
+body {
+    font-family: 'poppins', 'sans-serif';
+}
+
 .admin-page-box {
     background: #f9f9f9;
     padding: 1.5rem;
@@ -106,6 +110,7 @@ th {
 }
 
 main {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
