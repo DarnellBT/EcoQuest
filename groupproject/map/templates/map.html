@@ -123,8 +123,10 @@
             <div id="map-container">
                 {{ map|safe }}
             </div>
+            {% if user_auth.is_authenticated %}
             <div class="qr-scanner"><a href="{% url 'qr-scanner' %}">Scan QR Code</a></div>
-        </div>
+            {% endif %}
+          </div>
     </main>
 
 
