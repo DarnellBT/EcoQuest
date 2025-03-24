@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'quiz',
     'leaderboard',
     'qrcodescan',
-    'sustain',
     'about',
     'roleportals',
     'achievements',
