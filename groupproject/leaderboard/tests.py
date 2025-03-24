@@ -24,7 +24,7 @@ def setup_account(instance):
 class LeaderboardViewTest(TestCase):
     """Class tests if pages load"""
 
-    def test_account_page_loads(self):
+    def test_leaderboard_page_loads(self):
         """Test if the leaderboard page loads successfully"""
         setup_account(self)
         response = self.client.get(reverse('leaderboard'))
