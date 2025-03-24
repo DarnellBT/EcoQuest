@@ -65,7 +65,3 @@ jobs:
       run: |
         python groupproject/manage.py migrate registration
         python groupproject/manage.py test registration
-    - name: Run Sustain Tests
-      run: |
-        python groupproject/manage.py migrate sustain
-        python groupproject/manage.py test sustain

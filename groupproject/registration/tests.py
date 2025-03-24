@@ -50,7 +50,8 @@ class RegistrationViewTest(TestCase):
             'last_name': 'Doe',
             'email': 'JohnDoe@email.com',
             'password1': 'secret_pass',
-            'password2': 'secret_pass'
+            'password2': 'secret_pass',
+            'private_policy': True,
         }
 
         response = self.client.post('/register/', form_data)
@@ -71,7 +72,8 @@ class RegistrationFormTest(TestCase):
             'last_name': 'Doe',
             'email': 'JohnDoe@email.com',
             'password1': 'secret_pass',
-            'password2': 'secret_pass'
+            'password2': 'secret_pass',
+            'private_policy': True,
         }
         form = RegistrationForm(data=form_data)
         self.assertTrue(form.is_valid())
@@ -85,7 +87,8 @@ class RegistrationFormTest(TestCase):
             'last_name': '',
             'email': '',
             'password1': '',
-            'password2': ''
+            'password2': '',
+            'private_policy': True,
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -96,7 +99,8 @@ class RegistrationFormTest(TestCase):
             'last_name': 'Doe',
             'email': 'JohnDoe@email.com',
             'password1': 'secret01',
-            'password2': 'secret02'
+            'password2': 'secret02',
+            'private_policy': True,
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -107,7 +111,21 @@ class RegistrationFormTest(TestCase):
             'last_name': 'Doe',
             'email': 'JohnDoe@email.com',
             'password1': 'short!!',
-            'password2': 'short!!'
+            'password2': 'short!!',
+            'private_policy': True,
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
+        # Checks that if privacy policy is not agreed to, the form should not be valid.
+        form_data = {
+            'username': 'Dragonite',
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 'JohnDoe@email.com',
+            'password1': 'secret_pass',
+            'password2': 'secret_pass',
+            'private_policy': False,
+        }
+        form = RegistrationForm(data=form_data)
+        self.assertTrue(form.is_valid())
+

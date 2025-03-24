@@ -24,9 +24,9 @@ class LoginViewTest(TestCase):
     def test_login_page_loads(self):
         """Test if the login page loads successfully"""
         response = self.client.get(reverse('login'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 200, 'Login page did not load successfully.')
         # Check we get login template.
-        self.assertTemplateUsed(response, 'loginPage.html')
+        self.assertTemplateUsed(response, 'loginPage.html', 'Login page did not load template successfully.')
 
     def test_home_page_redirect_loads(self):
         """Test if the login page loads successfully"""
@@ -39,9 +39,11 @@ class LoginViewTest(TestCase):
 
         response = self.client.post('/login/', form_data)
         login_response = self.assertRedirects(response, '/home/', status_code=302, target_status_code=200,
-                                              fetch_redirect_response=True)
-        # Check we get loginPage template.
-        self.assertTemplateUsed(login_response, '../main/templates/home.html')
+                                              fetch_redirect_response=True,
+                                              msg_prefix='Login page did not redirect to home page successfully.')
+        # Check we get home template.
+        self.assertTemplateUsed(login_response, '../main/templates/home.html',
+                                'Home page did not load template successfully.')
 
 
 class LoginFormTest(TestCase):
