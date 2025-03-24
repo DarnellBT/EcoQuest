@@ -1,0 +1,56 @@
+
+
+
+.table-cell-right {
+    float: right;
+}
+
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
+p {
+    color: black;
+}
+.deleteButton {
+    align-self: center;
+    text-align: center;
+    margin: auto;
+    font-size: 20px;
+    background-color: #00a87e;
+    padding: 7px;
+    border-radius: 25px;
+    border-style: none;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-top: 10px;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 50px;
+}
+
+
+.buttonSubmit {
+
+    text-align: center;
+    margin: 47%;
+    font-size: 20px;
+    background-color: #00a87e;
+    padding: 7px;
+    border-radius: 25px;
+    border-style: none;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-top: 10px;
+}
+
+
+
