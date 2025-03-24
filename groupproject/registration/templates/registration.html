@@ -17,13 +17,6 @@
         <h3 class="register-page-title">Register</h3>      
         <form method="POST" class="registration-form">
             {% csrf_token %}
-            
-            <!-- Username Field -->
-            <p class="form-field">
-       
-                <div class="box-response">
-                    {{ form.username }}
-                </div>
                 {% if form.username.errors %}
                 <div class="error alert-error">
                     {{ form.username.errors }}
@@ -32,14 +25,6 @@
                 {% if form.username.help_text %}
                     {{ form.username.help_text | safe }}
                 {% endif %}
-            </p>
-
-            <!-- First Name Field -->
-            <p class="form-field">
-          
-                <div class="box-response">
-                    {{ form.first_name }}
-                </div>
                 {% if form.first_name.errors %}
                 <div class="error alert-error">
                     {{ form.first_name.errors }}
@@ -48,14 +33,6 @@
                 {% if form.first_name.help_text %}
                     {{ form.first_name.help_text | safe }}
                 {% endif %}
-            </p>
-
-            <!-- Last Name Field -->
-            <p class="form-field">
-      
-                <div class="box-response">
-                    {{ form.last_name }}
-                </div>
                 {% if form.last_name.errors %}
                 <div class="error alert-error">
                     {{ form.last_name.errors }}
@@ -64,65 +41,99 @@
                 {% if form.last_name.help_text %}
                     {{ form.last_name.help_text | safe }}
                 {% endif %}
-            </p>
-
-            <!-- Email Field -->
-            <p class="form-field">
-           
-                <div class="box-response">
-                    {{ form.email }}
-                </div>
                 {% if form.email.errors %}
                 <div class="error alert-error">
                     {{ form.email.errors }}
                 </div>
                 {% endif %}
+                
+             
                 {% if form.email.help_text %}
                     {{ form.email.help_text | safe }}
                 {% endif %}
-            </p>
-
-            <!-- Password1 Field -->
-            <p class="form-field">
-                <div class="box-response" style="display: flex; align-items: center;">
-                    {{ form.password1 }}
-                    <button type="button" class="info-button" onclick="showPasswordRequirements()" style="margin-left: 10px;">i</button>
-                </div>
                 {% if form.password1.errors %}
                 <div class="error alert-error">
                     {{ form.password1.errors }}
                 </div>
                 {% endif %}
-            </p>
-
-            <!-- Password2 Field -->
-            <p class="form-field">
-
-                <div class="box-response">
-                    {{ form.password2 }}
-                </div>
                 {% if form.password2.errors %}
                 <div class="error alert-error">
                     {{ form.password2.errors }}
                 </div>
                 {% endif %}
+                {% if form.private_policy.errors %}
+                <div class="error alert-error">
+                    {{ form.private_policy.errors }}
+                </div>
+                {% endif %}
+
+
+
+
+            <!-- Username Field -->
+            <div class="form-field">
+                <div class="box-response">
+                    {{ form.username }}
+                </div>
                 
-            </p>
+            </div>
+
+            <!-- First Name Field -->
+            <div class="form-field">
+          
+                <div class="box-response">
+                    {{ form.first_name }}
+                </div>
+                
+            </div>
+
+            <!-- Last Name Field -->
+            <div class="form-field">
+      
+                <div class="box-response">
+                    {{ form.last_name }}
+                </div>
+                
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-field">
+           
+                <div class="box-response">
+                    {{ form.email }}
+                </div>
+                
+            </div>
+
+            <!-- Password1 Field -->
+            <div class="form-field">
+                <div class="box-response" style="display: flex; align-items: center;">
+                    {{ form.password1 }}
+                    <button type="button" class="info-button" onclick="showPasswordRequirements()" style="margin-left: 10px;">i</button>
+                </div>
+                
+            </div>
+
+            <!-- Password2 Field -->
+            <div class="form-field">
+
+                <div class="box-response">
+                    {{ form.password2 }}
+                </div>
+                
+                
+            </div>
 
             <!-- Private Policy Field -->
-            <p class="form-field">
+            <div class="form-field-privacy">
                 <div class="checkbox">
                     <div class="checkbox-label">
                     {{ form.private_policy.label_tag }}
                     </div>  
                     {{ form.private_policy }}
                 </div>
-                {% if form.private_policy.errors %}
-                <div class="error alert-error">
-                    {{ form.private_policy.errors }}
-                </div>
-                {% endif %}
-            </p>
+               
+            </div>
 
             <div class="privacy">
                 <!--Private policy linking-->
