@@ -130,17 +130,6 @@ ul {
   font-size: 1.2dvw; /* Reduced size */
 }
 
-/* Tablet */
-@media screen and (max-width: 768px) {
-  p, ul {
-    font-size: 3.5dvw;
-  }
-
-  .map-box {
-    width: 90%;
-    border-radius: 2.5dvw;
-  }
-
   .qr-scanner {
     width: 35%;
     padding: 0.5dvw 1dvw;
@@ -152,10 +141,8 @@ ul {
   }
 
 
-}
-
 /* Phone */
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 650px) {
   p, ul {
     font-size: 3dvw;
   }
@@ -164,6 +151,7 @@ ul {
     width: 90%;
     border-radius: 2.5dvw;
   }
+
 
   .qr-scanner {
     width: 50%;
@@ -202,3 +190,5 @@ ul {
     overflow: hidden;
   }
 }
+
+
