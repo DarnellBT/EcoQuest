@@ -1,0 +1,155 @@
+
+/* Main Content Header Section */
+.page-header {
+    border-radius: 40px;
+    width: 70%;
+    height: auto;  
+    margin: auto;
+    margin-top: 4%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.challenge {
+    color: black; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0;
+}
+
+.challenge-descr {
+    font-size: 25px;
+    color: black; 
+    text-align: center;
+    margin: 10px 0; 
+}
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
+.challenge-points {
+    text-align: center;
+    margin: 10px 0;
+    color: black;
+    font-size: 18px;  
+}
+
+.image-field {
+    color: white;
+    margin-top: 15px;
+}
+
+/* Box for Form */
+.box {
+    border-radius: 25px;
+    width: 40%;
+    height: auto; 
+    background-color: #4CAF50;
+    margin: auto;
+    margin-top: 30px;  
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin: auto;
+    text-align: left;
+    padding: 4%;
+    margin-left: 30%; /
+}
+
+.submit {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* For the file upload field (if applicable) */
+.image-field {
+    color: white;
+    margin-top: 15px;
+}
+
+/* Style adjustments for table, if necessary */
+table {
+    width: 100%;
+  }
+
+tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-question {
+    color: black;
+    margin: 20px 0; 
+    font-size: 20px; 
+    text-align: center; 
+}
+
+.quiz-answer {
+    margin: 10px 0; 
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 10px; 
+    width: auto; 
+}
+
+/* For form labels and radio buttons */
+form label {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    margin: 5px 0; 
+    font-size: 16px;
+}
+
+input[type="radio"] {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.btn-submit {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+

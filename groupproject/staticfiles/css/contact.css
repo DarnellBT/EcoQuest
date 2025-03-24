@@ -1,0 +1,142 @@
+/* Contact Page Specific Styles */
+
+/* Style for the admin page box only on the contact page */
+body {
+    font-family: 'poppins', 'sans-serif';
+}
+
+.admin-page-box {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: 10rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form styling within the admin-page-box */
+.admin-page-box form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Styling for submit button */
+.admin-page-box .btn-submit {
+    width: 80%;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.admin-page-box .btn-submit:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    font-family: 'poppins', 'sans-sarif' !important;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.1%;
+}
+
+/* Style for labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px; 
+}
+
+/* First Name, Email, Message label specific styles */
+label[for="first_name"],
+label[for="email"],
+label[for="message"] {
+    font-weight: bold;
+}
+
+/* Styling for input fields */
+input[type="text"], 
+input[type="password"], 
+input[type="email"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 80%;
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    .admin-page-box {
+        width: 90%;
+        margin-top: 8rem;
+    }
+
+    .admin-page-box .btn-submit {
+        width: 90%;
+        padding: 12px 20px;
+    }
+}
