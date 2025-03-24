@@ -27,7 +27,6 @@ from map import views as map_view
 from qrcodescan import views as qr_view
 from quiz import views as quiz_view
 from registration import views as register_view
-from sustain import views as sus_view
 from roleportals import views as role_view
 from achievements import views as achievements_view
 
@@ -45,7 +44,6 @@ urlpatterns = [
     path('logout/', dashboard_view.logout_dashboard, name="logout"),
     path('leaderboard/', leaderboard_view.leaderboard_page, name='leaderboard'),
     path('qr-scanner/', qr_view.scanner, name='qr-scanner'),
-    path('sustainability/', sus_view.sustain, name='sustainability'),
     path('contact/', contact_view.contact, name="contact"),
     path('quiz/<int:id>/results/', quiz_view.results, name='results'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
@@ -61,7 +59,7 @@ urlpatterns = [
     path('admin-portal/edit-challenge/', role_view.admin_challenge, name='admin-challenge'),
     path('admin-portal/edit-location/edit-location/<int:location_id>/', role_view.edit_location, name='edit_location'),
     path('admin-portal/edit-location/delete-location/<int:location_id>/', role_view.delete_location, name='delete_location'),
-     path('admin-portal/edit-quiz/edit-quiz/<int:quiz_id>/', role_view.edit_quiz, name='edit_quiz'),
+    path('admin-portal/edit-quiz/edit-quiz/<int:quiz_id>/', role_view.edit_quiz, name='edit_quiz'),
     path('admin-portal/edit-quiz/delete-quiz/<int:quiz_id>/', role_view.delete_quiz, name='delete_quiz'),
     path('admin-portal/edit-question/edit-question/<int:question_id>/', role_view.edit_question, name='edit_question'),
     path('admin-portal/edit-question/delete-question/<int:question_id>/', role_view.delete_question, name='delete_question'),
