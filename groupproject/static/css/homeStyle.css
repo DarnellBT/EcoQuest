@@ -1,5 +1,6 @@
 /* Set the background color and cover the entire screen */
 body {
+    font-family: 'Poppins', sans-serif;
     background-color: white;
     background-size: cover;
     background-position: center;
