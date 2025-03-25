@@ -12,7 +12,8 @@ def setup_registration(instance):
         'last_name': 'Doe',
         'email': 'JohnDoe@email.com',
         'password1': 'secret_pass',
-        'password2': 'secret_pass'
+        'password2': 'secret_pass',
+        'private_policy': True,
     }
     # Registers user.
     instance.client.post('/register/', register_form_data)

@@ -124,6 +124,6 @@ def rewards(request):
         context = {
             'rewards': user_rewards,
         }
-        print(user_rewards)
+
     return render(request, 'rewards.html', context)
 
