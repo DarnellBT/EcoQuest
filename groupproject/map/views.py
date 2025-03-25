@@ -40,14 +40,11 @@ class MapView(TemplateView):
         all_locations = Location.objects.all()
         for data in all_locations:
          
-            icon_url =f'static/images/{data.icon}.png'  # Generate full static URL
+     
 
-            folium.Marker(
+            folium.CircleMarker(
                 location=[data.latitude, data.longitude],
-                icon=folium.CustomIcon(
-                    icon_image=icon_url,  # Use absolute URL for icon
-                    icon_size=(30, 30)  # Ensure correct display size
-                ),
+                icon=folium.Icon(icon='cicle', color='green', radius=3),
                 tooltip=f'{data.name}',
                 popup=f"<strong>{data.name}</strong>"
             ).add_to(map_fig)
