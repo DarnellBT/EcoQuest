@@ -13,7 +13,8 @@ def setup_account(instance):
         'last_name': 'Doe',
         'email': 'JohnDoe@email.com',
         'password1': 'secret_pass',
-        'password2': 'secret_pass'
+        'password2': 'secret_pass',
+        'private_policy': True,
     }
     instance.client.post('/register/', register_form_data)
     form_data = {
@@ -43,7 +44,7 @@ class QuizModelTest(TestCase):
         )
         # Creates a Question instance.
         question = Question.objects.create(
-            quizId=quiz.quizId,
+            quiz=quiz,
             question='This is a test question.',
             choice1='This is a test choice 1.',
             choice2='This is a test choice 2.',
@@ -53,7 +54,7 @@ class QuizModelTest(TestCase):
             points=10
         )
         self.assertEqual(question.questionId, 1)
-        self.assertEqual(question.quizId, 1)
+        self.assertEqual(question.quiz, quiz)
         self.assertEqual(question.question, 'This is a test question.')
         self.assertEqual(question.choice1, 'This is a test choice 1.')
         self.assertEqual(question.choice2, 'This is a test choice 2.')
@@ -74,7 +75,7 @@ class QuizViewTest(TestCase):
         )
         # Creates a Question instance.
         Question.objects.create(
-            quizId=quiz.quizId,
+            quiz=quiz,
             question='This is a test question.',
             choice1='This is a test choice 1.',
             choice2='This is a test choice 2.',
@@ -97,7 +98,7 @@ class QuizViewTest(TestCase):
         )
         # Creates a Question instance.
         Question.objects.create(
-            quizId=quiz.quizId,
+            quiz=quiz,
             question='This is a test1 question.',
             choice1='This is a test1 choice 1.',
             choice2='This is a test1 choice 2.',
@@ -107,7 +108,7 @@ class QuizViewTest(TestCase):
             points=10
         )
         Question.objects.create(
-            quizId=quiz.quizId,
+            quiz=quiz,
             question='This is a test2 question.',
             choice1='This is a test2 choice 1.',
             choice2='This is a test1 choice 2.',
@@ -141,7 +142,7 @@ class QuizViewTest(TestCase):
         )
         # Creates a Question instance.
         Question.objects.create(
-            quizId=quiz.quizId,
+            quiz=quiz,
             question='This is a test question.',
             choice1='This is a test choice 1.',
             choice2='This is a test choice 2.',

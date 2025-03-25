@@ -24,6 +24,9 @@ def achievements(request):
 
         # initialise empty list 
         challenges_list = []
+
+        # initialise context
+        context = {}
         
         # for each challenge, go through them and assign them an image if present in database
         for challenge in challenges:

@@ -78,9 +78,8 @@ class RegistrationFormTest(TestCase):
         form = RegistrationForm(data=form_data)
         self.assertTrue(form.is_valid())
 
-    def test_invalid_form(self):
-        """Test if an invalid form is rejected"""
-        # Checks that if all fields are empty, the form should not be valid
+    def test_no_inputs_invalid_form(self):
+        """Checks that if all fields are empty, the form should not be valid"""
         form_data = {
             'username': '',
             'first_name': '',
@@ -88,11 +87,13 @@ class RegistrationFormTest(TestCase):
             'email': '',
             'password1': '',
             'password2': '',
-            'private_policy': True,
+            'private_policy': False,
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        # Checks that if passwords do not match, the form should not be valid.
+
+    def test_password_not_match_invalid_form(self):
+        """Checks that if passwords do not match, the form should not be valid."""
         form_data = {
             'username': 'Dragonite',
             'first_name': 'John',
@@ -104,7 +105,9 @@ class RegistrationFormTest(TestCase):
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        # Checks that if passwords are less than 8 characters, the form should not be valid.
+
+    def test_password_too_short_invalid_form(self):
+        """Checks that if passwords are less than 8 characters, the form should not be valid."""
         form_data = {
             'username': 'Dragonite',
             'first_name': 'John',
@@ -116,7 +119,9 @@ class RegistrationFormTest(TestCase):
         }
         form = RegistrationForm(data=form_data)
         self.assertFalse(form.is_valid())
-        # Checks that if privacy policy is not agreed to, the form should not be valid.
+
+    def test_privacy_not_agreed_invalid_form(self):
+        """Checks that if privacy policy is not agreed to, the form should not be valid."""
         form_data = {
             'username': 'Dragonite',
             'first_name': 'John',
@@ -127,5 +132,4 @@ class RegistrationFormTest(TestCase):
             'private_policy': False,
         }
         form = RegistrationForm(data=form_data)
-        self.assertTrue(form.is_valid())
-
+        self.assertFalse(form.is_valid())

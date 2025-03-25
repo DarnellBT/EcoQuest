@@ -12,3 +12,10 @@ class MainViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         # Check we get registration template.
         self.assertTemplateUsed(response, 'home.html')
+
+    def test_privacy_page_loads(self):
+        """Test if the privacy page loads successfully"""
+        response = self.client.get(reverse('privacy'))
+        self.assertEqual(response.status_code, 200)
+        # Check we get registration template.
+        self.assertTemplateUsed(response, 'privacy.html')

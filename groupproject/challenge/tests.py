@@ -1,11 +1,12 @@
 """Module contains test cases for challenges"""
+import os
 import sys
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from registration.models import UserProfile
-from .models import Challenge, ChallengeCompleted
+from .models import Challenge, ChallengeCompleted, ChallengeImages
 from .forms import ImageUpload
 from io import BytesIO
 from PIL import Image
@@ -34,6 +35,8 @@ def setup_account(instance):
 
 def generate_test_image():
     """Generates a test image."""
+    # Removes test image if it already exists
+    remove_test_image()
     # Creates image
     file = BytesIO()
     image = Image.new('RGB', (1000, 1000))
@@ -48,6 +51,12 @@ def generate_test_image():
         charset='utf-8',
     )
     return upload_image
+
+
+def remove_test_image():
+    """Removes the test image."""
+    if os.path.exists('/static/Image/test.png'):
+        os.remove('/static/Image/test.png')
 
 
 class ChallengeModelTest(TestCase):
@@ -96,6 +105,36 @@ class ChallengeModelTest(TestCase):
         self.assertEqual(challenge_completed.challengeId.challengeId, 1, 'The challenge was not completed for the correct user.')
         self.assertFalse(challenge_completed.completed, 'The challenge should not be completed.')
 
+    def test_create_challenge_images(self):
+        """Test creating a ChallengeImages instance"""
+        # Create User instance
+        user = User.objects.create(
+            username='Dragonite',
+            first_name='John',
+            last_name='Doe',
+            email='JohnDoe@email.com',
+        )
+        user.set_password('secret_pass')
+        # Creates a challenge instance.
+        challenge = Challenge.objects.create(
+            challenge='Test challenge name',
+            description='This is the description of the test challenge.',
+            points=10,
+        )
+        image = generate_test_image()
+        challenge_image = ChallengeImages.objects.create(
+            user=user,
+            challenge=challenge,
+            image=image,
+        )
+        # Assertion tests for ChallengeCompleted
+        self.assertEqual(challenge_image.user, user,
+                         'The challenge image was not assigned to the correct user.')
+        self.assertEqual(challenge_image.challenge.challengeId, 1,
+                         'The challenge image was not completed for the correct user.')
+        self.assertEqual(challenge_image.image.url, '/static/Image/test.png', 'The challenge image does not have the correct image file.')
+        remove_test_image()
+
 
 class ChallengeViewTest(TestCase):
     """Class tests if pages load"""
@@ -134,17 +173,15 @@ class ChallengeViewTest(TestCase):
         # Check we successfully redirect to map at we also get the map template.
         map_response = self.assertRedirects(response, '/map/', status_code=302, target_status_code=200, fetch_redirect_response=True)
         self.assertTemplateUsed(map_response, '../map/templates/map.html')
-        # Assertion tests for if user profile has been updated
-        # user_profile = UserProfile.objects.get(userId=1)
-        # self.assertEqual(user_profile.points, 10)
+        remove_test_image()
 
-    def test_login_page_redirect_loads_when_logout(self):
-        """Test if the login page loads successfully when a user logs out."""
+    def test_main_page_redirect_loads_when_logout(self):
+        """Test if the main page loads successfully when a user logs out."""
         setup_account(self)
         response = self.client.get(reverse('logout'))
-        login_response = self.assertRedirects(response, 'login', status_code=302, target_status_code=404, fetch_redirect_response=True)
+        main_response = self.assertRedirects(response, '/', status_code=302, target_status_code=200, fetch_redirect_response=True)
         # Check we get loginPage template.
-        self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
+        self.assertTemplateUsed(main_response, '../main/templates/home.html')
 
     def test_login_page_redirect_loads_if_not_logged_in(self):
         """Test if the login page loads successfully if a user is not logged in."""
@@ -155,7 +192,10 @@ class ChallengeViewTest(TestCase):
 
 
 class ImageUploadTest(TestCase):
-    """Class tests if a form is invalid or valid in certain cases"""
+    """
+    Class tests if pages load. Note that you must remove any files beginning with test and ending in .png from
+    groupproject/static/Image to avoid any test failures.
+    """
 
     def test_valid_form(self):
         """Test if the form is valid"""
@@ -164,16 +204,18 @@ class ImageUploadTest(TestCase):
         }
         form = ImageUpload({}, MultiValueDict(form_data))
         self.assertTrue(form.is_valid())
+        remove_test_image()
 
-    def test_invalid_form(self):
-        """Test if an invalid form is rejected"""
-        # Uploads invalid empty image.
+    def test_no_image_invalid_form(self):
+        """Does not upload a file."""
         form_data = {
             'image': []
         }
         form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
-        # Uploads invalid empty file.
+
+    def test_empty_image_invalid_form(self):
+        """Uploads invalid empty file."""
         form_data = {
             'image': [
                 InMemoryUploadedFile(
@@ -188,7 +230,9 @@ class ImageUploadTest(TestCase):
         }
         form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
-        # Uploads invalid file type.
+
+    def test_file_type_invalid_form(self):
+        """Uploads invalid file type."""
         file = BytesIO()
         image = Image.new('RGB', (1000, 1000))
         image.save(file, 'png')
@@ -207,3 +251,5 @@ class ImageUploadTest(TestCase):
         }
         form = ImageUpload({}, MultiValueDict(form_data))
         self.assertFalse(form.is_valid())
+
+

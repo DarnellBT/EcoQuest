@@ -32,11 +32,10 @@ class LeaderboardViewTest(TestCase):
         # Check we get dashboard template.
         self.assertTemplateUsed(response, 'leaderboard.html')
 
-    def test_login_page_redirect_loads_when_logout(self):
-        """Test if the login page loads successfully when a user logs out."""
+    def test_main_page_redirect_loads_when_logout(self):
+        """Test if the main page loads successfully when a user logs out."""
         setup_account(self)
         response = self.client.get(reverse('logout'))
-        login_response = self.assertRedirects(response, 'login', status_code=302, target_status_code=404,
-                                              fetch_redirect_response=True)
+        main_response = self.assertRedirects(response, '/', status_code=302, target_status_code=200, fetch_redirect_response=True)
         # Check we get loginPage template.
-        self.assertTemplateUsed(login_response, '../login/templates/loginPage.html')
+        self.assertTemplateUsed(main_response, '../main/templates/home.html')
